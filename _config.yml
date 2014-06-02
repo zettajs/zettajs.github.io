@@ -1,3 +1,4 @@
 name: zetta.js
 permalink: /:categories/:title
 timezone: America/Detroit
+markdown: kramdown
