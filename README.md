@@ -1,4 +1,2 @@
-zettajs.github.io
-=================
+# zetta.js
 
-zetta.js
