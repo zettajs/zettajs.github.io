@@ -45,7 +45,7 @@ Install Zetta and prerequisites, see [Zetta Installation]().
 
 {% gist mdobson/81043bf7ff6fce4d6d4d %}
 
-## Write Device Driver
+## Write Device Scout
 
 * Generate a new device scout
 
