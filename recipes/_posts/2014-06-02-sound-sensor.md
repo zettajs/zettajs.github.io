@@ -67,7 +67,7 @@ Open the Zetta Browser
 
 ```zetta open```
 
-## Web API
+## Explore Web API
 
 Explore the Zetta API
 
