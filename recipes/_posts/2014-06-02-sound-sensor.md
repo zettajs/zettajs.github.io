@@ -25,6 +25,8 @@ We will also explore how to develop, test, stage and deploy the sensor into prod
 
 ### Setup
 
+Include Fritzing Diagrams
+
 1. Connect the sensor to the breadboard
     1. foo
     1. bar
