@@ -39,7 +39,9 @@ Install Zetta and prerequisites, see [Zetta Installation]().
 
 * Generate a new device driver 
 
-```zetta ...```
+```bash
+zetta ...
+```
 
 * Write this code
 
@@ -49,7 +51,9 @@ Install Zetta and prerequisites, see [Zetta Installation]().
 
 * Generate a new device scout
 
-```zetta ...```
+```bash
+zetta ...
+```
 
 * Write this code
 
@@ -59,19 +63,25 @@ Install Zetta and prerequisites, see [Zetta Installation]().
 
 Run Zetta
 
-```zetta run```
+```bash
+zetta run
+```
 
 ## Open Zetta
 
 Open the Zetta Browser
 
-```zetta open```
+```bash
+zetta open
+```
 
 ## Explore Web API
 
 Explore the Zetta API
 
-```curl ...```
+```bash
+curl ...
+```
 
 ## Write an App
 
