@@ -56,7 +56,7 @@ Zetta projects typically include apps and devices. The file structure looks like
 
 ### Install Zetta
 
-Install Zetta and prerequisites, see [Zetta Installation Recipe]().
+Install Zetta and prerequisites, see [Zetta Installation]({% post_url 2014-06-04-installation %}).
 
 ### Write Device Driver
 
@@ -128,7 +128,11 @@ Explore the Zetta API
 {}
 ```
 
-## Lifecycle: Dev, Test, Deploy, Production
+## Deployment
+
+### Environments
+
+A typical development lifecycle includes multiples tiers: Dev, Test, Deploy, Production
 
 When things get real with sensors in production, it's important to consider the entire development cycle.
 
@@ -143,7 +147,7 @@ Zetta is designed to support dev, test, stage and production environments.
     + /production
 ```
 
-## Multiple Geo-Locations
+### Multiple Geolocations
 
 Zetta is designed to connect devices across multiple geo-locations. In this example, we will imagine deploying sound sensors in four locations:
 
@@ -175,7 +179,7 @@ zetta ...
 
 ## Next Steps
 
-### Write an App
+### Write a Big App
 
 Write an app, see [I Heard That App]().
 
