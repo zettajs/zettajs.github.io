@@ -134,6 +134,8 @@ Explore the Zetta API
 
 ### Environments
 
+Going from Laptop to RasPi or BeagleBone.
+
 A typical development lifecycle includes multiples tiers: Dev, Test, Deploy, Production
 
 When things get real with sensors in production, it's important to consider the entire development cycle.
@@ -153,10 +155,8 @@ Zetta is designed to support dev, test, stage and production environments.
 
 Zetta is designed to connect devices across multiple geo-locations. In this example, we will imagine deploying sound sensors in four locations:
 
-* Detroit, USA
-* San Jose, USA
-* Bangalore, India
-* London, UK
+* Home
+* Office
 
 We follow the steps above to get the sensor hardware setup and configured in each location.
 
