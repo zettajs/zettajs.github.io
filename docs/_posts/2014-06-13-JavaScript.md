@@ -1,0 +1,93 @@
+---
+layout: doc
+---
+
+####Class: Zetta
+
+This is the base module for Zetta. It is accessed by using `require('zetta')` in node. This class exposes functionality
+for standing up your Zetta server, and linking to the cloud.
+
+#####Method: name
+
+Give your zetta instance a human readable name. This will be exposed in the API using the `name` property.
+
+```
+var zetta = require('zetta');
+
+var server = zetta();
+
+server.name('detroit');
+
+```
+
+#####Method: use
+
+Load a device driver into Zetta. These can be custom drivers that you've written, or drivers retrieved from npm.
+
+```
+var zetta = require('zetta');
+var arduino = require('arduino');
+
+var server = zetta();
+server.load(arduino)
+
+```
+#####Method: expose
+
+Conditionally expose devices. Use the `'*'` flag to expose all devices via HTTP API by default.
+
+```
+var zetta = require('zetta');
+
+var server = zetta();
+server.expose('*');
+
+```
+
+#####Method: load
+
+Load a zetta app from another module.
+
+```
+var zetta = require('zetta');
+var myApp = require('./myapp.js');
+
+var server = zetta();
+server.load(myApp);
+```
+
+#####Method: link
+
+Link to another Zetta instance. Typically this is used to link your local instance of Zetta to the cloud.
+
+```
+var zetta = require('zetta');
+
+var server = zetta();
+server.link('http://zettajs.io/cloud');
+```
+
+#####Method: listen
+
+Select which port your instance of Zetta will listen on locally.
+
+```
+var zetta = require('zetta');
+
+var server = zetta();
+server.listen(3000);
+
+```
+
+#####Method: observe
+
+Wait for devices to come online.
+
+```
+var zetta = require('zetta');
+
+zetta.observe(['sound'], function(sound){
+
+});
+
+```
