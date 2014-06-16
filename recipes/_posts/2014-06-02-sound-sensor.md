@@ -8,6 +8,8 @@ In this recipe, we will setup a sound detector, create an API for it and show ho
 
 We will also explore how to develop, test, stage and deploy the sensor into production in multiple, geo-distributed locations.
 
+![Sound Sensor Mockup]({{ site.url }}/images/sound_sensor_mock.jpg)
+
 ### Preparation Time Estimates
 
 * Hardware Preparation Time: 30 minutes

@@ -6,6 +6,7 @@ layout: recipe
 
 This is a liquid crystal display.
 
+![LCD Mockup]({{ site.url }}/images/lcd_mockup.jpg)
 
 ### Preparation Time Estimates
 
