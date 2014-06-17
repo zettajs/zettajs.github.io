@@ -47,7 +47,9 @@ Zetta projects typically include apps and devices. The file structure looks like
 
 
 + `/soundSensor`
-  + `app.js`
+  + `server.js`
+  + `apps`
+    + `i_heard_dat.js`
   + `/scouts`
     + `/microphone`
       + `index.js`
@@ -67,7 +69,34 @@ Call the driver `microphone_driver.js`. In zetta the naming convention for a dev
 
 ##### Write this code
 
-{% gist mdobson/5268d0a73b065b33b4f8 %}
+```JavaScript
+var util = require('util');
+var Driver = require('zetta').Driver;
+
+var Microphone = module.exports = function(port){
+  Driver.call(this);
+  this._port = port;
+  this.amplitude = 0;
+};
+util.inherits(Microphone, Driver);
+
+Microphone.prototype.init = function(config) {
+  config
+    .name('sound-sensor')
+    .type('sound')
+    .state('ready')
+    .stream('amplitude', this.streamAmplitude);
+}
+
+Microphone.prototype.streamAmplitude = function(stream) {
+  var self = this;
+  this._port.on('data', function(d) {
+    var data = Number(d.toString());
+    self.amplitude = data;
+    stream.write(data);
+  });
+};
+```
 
 In the driver sample above there are a few things to take note of.
 
@@ -88,13 +117,57 @@ Call the scout `index.js`. In zetta the naming convention for a scout is using t
 
 ##### Write this code
 
-{% gist mdobson/9000ad68c43ebeba25f5 %}
+```JavaScript
+var util = require('util');
+var Scout = require('zetta').Scout;
+var SerialPort = require('serialport').SerialPort;
+var Microphone = require('./microphone_driver');
+
+var Arduino = module.exports = function(portName) {
+  Scout.call(this);
+  this.portName = portName;
+};
+util.inherits(Arduino, Scout);
+
+Arduino.prototype.init = function(cb) {
+  var self = this;
+  var port = new SerialPort(portName, function(err) {
+    if(err) {
+      return cb(err);
+    }
+
+    self.discover(Microphone, port);
+
+    cb();
+  });
+};
+```
 
 In the scout sample above there are a few things to take note of.
 
 1. In Zetta youll have your scouts inherit from `require('zetta').Scout`. This is required. This lets Zetta know your code is a scout.
 2. In this sample weve discovered a device when our serial connection has been established. We use `this.discover` to let Zetta know that we have found our desired device.
   * The arguments to `this.discover` are the constructor function for your driver, and any parameters that the constructor function requires.
+
+##### Create a server file
+
+Call the server file `server.js` it will live at the top level directory of your zetta application.
+
+##### Write this code
+
+```JavaScript
+var zetta = require('zetta');
+var Arduino = require('./devices/arduino')
+var app = require('./apps/i_heard_dat');
+
+zetta()
+  .name(process.env.ZETTA_NAME || 'local')
+  .use(Arduino, process.env.ZETTA_ARDUINO_PORT || '/dev/tty.usbserial')
+  .expose('*')
+  .load(app)
+  .link(process.env.ZETTA_PEERS.split(',') || 'http://example.com')
+  .listen(process.env.PORT || 3000);
+```
 
 ### Write an App
 
@@ -103,7 +176,17 @@ In order to test the device, we will want to create an app for it.
 
 ##### Write this code
 
-{% gist mdobson/9473724e30c76d45ce16 %}
+```JavaScript
+module.exports = function(server) {
+  server.observe([{ type: 'sound' }, { type: 'lcd' }], function(sound, lcd) {
+    sound.streams.amplitude.on('data', function(amplitude) {
+      if (amplitude > 160) {
+        lcd.call('update', 'I heard dat!');
+      }
+    });
+  });
+};
+```
 
 In the app sample above there are a few things to take note of.
 
@@ -123,8 +206,35 @@ node app.js
 
 Every device gets a web API in Zetta. This can help you interface with your devices easily through HTTP. Check out what our sound sensor looks like!
 
-
-{% gist mdobson/32bfbb8659b669448205 %}
+```json
+{
+ "class":["device"],
+ "properties": {
+  "id":"7A8B1779-FEEE-493C-8ADC-32460A6BD8A1",
+  "name":"My Microphone",
+  "type":"microphone",
+  "state":"ready",
+  "amplitude":10
+ },
+ "links":[
+    {
+      "title":"amplitude",
+      "rel":["monitor", "http://rels.zettajs.io/object-stream"],
+      "href":"ws://zetta-cloud.herokuapp.com/servers/4FB6EA0A-D1F0-4AF0-9F69-A980C55F20D7/devices/7A8B1779-FEEE-493C-8ADC-32460A6BD8A1/amplitude"
+    },
+    {
+      "rel": ["self"],
+      "href": "http://zetta-cloud.herokuapp.com/servers/4FB6EA0A-D1F0-4AF0-9F69-A980C55F20D7/devices/7A8B1779-FEEE-493C-8ADC-32460A6BD8A1
+      "
+    },
+    {
+      "title":"detroit",
+      "rel": ["up", "http://rels.zettajs.io/server"],
+      "href": "http://zetta-cloud.herokuapp.com/servers/4FB6EA0A-D1F0-4AF0-9F69-A980C55F20D7"
+    }
+  ]
+}
+```
 
 In our sample API response above there are some special things to take note of.
 
