@@ -151,7 +151,8 @@ In the scout sample above there are a few things to take note of.
 
 ##### Create a server file
 
-Call the server file `server.js` it will live at the top level directory of your zetta application.
+Call the server file `server.js` it will live at the top level directory of your zetta application. This is where you'll load devices, and apps together.
+With Zetta you don't need to write apps to access devices. APIs come for free from modeling your devices.
 
 ##### Write this code
 
@@ -169,19 +170,27 @@ zetta()
   .listen(process.env.PORT || 3000);
 ```
 
+In the server sample above there are a few things to take note of.
+
+1. Just like with device drivers you use the `name()` function to give your apps a human readable name. This is entirely optional but highly recommended.
+2. `use(Arduino)` is the syntax you'll use to load a device into zetta. This can be drivers that you write, or drivers retrieved off of NPM.
+3. Use `expose('*')` to reveal all devices over your API. This makes it easy to access devices quickly.
+4. `load(app)` is the syntax for loading apps. Don't worry about this for now. We'll go over apps in the next section.
+5. `link('http://example.com')` allows you to link an instance of zetta to another instance of Zetta. Typically this is to link Zetta to the cloud to share devices with the open internet.
+6. `listen(3000)` allows you to set the port that you'll use to have your instance of zetta listen on. It's good to remember this during development!
+
 ### Write an App
 
-In order to test the device, we will want to create an app for it.
-
+Next, we'll want to write an app for our device. Zetta allows you to write JavaScript apps to orchestrate interactions between devices right in Zetta.
 
 ##### Write this code
 
 ```JavaScript
 module.exports = function(server) {
-  server.observe([{ type: 'sound' }, { type: 'lcd' }], function(sound, lcd) {
+  server.observe([{ type: 'sound' }], function(sound, lcd) {
     sound.streams.amplitude.on('data', function(amplitude) {
       if (amplitude > 160) {
-        lcd.call('update', 'I heard dat!');
+        console.log('I heard that!')
       }
     });
   });
@@ -190,9 +199,9 @@ module.exports = function(server) {
 
 In the app sample above there are a few things to take note of.
 
-1. Just like with device drivers you use the `name()` function to give your apps a human readable name. This is entirely optional but highly recommended.
-2. We use `observe()` to wait for Zetta to notify us of devices that are coming online. Here we pass in the type of device we're waiting for. In our case it's `'sound'`.
-3. To access streams just use the `.streams` object on a retrieved device. Notice our stream naming. Consistently name your streams {Name of your stream}Stream to ensure clarity in your code!
+1. We use `observe()` to wait for Zetta to notify us of devices that are coming online. Here we pass in the type of device we're waiting for. In our case it's `'sound'`.
+2. To access streams just use the `.streams` object on a retrieved device. Notice our stream naming. Consistently name your streams {Name of your stream}Stream to ensure clarity in your code!
+3. For now we don't orchestrate between any devices. Right now we'll just log to the console `'I head that!'` when there is a spike in noise.
 
 ### Run Zetta
 
