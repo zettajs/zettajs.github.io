@@ -75,8 +75,8 @@ var Driver = require('zetta').Driver;
 
 var Microphone = module.exports = function(port){
   Driver.call(this);
-  this._port = port;
   this.amplitude = 0;
+  this._port = port;
 };
 util.inherits(Microphone, Driver);
 
@@ -85,15 +85,11 @@ Microphone.prototype.init = function(config) {
     .name('sound-sensor')
     .type('sound')
     .state('ready')
-    .stream('amplitude', this.streamAmplitude);
-}
+    .monitor('amplitude');
 
-Microphone.prototype.streamAmplitude = function(stream) {
   var self = this;
-  this._port.on('data', function(d) {
-    var data = Number(d.toString());
-    self.amplitude = data;
-    stream.write(data);
+  this._port.on('data', function(amplitude) {
+    self.amplitude = Number(amplitude.toString());
   });
 };
 ```
@@ -103,9 +99,8 @@ In the driver sample above there are a few things to take note of.
 1. In Zetta youll have your drivers inherit from `require('zetta').Driver`. This is required. This is how we can tell that your code is a driver.
 2. In Zetta the `name` property is special. It is the human readable name for your device. It isnt required, but it is *highly* recommended that you use it.
 3. This driver simply streams basic amplitude data from our sensor.
-  * In the `stream` function we name our stream `amplitude`. It is best practice to name streams the name of the value that they will stream out of the system.
-  * Our second argument to `stream` is a function that wires up the flow of data. It is best practice to follow the naming structure stream{Name of your stream} with this function.
-  * Inside the implementation of `streamAmplitude` two things are happening. We are writing to our stream value, and then we are setting an amplitude property to be exposed in the API. Do this allows us to read occasional values as well as stream them if necessary.
+  * In the `monitor` function we name our stream `amplitude`. It is best practice to name streams the name of the value that they will stream out of the system.
+  * The `monitor` function simply watches the instance's variable `amplitude` for changes and publishes them down the websocket.
 
 ### Write Device Scout
 
