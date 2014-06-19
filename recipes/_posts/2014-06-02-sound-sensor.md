@@ -22,7 +22,6 @@ We will also explore how to develop, test, stage and deploy the sensor into prod
   * Node.js installed
   * NPM installed
 * [Sound Detector](https://www.sparkfun.com/products/12642)
-* [Arduino Uno](http://arduino.cc/en/Main/ArduinoBoardUno)
 * [Breadboard](https://www.sparkfun.com/products/12002)
 * [Jumper Wire](https://www.sparkfun.com/products/124)
 * [USB Type B Cable](https://www.sparkfun.com/products/11515)
@@ -53,6 +52,7 @@ Zetta projects typically include apps and devices. The file structure looks like
   + `/scouts`
     + `/microphone`
       + `index.js`
+      + `lcd_driver.js`
       + `microphone_driver.js`
 
 ### Install Zetta
@@ -106,11 +106,13 @@ In the driver sample above there are a few things to take note of.
 
 A scout is responsible for finding a device on the network or connected to your computer. These are a crucial part to getting devices into Zetta.
 
-##### Create a new device scout
+##### Update device scout
 
 Call the scout `index.js`. In zetta the naming convention for a scout is using the node.js convention of naming a file `index.js` for purposes of requiring the module.
 
-##### Write this code
+##### Update this code
+
+Simply add `self.discover(Microphone, port)` to the scout you previously wrote. This will discover the Microphone as well now.
 
 ```JavaScript
 var util = require('util');
@@ -131,6 +133,7 @@ Arduino.prototype.init = function(cb) {
       return cb(err);
     }
 
+    self.discover(LCD, port);
     self.discover(Microphone, port);
 
     cb();
@@ -140,39 +143,10 @@ Arduino.prototype.init = function(cb) {
 
 In the scout sample above there are a few things to take note of.
 
-1. In Zetta youll have your scouts inherit from `require('zetta').Scout`. This is required. This lets Zetta know your code is a scout.
-2. In this sample weve discovered a device when our serial connection has been established. We use `this.discover` to let Zetta know that we have found our desired device.
-  * The arguments to `this.discover` are the constructor function for your driver, and any parameters that the constructor function requires.
 
-##### Create a server file
+### Server code
 
-Call the server file `server.js` it will live at the top level directory of your zetta application. This is where you'll load devices, and apps together.
-With Zetta you don't need to write apps to access devices. APIs come for free from modeling your devices.
-
-##### Write this code
-
-```JavaScript
-var zetta = require('zetta');
-var Arduino = require('./devices/arduino')
-var app = require('./apps/i_heard_dat');
-
-zetta()
-  .name(process.env.ZETTA_NAME || 'local')
-  .use(Arduino, process.env.ZETTA_ARDUINO_PORT || '/dev/tty.usbserial')
-  .expose('*')
-  .load(app)
-  .link(process.env.ZETTA_PEERS.split(',') || 'http://example.com')
-  .listen(process.env.PORT || 3000);
-```
-
-In the server sample above there are a few things to take note of.
-
-1. Just like with device drivers you use the `name()` function to give your apps a human readable name. This is entirely optional but highly recommended.
-2. `use(Arduino)` is the syntax you'll use to load a device into zetta. This can be drivers that you write, or drivers retrieved off of NPM.
-3. Use `expose('*')` to reveal all devices over your API. This makes it easy to access devices quickly.
-4. `load(app)` is the syntax for loading apps. Don't worry about this for now. We'll go over apps in the next section.
-5. `link('http://example.com')` allows you to link an instance of zetta to another instance of Zetta. Typically this is to link Zetta to the cloud to share devices with the open internet.
-6. `listen(3000)` allows you to set the port that you'll use to have your instance of zetta listen on. It's good to remember this during development!
+Since we are loading the arduino scout, and it discovers the LCD and the Microphone there are no updates needed to our server. Each will be found and exposed as a web API.
 
 ### Write an App
 
@@ -182,10 +156,14 @@ Next, we'll want to write an app for our device. Zetta allows you to write JavaS
 
 ```JavaScript
 module.exports = function(server) {
-  server.observe([{ type: 'sound' }], function(sound, lcd) {
+
+  var sound = server.where({type: 'sound'});
+  var lcd = server.where({type: 'lcd'});
+
+  server.observe([sound, lcd], function(sound, lcd) {
     sound.streams.amplitude.on('data', function(amplitude) {
       if (amplitude > 160) {
-        console.log('I heard that!')
+        lcd.call('change', 'I heard dat!');
       }
     });
   });
@@ -194,9 +172,10 @@ module.exports = function(server) {
 
 In the app sample above there are a few things to take note of.
 
-1. We use `observe()` to wait for Zetta to notify us of devices that are coming online. Here we pass in the type of device we're waiting for. In our case it's `'sound'`.
+1. We use `observe()` to wait for Zetta to notify us of devices that are coming online.
+  * Here we use simple queries to locate devices of type `sound` and of type  `lcd`.
 2. To access streams just use the `.streams` object on a retrieved device. Notice our stream naming. Consistently name your streams {Name of your stream}Stream to ensure clarity in your code!
-3. For now we don't orchestrate between any devices. Right now we'll just log to the console `'I head that!'` when there is a spike in noise.
+3. Once we have a stream value that is greater than `160` we want to write to the LCD screen. Using the `call()` function on the `lcd` variable we can trigger a state transition to do this. We simply pass in the `'change'` transition as the first argument, and the string `'I Heard Dat!'` as the second.
 
 ### Run Zetta
 
@@ -230,11 +209,6 @@ Every device gets a web API in Zetta. This can help you interface with your devi
       "rel": ["self"],
       "href": "http://zetta-cloud.herokuapp.com/servers/4FB6EA0A-D1F0-4AF0-9F69-A980C55F20D7/devices/7A8B1779-FEEE-493C-8ADC-32460A6BD8A1
       "
-    },
-    {
-      "title":"detroit",
-      "rel": ["up", "http://rels.zettajs.io/server"],
-      "href": "http://zetta-cloud.herokuapp.com/servers/4FB6EA0A-D1F0-4AF0-9F69-A980C55F20D7"
     }
   ]
 }
