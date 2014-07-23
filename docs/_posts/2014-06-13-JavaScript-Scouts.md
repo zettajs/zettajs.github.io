@@ -15,4 +15,12 @@ vendor modules needed to look for devices.
 
 #####Method: discover
 
-This method is called by you when you've found your device. 
+This method is called by you when you've found your device.
+
+#####Method: provision
+
+This method is called by you when you've found an already existing device connected to zetta.
+
+#####Property: server
+
+This gives access to the zetta runtime.
