@@ -94,31 +94,3 @@ var server = zetta();
 server.listen(3000);
 
 ```
-
-#####Method: where(options)
-
-* `options` Object
-
-Generate a query for use inside zetta. All options properties are &&'d together.
-
-```
-var zetta = require('zetta');
-
-var query = zetta.where({foo: 'bar'});
-```
-
-#####Method: observe(queries, cb)
-
-* `queries` Array of Query
-* `cb` Function
-
-Wait for devices to come online. Execute the callback when all devices conforming to queries have come online.
-
-```
-var zetta = require('zetta');
-
-zetta.observe(['sound'], function(sound){
-
-});
-
-```
