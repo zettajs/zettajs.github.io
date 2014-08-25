@@ -1,0 +1,35 @@
+/***
+  Breakpoints that map to purecss
+  ----------------------
+  author: 2014 Alan Languirand alanguirand@apigee.com
+***/
+
+/* Strings to be used in @media tags */
+@sm: ~"screen and (min-width: 35.5em)";
+@md: ~"screen and (min-width: 48em)";
+@lg: ~"screen and (min-width: 64em)";
+@xl: ~"screen and (min-width: 80em)";
+
+.hide-sm { @media @sm {display: none;} }
+.hide-md { @media @md {display: none;} }
+.hide-lg { @media @lg {display: none;} }
+.hide-xl { @media @xl {display: none;} }
+
+
+
+.only-sm { 
+  .hide-md(); .hide-lg(); .hide-xl(); 
+}
+
+.only-md { 
+  .hide-sm(); .hide-lg(); .hide-xl(); 
+}
+
+.only-lg { 
+  .hide-md(); .hide-sm(); .hide-xl(); 
+}
+
+.only-xl { 
+  .hide-md(); .hide-lg(); .hide-sm(); 
+}
+
