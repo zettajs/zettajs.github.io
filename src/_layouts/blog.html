@@ -1,0 +1,25 @@
+{% include header.html %}
+<section id="hero" class="pure-g blog">
+    {% include nav.html %}
+</section>
+
+<article>
+  {% if page.path contains 'index' %}
+  
+  <section class="description">
+    <div>
+      <!-- Blog intro text -->
+      <p>All About Blog</p>
+
+      <!-- /Blog intro text -->
+    </div>
+  </section>
+  
+  {% endif %}
+  
+  <section class="page_content">
+    {{ content }}
+  </section>
+</article>
+
+{% include footer.html %}

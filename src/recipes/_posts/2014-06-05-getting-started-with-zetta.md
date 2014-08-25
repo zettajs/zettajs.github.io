@@ -1,3 +1,7 @@
+---
+layout: recipe
+---
+
 # Dobson's Thoughts Here:
 
 ##Recipe Ideas

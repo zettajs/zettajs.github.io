@@ -2,3 +2,27 @@ name: zetta.js
 permalink: /:categories/:title
 timezone: America/Detroit
 markdown: kramdown
+
+host: localhost
+port: 4000
+baseurl: /
+source:       ./src
+destination:  ./_site
+layouts:      _layouts
+
+safe:        true
+future:      true
+show_drafts: false
+limit_posts: 0
+highlighter: pygments  #need to figure this out
+
+relative_permalinks:  true
+permalink:            date
+
+kramdown:
+  input: GFM
+  auto_ids: true
+  footnote_nr: 1
+  entity_output: as_char
+  toc_levels: 1..6
+  

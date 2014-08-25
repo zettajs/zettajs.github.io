@@ -2,6 +2,8 @@
 layout: doc
 ---
 
+`npm install -g zetta`
+
 Here are the steps to install Zetta:
 
 1. get a computer

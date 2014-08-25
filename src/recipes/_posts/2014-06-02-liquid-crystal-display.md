@@ -35,7 +35,6 @@ This is a liquid crystal display.
 
 Zetta projects typically include apps and devices. The file structure looks like this:
 
-
 + `/i-heard-dat`
   + `server.js`
   + `apps`
