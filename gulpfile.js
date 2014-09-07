@@ -16,24 +16,25 @@ gulp.task('jshint', function() {
 });
 
 gulp.task('scripts', function() {
-  gulp.src(["./dev/js/prism.js", 
+  gulp.src(["./dev/js/jquery-1.11.1.min.js",
+            "./dev/js/prism.js",
             "./dev/js/skrollr.min.js",  
             "./dev/js/zetta.js"])
     .pipe(sourcemaps.init())
       .pipe(concat('scripts.js'))
   /*  .pipe(stripDebug()) */
       .pipe(uglify({mangle:false}))
-    .pipe(sourcemaps.write())
+    .pipe(sourcemaps.write('./'))
     .pipe(gulp.dest('./src/scripts'))
 });
 
 gulp.task('styles',['css'], function() {
   gulp.src('./dev/styles/styles.less')
     .pipe(less({
-      generateSourceMap: true, 
+      generateSourceMap: false, 
       paths: [ path.join(__dirname, 'less', 'includes') ]
     }))
-/*  .pipe(minifyCSS({keepBreaks:true})) */
+    .pipe(minifyCSS({keepBreaks:true}))
     .pipe(gulp.dest('./dev/styles'));
   
 });
@@ -41,14 +42,14 @@ gulp.task('styles',['css'], function() {
 gulp.task('css', function() {
   gulp.src(['./dev/styles/pure.css',
             './dev/styles/grids-responsive-min.css', 
-            './dev/styles/animate.min.css', 'prism.css', 
+            './dev/styles/animate.min.css', 
             './dev/styles/prism.css', 
             './dev/styles/styles.css'])
-    .pipe(sourcemaps.init())
-      .pipe(prefix("last 2 version", "> 5%", "ie 9"))
+    /*.pipe(sourcemaps.init()) */
+      /*.pipe(prefix("last 2 version", "> 5%", "ie 9"))*/
       .pipe(concat('styles.css'))
       .pipe(minifyCSS({noAdvanced:true, keepSpecialComments: 0}))
-    .pipe(sourcemaps.write())
+    /*.pipe(sourcemaps.write('./')) */
     .pipe(gulp.dest('./src/styles'));
 });
   
