@@ -148,6 +148,7 @@ a:hover{text-decoration:underline}
 @media screen and (min-width:48em){#hardware .example{height:12rem}}
 #hardware .example img{width:80%;max-width:none;max-height:none}
 #apis .example .pairing+.pairing{margin-top:3rem}
+#browser .spiel h2,#browser .spiel p{padding-left:0}
 #browser .feature div{-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;padding:.5rem}
 #browser .feature p{text-align:center}
 footer{background-color:#0b1a1f;padding:2rem 0 7rem;margin-top:4rem;color:#fff}
