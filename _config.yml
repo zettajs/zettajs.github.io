@@ -6,7 +6,6 @@ markdown: kramdown
 host: localhost
 port: 4000
 baseurl: /
-source: ./src
 destination:  ./_site
 layouts:      _layouts
 
