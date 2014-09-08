@@ -25,7 +25,7 @@ gulp.task('scripts', function() {
   /*  .pipe(stripDebug()) */
       .pipe(uglify({mangle:false}))
     .pipe(sourcemaps.write('./'))
-    .pipe(gulp.dest('./src/scripts'))
+    .pipe(gulp.dest('../scripts'))
 });
 
 gulp.task('styles',['css'], function() {
@@ -50,7 +50,7 @@ gulp.task('css', function() {
       .pipe(concat('styles.css'))
       .pipe(minifyCSS({noAdvanced:true, keepSpecialComments: 0}))
     /*.pipe(sourcemaps.write('./')) */
-    .pipe(gulp.dest('./src/styles'));
+    .pipe(gulp.dest('../styles'));
 });
   
 

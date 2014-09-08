@@ -32,6 +32,7 @@ $(function(){
     
   });
   
+  //Want autosizing images without javascript? Hey, at least js isn't doing any maths :)
   $('.example').each(function(){
     var src = $(this).find('img').attr('src');
     $(this).find('img').hide();
@@ -74,13 +75,15 @@ $(function(){
   $('#mqtest').change(function(){
     //inspect the mqbreak variable to figure out what breakpoint you're at!
     if(mqbreak > 2){
-      skroll = skrollr.init();
+      //skroll = skrollr.init();
       
     }else {
+      /*
       if(skroll !== null){
         skroll.destroy();
         skroll = null;
       } 
+      */
     }
   });
   
