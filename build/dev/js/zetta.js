@@ -6,7 +6,7 @@
 
 $(function(){
    var mqbreak = 100;
-  //TODO: inventory images in features and make sure dimensons are set for skrollr
+  //TODO: inventory images in features and make sure dimensions are set for skrollr
   var skroll = null;
   
   //auto select npm install text on homepage

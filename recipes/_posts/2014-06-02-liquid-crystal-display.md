@@ -95,8 +95,8 @@ LCD.prototype.change = function(message, cb) {
 
 In the driver sample above there are a few things to take note of.
 
-1. In Zetta youll have your drivers inherit from `require('zetta').Driver`. This is required. This is how we can tell that your code is a driver.
-2. In Zetta the `name` property is special. It is the human readable name for your device. It isnt required, but it is *highly* recommended that you use it.
+1. In Zetta you'll have your drivers inherit from `require('zetta').Driver`. This is required. This is how we can tell that your code is a driver.
+2. In Zetta the `name` property is special. It is the human readable name for your device. It isn't required, but it is *highly* recommended that you use it.
 3. In Zetta we use state machines to define what devices look like in software:
   * The `.state('ready')` function sets the initial state of the LCD to ready.
   * The `.when()` function tells us what transitions are available per state. When the device is in the `'ready'` state we only allow the `'change'` transition to occur.
@@ -137,8 +137,8 @@ Arduino.prototype.init = function(cb) {
 
 In the scout sample above there are a few things to take note of.
 
-1. In Zetta youll have your scouts inherit from `require('zetta').Scout`. This is required. This lets Zetta know your code is a scout.
-2. In this sample weve discovered a device when our serial connection has been established. We use `this.discover` to let Zetta know that we have found our desired device.
+1. In Zetta you'll have your scouts inherit from `require('zetta').Scout`. This is required. This lets Zetta know your code is a scout.
+2. In this sample we've discovered a device when our serial connection has been established. We use `this.discover` to let Zetta know that we have found our desired device.
   * The arguments to `this.discover` are the constructor function for your driver, and any parameters that the constructor function requires.
 
 ##### Create a server file
