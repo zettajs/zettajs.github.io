@@ -49,7 +49,7 @@ button{outline:0}
 .pure-g{font-family:Arial;letter-spacing:-.35em}
 body{color:#59595b;line-height:1.5rem;padding:0}
 code{font-family:fira-mono,courier,monospace}
-.page{background-color:#ededed;background-image:linear-gradient(#ddd 1px,transparent 1px);background-size:100% 1rem}
+.page{background-color:#ededed}
 .page .description,.page .page_content{width:90%;margin:0 auto}
 @media screen and (min-width:48em){.page .description,.page .page_content{width:46rem}}
 @media screen and (min-width:64em){.page .description,.page .page_content{width:62rem}}
@@ -63,7 +63,7 @@ h1{font:400 2em/3rem;margin:2rem 0 1rem;line-height:2rem}
 h2{font:400 1.6em/2rem;margin:.7rem 0}
 h3{font:400 1.2em/2rem;margin:.4rem 0}
 h4{font:400 1em/2rem;margin:.5rem 0}
-section.main{width:90%;margin:0 auto}
+section.main{width:90%;margin:2rem auto 0}
 @media screen and (min-width:48em){section.main{width:46rem}}
 @media screen and (min-width:64em){section.main{width:62rem}}
 @media screen and (min-width:80em){section.main{width:78rem}}
@@ -151,10 +151,11 @@ a:hover{text-decoration:underline}
 #browser .spiel h2,#browser .spiel p{padding-left:0}
 #browser .feature div{-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;padding:.5rem}
 #browser .feature p{text-align:center}
-footer{background-color:#0b1a1f;padding:2rem 0 7rem;margin-top:4rem;color:#fff}
+footer{width:100%;background-color:#0b1a1f;padding:2rem 0 7rem;margin-top:4rem;color:#fff}
 footer li.apigee{margin-top:1rem}
 footer .creative-commons{margin-top:3rem;font-size:.8em}
 footer .zetta-logo{margin:0 0 1rem}
+footer ul li{list-style-type:none}
 #mqtest{width:1px;height:1px;background-color:transparent;color:transparent;border:none;position:fixed;bottom:0;z-index:1}
 @media screen and (min-width:35.5em){#mqtest{z-index:2}}
 @media screen and (min-width:48em){#mqtest{z-index:3}}
