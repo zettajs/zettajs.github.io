@@ -50,9 +50,10 @@ code {.mono();}
 .page {
    /* baseline grid */
   background-color: @light-gray-bg;
+  /*
   background-image: linear-gradient(#ddd 1px, transparent 1px);
   background-size: 100% 1rem;
-  
+  */
   
   .description, .page_content {
     .centered();
@@ -98,6 +99,7 @@ h4 { font: normal 1.0em/2rem; margin: .5rem 0; }
 
 section.main{
   .centered();
+  margin-top: 2rem;
 }
 
 
@@ -483,13 +485,15 @@ a:hover {
 /* footer */
 
 footer {
+  width: 100%;
   background-color: @dark;
   padding: 2rem 0 7rem 0;
   margin-top: 4rem;
   color: @white;
   li.apigee  {margin-top: 1rem;}
   .creative-commons {margin-top: 3rem; font-size: .8em;}
- .zetta-logo {margin: 0 0 1rem 0;} 
+ .zetta-logo {margin: 0 0 1rem 0;}
+  ul li {list-style-type: none;}
 }
 
 /*mq test */
