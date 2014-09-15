@@ -96,8 +96,8 @@ Microphone.prototype.init = function(config) {
 
 In the driver sample above there are a few things to take note of.
 
-1. In Zetta youll have your drivers inherit from `require('zetta').Driver`. This is required. This is how we can tell that your code is a driver.
-2. In Zetta the `name` property is special. It is the human readable name for your device. It isnt required, but it is *highly* recommended that you use it.
+1. In Zetta you'll have your drivers inherit from `require('zetta').Driver`. This is required. This is how we can tell that your code is a driver.
+2. In Zetta the `name` property is special. It is the human readable name for your device. It isn't required, but it is *highly* recommended that you use it.
 3. This driver simply streams basic amplitude data from our sensor.
   * In the `monitor` function we name our stream `amplitude`. It is best practice to name streams the name of the value that they will stream out of the system.
   * The `monitor` function simply watches the instance's variable `amplitude` for changes and publishes them down the websocket.
