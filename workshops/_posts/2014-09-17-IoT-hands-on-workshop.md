@@ -32,7 +32,7 @@ The workshop will provide all required hardware.
 * Microphone
 * Buzzer
 
-The hardware is yours to keep so that you can continue to tinker with the Internet of Things in your own lab.
+The hardware is yours to keep so that you can continue to tinker with the Internet of Things at your leisure and create big compelling apps.
 
 ## Software & Cloud
 
