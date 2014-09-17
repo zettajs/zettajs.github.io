@@ -1,0 +1,28 @@
+---
+title: Workshops
+layout: workshop
+---
+
+<div>
+  <ul>
+    {% for workshop in site.categories["workshops"] %}
+      <li>
+        <a href="{{ workshop.url }}">{{ workshop.title }}</a>
+      </li>
+    {% endfor %}
+  </ul>
+</div>
+<div>
+  Workshops include:
+  <ul>
+    <li>Setup</li>
+    <li>Naming Conventions</li>
+    <li>Command Line Interface</li>
+    <li>JavaScript</li>
+    <li>API</li>
+  </ul>
+</div>
+
+
+
+

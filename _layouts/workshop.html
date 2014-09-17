@@ -1,18 +1,16 @@
 {% include header.html %}
-<section id="hero" class="pure-g docs">
+<section id="hero" class="pure-g recipes">
     {% include nav.html %}
 </section>
 
 <article>
-  
   {% if page.path contains 'index' %}
   
   <section class="description">
     <div>
-      <!-- Docs intro text -->
-      <p>Guides show you how to accomplish objectives with Zetta. <a href="../recipes">Recipes</a> will often point you to guides as part of getting a project done.</p>
-
-      <!-- /Docs intro text -->
+      <!-- workshops intro text -->
+      <p>Workshops let you learn how to create projects with Zetta in-person with an instructor in a hands-on environment.</p>
+      <!-- /recipe intro text -->
     </div>
   </section>
   
@@ -21,6 +19,7 @@
   <section class="page_content">
     {{ content }}
   </section>
+  
 </article>
 
 {% include footer.html %}
