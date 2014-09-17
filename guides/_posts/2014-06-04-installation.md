@@ -1,5 +1,5 @@
 ---
-layout: doc
+layout: guide
 ---
 
 `npm install -g zetta`

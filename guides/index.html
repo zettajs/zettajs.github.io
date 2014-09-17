@@ -1,19 +1,19 @@
 ---
-title: Documentation
-layout: doc
+title: Guides
+layout: guide
 ---
 
 <div>
   <ul>
-    {% for doc in site.categories["docs"] %}
+    {% for guide in site.categories["guides"] %}
       <li>
-        <a href="{{ doc.url }}">{{ doc.title }}</a>
+        <a href="{{ guide.url }}">{{ guide.title }}</a>
       </li>
     {% endfor %}
   </ul>
 </div>
 <div>
-  Reference docs will include:
+  Guides will include:
   <ul>
     <li>Setup</li>
     <li>Naming Conventions</li>

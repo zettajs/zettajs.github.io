@@ -1,5 +1,5 @@
 ---
-layout: doc
+layout: guide
 ---
 
 Zetta apps are exported module functions, and differ from Drivers and Scouts.
