@@ -7,7 +7,7 @@ Zetta's Internet of Things workshop guides participants through the hands-on cre
 
 ![Hands-on lab]({{ site.url }}/images/workshops/handson.jpg)
 
-Workshop participants make a DIY home automation system using off-the-shelf physical components, open source software and open source hardware. The workshop is four hours, designed for twelve students and is taught by two engineers.
+Workshop participants make a DIY home automation system using off-the-shelf physical components, open source software and open source hardware. The workshop duration is four hours. It is designed for twelve students and is taught by two engineers.
 
 The workshop instructors are the engineers who lead, design and build Zetta.
 
