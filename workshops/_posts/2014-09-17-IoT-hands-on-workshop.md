@@ -36,6 +36,9 @@ The workshop will provide all required hardware.
 * Wires
 * Microphone
 * Buzzer
+* Motion Detector
+* LEDs
+* Reed Switch (Window & Door Sensor)
 
 The hardware is yours to keep so that you can continue to tinker with the Internet of Things at your leisure and create big compelling apps.
 
