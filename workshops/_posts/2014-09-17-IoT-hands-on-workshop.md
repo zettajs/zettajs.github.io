@@ -17,10 +17,15 @@ Zetta is an API-first IoT development platform. Zetta is free and open source.
 
 * 4 Hours
 
+## Location
+
+* Our place
+* Or yours
+
 ## Prerequisites
 
-* Beginner's knowledge of JavaScript and Node.js is required.
-* Experience with electronic circuits is helpful, but not required.
+* Beginner's knowledge of JavaScript and Node.js is required
+* Experience with electronic circuits is helpful, but not required
 
 ## Hardware (provided)
 
