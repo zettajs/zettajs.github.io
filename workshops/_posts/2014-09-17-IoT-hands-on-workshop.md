@@ -44,7 +44,7 @@ The workshop will provide all required hardware.
 * LEDs
 * Reed switch (window & door sensor)
 
-The hardware is yours to keep so that you can continue to tinker with the Internet of Things at your leisure and create big compelling apps.
+Participants keep the hardware kits so that they can continue to tinker with the Internet of Things at their leisure and create big compelling IoT apps.
 
 ## Software & Cloud
 
