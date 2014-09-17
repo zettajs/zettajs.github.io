@@ -15,12 +15,16 @@ Zetta is an API-first IoT development platform. Zetta is free and open source.
 
 ## Duration
 
-* 4 Hours
+* 4 hours
 
 ## Location
 
 * Our place
 * Or yours
+
+## Class Size
+
+* 12 coders
 
 ## Prerequisites
 
@@ -36,9 +40,9 @@ The workshop will provide all required hardware.
 * Wires
 * Microphone
 * Buzzer
-* Motion Detector
+* Motion detector
 * LEDs
-* Reed Switch (Window & Door Sensor)
+* Reed switch (window & door sensor)
 
 The hardware is yours to keep so that you can continue to tinker with the Internet of Things at your leisure and create big compelling apps.
 
