@@ -1,5 +1,5 @@
 ---
-title: DIY Home Automation Workshop
+title: Hands-On IoT Workshop with Node.js
 layout: workshop
 ---
 
