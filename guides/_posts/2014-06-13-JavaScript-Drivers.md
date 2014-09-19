@@ -2,7 +2,7 @@
 layout: guide
 ---
 
-####Class: Zetta.Driver
+#### Class: Zetta.Driver
 
 This is a zetta device modeled in software. With zetta you can create state machines for all of your devices that conditionally allow functionality to be exposed based on the `state` property.
 You should inherit from this class and implement the init function `require('zetta').Driver`.
@@ -17,11 +17,11 @@ function DeviceDriver(){
 util.inherits(DeviceDriver, Driver);
 ```
 
-#####Property: Device#state
+##### Property: Device#state
 
 This is the current state of your device modeled in software.
 
-#####Method: Device#init(config)
+##### Method: Device#init(config)
 
 * `config` DeviceConfig
 
@@ -37,7 +37,7 @@ DeviceDriver.prototype.init = function(config) {
 
 ```
 
-#####Method: DeviceConfig#when(state, options)
+##### Method: DeviceConfig#when(state, options)
 
 * `state` String
 *  `options` Object
@@ -54,7 +54,7 @@ DeviceDriver.prototype.init = function(config) {
 
 This method will conditionally set available transitions for your state machine based on the `state` property.
 
-#####Method: DeviceConfig#map(transition, func, [options])
+##### Method: DeviceConfig#map(transition, func, [options])
 
 * `transition` String
 * `func` Function
@@ -79,7 +79,7 @@ DeviceDriver.prototype.strobe = function(amount, cb ){
 };
 ```
 
-#####Method: DeviceConfig#stream(name, func, [options])
+##### Method: DeviceConfig#stream(name, func, [options])
 
 * `name` String
 * `func` Function
@@ -102,7 +102,7 @@ DeviceDriver.prototype.streamValue = function(stream) {
 ```
 
 
-#####Method: DeviceConfig#monitor(name)
+##### Method: DeviceConfig#monitor(name)
 
 * `name` String
 
@@ -119,6 +119,6 @@ DeviceDriver.prototype.init = function(config) {
 }
 ```
 
-#####Method: Device#call(name, [arguments])
+##### Method: Device#call(name, [arguments])
 
 This method will call a transition on your state machine.
