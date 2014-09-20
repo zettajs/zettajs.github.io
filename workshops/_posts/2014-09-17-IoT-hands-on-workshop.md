@@ -3,10 +3,11 @@ title: Internet of Things Hands-on Workshop
 layout: workshop
 ---
 
-Zetta's Internet of Things workshop guides participants through the hands-on creation of an IoT system.
+Zetta's IoT workshop gives participants hands-on experience with the newest IoT hardware and software so that they can rapidly build compelling IoT applications.
 
 ![Hands-on lab]({{ site.url }}/images/workshops/handson.jpg)
 
+Zetta's Internet of Things workshop guides participants through the hands-on creation of an IoT system.
 Workshop participants make a DIY home automation system using off-the-shelf physical components, open source software and open source hardware. The workshop duration is four hours. It is designed for twelve students and is taught by two engineers.
 
 The workshop instructors are the engineers who lead, design and build Zetta.

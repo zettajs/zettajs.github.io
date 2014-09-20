@@ -2,12 +2,6 @@
 layout: guide
 ---
 
-`npm install -g zetta`
+First you need to download and install [http://nodejs.org/download](Node). Once you have node and a new directory for your application install zetta by using `npm install` like any other Node module.
 
-Here are the steps to install Zetta:
-
-1. get a computer
-1. download the software
-1. run install
-
-That is it.
+`npm install zetta`
