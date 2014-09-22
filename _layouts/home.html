@@ -210,10 +210,10 @@ var MarsRoverSwarmApp = require('./apps/mars_rover_swarm');
 
 zetta()
   .name('cloud')
-  .load(ConnectedCarApp)
-  .load(HomeAutomationApp)
-  .load(WearablesApp)
-  .load(MarsRoverSwarmApp)
+  .use(ConnectedCarApp)
+  .use(HomeAutomationApp)
+  .use(WearablesApp)
+  .use(MarsRoverSwarmApp)
   .listen(PORT, function(err) {});</code></pre>
           </div>
           <div class="spiel pure-u-1 pure-u-md-1-2">
