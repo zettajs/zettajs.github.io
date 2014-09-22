@@ -21,23 +21,6 @@
 @media screen and (min-width:48em){.only-xl{display:none}}
 @media screen and (min-width:64em){.only-xl{display:none}}
 @media screen and (min-width:35.5em){.only-xl{display:none}}
-code[class*=language-],pre[class*=language-]{color:#fff;text-shadow:none;font-family:fira-mono,courier,monospace;direction:ltr;text-align:left;white-space:pre;word-spacing:normal;-moz-tab-size:2;-o-tab-size:2;tab-size:2;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none}
-pre[class*=language-]{padding:1rem;margin:0;overflow:auto}
-:not(pre)>code[class*=language-],pre[class*=language-]{background:0 0}
-:not(pre)>code[class*=language-]{padding:.1em;border-radius:.3em}
-.token.cdata,.token.comment,.token.doctype,.token.prolog{color:#4a5981}
-.token.punctuation{color:#f8f8f2}
-.namespace{opacity:.7}
-.token.property,.token.tag{color:#f92672}
-.token.boolean,.token.number{color:#ae81ff}
-.token.attr-name,.token.selector,.token.string{color:#faa438}
-.language-css .token.string,.style .token.string,.token.entity,.token.operator,.token.url{color:#ededed;background-color:transparent}
-.token.atrule,.token.attr-value{color:#e6db74}
-.token.keyword{color:#ff4300}
-.token.important,.token.regex{color:#fd971f}
-.token.important{font-weight:700}
-.token.entity{cursor:help}
-.line-highlight{visibility:hidden}
 body{background-color:#ededed;font-family:jaf-facitweb,Helvetica,Arial,sans-serif}
 .pure-g [class*=pure-u],button,html,input,select,textarea{font-family:jaf-facitweb,Helvetica,Arial,sans-serif}
 .pure-g [class*=pure-u] h1,.pure-g [class*=pure-u] h2,.pure-g [class*=pure-u] h3,.pure-g [class*=pure-u] h4,.pure-g [class*=pure-u] h5,.pure-g [class*=pure-u] h6,button h1,button h2,button h3,button h4,button h5,button h6,html h1,html h2,html h3,html h4,html h5,html h6,input h1,input h2,input h3,input h4,input h5,input h6,select h1,select h2,select h3,select h4,select h5,select h6,textarea h1,textarea h2,textarea h3,textarea h4,textarea h5,textarea h6{font-family:ars-maquette-web,'ARS Maquette Pro','Myriad Pro','Gill Sans','Lucida Sans',Verdana,Geneva,sans-serif}
@@ -51,9 +34,9 @@ body{color:#59595b;line-height:1.5rem;padding:0}
 code{font-family:fira-mono,courier,monospace}
 .page{background-color:#ededed}
 .page .description,.page .page_content{width:90%;margin:0 auto}
-@media screen and (min-width:48em){.page .description,.page .page_content{width:46rem}}
-@media screen and (min-width:64em){.page .description,.page .page_content{width:62rem}}
-@media screen and (min-width:80em){.page .description,.page .page_content{width:78rem}}
+@media screen and (min-width:48em){.page .description,.page .page_content{width:42rem}}
+@media screen and (min-width:64em){.page .description,.page .page_content{width:56rem}}
+@media screen and (min-width:80em){.page .description,.page .page_content{width:56rem}}
 .icon,b{font-family:SSPika;-moz-font-variant-ligatures:common-ligatures;-webkit-font-variant-ligatures:common-ligatures;font-variant-ligatures:common-ligatures}
 .icon[class*=pure-u],b[class*=pure-u]{font-family:SSPika!important;-moz-font-variant-ligatures:common-ligatures!important;-webkit-font-variant-ligatures:common-ligatures!important;font-variant-ligatures:common-ligatures!important}
 b{font-weight:400}
@@ -64,10 +47,10 @@ h2{font:400 1.6em/2rem;margin:.7rem 0}
 h3{font:400 1.2em/2rem;margin:.4rem 0}
 h4{font:400 1em/2rem;margin:.5rem 0}
 section.main{width:90%;margin:2rem auto 0}
-@media screen and (min-width:48em){section.main{width:46rem}}
-@media screen and (min-width:64em){section.main{width:62rem}}
-@media screen and (min-width:80em){section.main{width:78rem}}
-.zetta-logo{background:url(../images/zetta-logo.svg) 0 0/auto 2.2rem no-repeat,0 0/auto 2.2rem no-repeat;color:transparent;height:2rem;margin:1rem 0 0}
+@media screen and (min-width:48em){section.main{width:42rem}}
+@media screen and (min-width:64em){section.main{width:56rem}}
+@media screen and (min-width:80em){section.main{width:56rem}}
+.zetta-logo{background:url(../images/zetta-logo.svg) no-repeat,no-repeat;color:transparent;background-size:auto 2.2rem;height:2rem;margin:1rem 0 0}
 @media screen and (min-width:48em){.zetta-logo{background-position:0 0;background-size:auto 2rem;height:2rem}}
 .pure-button{padding:.5em 1em;color:#fff;border:0 solid #999;border:none transparent;background-color:#faa438;text-decoration:none;border-radius:0;font-weight:400}
 .pure-button-orange{background-color:#ff4300}
@@ -81,15 +64,15 @@ a:hover{text-decoration:underline}
 #hero{background-color:#abbc87}
 #hero header .topbar{background-color:#fff}
 #hero header .content{width:90%;margin:0 auto}
-@media screen and (min-width:48em){#hero header .content{width:46rem}}
-@media screen and (min-width:64em){#hero header .content{width:62rem}}
-@media screen and (min-width:80em){#hero header .content{width:78rem}}
+@media screen and (min-width:48em){#hero header .content{width:42rem}}
+@media screen and (min-width:64em){#hero header .content{width:56rem}}
+@media screen and (min-width:80em){#hero header .content{width:56rem}}
 #hero header .home:hover{text-decoration:none}
 #hero #cta{background-color:#4a5981}
 #hero #cta .content{width:90%;margin:0 auto}
-@media screen and (min-width:48em){#hero #cta .content{width:46rem}}
-@media screen and (min-width:64em){#hero #cta .content{width:62rem}}
-@media screen and (min-width:80em){#hero #cta .content{width:78rem}}
+@media screen and (min-width:48em){#hero #cta .content{width:42rem}}
+@media screen and (min-width:64em){#hero #cta .content{width:56rem}}
+@media screen and (min-width:80em){#hero #cta .content{width:56rem}}
 #index #zettais h1{line-height:2rem;margin:.5rem 0 0;font-weight:100}
 #index #hero{background-color:#fff}
 #navToggle{height:3rem}
@@ -114,39 +97,37 @@ a:hover{text-decoration:underline}
 .learn ul li{display:inline-block;list-style-type:none;margin:.9rem .5rem 0 0;font-size:.9em}
 @media screen and (min-width:35.5em){.learn p,.learn ul{padding-left:1rem}}
 #get-started{width:90%;margin:3rem auto 0}
-@media screen and (min-width:48em){#get-started{width:46rem}}
-@media screen and (min-width:64em){#get-started{width:62rem}}
-@media screen and (min-width:80em){#get-started{width:78rem}}
+@media screen and (min-width:48em){#get-started{width:42rem}}
+@media screen and (min-width:64em){#get-started{width:56rem}}
+@media screen and (min-width:80em){#get-started{width:56rem}}
 #get-started .next-step button{width:100%;font-size:1.5rem}
 @media screen and (min-width:35.5em){#get-started .next-step button{width:90%;display:block;margin:0 auto;font-size:1.2rem}}
 @media screen and (min-width:35.5em){#get-started .next-step p{text-align:center}}
 .video{background-color:transparent;background-image:linear-gradient(#4a5981 1px,#4a5981 1px);background-size:100% 5rem;background-repeat:no-repeat;margin-bottom:2rem}
 #video{margin:0 auto;background-color:#fff;background-image:url(../images/play-button.svg);background-repeat:no-repeat;background-position:center;background-size:100px 100px;width:100%;height:20.5rem;text-align:center;border-bottom:.5rem solid #d1d2d4}
-@media screen and (min-width:48em){#video{width:46rem}}
-@media screen and (min-width:64em){#video{width:62rem}}
-@media screen and (min-width:80em){#video{width:78rem}}
-.code{background-color:#0b1a1f;z-index:2000;margin-bottom:1rem;font-size:.8rem;line-height:1rem}
+@media screen and (min-width:48em){#video{width:42rem}}
+@media screen and (min-width:64em){#video{width:56rem}}
+@media screen and (min-width:80em){#video{width:56rem}}
+.code{background-color:#23241f;z-index:2000;margin-bottom:1rem;font-size:.9rem;line-height:1rem}
+.code pre{margin:0}
+@media screen and (min-width:48em){.code pre{margin-top:-3rem}}
+.code,.code code,.code pre{border-radius:.25rem}
+.code .hljs{padding:1rem 1rem 2rem}
 .code:after{content:'';width:0;height:0;border:3em solid transparent;border-top-width:0;border-bottom-color:#ededed;display:block;margin:0 auto}
 @media screen and (min-width:48em){.code:after{display:none}}
-.code pre{background-image:none;overflow:visible}
-.code pre .arrow{display:none;height:0;width:0;border:2em solid transparent}
-@media screen and (min-width:48em){.code pre .arrow{display:block;position:absolute;border-width:2em;margin:0}}
-.code pre.hilight{background-image:none;background-size:100% 0;background-repeat:no-repeat;background-position:0 0}
-@media screen and (min-width:48em){.code pre.hilight{background-image:linear-gradient(#5287a2 1px,#5287a2 1px)}
-.code pre.hilight .arrow{border-left-color:#5287a2}}
+.code:before{content:'';width:0;border:1.8em solid transparent;display:none;border-right-width:0;border-left-color:#23241f;position:relative;left:100%;top:2.4rem}
+@media screen and (min-width:48em){.code:before{display:block}}
 @media screen and (min-width:48em){.spiel h2,.spiel p{padding-left:2rem}}
 .feature{margin-bottom:2rem}
 @media screen and (min-width:48em){.feature h2{margin-left:4rem}}
-.feature .vis .example{margin:0;padding:.5rem 0;text-align:center;height:13rem;background-repeat:no-repeat;background-position:center;background-size:contain}
+.feature .vis .example{margin:0;padding:.5rem 0;text-align:center;height:12rem;background-repeat:no-repeat;background-position:center;background-size:auto 10rem}
 .feature .vis .example img{display:none}
 .feature .vis .example p{margin:12em 0 1em}
-@media screen and (min-width:48em){.feature .vis .example img{display:static;height:10rem}
-.feature .vis .example p{margin:2em 0 1em}}
 #hardware .example{margin:1rem 0 2rem}
 @media screen and (min-width:48em){#hardware .example p{margin:13em 0 0}}
 @media screen and (min-width:48em){#hardware .example{height:12rem}}
 #hardware .example img{width:80%;max-width:none;max-height:none}
-#apis .example .pairing+.pairing{margin-top:3rem}
+.pairing:not(:first-child){margin-top:7rem}
 #browser .spiel h2,#browser .spiel p{padding-left:0}
 #browser .feature div{-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;padding:.5rem}
 #browser .feature p{text-align:center}

@@ -7,7 +7,6 @@
 @import 'ss-pika.less';
 @import 'apigee-colors.less';
 @import 'breakpoints.less';
-@import 'zetta-prism.less';
 
 @images: "../images";
 
@@ -348,11 +347,16 @@ a:hover {
     see: zetta-prism.less 
 */
 .code {
-  background-color: @dark;
+  pre {margin: 0; @media @md {margin-top: -3rem;} }
+  background-color: @monokai;
+  &, pre, code{ border-radius: .25rem;}
   z-index: 2000;
   margin-bottom: 1rem;
-  font-size: .8rem;
+  font-size: .9rem;
   line-height: 1rem;
+  .hljs {
+    padding: 1rem 1rem 2rem 1rem;
+  }
   
   &:after {
       content: '';
@@ -363,37 +367,27 @@ a:hover {
       border-bottom-color: @light-grey-bg;
       display: block;
       margin: 0 auto;
-      @media @md {display: none;}
+      @media @md {
+        display: none; 
+      }
   }
-  pre {
-    background-image: none;
-    overflow: visible;
-    .arrow {
-      display: none;
-      height: 0;
-      width: 0;
-      border: 2em solid transparent;
-      
-      @media @md {
-        display: block;
-        position: absolute;
-        border-width: 2em;
-        margin: 0;
-        
-      }
-      
-    }
+  &:before {
     
-    &.hilight {
-      background-image: none;
-      background-size: 100% 0px;
-      background-repeat: no-repeat;
-      background-position: 0 0;
-      
-      @media @md {
-        background-image: linear-gradient(@blue-bg 1px, @blue-bg 1px);
-        .arrow { border-left-color: @blue-bg; /* bg */ }
-      }
+    content: '';
+    width: 0;
+    border: 1.8em solid transparent;  
+    
+    display: none; 
+    
+    border-right-width: 0;
+    border-left-color: @monokai;
+
+    position: relative;
+    left: 100%;
+    top: 2.4rem;
+    @media @md {
+
+      display: block;
     }
   }
   
@@ -420,11 +414,11 @@ a:hover {
       margin: 0;
       padding: .5rem 0;
       text-align: center;
-      height: 13rem;
+      height: 12rem;
       
       background-repeat: no-repeat;
       background-position: center;
-      background-size: contain;
+      background-size: auto 10rem;
       
       img {
         display: none;
@@ -433,16 +427,7 @@ a:hover {
        margin: 12em 0 1em 0;
       }
       
-      @media @md {
-        
-        img {
-          display: static;
-          height: 10rem;
-        }
-        p {
-         margin: 2em 0 1em 0;
-        }
-      }
+     
     }
  
     
@@ -465,10 +450,9 @@ a:hover {
     max-height: none;
   }
 }
-#apis .example
 
-.pairing + .pairing {
-  margin-top: 3rem;
+.pairing:not(:first-child) {
+  margin-top: 7rem;
 }
 
 #browser {
@@ -531,9 +515,9 @@ footer {
 .centered(){
   width: 90%;
   margin: 0 auto;
-  @media @md { width: 46rem;  }
-  @media @lg { width: 62rem;  }
-  @media @xl { width: 78rem;  }
+  @media @md { width: 42rem;  }
+  @media @lg { width: 56rem;  }
+  @media @xl { width: 56rem;  }
 }
 .hairline-bottom(){
   background-image: linear-gradient(transparent 1px, @light-grey-bg 1px);

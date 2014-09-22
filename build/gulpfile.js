@@ -17,7 +17,7 @@ gulp.task('jshint', function() {
 
 gulp.task('scripts', function() {
   gulp.src(["./dev/js/jquery-1.11.1.min.js",
-            "./dev/js/prism.js",
+            "./dev/js/highlight.pack.js",
             "./dev/js/zetta.js"])
     .pipe(sourcemaps.init())
       .pipe(concat('scripts.js'))
@@ -42,7 +42,7 @@ gulp.task('css', function() {
   gulp.src(['./dev/styles/pure.css',
             './dev/styles/grids-responsive-min.css', 
             './dev/styles/animate.min.css', 
-            './dev/styles/prism.css', 
+            './dev/styles/monokai_sublime.css', 
             './dev/styles/styles.css'])
     /*.pipe(sourcemaps.init()) */
       /*.pipe(prefix("last 2 version", "> 5%", "ie 9"))*/

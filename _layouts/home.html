@@ -1,7 +1,7 @@
 {% include header.html %}
 <!-- #hero -->
     <section id="hero" class="pure-g">
-          <header class="pure-g ">
+          <header class="pure-g pure-u-1">
             <div class="topbar pure-u-1 pure-g">
               <div class="content">
                 
@@ -14,18 +14,17 @@
                 <nav class="closed pure-u-1">
                   <section class="pure-g">
                       <ul class="pure-u-1">
+                        <!--
                         <li><a href="/" >Home</a></li>
                         <li><a href="https://twitter.com/zettajs" >Community</a></li>
                         <li><a href="/guides" >Guides</a></li>
                         <li><a href="/recipes" >Recipes</a></li>
                         <li><a href="/blog" >Blog</a></li>
+-->
                         <li><a href="https://github.com/zettajs" >GitHub</a></li>
                       </ul>
                   </section>
                 </nav>
-
-                
-                
               </div>
             </div>
             
@@ -33,6 +32,7 @@
               <div class="content">
                 <h1>An API-First Internet of Things Platform</h1>
                 <p>Zetta® is an open source platform built on <a href="http://nodejs.org/">Node.js</a> for creating Internet of Things servers that run across geo-distributed computers and the cloud. Zetta combines <a href="https://github.com/kevinswiber/siren">hypermedia APIs</a>, <a href="http://en.wikipedia.org/wiki/WebSocket">WebSockets</a> and <a href="http://en.wikipedia.org/wiki/Reactive_programming">reactive programming</a>, perfect for assembling many devices into data-intensive, real-time applications.</p>
+
               </div>
             </section>
           </header>
@@ -58,7 +58,7 @@
         <section id="hardware" class="pairing pure-g">
           <div class="code pure-u-1 pure-u-md-1-2">
             
-            <pre data-line="4-5"><span class="arrow"></span><code>var zetta = require('zetta');
+            <pre data-line="4-5"><span class="arrow"></span><code class="language-javascript">var zetta = require('zetta');
 
 zetta()
  .name('beaglebone')
@@ -150,7 +150,7 @@ Accept: application/vnd.siren+json
 
         <section id="bigdata" class="pairing pure-g">
           <div class="code pure-u-1 pure-u-md-1-2">
-            <pre data-line="5-5"><span class="arrow"></span><code>server
+            <pre data-line="5-5"><span class="arrow"></span><code class="language-javascript">server
  .observe([sound, arm, huelight],
   function(sound, arm, huelight) {
    var gocrazy = new GoCrazy(arm, huelight);
@@ -176,7 +176,7 @@ Accept: application/vnd.siren+json
 
         <section id="developerJoy" class="pairing pure-g">
           <div class="code pure-u-1 pure-u-md-1-2">
-            <pre data-line="2-7"><span class="arrow"></span><code>module.exports = function(server) {
+            <pre data-line="2-7"><span class="arrow"></span><code class="language-javascript">module.exports = function(server) {
   var alarmQuery = server
     .from('office')
     .where({type: 'alarm'});
@@ -219,7 +219,7 @@ Accept: application/vnd.siren+json
                 
         <section id="bigapps" class="pairing pure-g">
           <div class="code pure-u-1 pure-u-md-1-2">
-            <pre data-line="3-6"><span class="arrow"></span><code>var zetta = require('zetta');
+            <pre data-line="3-6"><span class="arrow"></span><code class="language-javascript">var zetta = require('zetta');
 
 var ConnectedCarApp = require('./apps/connected_car');
 var HomeAutomationApp = require('./apps/home_automation');

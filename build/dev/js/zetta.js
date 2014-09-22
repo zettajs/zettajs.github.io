@@ -4,17 +4,14 @@
   author: 2014 Alan Languirand alanguirand@apigee.com
 ***/
 
+hljs.initHighlightingOnLoad();
+
 $(function(){
    var mqbreak = 100;
   //TODO: inventory images in features and make sure dimensions are set for skrollr
-  var skroll = null;
   
   //auto select npm install text on homepage
   $('.install input').on('click focus', function(){$(this).select();});
-  
-  //
-  
-
   
   //Want autosizing images without javascript? Hey, at least js isn't doing any maths :)
   $('.example').each(function(){
@@ -58,9 +55,14 @@ $(function(){
   
   
   function updateArrows(){
+    
+    
     //css media query breakpoints change the border color. Easier than doing math on the window, and keeps mq metrics where they belong!
+    /*
+    
     if($('.hilight').first().find('.arrow').css('border-left-color') != 'rgba(0, 0, 0, 0)'){
       $('.line-highlight').remove();
+      
       Prism.highlightAll(false, function(){
           $('.line-highlight').each(function(){
             //sniff out the metrics we need
@@ -90,9 +92,11 @@ $(function(){
             hl.pre.addClass('hilight');
           }); //.line-highlight .each
       }); //Prism.highlightAll
+      
     }else {
       $('pre.arrow').removeAttr('style');
     }
+*/
   }
   
   
