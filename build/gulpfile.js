@@ -18,7 +18,6 @@ gulp.task('jshint', function() {
 gulp.task('scripts', function() {
   gulp.src(["./dev/js/jquery-1.11.1.min.js",
             "./dev/js/prism.js",
-            "./dev/js/skrollr.min.js",  
             "./dev/js/zetta.js"])
     .pipe(sourcemaps.init())
       .pipe(concat('scripts.js'))

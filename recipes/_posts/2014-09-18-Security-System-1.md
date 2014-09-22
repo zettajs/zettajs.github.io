@@ -1,3 +1,7 @@
+---
+layout: recipe
+---
+
 #Setting up your security system
 
 The following documentation will guide you through how to build an IoT Security system using Zetta.
@@ -18,17 +22,7 @@ The following documentation will guide you through how to build an IoT Security 
 
 ###Materials
 
-* 1x [BeagleBone Black](https://www.sparkfun.com/products/12857)
-* 1x [Piezo Element](https://www.sparkfun.com/products/7950)
-* 1x [PIR Sensor](https://www.sparkfun.com/products/8630)
-* 1x [Microphone](https://www.sparkfun.com/products/9964)
-* 1x [Belkin WeMo (optional)](http://www.amazon.com/WeMo-Electronics-Anywhere-Automation-Smartphones/dp/B00BB2MMNE/ref=sr_1_2?ie=UTF8&qid=1408561011&sr=8-2&keywords=wemo)
-* 1x [LED](https://www.sparkfun.com/products/9590)
-* 1x [56 Ohm Resistor](https://www.sparkfun.com/products/11507)
-* 1x 10K Ohm Resistor
-* 1x 2.2K Ohm Resistor
-* 1x [Pack of jumper wire](https://www.sparkfun.com/products/11242)
-* 1x [BreadBoard](https://www.sparkfun.com/products/9567)
+<script src="https://www.sparkfun.com/wish_lists/95647.js"></script>
 
 ###Steps of the tutorial
 

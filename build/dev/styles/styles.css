@@ -67,7 +67,7 @@ section.main{width:90%;margin:2rem auto 0}
 @media screen and (min-width:48em){section.main{width:46rem}}
 @media screen and (min-width:64em){section.main{width:62rem}}
 @media screen and (min-width:80em){section.main{width:78rem}}
-.zetta-logo{background:url(../images/zetta-logo.svg) 0 0/auto 2.2rem no-repeat,0 0/auto 2.2rem no-repeat;color:transparent;text-shadow:none;height:2rem;margin:1rem 0 0}
+.zetta-logo{background:url(../images/zetta-logo.svg) 0 0/auto 2.2rem no-repeat,0 0/auto 2.2rem no-repeat;color:transparent;height:2rem;margin:1rem 0 0}
 @media screen and (min-width:48em){.zetta-logo{background-position:0 0;background-size:auto 2rem;height:2rem}}
 .pure-button{padding:.5em 1em;color:#fff;border:0 solid #999;border:none transparent;background-color:#faa438;text-decoration:none;border-radius:0;font-weight:400}
 .pure-button-orange{background-color:#ff4300}
@@ -76,33 +76,32 @@ section.main{width:90%;margin:2rem auto 0}
 .pure-button-purple{background-color:#813b96}
 .pure-button-gray{background-color:#59595b}
 footer ul,header ul{margin:0;padding:0}
-a{color:#faa438;text-decoration:none;text-shadow:0 -1px #0b1a1f}
+a{color:#1a98d5;text-decoration:none;font-weight:700}
 a:hover{text-decoration:underline}
-#hero{background-color:#fff}
-#hero header{width:90%;margin:0 auto}
-@media screen and (min-width:48em){#hero header{width:46rem}}
-@media screen and (min-width:64em){#hero header{width:62rem}}
-@media screen and (min-width:80em){#hero header{width:78rem}}
+#hero{background-color:#abbc87}
+#hero header .topbar{background-color:#fff}
+#hero header .content{width:90%;margin:0 auto}
+@media screen and (min-width:48em){#hero header .content{width:46rem}}
+@media screen and (min-width:64em){#hero header .content{width:62rem}}
+@media screen and (min-width:80em){#hero header .content{width:78rem}}
 #hero header .home:hover{text-decoration:none}
 #hero #cta{background-color:#4a5981}
 #hero #cta .content{width:90%;margin:0 auto}
 @media screen and (min-width:48em){#hero #cta .content{width:46rem}}
 @media screen and (min-width:64em){#hero #cta .content{width:62rem}}
 @media screen and (min-width:80em){#hero #cta .content{width:78rem}}
-#zettais h1{line-height:2rem;margin:.5rem 0 0;font-weight:100}
+#index #zettais h1{line-height:2rem;margin:.5rem 0 0;font-weight:100}
+#index #hero{background-color:#fff}
 #navToggle{height:3rem}
 #navToggle button{width:100%;text-align:right;font-size:1.5em;border:none;color:#faa438;background-color:transparent;margin:.5rem 0;padding:.75rem 0}
 #navToggle button:before{content:"rows"}
 #navToggle button.open:before{content:"close"}
 #navToggle button span{display:none}
-#hero nav{background-color:#ededed;background-image:linear-gradient(transparent 1px,#ededed 1px);background-size:100% 2px;background-repeat:no-repeat;background-position:bottom;text-align:right;max-height:10rem;height:auto;-webkit-transition:max-height .5s ease;transition:max-height .5s ease;overflow:hidden}
-#hero nav.closed{max-height:0}
-#hero nav ul{width:90%;margin:0 auto;padding:0}
-@media screen and (min-width:48em){#hero nav ul{width:46rem}}
-@media screen and (min-width:64em){#hero nav ul{width:62rem}}
-@media screen and (min-width:80em){#hero nav ul{width:78rem}}
-#hero nav a{display:block;padding:.5rem 0;background-color:transparent;text-shadow:0 1px #fff;-webkit-transition:padding .3s ease;transition:padding .3s ease}
-#hero nav a:hover{background-color:#faa438;color:#fff;text-shadow:none;padding-right:1.5rem}
+#hero nav{background-color:transparent;background-image:linear-gradient(transparent 1px,#ededed 1px);background-size:100% 2px;background-repeat:no-repeat;background-position:bottom;max-height:18rem;height:auto;margin:1rem 0 2rem;-webkit-transition:max-height .5s ease,margin .5s ease;transition:max-height .5s ease,margin .5s ease;overflow:hidden}
+#hero nav.closed{max-height:0;margin:0}
+#hero nav ul{border:1px solid #ededed;border-bottom:none;padding:0;box-shadow:5px 0 5px #0b1a1f}
+#hero nav a{display:block;padding:.5rem 1rem;color:#d3990a;border-bototm:1px solid #ededed}
+#hero nav a:hover{background-color:#ededed}
 .install{background-color:#fff;height:2.65rem;border-bottom:.35rem solid #faa438;margin:0 0 1rem}
 .install input{width:100%;font-size:1.2rem;font-family:fira-mono,courier,monospace;padding:.7rem 0 0 1rem;border:none;background-color:transparent}
 @media screen and (min-width:48em){.install{margin:0 1rem 1rem 0}}
@@ -156,8 +155,3 @@ footer li.apigee{margin-top:1rem}
 footer .creative-commons{margin-top:3rem;font-size:.8em}
 footer .zetta-logo{margin:0 0 1rem}
 footer ul li{list-style-type:none}
-#mqtest{width:1px;height:1px;background-color:transparent;color:transparent;border:none;position:fixed;bottom:0;z-index:1}
-@media screen and (min-width:35.5em){#mqtest{z-index:2}}
-@media screen and (min-width:48em){#mqtest{z-index:3}}
-@media screen and (min-width:64em){#mqtest{z-index:4}}
-@media screen and (min-width:80em){#mqtest{z-index:5}}
