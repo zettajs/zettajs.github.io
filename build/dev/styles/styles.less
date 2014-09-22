@@ -420,22 +420,27 @@ a:hover {
       margin: 0;
       padding: .5rem 0;
       text-align: center;
+      height: 13rem;
+      
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: contain;
+      
       img {
-        max-width: 80%;
-        max-height: 10rem;
+        display: none;
       }
       p {
-       @media @md  {margin: 10em 0 1em 0;}
+       margin: 12em 0 1em 0;
       }
       
       @media @md {
         
-        height: 10rem;
-        background-repeat: no-repeat;
-        background-position: center;
-        background-size: contain;
         img {
-          display: none;
+          display: static;
+          height: 10rem;
+        }
+        p {
+         margin: 2em 0 1em 0;
         }
       }
     }

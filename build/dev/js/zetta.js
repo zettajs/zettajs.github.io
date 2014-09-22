@@ -14,28 +14,12 @@ $(function(){
   
   //
   
-  $('#mqtest').change(function(){
-    //something else;
-    if(mqbreak > 2){
-      $('.example').each(function(){
-        var src = $(this).find('img').attr('src');
-        $(this).find('img').hide();
-        $(this).css('background-image', 'url('+src+')');
-      });
-      
-    }else {
-       $('.example').each(function(){
-        $(this).find('img').show();
-        $(this).removeAttr('style');
-       });
-    }
-    
-  });
+
   
   //Want autosizing images without javascript? Hey, at least js isn't doing any maths :)
   $('.example').each(function(){
     var src = $(this).find('img').attr('src');
-    $(this).find('img').hide();
+    //$(this).find('img').hide();
     $(this).css('background-image', 'url('+src+')');
   });
   
@@ -72,20 +56,6 @@ $(function(){
     } 
   }
   
-  $('#mqtest').change(function(){
-    //inspect the mqbreak variable to figure out what breakpoint you're at!
-    if(mqbreak > 2){
-      //skroll = skrollr.init();
-      
-    }else {
-      /*
-      if(skroll !== null){
-        skroll.destroy();
-        skroll = null;
-      } 
-      */
-    }
-  });
   
   function updateArrows(){
     //css media query breakpoints change the border color. Easier than doing math on the window, and keeps mq metrics where they belong!
