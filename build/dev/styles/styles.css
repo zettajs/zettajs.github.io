@@ -120,7 +120,7 @@ a:hover{text-decoration:underline}
 @media screen and (min-width:48em){.spiel h2,.spiel p{padding-left:2rem}}
 .feature{margin-bottom:2rem}
 @media screen and (min-width:48em){.feature h2{margin-left:4rem}}
-.feature .vis .example{margin:0;padding:.5rem 0;text-align:center;height:12rem;background-repeat:no-repeat;background-position:center;background-size:auto 10rem}
+.feature .vis .example{margin:0;padding:.5rem 0;text-align:center;height:12rem;background-repeat:no-repeat;background-position:center;background-size:contain}
 .feature .vis .example img{display:none}
 .feature .vis .example p{margin:12em 0 1em}
 #hardware .example{margin:1rem 0 2rem}
