@@ -33,10 +33,6 @@ button{outline:0}
 body{color:#59595b;line-height:1.5rem;padding:0}
 code{font-family:fira-mono,courier,monospace}
 .page{background-color:#ededed}
-.page .description,.page .page_content{width:90%;margin:0 auto}
-@media screen and (min-width:48em){.page .description,.page .page_content{width:42rem}}
-@media screen and (min-width:64em){.page .description,.page .page_content{width:56rem}}
-@media screen and (min-width:80em){.page .description,.page .page_content{width:56rem}}
 .icon,b{font-family:SSPika;-moz-font-variant-ligatures:common-ligatures;-webkit-font-variant-ligatures:common-ligatures;font-variant-ligatures:common-ligatures}
 .icon[class*=pure-u],b[class*=pure-u]{font-family:SSPika!important;-moz-font-variant-ligatures:common-ligatures!important;-webkit-font-variant-ligatures:common-ligatures!important;font-variant-ligatures:common-ligatures!important}
 b{font-weight:400}
@@ -50,7 +46,7 @@ section.main{width:90%;margin:2rem auto 0}
 @media screen and (min-width:48em){section.main{width:42rem}}
 @media screen and (min-width:64em){section.main{width:56rem}}
 @media screen and (min-width:80em){section.main{width:56rem}}
-.zetta-logo{background:url(../images/zetta-logo.svg) no-repeat,no-repeat;color:transparent;background-size:auto 2.2rem;height:2rem;margin:1rem 0 0}
+.zetta-logo{background:url(../images/zetta-logo.svg) 0 0/auto 2.2rem no-repeat,0 0/auto 2.2rem no-repeat;color:transparent;height:2rem;margin:1rem 0 0}
 @media screen and (min-width:48em){.zetta-logo{background-position:0 0;background-size:auto 2rem;height:2rem}}
 .pure-button{padding:.5em 1em;color:#fff;border:0 solid #999;border:none transparent;background-color:#faa438;text-decoration:none;border-radius:0;font-weight:400}
 .pure-button-orange{background-color:#ff4300}
@@ -68,13 +64,6 @@ a:hover{text-decoration:underline}
 @media screen and (min-width:64em){#hero header .content{width:56rem}}
 @media screen and (min-width:80em){#hero header .content{width:56rem}}
 #hero header .home:hover{text-decoration:none}
-#hero #cta{background-color:#4a5981}
-#hero #cta .content{width:90%;margin:0 auto}
-@media screen and (min-width:48em){#hero #cta .content{width:42rem}}
-@media screen and (min-width:64em){#hero #cta .content{width:56rem}}
-@media screen and (min-width:80em){#hero #cta .content{width:56rem}}
-#index #zettais h1{line-height:2rem;margin:.5rem 0 0;font-weight:100}
-#index #hero{background-color:#fff}
 #navToggle{height:3rem}
 #navToggle button{width:100%;text-align:right;font-size:1.5em;border:none;color:#faa438;background-color:transparent;margin:.5rem 0;padding:.75rem 0}
 #navToggle button:before{content:"rows"}
@@ -85,6 +74,13 @@ a:hover{text-decoration:underline}
 #hero nav ul{border:1px solid #ededed;border-bottom:none;padding:0;box-shadow:5px 0 5px #0b1a1f}
 #hero nav a{display:block;padding:.5rem 1rem;color:#d3990a;border-bototm:1px solid #ededed}
 #hero nav a:hover{background-color:#ededed}
+#hero #cta{background-color:#4a5981}
+#hero #cta .content{width:90%;margin:0 auto}
+@media screen and (min-width:48em){#hero #cta .content{width:42rem}}
+@media screen and (min-width:64em){#hero #cta .content{width:56rem}}
+@media screen and (min-width:80em){#hero #cta .content{width:56rem}}
+#index #zettais h1{line-height:2rem;margin:.5rem 0 0;font-weight:100}
+#index #hero{background-color:#fff}
 .install{background-color:#fff;height:2.65rem;border-bottom:.35rem solid #faa438;margin:0 0 1rem}
 .install input{width:100%;font-size:1.2rem;font-family:fira-mono,courier,monospace;padding:.7rem 0 0 1rem;border:none;background-color:transparent}
 @media screen and (min-width:48em){.install{margin:0 1rem 1rem 0}}
@@ -131,6 +127,42 @@ a:hover{text-decoration:underline}
 #browser .spiel h2,#browser .spiel p{padding-left:0}
 #browser .feature div{-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;padding:.5rem}
 #browser .feature p{text-align:center}
+.page.recipe #hero{background-color:#86abbc}
+@media screen and (min-width:48em){.page.recipe #hero .content{width:90%;margin:0 auto}}
+@media screen and (min-width:48em) and screen and (min-width:48em){.page.recipe #hero .content{width:42rem}}
+@media screen and (min-width:48em) and screen and (min-width:64em){.page.recipe #hero .content{width:56rem}}
+@media screen and (min-width:48em) and screen and (min-width:80em){.page.recipe #hero .content{width:56rem}}
+.page.recipe #hero .content.page_meta{padding:3rem 0 0}
+.page.recipe #hero h1{color:#fff;font-family:ars-maquette-web,'ARS Maquette Pro','Myriad Pro','Gill Sans','Lucida Sans',Verdana,Geneva,sans-serif;font-weight:700;margin:1rem 0 1rem 2rem}
+@media screen and (min-width:48em){.page.recipe #hero h1{margin:1rem 0}}
+.page.recipe #hero .meta{padding:.5rem 2rem;background-color:rgba(0,0,0,.1)}
+.page.recipe #hero .meta p{margin:0;color:#ededed;font-style:italic;font-size:.8rem}
+.page.recipe #hero .meta .tags{margin:0;padding:0}
+.page.recipe #hero .meta .tags li{list-style-type:none;display:inline;margin:0;padding:0}
+.page.recipe #hero .meta .tags li a{background-color:#fff;color:#faa438;padding:.1rem .5rem;margin-right:.25rem;font-size:.8rem;text-transform:uppercase}
+@media screen and (min-width:48em){.page.recipe article .page_content{width:90%;margin:0 auto;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box}}
+@media screen and (min-width:48em) and screen and (min-width:48em){.page.recipe article .page_content{width:42rem}}
+@media screen and (min-width:48em) and screen and (min-width:64em){.page.recipe article .page_content{width:56rem}}
+@media screen and (min-width:48em) and screen and (min-width:80em){.page.recipe article .page_content{width:56rem}}
+.page.recipe article .page_content{background-color:#fff;padding:1rem 2rem}
+.page.recipe article .page_content h1{margin:1rem 0 0 -3rem;padding:0 0 1rem 3rem;color:#fff;background-color:#86abbc;background-repeat:no-repeat;background-position:1.5rem center;background-size:1rem auto}
+.page.recipe article .page_content h1:hover{background-image:url(../images/link.svg);cursor:pointer}
+.page.recipe article .page_content h1:before{content:'';width:0;height:0;border:.38em solid transparent;border-top-width:0;border-bottom-color:#5287a2;position:relative;display:block;left:-3rem;top:3.6rem;-webkit-transform:rotate(45deg)}
+.page.recipe article .page_content h1#setup{background-color:#d3990a}
+.page.recipe article .page_content h2,.page.recipe article .page_content h3,.page.recipe article .page_content h4,.page.recipe article .page_content h5,.page.recipe article .page_content h6{font-weight:700;margin:1rem 0 1rem -2rem;padding:0 0 0 2rem;background-repeat:no-repeat;background-position:.5em center;background-size:1rem auto}
+.page.recipe article .page_content h2:hover,.page.recipe article .page_content h3:hover,.page.recipe article .page_content h4:hover,.page.recipe article .page_content h5:hover,.page.recipe article .page_content h6:hover{background-image:url(../images/link_dark.svg);cursor:pointer}
+.page.recipe article .page_content dl{padding:1rem;color:#000;background-color:#f2f2f2}
+.page.recipe article .page_content img{width:100%;max-width:30rem;height:auto;display:block}
+.page.recipe article .page_content p{max-width:48rem}
+.page.recipe article .page_content pre{max-width:48rem;font-family:fira-mono,courier,monospace}
+.page.recipe article .page_content pre code{border-radius:.25rem;padding:1rem;margin-bottom:1rem;font-size:.9rem;line-height:1rem;max-height:21.6rem;overflow:auto}
+.page.recipe article .page_content .sfe-wish-list{border:0 solid transparent;border-top:2px solid #59595b;border-bottom:2px solid #59595b;max-width:30rem;font-family:jaf-facitweb,Helvetica,Arial,sans-serif;margin-bottom:2rem}
+.page.recipe article .page_content .sfe-wish-list .sfe-title{display:none}
+.page.recipe article .page_content .sfe-wish-list .sfe-inner{max-height:100rem}
+.page.recipe article .page_content .sfe-wish-list .sfe-row img{width:auto;display:inline}
+.page.recipe article .page_content .sfe-wish-list .sfe-row a{color:#1a98d5;font-size:1rem}
+.page.recipe article .page_content .sfe-wish-list .sfe-description{font-weight:200;color:#b3b3b3}
+.page.recipe article .page_content .sfe-wish-list .sfe-footer a{text-align:right;color:#1a98d5;font-style:normal;height:2rem}
 footer{width:100%;background-color:#0b1a1f;padding:2rem 0 7rem;margin-top:4rem;color:#fff}
 footer li.apigee{margin-top:1rem}
 footer .creative-commons{margin-top:3rem;font-size:.8em}

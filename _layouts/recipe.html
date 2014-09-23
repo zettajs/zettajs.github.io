@@ -1,22 +1,41 @@
 {% include header.html %}
-<section id="hero" class="pure-g recipes">
+<section id="hero">
     {% include nav.html %}
+    <div class="content page_meta">
+      <h1>{{page.title}}</h1>
+      
+        <div class="meta">
+          {% unless page.path contains 'index' %}
+          <p>by: <strong>{{page.author}}</strong> on <strong>&lt;created&gt;</strong>, edited <strong>&lt;edited&gt;</strong></p>
+          {% if page.tags %}
+          <ul class="tags">
+            {% for tag in page.tags %}
+            <li><a href="#">{{tag}}</a></li>
+            {% endfor %}
+          </ul>
+          {% endif %}
+        {% endunless %}  
+      </div>
+      
+    </div>
 </section>
 
 <article>
-  {% if page.path contains 'index' %}
   
-  <section class="description">
-    <div>
-      <!-- recipe intro text -->
-      <p>Recipes walk you through the steps in creating a project with Zetta.</p>
-      <!-- /recipe intro text -->
-    </div>
-  </section>
-  
-  {% endif %}
   
   <section class="page_content">
+    {% if page.path contains 'index' %}
+  
+    <section class="description">
+      <div>
+        <!-- recipe intro text -->
+        <p>Recipes walk you through the steps in creating a project with Zetta.</p>
+        <!-- /recipe intro text -->
+      </div>
+    </section>
+
+    {% endif %}
+    
     {{ content }}
   </section>
   

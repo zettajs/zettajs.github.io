@@ -54,10 +54,6 @@ code {.mono();}
   background-size: 100% 1rem;
   */
   
-  .description, .page_content {
-    .centered();
-  }
-  
 }
 
 .icon, b {
@@ -153,27 +149,10 @@ a:hover {
     .content{ .centered() };
     .home:hover{text-decoration: none;}
   }
-  #cta {
-    .content {
-      .centered();
-    }
-    background-color: @dark-blue-bg;
-  }
+  
   
 }
 
-#index {
-  #zettais {
-     h1 {
-      line-height: 2rem;
-      margin: .5rem 0 0 0;
-       font-weight: 100;
-     }
-  }
-  #hero {
-    background-color: @white;
-  }
-}
 
 
 
@@ -232,239 +211,173 @@ a:hover {
   overflow: hidden;
 }
 
-/* get-started */
+@import 'home.less';
 
-.install {
-  
-  input {
-    width: 100%;
-    font-size: 1.2rem;
-    .mono();
-    padding: .7rem 0 0rem 1rem;
-    border: none;
-    background-color: transparent;
-    
-  }
-  
-  
-  background-color: @white;
-  
-  height: 2.65rem;
-  border-bottom: .35rem solid @yellow;
-  margin: 0 0rem 1rem 0;
-  @media @md {
-    margin: 0 1rem 1rem 0;
-  }
-}
-#cta {
-  padding-bottom: 2rem;
-  .build, .learn, .npm {
-    margin: 0; padding: 0; overflow: hidden;
-    
-  }
-  p {
-    .body-font();
-    font-size: .8em;
-    height: 2rem;
-    margin: 1rem 0 0 0; 
-    
-    color: @white;
-    font-weight: 300;
-  }
-  .build {
-    button {
-      height: 3rem;
-      font-size: 1.2rem;
-      width: 100%;
-      
-    }
-  }
-  
-}
-.learn {
-  margin: 0; padding: 0;
-  ul {
-    .menu();
-    width: 100%;
-    
-    li {
-      margin: .9rem .5rem 0 0;
-      font-size: .9em;
-    }
-  }
-  p, ul {
-    @media @sm {
-      padding-left: 1rem;
-    }
-  }
-}
-
-#get-started {
-  .centered();
-  margin-top: 3rem;
-  .next-step {
-    button {
-      width: 100%;
-      font-size: 1.5rem;
-      @media @sm {
-        width: 90%;
-        display: block;
-        margin: 0 auto;
-        font-size: 1.2rem;
-      }
-    }
-    @media @sm {
-      p {text-align: center;}
-    }
-  }
-}
-
-/* video */
-.video {
-  background-color: transparent; 
-  background-image: linear-gradient(@dark-blue-bg 1px, @dark-blue-bg 1px);
-  background-size: 100% 5rem;
-  background-repeat: no-repeat;
-  
-  margin-bottom: 2rem;
-}
-#video  {
-  .centered();
-  background-color: @white;
-  background-image: url("../images/play-button.svg");
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: 100px 100px;
-  
-  width: 100%;
-  height: 20.5rem;
-  text-align: center;
-  border-bottom: .5rem solid #d1d2d4;
-}
-
-/*  
-    Code highlighting 
-    see: zetta-prism.less 
-*/
-.code {
-  pre {margin: 0; @media @md {margin-top: -3rem;} }
-  background-color: @monokai;
-  &, pre, code{ border-radius: .25rem;}
-  z-index: 2000;
-  margin-bottom: 1rem;
-  font-size: .9rem;
-  line-height: 1rem;
-  .hljs {
-    padding: 1rem 1rem 2rem 1rem;
-  }
-  
-  &:after {
-      content: '';
-      width: 0;
-      height: 0;
-      border: 3em solid transparent;
-      border-top-width: 0;
-      border-bottom-color: @light-grey-bg;
-      display: block;
-      margin: 0 auto;
+.page.recipe {
+  #hero {
+    background-color: @light-blue-bg;
+    .content{
       @media @md {
-        display: none; 
+        .centered();
       }
-  }
-  &:before {
-    
-    content: '';
-    width: 0;
-    border: 1.8em solid transparent;  
-    
-    display: none; 
-    
-    border-right-width: 0;
-    border-left-color: @monokai;
-
-    position: relative;
-    left: 100%;
-    top: 2.4rem;
-    @media @md {
-
-      display: block;
+      &.page_meta {
+        padding: 3rem 0 0 0;
+      }
     }
-  }
-  
-}
-
-.spiel {
-  h2, p {
-    @media @md{ padding-left: 2rem; }
-  }
-}
-
-/* features */
-
-.feature {
-  h2 {
-    @media @md{ margin-left: 4rem; }
-  }
-  margin-bottom: 2rem;
-  //overflow: hidden;
- 
-  .vis {
     
-    .example {
-      margin: 0;
-      padding: .5rem 0;
-      text-align: center;
-      height: 12rem;
-      
-      background-repeat: no-repeat;
-      background-position: center;
-      background-size: contain;
-      
-      img {
-        display: none;
+    h1 {
+        color: @white;
+        .heading-fonts();
+        font-weight: 700;
+        
+        margin: 1rem 0 1rem 2rem;
+        @media @md {margin: 1rem 0;}
       }
+    
+    .meta {
+      padding: .5rem 2rem;
+
       p {
-       margin: 12em 0 1em 0;
+        margin: 0;
+        color: @light-gray-bg;
+        font-style: italic;
+        font-size: .8rem;
+      }
+      .tags{
+        .ul_menu();
+        li a{
+          background-color: @white;
+          color: @yellow;
+          padding: .1rem .5rem;
+          margin-right: .25rem;
+          font-size: .8rem;
+          text-transform: uppercase;
+
+        }
+
+      }
+      background-color: hsla(0, 0%, 0%, .1);
+    }
+  }
+  
+  
+  article {
+    .page_content {
+      @media @md {
+        .centered();
+        .border-box();
+      }
+    }
+    .page_content {
+      background-color: @white;
+      padding: 1rem 2rem;
+      h1 {
+        margin: 1rem 0 0 -3rem;
+        padding: 0rem 0 1rem 3rem;
+        color: @white;
+        
+        background-color: @light-blue-bg;
+        background-repeat: no-repeat;
+        background-position: 1.5rem center;
+        background-size: 1rem auto;
+        
+        
+        &:hover{ 
+          background-image: url(../images/link.svg);
+          cursor: pointer;
+        }
+        
+        &:before {
+          content: '';
+          width: 0;
+          height: 0;
+          border: .38em solid transparent;
+          border-top-width: 0;
+          border-bottom-color: @blue-bg;
+          position: relative;
+          display: block;
+          left: -3rem;
+          top: 3.6rem;
+          -webkit-transform: rotate(45deg);
+        }
+        
+        &#setup {
+          background-color: @yellow-bg;
+        }
+        
+        
+      }
+      h2, h3, h4, h5, h6 {
+        font-weight: bold;
+        margin: 1rem 0 1rem -2rem;
+        padding: 0rem 0 0rem 2rem;
+        
+        background-repeat: no-repeat;
+        background-position: .5em center;
+        background-size: 1rem auto;
+        
+        &:hover{ 
+          background-image: url(../images/link_dark.svg);
+          cursor: pointer;
+        }
+        
+      }
+      dl {
+        padding: 1rem;
+        color: #000;
+        background-color: @gray_5;
+      }
+      img {
+        width: 100%;
+        max-width: 30rem;
+        height: auto;
+        display: block;
       }
       
-     
-    }
- 
-    
-    
-  }
-}
-
-#hardware .example {
-  
-  margin: 1rem 0 2rem 0;
-  p {
-       @media @md  {margin: 13em 0 0em 0;}
+      p {max-width: 48rem;}
+      pre {
+        max-width: 48rem;
+        code {
+          border-radius: .25rem;
+          padding: 1rem;
+          margin-bottom: 1rem;
+          font-size: .9rem;
+          line-height: 1rem;
+          
+          max-height: 21.6rem;
+          overflow: auto;
+        }
+        
+        .mono();
       }
-  @media @md { 
-    height: 12rem;
-  }
-  img {
-    width: 80%;
-    max-width: none;
-    max-height: none;
-  }
-}
-
-.pairing:not(:first-child) {
-  margin-top: 7rem;
-}
-
-#browser {
-  .spiel h2, .spiel p {padding-left: 0;}
-  .feature {
-    div {
-      .border-box();
-      padding: .5rem;
+      
+      //sparkfun wishlist
+      .sfe-wish-list {
+        border: 0px solid transparent;
+        border-top: 2px solid @gray;
+        border-bottom: 2px solid @gray;
+        max-width: 30rem;
+        .body-font();
+        .sfe-title {display: none;}
+        .sfe-inner {max-height: 100rem;}
+        .sfe-row{ 
+          img {width: auto; display: inline;}
+          a{color: @blue; font-size: 1rem;}
+        }
+        .sfe-description {font-weight: 200; color: @gray_30; }
+        .sfe-footer a {
+          text-align: right;
+          color: @blue;
+          font-style: normal;
+          height: 2rem;
+        }
+        margin-bottom: 2rem;
+      }
+      
     }
-    p {text-align: center;}
   }
 }
+
 
 
 /* footer */
@@ -511,7 +424,14 @@ footer {
   -moz-box-sizing: border-box;
   box-sizing: border-box;
 }
-
+.ul_menu(){
+  margin: 0; padding: 0;
+  li {
+    list-style-type: none;
+    display: inline;
+    margin: 0; padding: 0;
+  }
+}
 .centered(){
   width: 90%;
   margin: 0 auto;
