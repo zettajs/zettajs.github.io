@@ -39,5 +39,5 @@
   <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
 
 </head>
-<body class="language-javascript">
-  <section id="{{page.url | replace_first: '/', '' | replace: '/', '_' | replace: '.html', ''}}" class="page {{page.layout}}">
+<body>
+  <section id="{{page.url | replace_first: '/', '' | replace: '/', '_' | replace: '.html', ''}}" class="page {{page.layout}} {% unless page.layout contains 'home' %}docs{% endunless %}">

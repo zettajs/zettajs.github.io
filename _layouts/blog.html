@@ -1,25 +1,52 @@
 {% include header.html %}
-<section id="hero" class="pure-g blog">
+<section id="hero">
     {% include nav.html %}
+    <div class="content page_meta">
+      <h1>{{page.title}}</h1>
+      
+        <div class="meta">
+          {% unless page.path contains 'index' %}
+          <p>by: <strong>{{page.author}}</strong> on <strong>{{page.date | date: '%b %d, %Y'}}</strong>.
+          {% if page.difficulty %}<br/> difficulty: <strong>{{page.difficulty}}</strong>{% endif %}
+          </p>
+          {% if page.tags %}
+          <ul class="tags">
+            {% for tag in page.tags %}
+            <li><a href="#">{{tag}}</a></li>
+            {% endfor %}
+          </ul>
+          {% endif %}
+        {% endunless %}  
+      </div>
+      
+    </div>
 </section>
 
 <article>
-  {% if page.path contains 'index' %}
   
-  <section class="description">
-    <div>
-      <!-- Blog intro text -->
-      <p>Posts</p>
-
-      <!-- /Blog intro text -->
-    </div>
-  </section>
-  
-  {% endif %}
   
   <section class="page_content">
+    {% if page.path contains 'index' %}
+  
+    <section class="description">
+      <div>
+        <!-- recipe intro text -->
+        <p>The Zetta Blog</p>
+        <!-- /recipe intro text -->
+      </div>
+    </section>
+
+    {% endif %}
+    
     {{ content }}
   </section>
+  
 </article>
+
+<section id="modal">
+  <p class="close"><b>delete</b></p>
+  <div class="main"></div>
+  <p class="title">Image Description</p>
+</section>
 
 {% include footer.html %}

@@ -162,7 +162,7 @@ a:hover {
     &:before {content: "rows";}
     &.open:before {content: "close";}
     span {display: none;}
-   width: 100%;
+    width: 100%;
     text-align: right;
     font-size: 1.5em;
     border: none;
@@ -176,52 +176,70 @@ a:hover {
   
 }
 #hero nav {
-  background-color: transparent;
-  .hairline-bottom();
-  max-height: 18rem;
-  height: auto;
-  margin: 1rem 0 2rem 0;
   
-  &.closed {
-    max-height: 0;
-    margin: 0;
-  }
-  ul {
-    border: 1px solid @light-grey-bg;
-    border-bottom: none;
-    padding: 0;
-    box-shadow: 5px 0 5px @dark;
-  }
-  a {
-    display: block;
-    padding: .5rem 1rem;
-    color: @yellow-bg;
-    &:hover { 
-      background-color: @light-grey-bg;
-    }
-    border-bototm: 1px solid @light-grey-bg;
+  @media @asm {
+    background-color: transparent;
+    max-height: 18rem;
     
+    height: auto;
+    margin: 1rem 0 2rem 0;
+    
+    &.closed {
+      max-height: 0;
+      margin: 0;
+    }
+    ul {border: 1px solid @light-grey-bg;margin-top: 1rem; padding: none;}
+    a {
+      display: block;
+      &:hover { 
+        background-color: @light-grey-bg;
+      }
+    }
+
+    -webkit-transition: max-height .5s ease, margin .5s ease; 
+    transition: max-height .5s ease, margin .5s ease;
+    overflow: hidden;
+    padding-bottom: 1rem;
   }
   
-  -webkit-transition: max-height .5s ease, margin .5s ease; 
-  transition: max-height .5s ease, margin .5s ease;
-  
-  
-  
-  overflow: hidden;
+    @media @sm {
+      ul {
+        padding: 1.4rem 0 1rem 0;
+        li {
+          display: inline-block;
+          float: right;
+        }
+      }
+    }
+    ul {
+      
+      
+    }
+    a {
+      text-transform: uppercase;
+      padding: .5rem 1rem;
+      color: @yellow-bg;
+      &:hover { 
+        color: @yellow;
+      }
+      border-bototm: 1px solid @light-grey-bg;
+    }
 }
 
 @import 'home.less';
 
-.page.recipe {
+.page.docs {
+  
   #hero {
-    background-color: @light-blue-bg;
     .content{
-      .centered();
-      .border-box();
-      
       &.page_meta {
         padding: 3rem 0 0 0;
+        @media @amd {
+          width: 100%;
+        }
+        .centered();
+        .border-box();
+      
       }
     }
     
@@ -229,7 +247,6 @@ a:hover {
         color: @white;
         .heading-fonts();
         font-weight: 700;
-        
         margin: 1rem 0 1rem 2rem;
         @media @md {margin: 1rem 0;}
       }
@@ -278,7 +295,6 @@ a:hover {
         padding: 0rem 0 1rem 3rem;
         color: @white;
         
-        background-color: @light-blue-bg;
         background-repeat: no-repeat;
         background-position: 1.5rem center;
         background-size: 1rem auto;
@@ -296,7 +312,6 @@ a:hover {
           height: 0;
           border: .38em solid transparent;
           border-top-width: 0;
-          border-bottom-color: @blue-bg;
           position: relative;
           display: block;
           left: -3rem;
@@ -465,6 +480,51 @@ a:hover {
     }
     
   }
+  
+  //color schemes
+  
+  //Default
+  #hero { background-color: @light-green-bg; }
+  article .page_content h1{
+      background-color: @light-green-bg;
+      &:before { border-bottom-color: @green-bg; }
+    }
+  
+  //Specific
+  
+  /* stay as default
+  &.recipe {
+    #hero { background-color: @light-blue-bg; }
+    article h1{
+        background-color: @light-blue-bg;
+        &:before { border-bottom-color: @blue-bg; }
+      }
+  }
+  */
+  
+  &.guide {
+    #hero { background-color: #91D390; }
+    article h1{
+        background-color: #91D390;
+        &:before { border-bottom-color: darken(#91D390, 15%); }
+      }
+  }
+  
+  &.blog {
+    #hero { background-color: #6CC99C; }
+    article h1{
+        background-color: #6CC99C;
+        &:before { border-bottom-color: darken(#6CC99C, 15%); }
+      }
+  }
+  &.workshop {
+    #hero { background-color: #D3B670; }
+    article h1{
+        background-color: #D3B670;
+        &:before { border-bottom-color: darken(#D3B670, 15%); }
+      }
+  }
+  
 }
 
 

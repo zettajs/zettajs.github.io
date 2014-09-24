@@ -18,8 +18,9 @@ Before you begin, you'll need to do the following:
 The steps of the tutorial are broken out by component of the security system. It is important to follow these steps in order to ensure your circuitry is built correctly and fits properly on the breadboard.
 
 # The Finished Product
-
+<!-- 
 ![Photo of finished product](/images/image.png)
+-->
 ![Final Hookup Diagram](/images/recipes/hookup_diagram_final.png){:.fritzing}
 
 #Materials
