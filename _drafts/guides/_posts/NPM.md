@@ -1,0 +1,63 @@
+---
+layout: guide
+date: 2014-06-19
+---
+
+### Zetta Device Modules
+
+Using [npmjs.org](npmjs.org) you can search for Zetta modules. Use the keyword
+`zetta`.
+
+To use a module in your application you can use Node's `require()` syntax like
+any other module you might use.
+
+Here is an example of a server requiring the [Philips Hue Zetta driver](https://www.npmjs.org/package/zetta-hue-driver).
+
+```js
+
+var zetta = require('zetta');
+var Hue = require('zetta-hue-driver');
+
+zetta();
+  .use(Hue);
+  .listen(3000);
+
+```
+
+#### Publishing Modules
+
+Zetta relies on [Node](http://nodejs.org) allowing us to use the npm package manager to distribute Zetta
+device drivers. You can find more information on publishing npm modules [here](https://www.npmjs.org/doc/misc/npm-developers.html)
+
+When publishing modules best practice is to prepend the module name with `zetta-`.
+
+The file you export on your module should be the scout for your devices. This
+allows app developers to use the `app.use()` syntax in their apps.
+
+If your module relies on specialized firmware for the device we recommend adding
+a link to the firmware repository. `zetta firmware pull "zetta-arduino-mpl155a2"` command
+then can be used in the application folder to clone your firmware to the apps firmware
+directory.
+
+Example `package.json`
+
+```json
+
+{
+  "name": "zetta-arduino-mpl3115A",
+  "version": "1.2.3",
+  "main": "index.js",
+  "dependencies": {},
+  "devDependencies": {},
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/johndoe/zetta-arduino-mpl3115A.git"
+  },
+  "tags": ["zettajs"],
+  "firmware": "git@github.com:johndoe/arduino-mpl3115A.git",
+  "author": "",
+  "license": "MIT"
+}
+
+```

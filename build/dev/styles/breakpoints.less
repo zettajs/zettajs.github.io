@@ -5,16 +5,29 @@
 ***/
 
 /* Strings to be used in @media tags */
+
+/* Mobile first stuff */
 @sm: ~"screen and (min-width: 35.5em)";
-@md: ~"screen and (min-width: 48em)";
+@md: ~"screen and (min-width: 48.1em)";
 @lg: ~"screen and (min-width: 64em)";
 @xl: ~"screen and (min-width: 80em)";
 
-.hide-sm { @media @sm {display: none;} }
-.hide-md { @media @md {display: none;} }
-.hide-lg { @media @lg {display: none;} }
-.hide-xl { @media @xl {display: none;} }
+/* Inverted mobile first queries. read as "after small" or "after medium" */
+@asm: ~"screen and (max-width: 35.5em)";
+@amd: ~"screen and (max-width: 48.1em)";
+@alg: ~"screen and (max-width: 64em)";
+@axl: ~"screen and (max-width: 80em)";
 
+/* simple ways to hide stuff */
+.hide-sm { @media @sm {display: none !important;} }
+.hide-md { @media @md {display: none !important;} }
+.hide-lg { @media @lg {display: none !important;} }
+.hide-xl { @media @xl {display: none !important;} }
+
+.before-sm { @media @asm {display: none !important;} }
+.before-md { @media @amd {display: none !important;} }
+.before-lg { @media @alg {display: none !important;} }
+.before-xl { @media @axl {display: none !important;} }
 
 
 .only-sm { 
@@ -32,4 +45,3 @@
 .only-xl { 
   .hide-md(); .hide-lg(); .hide-sm(); 
 }
-

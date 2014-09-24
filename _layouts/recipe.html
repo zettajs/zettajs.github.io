@@ -6,7 +6,9 @@
       
         <div class="meta">
           {% unless page.path contains 'index' %}
-          <p>by: <strong>{{page.author}}</strong> on <strong>&lt;created&gt;</strong>, edited <strong>&lt;edited&gt;</strong></p>
+          <p>by: <strong>{{page.author}}</strong> on <strong>{{page.date | date: '%b %d, %Y'}}</strong>.
+          {% if page.difficulty %}<br/> difficulty: <strong>{{page.difficulty}}</strong>{% endif %}
+          </p>
           {% if page.tags %}
           <ul class="tags">
             {% for tag in page.tags %}
@@ -38,7 +40,15 @@
     
     {{ content }}
   </section>
-  
+  <div class="btt">
+      <b class="list">navigate up</b>
+  </div>
 </article>
+
+<section id="modal">
+  <p class="close"><b>delete</b></p>
+  <div class="main"></div>
+  <p class="title">Image Description</p>
+</section>
 
 {% include footer.html %}

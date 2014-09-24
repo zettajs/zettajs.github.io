@@ -63,8 +63,9 @@ Scout
 ### Final Hookup Diagram
 
 ![Hookup Diagram](/images/recipes/hookup_diagram_final.png)
+{: .fritzing}
 
-#The Piezo Element
+#1. The Piezo Element
 
 The piezo element is a key piece of our IoT security system. It will let out a loud buzz that will function as our sound component to the alarm.
 This element will get us going with the basics of Zetta. This step will have us dealing with `npm` and `drivers` in Zetta.
@@ -211,7 +212,7 @@ A device in zetta has three different pieces of information attached to it in th
 * `links` are different pieces of context around the object. They can be websocket links leading to sensor readings or links back to the parent server of where the object lives.
 
 
-#The Microphone sensor
+#2. The Microphone sensor
 
 Next up is our microphone sensor. This will detect sound of possible intruders, and serve as another characterisitic that
 we can use to trigger our alarm. This section you'll learn about streaming sensor data values, and taking advantage of
@@ -370,7 +371,7 @@ Below is a sample API response for our microphone.
 * The important difference between the device, and the others we've already used is that we include a link to monitor sensor readings over websockets.
   * Zetta makes it easy to get real time sensor readings quickly
 
-#The PIR motion detector
+#3. The PIR motion detector
 
 The PIR sensor is used to detect motion, and will be a critical sensor needed for our security system. We'll install
 the driver for this sensor through npm, and wire up an app that will have our buzzer sound off when motion detected.
@@ -522,7 +523,7 @@ IoT system.
 }
 ```
 
-#The WeMo Actuator
+#4. The WeMo Actuator
 
 The WeMo is an off the shelf consumer device. If there is a way to interact with a device in Node.js we can use it in Zetta. We'll
 
@@ -616,7 +617,7 @@ Below is a sample API response for our WeMo.
 {FILL_IN:"SOON!"}
 ```
 
-#Writing your own driver
+#5. Writing your own driver
 
 This next section will take you through writing your own driver. Drivers use a state machine model to represent devices in
 Zetta. Being able to write your own drivers in Zetta will be key to expanding your IoT system to include any devices
@@ -891,7 +892,7 @@ module.exports = function(server) {
 
 ![Hookup Diagram](/images/recipes/hookup_diagram_step_5.png)
 
-#Next Steps
+#6. Next Steps
 
 1. Wire up our Twilio Driver to send a text message when the movement is detected!
 2. Build an app to consume your new API!

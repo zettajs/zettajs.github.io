@@ -1,0 +1,91 @@
+---
+layout: guide
+date: 2014-06-18
+---
+
+###Command Line Interface
+
+
+####Running Your Zetta Server
+
+Simply run your Zetta server using the `node` command.
+
+`node server.js`
+
+
+####To See All Devices Connected to Zetta
+
+To view all devices connected to your current instance of Zetta.
+
+```
+zetta devices
+
+# ID                                     NAME                      TYPE
+# E2A9E247-1F9C-47B8-9A6B-813AD63F3D58   Matt's Sound Sensor       sound
+```
+
+####To See All Streams From Devices Connected to Zetta
+
+```
+zetta streams E2A9E247-1F9C-47B8-9A6B-813AD63F3D58
+
+# TOPIC
+# sound/E2A9E247-1F9C-47B8-9A6B-813AD63F3D58/amplitude
+```
+
+####Subscribe to Streams
+
+#####User Streams
+
+To subscribe to a user defined stream:
+
+```
+zetta subscribe sound/E2A9E247-1F9C-47B8-9A6B-813AD63F3D58/amplitude
+
+# { topic: "sound/E2A9E247-1F9C-47B8-9A6B-813AD63F3D58/amplitude", timestamp: 1234567890, data: 30 }
+# { topic: "sound/E2A9E247-1F9C-47B8-9A6B-813AD63F3D58/amplitude", timestamp: 1234567890, data: 15 }
+# { topic: "sound/E2A9E247-1F9C-47B8-9A6B-813AD63F3D58/amplitude", timestamp: 1234567890, data: 10 }
+# { topic: "sound/E2A9E247-1F9C-47B8-9A6B-813AD63F3D58/amplitude", timestamp: 1234567890, data: 60 }
+```
+
+#####Log Streams
+
+```
+zetta subscribe lcd/8142E11C-87AE-4C13-9DD1-E2900EB97BF0
+
+#{"topic":"lcd/8142E11C-87AE-4C13-9DD1-E2900EB97BF0","timestamp":1402676545565,"transition":"change","input":[{"name":"message", "value":"I heard dat!"}],"properties": {"type":"lcd","name":"My LCD","state":"ready","message": "I heard dat!"}}
+#{"topic":"lcd/8142E11C-87AE-4C13-9DD1-E2900EB97BF0","timestamp":1402676545565,"transition":"change","input":[{"name":"message", "value":"I heard dat!"}],"properties": {"type":"lcd","name":"My LCD","state":"ready","message": "I heard dat!"}}
+#{"topic":"lcd/8142E11C-87AE-4C13-9DD1-E2900EB97BF0","timestamp":1402676545565,"transition":"change","input":[{"name":"message", "value":"I heard dat!"}],"properties": {"type":"lcd","name":"My LCD","state":"ready","message": "I heard dat!"}}
+#{"topic":"lcd/8142E11C-87AE-4C13-9DD1-E2900EB97BF0","timestamp":1402676545565,"transition":"change","input":[{"name":"message", "value":"I heard dat!"}],"properties": {"type":"lcd","name":"My LCD","state":"ready","message": "I heard dat!"}}
+```
+
+#####Readable Logs
+
+```
+zetta logs 8142E11C-87AE-4C13-9DD1-E2900EB97BF0
+
+# Transition 'change' happened at '1402676545565' with params 'message' => 'I heard dat!'
+# Transition 'change' happened at '1402676545565' with params 'message' => 'I heard dat!'
+# Transition 'change' happened at '1402676545565' with params 'message' => 'I heard dat!'
+
+```
+
+#####Retrieving Firmware
+
+You can use Zetta to retrieve firmware for modules, or to retrieve firmware from source control such as GitHub.
+
+```
+zetta firmware pull zetta-sound-detector
+Cloning into ./firmware/zetta-sound-detector
+remote: Reusing existing pack: 79, done.
+remote: Total 79 (delta 0), reused 0 (delta 0)
+Unpacking objects: 100% (79/79), done.
+Checking connectivity... done.
+
+zetta firmware pull git://git@github.com:johndoe/zetta-sound-detector.git
+Cloning into ./firmware/zetta-sound-detector
+remote: Reusing existing pack: 79, done.
+remote: Total 79 (delta 0), reused 0 (delta 0)
+Unpacking objects: 100% (79/79), done.
+Checking connectivity... done.
+```

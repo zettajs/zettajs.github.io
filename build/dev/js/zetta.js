@@ -35,7 +35,15 @@ $(function(){
     }
   });
   
-  
+  //Modal
+  $('#modal .close b').click(function(){$('#modal').hide();});
+  $('img.fritzing').click(function(){
+    $('#modal .main').css({
+      'background-image': 'url(' + $(this).attr('src') + ')'
+    });
+    $('#modal .title').html($(this).attr('alt'));  
+    $('#modal').show();
+  });
   
   
   

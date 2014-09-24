@@ -1,0 +1,28 @@
+---
+title: Guides
+layout: guide
+---
+
+<div>
+  <ul>
+    {% for guide in site.categories["guides"] %}
+      <li>
+        <a href="{{ guide.url }}">{{ guide.title }}</a>
+      </li>
+    {% endfor %}
+  </ul>
+</div>
+<div>
+  Guides will include:
+  <ul>
+    <li>Setup</li>
+    <li>Naming Conventions</li>
+    <li>Command Line Interface</li>
+    <li>JavaScript</li>
+    <li>API</li>
+  </ul>
+</div>
+
+
+
+
