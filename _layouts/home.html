@@ -49,14 +49,15 @@
                   <input type="text" value="npm install zetta" readonly tabindex=1/>
                 </div>
               </div>
-              <div class="build ga pure-u-1 pure-u-sm-1-2 pure-u-md-1-4">
-                <p>Source</p>
-                <a href='https://github.com/zettajs'><button class="pure-button ">GitHub         <i class="fa fa-github"></i></button></a>
-              </div>
-              <div class="build pure-u-1 pure-u-sm-1-2 pure-u-md-1-4">
-                <p></p>
+              <div class="build gs pure-u-1 pure-u-sm-1-2 pure-u-md-1-4">
+                <p>Try it</p>
                 <a href='/recipes/2014/09/22/Heartbeat-Sample.html'><button class="pure-button">Get Started <b>rocket</b></button></a>
               </div>
+              <div class="build ga pure-u-1 pure-u-sm-1-2 pure-u-md-1-4">
+                <p>Source Code</p>
+                <a href='https://github.com/zettajs'><button class="pure-button ">GitHub         <i class="fa fa-github"></i></button></a>
+              </div>
+              
             </div>
           </section>
       </section>
@@ -82,27 +83,28 @@ zetta()
             <div class="vis pure-g">
               <div class="example pure-u-1 pure-u-sm-1-2">
                 <div class="vis"><img src="images/microcontrollers/beaglebone-black.svg"/></div>
-                <p>BeagleBone</p>
+                <p>BeagleBone <b>check</b></p>
               </div>
               <div class="example pure-u-1 pure-u-sm-1-2">
                 <div class="vis"><img src="images/microcontrollers/Raspberry_Pi_Vector_Illustration.svg"/></div>
-                <p>Raspberry PI</p>
-              </div>
-              <div class="example pure-u-1 pure-u-sm-1-2">
-                <div class="vis"><img src="images/microcontrollers/spark.svg"/></div>
-                <p>Spark Core</p>
-              </div>
-              <div class="example pure-u-1 pure-u-sm-1-2">
-                <div class="vis"><img src="images/microcontrollers/yun.svg"/></div>
-                <p>Arduino</p>
-              </div>
-              <div class="example pure-u-1 pure-u-sm-1-2">
-                <div class="vis"><img src="images/cloud/nodejitsu-transparent.png"/></div>
-                <p>Nodejitsu</p>
+                <p>Raspberry PI <b>check</b></p>
               </div>
               <div class="example pure-u-1 pure-u-sm-1-2">
                 <div class="vis"><img src="images/cloud/heroku-logo-solid-purple.svg"/></div>
-                <p>Heroku</p>
+                <p>Heroku <b>check</b></p>
+              </div>
+              <div class="example pure-u-1 pure-u-sm-1-2">
+                <div class="vis"><img src="images/cloud/nodejitsu-transparent.png"/></div>
+                <p>Nodejitsu <b>check</b></p>
+              </div>
+              
+              <div class="example pure-u-1 pure-u-sm-1-2">
+                <div class="vis"><img src="images/microcontrollers/yun.svg"/></div>
+                <p>Arduino Yun</p>
+              </div>
+              <div class="example pure-u-1 pure-u-sm-1-2">
+                <div class="vis"><img src="images/microcontrollers/spark.svg"/></div>
+                <p>Spark Core (via sparkcloud)</p>
               </div>
               
             </div>
@@ -139,17 +141,32 @@ Accept: application/vnd.siren+json
             
             <div class="vis pure-g">
               <div class="example pure-u-1-2 pure-u-md-1-4">
+                <div class="vis"><img src="images/parts/button.png"/></div>
+              </div>
+              <div class="example pure-u-1-2 pure-u-md-1-4">
                 <div class="vis"><img src="images/parts/photo.png"/></div>
               </div>
               <div class="example pure-u-1-2 pure-u-md-1-4">
                 <div class="vis"><img src="images/parts/motor.png"/></div>
               </div>
               <div class="example pure-u-1-2 pure-u-md-1-4">
-                <div class="vis"><img src="images/parts/button.png"/></div>
-              </div>
-              <div class="example pure-u-1-2 pure-u-md-1-4">
                 <div class="vis"><img src="images/parts/lcd.png"/></div>
               </div>
+              
+              <div class="example pure-u-1-2 pure-u-md-1-4">
+                <div class="vis"><img src="images/parts/rgb_led.png"/></div>
+              </div>
+              <div class="example pure-u-1-2 pure-u-md-1-4">
+                <div class="vis"><img src="images/parts/barometer.png"/></div>
+              </div>
+              <div class="example pure-u-1-2 pure-u-md-1-4">
+                <div class="vis"><img src="images/parts/humidity.png"/></div>
+              </div>
+              
+              <div class="example pure-u-1-2 pure-u-md-1-4">
+                <div class="vis"><img src="images/parts/temp.png"/></div>
+              </div>
+              
               
             </div>
           </div>
@@ -174,13 +191,13 @@ Accept: application/vnd.siren+json
           </div>
           <div class="feature pure-u-1">
             <div class="vis pure-g">
-              <div class="example pure-u-1 pure-u-md-1-2">
+              <div class="example pure-u-1 pure-u-lg-1-2">
                 <div class="vis">
                   <img src="images/browser/sensorstream.png"/>
                 </div>
                 <p>WebSocket Streams in Zetta Browser</p>
               </div>
-              <div class="example pure-u-1 pure-u-md-1-2">
+              <div class="example pure-u-1 pure-u-lg-1-2">
                 <div class="vis">
                   <img src="images/browser/displayscreen.png"/>
                 </div>
@@ -215,11 +232,17 @@ Accept: application/vnd.siren+json
           <div class="feature pure-u-1">
             
             <div class="vis pure-g">
-              <div class="example pure-u-1-2 pure-u-md-1-4">
-                <div class="vis"><img src="images/parts/barometer.png"/></div>
+              <div class="example pure-u-1 pure-u-md-1-2">
+                <div class="vis"><img src="images/use-code.png"/></div>
+              </div>
+              <div class="example pure-u-1 pure-u-md-1-2">
+                <div class="vis"><img src="images/app-code.png"/></div>
               </div>
               <div class="example pure-u-1-2 pure-u-md-1-4">
-                <div class="vis"><img src="images/parts/humidity.png"/></div>
+                <div class="vis"><img src="images/parts/piezo.png"/></div>
+              </div>
+              <div class="example pure-u-1-2 pure-u-md-1-4">
+                <div class="vis"><img src="images/parts/pir.png"/></div>
               </div>
               <div class="example pure-u-1-2 pure-u-md-1-4">
                 <div class="vis"><img src="images/parts/led.png"/></div>
@@ -255,7 +278,35 @@ zetta()
             <p>IoT developers work on projects with multiple devices across multiple locations running multiple apps made by multiple companies. Yet they must create harmonious experiences that benefit people.</p><p>Zetta allows you to assemble smartphone apps, device apps and cloud apps together into large, complex adaptive 'systems of systems' that operate at scale in the physical world of home automation, smart transportation, wearable computing and wherever your imagination leads.</p>
             
           </div>
-          
+           <div class="feature pure-u-1">
+            
+            <div class="vis pure-g">
+              <div class="example pure-u-1-2 pure-u-md-1-4">
+                <img src="images/bigapps/car.png"/>
+              </div>
+              <div class="example pure-u-1-2 pure-u-md-1-4">
+                <img src="images/bigapps/ussenterprise.png"/>
+              </div>
+              <div class="example pure-u-1-2 pure-u-md-1-4">
+                <img src="images/bigapps/lightswitch.png"/>
+              </div>
+              <div class="example pure-u-1-2 pure-u-md-1-4">
+                <img src="images/bigapps/plane.png"/>
+              </div>
+              <div class="example pure-u-1-2 pure-u-md-1-4">
+                <img src="images/bigapps/phone.png"/>
+              </div>
+              <div class="example pure-u-1-2 pure-u-md-1-4">
+                <img src="images/bigapps/bicycle.png"/>
+              </div>
+              <div class="example pure-u-1-2 pure-u-md-1-4">
+                <img src="images/bigapps/robot.png"/>
+              </div>
+              <div class="example pure-u-1-2 pure-u-md-1-4">
+                <img src="images/bigapps/stoplight.png"/>
+              </div>
+            </div>
+          </div>
         </section>
 
         
@@ -264,7 +315,7 @@ zetta()
       
       <section id="get-started" class="pure-g">
         <h2 class="pure-u-1">Install <strong>Zetta</strong></h2>
-        <div class="npm pure-u-1 pure-u-md-1-2">
+        <div class="npm pure-u-1 pure-u-sm-1-2 pure-u-md-2-3">
                 <div class="install">
                   <input type="text" value="npm install zetta" readonly tabindex=2/>
                 </div>

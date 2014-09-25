@@ -8,7 +8,9 @@
   border-bottom: 2px solid #fff;
   .build.ga {
     .border-box();
-    padding-right: 1rem;
+    @media @sm {
+      padding-left: 1rem;
+    }
   }
   
   
@@ -221,7 +223,7 @@
       text-align: center;
       
       p {
-        @media @md  {margin: 2em 0 0em 0;}
+        @media @md  {margin: 0em 0 2em 0;}
       }
       .vis {
         height: 10rem;
@@ -240,13 +242,20 @@
     
   }
 }
-#bigdata .vis .example .vis  {
-  height: 8rem;
-  @media @md {
-    height: 5rem;
+#bigdata .vis .example {
+  .border-box();
+  
+  @media @lg {
+    &:nth-child(even){padding-left: 2rem;}
+  }
+  .vis  {
+    height: 12rem;
+    padding: 0;
+    @media @md {height: 8rem;}
+    margin-top: 1rem;
   }
 }
-
+#bigapps .vis .example img {max-width: 100%;}
 
 .pairing:not(:first-child) {
   margin-top: 7rem;
