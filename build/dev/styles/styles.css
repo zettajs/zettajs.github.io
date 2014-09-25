@@ -98,7 +98,7 @@ a:hover{text-decoration:underline}
 #cta{padding-bottom:2rem}
 #cta .build,#cta .learn,#cta .npm{margin:0;padding:0;overflow:hidden}
 #cta p{font-family:jaf-facitweb,Helvetica,Arial,sans-serif;font-size:.8em;height:2rem;margin:1rem 0 0;color:#fff;font-weight:300}
-#cta .build button{height:3rem;font-size:1.2rem;width:100%}
+.build button{height:3rem;font-size:1.2rem;width:100%}
 .learn{margin:0;padding:0}
 .learn ul{margin:0;padding:0;width:100%}
 .learn ul li{display:inline-block;list-style-type:none;margin:.9rem .5rem 0 0;font-size:.9em}
