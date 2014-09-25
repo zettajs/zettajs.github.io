@@ -488,10 +488,7 @@ a:hover {
   
   //Specific
   
-  /* stay as default
   &.recipe    {  .docColor(@dark-blue-bg); }
-  */
-  
   &.guide     {  .docColor(#91D390);  }
   &.blog      {  .docColor(#6CC99C);  }
   &.workshop  {  .docColor(#D3B670);  }
@@ -522,11 +519,11 @@ footer {
     background-color: @colr; 
     background: linear-gradient(lighten(@colr, 5%), @colr, darken(@colr, 5%));
   }
-    article h1{
-        background-color: @colr;
-        &:before { border-bottom-color: darken(@colr, 15%); }
-      }
-  }
+  article h1 {
+      background-color: @colr;
+      &:before { border-bottom-color: darken(@colr, 15%); }
+    }
+}
 
 
 .pika() {
