@@ -484,50 +484,19 @@ a:hover {
   //color schemes
   
   //Default
-  #hero { background-color: @light-green-bg; }
-  article .page_content h1{
-      background-color: @light-green-bg;
-      &:before { border-bottom-color: @green-bg; }
-    }
+  .docColor(@dark-blue-bg);
   
   //Specific
   
   /* stay as default
-  &.recipe {
-    #hero { background-color: @light-blue-bg; }
-    article h1{
-        background-color: @light-blue-bg;
-        &:before { border-bottom-color: @blue-bg; }
-      }
-  }
+  &.recipe    {  .docColor(@dark-blue-bg); }
   */
   
-  &.guide {
-    #hero { background-color: #91D390; }
-    article h1{
-        background-color: #91D390;
-        &:before { border-bottom-color: darken(#91D390, 15%); }
-      }
-  }
-  
-  &.blog {
-    #hero { background-color: #6CC99C; }
-    article h1{
-        background-color: #6CC99C;
-        &:before { border-bottom-color: darken(#6CC99C, 15%); }
-      }
-  }
-  &.workshop {
-    #hero { background-color: #D3B670; }
-    article h1{
-        background-color: #D3B670;
-        &:before { border-bottom-color: darken(#D3B670, 15%); }
-      }
-  }
-  
+  &.guide     {  .docColor(#91D390);  }
+  &.blog      {  .docColor(#6CC99C);  }
+  &.workshop  {  .docColor(#D3B670);  }
+
 }
-
-
 
 /* footer */
 
@@ -547,6 +516,18 @@ footer {
 .heading-fonts() {
   font-family: ars-maquette-web, 'ARS Maquette Pro', 'Myriad Pro', 'Gill Sans', 'Lucida Sans', Verdana,   Geneva, sans-serif;
 }
+
+.docColor(@colr){
+  #hero { 
+    background-color: @colr; 
+    background: linear-gradient(lighten(@colr, 5%), @colr, darken(@colr, 5%));
+  }
+    article h1{
+        background-color: @colr;
+        &:before { border-bottom-color: darken(@colr, 15%); }
+      }
+  }
+
 
 .pika() {
   font-family: 'SSPika';

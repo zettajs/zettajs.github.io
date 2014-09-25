@@ -16,13 +16,6 @@ $(function(){
   //auto select npm install text on homepage
   $('.install input').on('click focus', function(){$(this).select();});
   
-  //Want autosizing images without javascript? Hey, at least js isn't doing any maths :)
-  $('.example').each(function(){
-    var src = $(this).find('img').attr('src');
-    //$(this).find('img').hide();
-    $(this).css('background-image', 'url('+src+')');
-  });
-  
   //just toggling classes for the mobile menu + button. css handles the animation
   $("#navToggle button").click(function(){
     if($(this).hasClass('open')){

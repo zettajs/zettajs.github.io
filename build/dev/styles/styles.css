@@ -82,12 +82,14 @@ a:hover{text-decoration:underline}
 #hero nav ul li{display:inline-block;float:right}}
 #hero nav a{text-transform:uppercase;padding:.5rem 1rem;color:#d3990a;border-bototm:1px solid #ededed}
 #hero nav a:hover{color:#faa438}
-#hero #cta{background-color:#4a5981}
+#hero #cta{background:linear-gradient(#536491,#4a5981,#414e71);border-bottom:2px solid #fff}
 #hero #cta .content{width:90%;margin:0 auto}
 @media screen and (min-width:48.1em){#hero #cta .content{max-width:42rem}}
 @media screen and (min-width:64em){#hero #cta .content{max-width:56rem}}
 @media screen and (min-width:80em){#hero #cta .content{max-width:56rem}}
-#index #zettais h1{line-height:2rem;margin:.5rem 0 0;font-weight:100}
+@media screen and (min-width:48.1em){#index #zettais{font-size:1.5rem;line-height:2.5rem;text-shadow:0 1px 0 #fff}}
+#index #zettais h1{line-height:2rem;margin:.5rem 0 0;font-weight:100;color:#000}
+@media screen and (min-width:48.1em){#index #zettais h1{line-height:3rem}}
 #index #hero{background-color:#fff}
 .install{background-color:#fff;height:2.65rem;border-bottom:.35rem solid #faa438;margin:0 0 1rem}
 .install input{width:100%;font-size:1.2rem;font-family:fira-mono,courier,monospace;padding:.7rem 0 0 1rem;border:none;background-color:transparent}
@@ -124,13 +126,12 @@ a:hover{text-decoration:underline}
 @media screen and (min-width:48.1em){.spiel h2,.spiel p{padding-left:2rem}}
 .feature{margin-bottom:2rem}
 @media screen and (min-width:48.1em){.feature h2{margin-left:4rem}}
-.feature .vis .example{margin:0;padding:.5rem 0;text-align:center;height:12rem;background-repeat:no-repeat;background-position:center;background-size:contain}
-.feature .vis .example img{display:none}
-.feature .vis .example p{margin:12em 0 1em}
-#hardware .example{margin:1rem 0 2rem}
-@media screen and (min-width:48.1em){#hardware .example p{margin:13em 0 0}}
-@media screen and (min-width:48.1em){#hardware .example{height:12rem}}
-#hardware .example img{width:80%;max-width:none;max-height:none}
+.feature .vis .example{text-align:center}
+@media screen and (min-width:48.1em){.feature .vis .example p{margin:2em 0 0}}
+.feature .vis .example .vis{height:10rem;padding:1rem}
+.feature .vis .example .vis img{max-width:100%;max-height:100%}
+#bigdata .vis .example .vis{height:8rem}
+@media screen and (min-width:48.1em){#bigdata .vis .example .vis{height:5rem}}
 .pairing:not(:first-child){margin-top:7rem}
 #browser .spiel h2,#browser .spiel p{padding-left:0}
 #browser .feature div{-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;padding:.5rem}
@@ -182,13 +183,17 @@ a:hover{text-decoration:underline}
 .page.docs #modal p.close b{cursor:pointer;padding:1rem;color:#d3990a}
 .page.docs #modal p.close b:hover{color:#faa438}
 .page.docs #modal .main{width:90%;height:80%;margin:0 auto;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;background:url(../images/zetta-logo.svg) center no-repeat;background-size:contain}
-.page.docs #hero,.page.docs article .page_content h1{background-color:#abbc87}
-.page.docs article .page_content h1:before{border-bottom-color:#7a9543}
-.page.docs.guide #hero,.page.docs.guide article h1{background-color:#91D390}
+.page.docs #hero{background:linear-gradient(#536491,#4a5981,#414e71)}
+.page.docs article h1{background-color:#4a5981}
+.page.docs article h1:before{border-bottom-color:#2e3750}
+.page.docs.guide #hero{background:linear-gradient(#a3daa2,#91d390,#7fcc7e)}
+.page.docs.guide article h1{background-color:#91d390}
 .page.docs.guide article h1:before{border-bottom-color:#5bbd59}
-.page.docs.blog #hero,.page.docs.blog article h1{background-color:#6CC99C}
+.page.docs.blog #hero{background:linear-gradient(#7fd0a9,#6cc99c,#59c28f)}
+.page.docs.blog article h1{background-color:#6cc99c}
 .page.docs.blog article h1:before{border-bottom-color:#3eaa76}
-.page.docs.workshop #hero,.page.docs.workshop article h1{background-color:#D3B670}
+.page.docs.workshop #hero{background:linear-gradient(#d9c084,#d3b670,#cdac5c)}
+.page.docs.workshop article h1{background-color:#d3b670}
 .page.docs.workshop article h1:before{border-bottom-color:#bc963a}
 footer{width:100%;background-color:#0b1a1f;padding:2rem 0 7rem;margin-top:4rem;color:#fff}
 footer li.apigee{margin-top:1rem}
