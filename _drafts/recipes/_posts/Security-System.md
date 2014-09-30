@@ -82,7 +82,7 @@ This will retrieve all the packages specified in `package.json`, and install the
    Coordinating interactions between the buzzer and the microphone
 4. [The PIR Motion Detector](#the-pir-motion-detector)
    The PIR sensor is used to detect motion
-5. [Writing Your Own Driver](#writing-your-own-driver)
+5. [Turn On The Lights](#turn-on-the-lights)
    Drivers use a state machine model to represent devices in Zetta.
 6. [Next Steps](#next-steps)
 {:.steps}
@@ -149,9 +149,10 @@ var Buzzer = require('zetta-buzzer-bonescript-driver');
 
 zetta()
   .use(Buzzer, 'P9_14')
-  .listen(1337)
+  .listen(1337, function(){
+    console.log('Zetta is running at http://beaglebone.local:1337');
+  });
   
-console.log('Zetta is running on port 1337');
 ```
 
 #### What is this code doing?
@@ -399,7 +400,7 @@ var app = require('./apps/app');
 zetta()
   .use(Buzzer, 'P9_14')
   .use(Microphone, 'P9_36')
-  .load(app)
+  .use(app)
   .listen(1337);
   
 console.log('Zetta is running on port 1337');
@@ -414,10 +415,10 @@ var app = require('./apps/app');
 This includes our app. Because it's built like other node modules (remember `module.exports`?), we just have this single. This includes our app like a library and makes it available to use later. 
 
 ```javascript
-.load(app)
+.use(app)
 ```
 
-The `load` function lets Zetta know that we have a particular app we want it to use. You must both `require` your `app.js` file, and `load` it in order for zetta to use it at runtime. 
+The `.use()` function can determine what type of module you pass into it, and is smart enough to know wheter you're passing it a device driver or an app. You must both `require` your `app.js` file, and `use` it in order for zetta to use it at runtime. 
 
 #### Running the Server Node
 
@@ -551,17 +552,9 @@ We added our third device to our growing security system. After after the physic
 
 In this next section, we're going to add an LED to our security system. To do this, we'll take you through writing your own driver. Drivers use a state machine model to represent devices in Zetta. Being able to write your own drivers in Zetta will be key to expanding your IoT system to include any devices that you want.
 
-In Zetta, drivers are broken into state machines and scouts. Scouts search for devices that could be attached to your node via any number of protocols. They then announce the presence of the device to Zetta. 
-
 ## Setup
-
-###Dependencies
-
-For now we won't worry about creating the scout for our driver we'll install that component off of npm. Run this command in the Cloud9 IDE
-
-    /$ npm install zetta-led-bonscript-scout --save
-    
-Next we'll want to setup the directory where our driver will be located. In your project you should already have a `/devices` directory. In there create a folder called `LED`. This folder will contain two files. One for your scout called `index.js`, and the other for your state machine called `led_driver.js`. You should end up with a file structure that looks like so:
+   
+We'll want to setup the directory where our driver will be located. In your project you should already have a `/devices` directory. In there create a folder called `led`. This folder will contain one file - `index.js`. You should end up with a file structure that looks like so:
 
 + `/zetta-security-system`
   + `/apps`
@@ -569,7 +562,6 @@ Next we'll want to setup the directory where our driver will be located. In your
   + `/devices`
     + `/led`
       + `index.js`
-      + `led_driver.js`
   + `server.js`
   + `package.json`
 
