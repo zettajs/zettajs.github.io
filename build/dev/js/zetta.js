@@ -30,7 +30,7 @@ $(function(){
   
   //Modal
   $('#modal .close b').click(function(){$('#modal').hide();});
-  $('img.fritzing').click(function(){
+  $('img.fritzing, img.zoom').click(function(){
     $('#modal .main').css({
       'background-image': 'url(' + $(this).attr('src') + ')'
     });

@@ -158,12 +158,11 @@ a:hover{text-decoration:underline}
 .page.docs article .page_content h1:nth-of-type(1){margin-top:0}
 .page.docs article .page_content h1:hover{background-image:url(../images/link.svg);cursor:pointer}
 .page.docs article .page_content h1:before{content:'';width:0;height:0;border:.38em solid transparent;border-top-width:0;position:relative;display:block;left:-3rem;top:3.6rem;-webkit-transform:rotate(45deg)}
-.page.docs article .page_content h1#setup{background-color:#d3990a}
 .page.docs article .page_content h2,.page.docs article .page_content h3,.page.docs article .page_content h4,.page.docs article .page_content h5,.page.docs article .page_content h6{font-weight:700;margin:1rem 0 1rem -2rem;padding:0 0 0 2rem;background-repeat:no-repeat;background-position:.5em center;background-size:1rem auto}
 .page.docs article .page_content h2:hover,.page.docs article .page_content h3:hover,.page.docs article .page_content h4:hover,.page.docs article .page_content h5:hover,.page.docs article .page_content h6:hover{background-image:url(../images/link_dark.svg);cursor:pointer}
 .page.docs article .page_content dl{padding:1rem;color:#000;background-color:#f2f2f2;border-radius:.25rem}
 .page.docs article .page_content img{width:100%;max-width:30rem;height:auto;display:block}
-.page.docs article .page_content img.fritzing{padding:1rem;border:1px solid #e6e6e6;border-radius:.25rem;cursor:pointer}
+.page.docs article .page_content img.fritzing,.page.docs article .page_content img.zoom{padding:1rem;border:1px solid #e6e6e6;border-radius:.25rem;cursor:pointer}
 .page.docs article .page_content ol.steps,.page.docs article .page_content ul.steps{padding-top:1rem}
 .page.docs article .page_content ol.steps li,.page.docs article .page_content ul.steps li{margin-bottom:1rem}
 .page.docs article .page_content ol.steps li a:nth-of-type(1),.page.docs article .page_content ul.steps li a:nth-of-type(1){font-size:1.5rem}
