@@ -9,13 +9,12 @@ tags:
   - diy
 ---
    
-This recipe will guide you through building an IoT Security system using Zetta. We won't be replacing any professional security systems just yet, but it's a start.
-   
-# Audience
 
-This recipe will teach you all the basic concepts of zetta. It's for someone getting their hands dirty with zetta for the first time, or someone looking for a basic implementation of zetta to start hacking on. 
+This recipe will guide you through building an IoT Security system using Zetta. In it, we'll cover all the basic concepts of zetta. It's for someone getting their hands dirty with zetta for the first time, or someone looking for a basic implementation of zetta to start hacking on. We won't be replacing any professional security systems just yet, but it's a start.
 
-This recipe is hands on - it requires writing software and working with hardware. Estimated time to complete is 1-3 hours. 
+> This recipe is hands on - it requires writing software and working with hardware. 
+
+> Estimated time to complete is 1-3 hours. 
 
 # Materials
 
@@ -51,8 +50,6 @@ root@beaglebone:/var/lib/cloud9/$ git clone git@github.com:zettajs/zetta-js-star
   > **TIP**
   > Make sure you run this command in the beaglebone's terminal in your browser from the Cloud9 IDE. Do not do this from your regular terminal on your computer. 
   
-![Screenshot](./imgages/screenshot.png){:.zoom}
-
 ### Install Zetta 
 
 Navigate to the folder for the repo you just cloned
@@ -551,15 +548,29 @@ We added our third device to our growing security system. After after the physic
 
 In this next section, we're going to add an LED to our security system. To do this, we'll take you through writing your own driver. Drivers use a state machine model to represent devices in Zetta. Being able to write your own drivers in Zetta will be key to expanding your IoT system to include any devices that you want.
 
+## Hardware
+
+Here's how your setup should look once you've added your LED:
+
+![PIR Hookup Diagram](/images/recipes/security_system/hookup_diagram_step_3.png){:.fritzing}
+
+  * Connect the LED's **annode** (long wire) to pin **P9_41** on the beaglebone through a 47&#8486; resistor
+  * Connect the PIR's **cathode** (short wire) to the breadboard's **-** (negative) row
+
+Your hardware setup should look something like this when you're done: 
+
+![The Connected PIR](/images/recipes/security_system/security_plus_led_01.jpg){:.fritzing}
+![The Connected PIR](/images/recipes/security_system/security_plus_led_02.jpg){:.fritzing}
+
+## Code
+
 In Zetta, drivers are broken into state machines and scouts. Scouts search for devices that could be attached to your node via any number of protocols. They then announce the presence of the device to Zetta. 
 
-## Setup
-
-###Dependencies
+### Dependencies
 
 For now we won't worry about creating the scout for our driver we'll install that component off of npm. Run this command in the Cloud9 IDE
 
-    /$ npm install zetta-led-bonscript-scout --save
+    /$ npm install zetta-led-bonescript-scout --save
     
 Next we'll want to setup the directory where our driver will be located. In your project you should already have a `/devices` directory. In there create a folder called `LED`. This folder will contain two files. One for your scout called `index.js`, and the other for your state machine called `led_driver.js`. You should end up with a file structure that looks like so:
 
@@ -573,44 +584,244 @@ Next we'll want to setup the directory where our driver will be located. In your
   + `server.js`
   + `package.json`
 
-##Hardware
-## Code
-### Retrieving The Driver
+Use the GUI, or run the following commands to creat the files and folder that you need
+
+    /$ mkdir devices/led
+    /$ touch devices/led/index.js
+    /$ touch devices/led/led_driver.js
+
+### Setting up the Scout
+
+Our scouting logic is unique for this particular app, and we set one up ahead of time for you. Edit `/devices/led/index.js` to contain the following code:
+
+```javascript
+var LED = require('./led_driver.js');
+var AutoScout = require('zetta-auto-scout');
+module.exports = new AutoScout('led', LED);
+```
+
+That will export your scout for use in Zetta.
+
+### Writing The Driver
+
+Next we'll create our state machine for use in Zetta. Our LED state machine will be basic. Drawing it out with state machine notation helps.
+It should look a little like this.
+
+![LED State Machine](/images/recipes/security_system/state_machine.png)
+
+As you can see from the diagram. When our LED is `off` it can only transition to the `on` state, and conversely when the state is `on` it can only transition to `off`.
+
+Our driver will have 4 major parts
+
+  * Dependencies
+  * The constructor function
+  * An init function to define our state machine
+  * Transition functions
+
+#### Dependencies
+
+First we'll require all the necessary libraries we'll need
+
+  * We'll need the Device class to create our driver
+  * We'll need the util module for inheritance functionality
+  * We'll need bonescript for actually interacting with hardware on the beaglebone
+  
+Add this to your empty `/devices/led/led_driver.js` file:
+
+```javascript
+var Device = require('zetta').Device;
+var util = require('util');
+var bone = require('bonescript');
+```
+
+#### The constructor function
+
+Now we'll setup the constructor for our LED. Here you set parameters and initialize different things about the device.
+
+  * We setup to inherit from the Device class to get functionality for API generation.  
+
+Continue by adding this code to your `/devices/led/led_driver.js` file:
+
+```javascript
+var Led = module.exports = function(pin) {
+  Device.call(this);
+  this.pin = "P9_41";
+  //Everything is off to start
+  bone.pinMode(this.pin, bone.OUTPUT);
+  bone.digitalWrite(this.pin, 0);
+};
+util.inherits(Led, Device);
+```
+
+#### An init function to define our state machine
+
+Next we'll implement the init function. This is where you'll implement your state machine.
+  
+* `state` sets the initial state of your device. We're starting in the **off** state
+* `type` sets what the type of the device is. In our case it's `led`.
+* `name` sets a human readable name for our device. It's an optional parameter.
+* `when` sets up what transitions are available based on the state of the device.
+  * `when` our device is in state `"on"` it can only use the `"turn-off"` and `"toggle"` transitions
+  * `when` our device is in state `"off"` it can only use the `"on"` and `"toggle"` transitions
+* `map` will setup the functions that will be called for particular transitions. Whenever a transition occurs the function it is mapped to will be called.
+  * when the `"on"` transition is called we will call the `turnOn` function of this particular class
+  * when the `"off"` transition is called we will call the `turnOff` function of this particular class
+  * when the `"toggle"` transition is called we will call the `function` function of this particular class
+    
+Continue by adding this code to your `/devices/led/led_driver.js` file:
+
+```javascript
+Led.prototype.init = function(config) {
+  config
+    .state('off')
+    .type('led')
+    .name('LED')
+    .when('on', { allow: ['turn-off', 'toggle'] })
+    .when('off', { allow: ['turn-on', 'toggle'] })
+    .map('turn-on', this.turnOn)
+    .map('turn-off', this.turnOff)
+    .map('toggle', this.toggle);
+};
+```
+
+> **TIP**
+> Any property on your javascript class that doesn't include an **_** (underscore) will be exposed by the API.
+
+#### Transition functions
+
+Finish up by adding the transition functions. 
+
+* `turnOn` will actually turn on the LED on the BeagleBone. It is provided a callback that you should call once the transition has completed.
+* `turnOff` will actually turn off the LED on the BeagleBone. It is provided a callback that you should call once the transition has completed.
+* `toggle` will change the led to **off** if it is currently **on**, or **on** if it is currently **off**. It is provided a callback that you should call once the transition has completed.
+
+Your final `/devices/led/led_driver.js` file should look like this:
+
+```javascript
+var Device = require('zetta').Device;
+var util = require('util');
+var bone = require('bonescript');
+
+var Led = module.exports = function(pin) {
+  Device.call(this);
+  this.pin = "P9_41";
+  //Everything is off to start
+  bone.pinMode(this.pin, bone.OUTPUT);
+  bone.digitalWrite(this.pin, 0);
+};
+util.inherits(Led, Device);
+
+Led.prototype.init = function(config) {
+  config
+    .state('off')
+    .type('led')
+    .name('LED')
+    .when('on', { allow: ['turn-off', 'toggle'] })
+    .when('off', { allow: ['turn-on', 'toggle'] })
+    .map('turn-on', this.turnOn)
+    .map('turn-off', this.turnOff)
+    .map('toggle', this.toggle);
+};
+
+Led.prototype.turnOn = function(cb) {
+  var self = this;
+  bone.digitalWrite(this.pin, 1, function() {
+    self.state = 'on';
+    cb();
+  });
+};
+
+Led.prototype.turnOff = function(cb) {
+  var self = this;
+  bone.digitalWrite(this.pin, 0, function() {
+    self.state = 'off';
+    cb();
+  });
+};
+
+Led.prototype.toggle = function(cb) {
+  if (this.state === 'on') {
+    this.call('turn-off', cb);
+  } else {
+    this.call('turn-on', cb);
+  }
+};
+```
+
 ### The Zetta Server
-#### What is this code doing?
+
+We need to tell zetta about our custom device. To do that, we require the scout module and pass it in with the `use` function. Similar to the modules we've already used.
+
+```javascript
+var zetta = require('zetta');
+var Buzzer = require('zetta-buzzer-bonescript-driver');
+var Microphone = require('zetta-microphone-bonescript-driver');
+var PIR = require('zetta-pir-bonescript-driver');
+var LED = require('./devices/led');
+
+var app = require('./apps/app');
+
+zetta()
+  .use(Buzzer, 'P9_14')
+  .use(Microphone, 'P9_36')
+  .use(PIR, 'P9_12')
+  .use(LED, 'P9_41')
+  .load(app)
+  .listen(1337);
+  
+console.log('Zetta is running on port 1337');
+```
+
+
+### Adding to our app
+
+Our app doesn't change much either. Add another query that looks for a device with type of `"led"` and add it into the currently orchestrated interactions.
+
+```javascript
+module.exports = function(server) {
+  var buzzerQuery = server.where({type: 'buzzer'});
+  var microphoneQuery = server.where({type: 'microphone'});
+  var pirQuery = server.where({type: 'pir'});
+  var ledQuery = server.where({type: 'led'});
+
+  server.observe([buzzerQuery, microphoneQuery, pirQuery, ledQuery], function(buzzer, microphone, pir, led){
+    var microphoneReading = 0;
+
+    microphone.streams.volume.on('data', function(msg){
+      if (msg.data > 10) {
+        if (pir.state === 'motion') {
+          buzzer.call('turn-on', function() {});
+          led.call('turn-on', function(){});
+        } else {
+          buzzer.call('turn-off', function() {});
+          led.call('turn-off', function(){});
+        }
+      }
+    });
+
+    pir.on('no-motion', function() {
+      buzzer.call('turn-off', function() {});
+      led.call('turn-off', function(){});
+    });
+
+  });
+}
+```
+
 #### Running the Server Node
-##Interaction
-###Make it [do something]
+
+Now's the time to test our fully featured security system. Head back to Cloud9's terminal and run your zetta server:
+
+    /$ node server.js
+
 ##What just happened?!
 
-* Wiring
- * photos
-* code
-* run your server
-* Load in browser
- * screenshots of waveform
- * video of mic/wav relationship
-* Tie together with an app
-* create app file
- * explain components of app
-* rerun zetta server
-* Show browser (Screens or video)
- * explain snag of buzzer being able to trigger mic & cause a loop. Oops :/
+*Conclusion*
 
-* Bonus - part two 
- * Add PIR 10k ohm
- * Add LED 47 ohm
- 
- 
-#[Section]
-##Hardware
-## Code
-### Retrieving The Driver
-### The Zetta Server
-#### What is this code doing?
-#### Running the Server Node
-##Interaction
-###Make it [do something]
-##What just happened?!
+#6. Next Steps
+
+1. Wire up our Twilio Driver to send a text message when the movement is detected!
+2. WeMo?
+3. Build an app to consume your new API!
 
    
