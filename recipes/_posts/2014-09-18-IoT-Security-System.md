@@ -186,8 +186,7 @@ A device in zetta has three different pieces of information attached to it in th
 
 #2. The PIR motion detector
 
-The PIR sensor is used to detect motion, and will be a critical sensor needed for our security system. We'll install
-the driver for this sensor through npm, and wire up an app that will have our buzzer sound off when motion detected.
+The PIR sensor is used to detect motion, and will be a critical sensor needed for our security system. We'll install the driver for this sensor through npm, and wire up an app that will have our buzzer sound off when motion detected.
 
 ##Contents
 
@@ -594,9 +593,7 @@ Below is a sample API response for our WeMo.
 
 #5. Writing your own driver
 
-This next section will take you through writing your own driver. Drivers use a state machine model to represent devices in
-Zetta. Being able to write your own drivers in Zetta will be key to expanding your IoT system to include any devices
-that you want.
+This next section will take you through writing your own driver. Drivers use a state machine model to represent devices in Zetta. Being able to write your own drivers in Zetta will be key to expanding your IoT system to include any devices that you want.
 
 ##Contents
 
@@ -609,15 +606,9 @@ that you want.
 
 ###Getting Started
 
-In Zetta drivers are usually broken into two pieces. The first being the state machine itself, and the second being a
-scout. Scouts search for devices that could be attached to your hub via any number of protocols. They then announce
-the presence of the device to Zetta. For now we won't worry about creating the scout for our driver we'll install that
-component off of npm. Use `npm install zetta-led-bonscript-scout --save` to retrieve it off of npm.
+In Zetta drivers are usually broken into two pieces. The first being the state machine itself, and the second being a scout. Scouts search for devices that could be attached to your hub via any number of protocols. They then announce the presence of the device to Zetta. For now we won't worry about creating the scout for our driver we'll install that component off of npm. Use `npm install zetta-led-bonscript-scout --save` to retrieve it off of npm.
 
-Next we'll want to setup the directory where our driver will be located. In your project you should already have a `/devices` directory.
-In there create a folder called `LED`. This folder will contain two files. One for your scout called `index.js`, and the other for your state machine called `led_driver.js`.
-In the next section we'll cover what it takes to setup our scout. However, you should end this section of the tutorial
-with a file structure that looks like so:
+Next we'll want to setup the directory where our driver will be located. In your project you should already have a `/devices` directory. In there create a folder called `LED`. This folder will contain two files. One for your scout called `index.js`, and the other for your state machine called `led_driver.js`. In the next section we'll cover what it takes to setup our scout. However, you should end this section of the tutorial with a file structure that looks like so:
 
 + `/zetta-security-system`
   + `/apps`

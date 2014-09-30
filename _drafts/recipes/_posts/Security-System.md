@@ -322,13 +322,13 @@ No new hardware in this section - we're going to create an interaction between t
 
 ###Creating your first app
 
-Apps in zetta allow us to orchestrate interactions between devices. To create one, make a new file in your project's `apps` folder:
+1 - Apps in zetta allow us to orchestrate interactions between devices. To create one, make a new file in your project's `apps` folder:
 
     /$ touch apps/app.js
 
 Now double-click on the new `app.js` file in your Cloud9 IDE so we can edit it and add functionality. 
 
-The first component of our app is an export statement. This is so that we can keep our apps modular and separated from the rest of our code. Edit `app.js` so it looks like this:
+2 - The first component of our app is an export statement. This is so that we can keep our apps modular and separated from the rest of our code. Edit `app.js` so it looks like this:
 
 ```javascript
 module.exports = function(server) {
@@ -336,7 +336,7 @@ module.exports = function(server) {
 }
 ```
 
-Next, we create our first query. Zetta uses queries to look for devices, or wait for devices to come online that fill all the parameters given. Our first query tells Zetta to retrieve the buzzer for us, the second one retrieves the Microphone sensor.
+3 - Next, we create our first query. Zetta uses queries to look for devices, or wait for devices to come online that fill all the parameters given. Our first query tells Zetta to retrieve the buzzer for us, the second one retrieves the Microphone sensor.
 
 ```javascript
 module.exports = function(server) {
@@ -346,7 +346,7 @@ module.exports = function(server) {
 }
 ```
 
-The `server` variable is an instance of Zetta. We can use functionality attached to it to search for devices. We can use the method `server.observe()` to waits for devices that fit queries given in the first argument to come online, and then fire a callback.
+4 - The `server` variable is an instance of Zetta. We can use functionality attached to it to search for devices. We can use the method `server.observe()` to waits for devices that fit queries given in the first argument to come online, and then fire a callback.
   
   * We want the callback function to fire when `"buzzer"` and `"microphone"` devices come online.
   * The function passes in the state machines of the devices in as individual arguments.
@@ -363,7 +363,7 @@ module.exports = function(server) {
 }
 ```
  
-Now we can work with our buzzer and microphone inside the `observe` callback. Our microphone's driver defines it as having streams with volume. We'll listen for a `"data"` event to happen on a `"volume"` *stream*. Once we get get that data, we want to test to see if value is above `10`. If it is, call the `"turn-on"` transition on the buzzer. 
+5 - Now we can work with our buzzer and microphone inside the `observe` callback. Our microphone's driver defines it as having streams with volume. We'll listen for a `"data"` event to happen on a `"volume"` *stream*. Once we get get that data, we want to test to see if value is above `10`. If it is, call the `"turn-on"` transition on the buzzer. 
 
 When we're all done, this is what our `app.js` file should look like:
 
@@ -546,6 +546,42 @@ Just like before, pressing the `beep` button will cause your piezo buzzer to mak
 ##What just happened?!
 
 We added our third device to our growing security system. After after the physical connection, getting a new device to work with our security app is only a matter of including it's device driver from NPM, telling zetta where to find it with the `.use()` method, and them querying the registry for that device when we want to use it. 
+
+#5. Turn on the Lights
+
+In this next section, we're going to add an LED to our security system. To do this, we'll take you through writing your own driver. Drivers use a state machine model to represent devices in Zetta. Being able to write your own drivers in Zetta will be key to expanding your IoT system to include any devices that you want.
+
+In Zetta, drivers are broken into state machines and scouts. Scouts search for devices that could be attached to your node via any number of protocols. They then announce the presence of the device to Zetta. 
+
+## Setup
+
+###Dependencies
+
+For now we won't worry about creating the scout for our driver we'll install that component off of npm. Run this command in the Cloud9 IDE
+
+    /$ npm install zetta-led-bonscript-scout --save
+    
+Next we'll want to setup the directory where our driver will be located. In your project you should already have a `/devices` directory. In there create a folder called `LED`. This folder will contain two files. One for your scout called `index.js`, and the other for your state machine called `led_driver.js`. You should end up with a file structure that looks like so:
+
++ `/zetta-security-system`
+  + `/apps`
+    + `app.js`
+  + `/devices`
+    + `/led`
+      + `index.js`
+      + `led_driver.js`
+  + `server.js`
+  + `package.json`
+
+##Hardware
+## Code
+### Retrieving The Driver
+### The Zetta Server
+#### What is this code doing?
+#### Running the Server Node
+##Interaction
+###Make it [do something]
+##What just happened?!
 
 * Wiring
  * photos
