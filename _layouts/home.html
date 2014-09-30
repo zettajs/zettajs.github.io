@@ -22,6 +22,7 @@
                         <li><a href="/blog" >Blog</a></li>
                         -->
                         <li><a href="https://github.com/zettajs">GitHub</a></li>
+                        <li><a href="https://groups.google.com/forum/#!forum/zetta-discuss">Community</a></li>
                         <li><a href="/recipes">Recipes</a></li>
                       </ul>
                   </section>
@@ -49,14 +50,15 @@
                   <input type="text" value="npm install zetta" readonly tabindex=1/>
                 </div>
               </div>
+              <div class="build gs pure-u-1 pure-u-sm-1-2 pure-u-md-1-4">
+                <p>Try</p>
+                <a href='/recipes/2014/09/22/Heartbeat-Sample.html'><button class="pure-button">Get Started <b>rocket</b></button></a>
+              </div>
               <div class="build ga pure-u-1 pure-u-sm-1-2 pure-u-md-1-4">
                 <p>Source</p>
                 <a href='https://github.com/zettajs'><button class="pure-button ">GitHub         <i class="fa fa-github"></i></button></a>
               </div>
-              <div class="build pure-u-1 pure-u-sm-1-2 pure-u-md-1-4">
-                <p></p>
-                <a href='/recipes/2014/09/22/Heartbeat-Sample.html'><button class="pure-button">Get Started <b>rocket</b></button></a>
-              </div>
+              
             </div>
           </section>
       </section>
@@ -76,35 +78,26 @@ zetta()
           </div>
           <div class="spiel pure-u-1 pure-u-md-1-2">
             <h2>Run <strong>Everywhere</strong></h2>
-            <p>Zetta lets you create Internet of Things (IoT) servers that run across geo-distributed computers and the cloud so that you can link Raspberry Pis, BeagleBones and Arduinos together with cloud platforms like Heroku and Nodejitsu.</p>
+            <p>Zetta servers run in the cloud, on PCs and on single-board computers. With Zetta you can link Raspberry Pis, BeagleBones and PCs together with cloud platforms like Heroku to create geo-distributed networks.</p>
           </div>
           <div class="feature pure-u-1">
             <div class="vis pure-g">
               <div class="example pure-u-1 pure-u-sm-1-2">
-                <div class="vis"><img src="images/microcontrollers/beaglebone-black.svg"/></div>
+                <div class="vis"><img src="images/computers/beaglebone-black.svg"/></div>
                 <p>BeagleBone</p>
               </div>
               <div class="example pure-u-1 pure-u-sm-1-2">
-                <div class="vis"><img src="images/microcontrollers/Raspberry_Pi_Vector_Illustration.svg"/></div>
+                <div class="vis"><img src="images/computers/Raspberry_Pi_Vector_Illustration.svg"/></div>
                 <p>Raspberry PI</p>
               </div>
               <div class="example pure-u-1 pure-u-sm-1-2">
-                <div class="vis"><img src="images/microcontrollers/spark.svg"/></div>
-                <p>Spark Core</p>
+                <div class="vis"><img src="images/computers/macbookair.svg"/></div>
+                <p>PC</p>
               </div>
               <div class="example pure-u-1 pure-u-sm-1-2">
-                <div class="vis"><img src="images/microcontrollers/yun.svg"/></div>
-                <p>Arduino</p>
-              </div>
-              <div class="example pure-u-1 pure-u-sm-1-2">
-                <div class="vis"><img src="images/cloud/nodejitsu-transparent.png"/></div>
-                <p>Nodejitsu</p>
-              </div>
-              <div class="example pure-u-1 pure-u-sm-1-2">
-                <div class="vis"><img src="images/cloud/heroku-logo-solid-purple.svg"/></div>
+                <div class="vis"><img src="images/computers/heroku-logo-solid-purple.svg"/></div>
                 <p>Heroku</p>
               </div>
-              
             </div>
           </div>
         </section>  
@@ -133,11 +126,20 @@ Accept: application/vnd.siren+json
           </div>
           <div class="spiel pure-u-1 pure-u-md-1-2">
             <h2>API <strong>Every Thing</strong></h2>
-            <p>Zetta allows you to create a REST API for every thing. Zetta's <a href="http://en.wikipedia.org/wiki/Reactive_hypermedia">reactive hypermedia</a> design marries <a href="http://en.wikipedia.org/wiki/Reactive_programming">reactive programming</a> with <a href="https://github.com/kevinswiber/siren">Siren hypermedia APIs</a> allowing you to easily build distributed systems that react to real-time data flows so that your applications operate as expected under real-world conditions.</p>
+            <p>Zetta turns any device into an API. Zetta servers communicate with microcontrollers like Arduino and Spark Core giving every device a REST API both locally and in the cloud. Zetta's <a href="http://en.wikipedia.org/wiki/Reactive_hypermedia">reactive hypermedia</a> design marries <a href="http://en.wikipedia.org/wiki/Reactive_programming">reactive programming</a> with <a href="https://github.com/kevinswiber/siren">Siren hypermedia APIs</a> so that you can assemble distributed systems of devices that communicate and react via APIs.</p>
           </div>
           <div class="feature pure-u-1">
             
             <div class="vis pure-g">
+              <div class="example pure-u-1-2 pure-u-md-1-4">
+                <div class="vis"><img src="images/microcontrollers/yun.svg"/></div>
+              </div>
+              <div class="example pure-u-1-2 pure-u-md-1-4">
+                <div class="vis"><img src="images/microcontrollers/spark.svg"/></div>
+              </div>
+              <div class="example pure-u-1-2 pure-u-md-1-4">
+                <div class="vis"><img src="images/parts/button.png"/></div>
+              </div>
               <div class="example pure-u-1-2 pure-u-md-1-4">
                 <div class="vis"><img src="images/parts/photo.png"/></div>
               </div>
@@ -145,50 +147,18 @@ Accept: application/vnd.siren+json
                 <div class="vis"><img src="images/parts/motor.png"/></div>
               </div>
               <div class="example pure-u-1-2 pure-u-md-1-4">
-                <div class="vis"><img src="images/parts/button.png"/></div>
+                <div class="vis"><img src="images/parts/rgb_led.png"/></div>
               </div>
               <div class="example pure-u-1-2 pure-u-md-1-4">
                 <div class="vis"><img src="images/parts/lcd.png"/></div>
               </div>
-              
+              <div class="example pure-u-1-2 pure-u-md-1-4">
+                <div class="vis"><img src="images/parts/barometer.png"/></div>
+              </div>
             </div>
           </div>
           </div>
         </section> 
-
-        <section id="bigdata" class="pairing pure-g">
-          <div class="code pure-u-1 pure-u-md-1-2">
-            <pre data-line="5-5"><span class="arrow"></span><code class="language-javascript">server
- .observe([sound, arm, huelight],
-  function(sound, arm, huelight) {
-   var gocrazy = new GoCrazy(arm, huelight);
-   sound.streams.level.on('data', function(msg) {
-     gocrazy.notify();}
-   );
- });</code></pre>
-            
-          </div>
-          <div class="spiel pure-u-1 pure-u-md-1-2">
-            <h2>Stream <strong>Big Data</strong></h2>
-            <p>Zetta's architecture is optimized for data-intensive, real-time applications. You observe how your system behaves using Zetta's WebSocket-driven visualization tools and plug your data streams into platforms like Splunk so that you gain actionable insights from your Internet of Things data.</p>
-          </div>
-          <div class="feature pure-u-1">
-            <div class="vis pure-g">
-              <div class="example pure-u-1 pure-u-md-1-2">
-                <div class="vis">
-                  <img src="images/browser/sensorstream.png"/>
-                </div>
-                <p>WebSocket Streams in Zetta Browser</p>
-              </div>
-              <div class="example pure-u-1 pure-u-md-1-2">
-                <div class="vis">
-                  <img src="images/browser/displayscreen.png"/>
-                </div>
-                <p>Categorical information in Zetta Browser</p>
-              </div>
-            </div>
-          </div>
-        </section>  
 
         <section id="developerJoy" class="pairing pure-g">
           <div class="code pure-u-1 pure-u-md-1-2">
@@ -210,16 +180,22 @@ Accept: application/vnd.siren+json
           </div>
           <div class="spiel pure-u-1 pure-u-md-1-2">
             <h2>Code with <strong>Joy</strong></h2>
-            <p>Building Internet of Things systems is complex. Zetta provides helpful abstractions for increased productivity and direct access to underlying protocols and conventions allowing you to focus on the big picture without losing track of the details so that you joyfully transform sensors, actuators and controllers into big, creative applications.</p>
+            <p>Building Internet of Things systems is complex. Zetta provides helpful abstractions for increased developer productivity while also giving direct access to underlying protocols and conventions allowing you to focus on the big picture without losing track of the details so that you joyfully transform sensors, actuators and controllers into big, creative applications.</p>
           </div>
           <div class="feature pure-u-1">
             
             <div class="vis pure-g">
-              <div class="example pure-u-1-2 pure-u-md-1-4">
-                <div class="vis"><img src="images/parts/barometer.png"/></div>
+              <div class="example pure-u-1 pure-u-md-1-2">
+                <div class="vis"><img src="images/use-code.png"/></div>
+              </div>
+              <div class="example pure-u-1 pure-u-md-1-2">
+                <div class="vis"><img src="images/app-code.png"/></div>
               </div>
               <div class="example pure-u-1-2 pure-u-md-1-4">
-                <div class="vis"><img src="images/parts/humidity.png"/></div>
+                <div class="vis"><img src="images/parts/piezo.png"/></div>
+              </div>
+              <div class="example pure-u-1-2 pure-u-md-1-4">
+                <div class="vis"><img src="images/parts/pir.png"/></div>
               </div>
               <div class="example pure-u-1-2 pure-u-md-1-4">
                 <div class="vis"><img src="images/parts/led.png"/></div>
@@ -231,6 +207,40 @@ Accept: application/vnd.siren+json
           </div>
         </div>
       </section> 
+
+        <section id="bigdata" class="pairing pure-g">
+          <div class="code pure-u-1 pure-u-md-1-2">
+            <pre data-line="5-5"><span class="arrow"></span><code class="language-javascript">server
+ .observe([sound, arm, huelight],
+  function(sound, arm, huelight) {
+   var gocrazy = new GoCrazy(arm, huelight);
+   sound.streams.level.on('data', function(msg) {
+     gocrazy.notify();}
+   );
+ });</code></pre>
+            
+          </div>
+          <div class="spiel pure-u-1 pure-u-md-1-2">
+            <h2>Stream <strong>Big Data</strong></h2>
+            <p>Zetta's architecture is optimized for data-intensive, real-time applications. Zetta allows you to observe and react to device and system behavior in code and using visualization tools so that you gain actionable insights and take insightful actions. You can also stream data into machine analytics platforms like Splunk.</p>
+          </div>
+          <div class="feature pure-u-1">
+            <div class="vis pure-g">
+              <div class="example pure-u-1 pure-u-lg-1-2">
+                <div class="vis">
+                  <img src="images/browser/sensorstream.png"/>
+                </div>
+                <p>Device Time-Series Data over WebSockets</p>
+              </div>
+              <div class="example pure-u-1 pure-u-lg-1-2">
+                <div class="vis">
+                  <img src="images/browser/displayscreen.png"/>
+                </div>
+                <p>Device States and Transitions over WebSockets</p>
+              </div>
+            </div>
+          </div>
+        </section>  
 
                 
         <section id="bigapps" class="pairing pure-g">
@@ -255,7 +265,35 @@ zetta()
             <p>IoT developers work on projects with multiple devices across multiple locations running multiple apps made by multiple companies. Yet they must create harmonious experiences that benefit people.</p><p>Zetta allows you to assemble smartphone apps, device apps and cloud apps together into large, complex adaptive 'systems of systems' that operate at scale in the physical world of home automation, smart transportation, wearable computing and wherever your imagination leads.</p>
             
           </div>
-          
+           <div class="feature pure-u-1">
+            
+            <div class="vis pure-g">
+              <div class="example pure-u-1-2 pure-u-md-1-4">
+                <img src="images/bigapps/car.png"/>
+              </div>
+              <div class="example pure-u-1-2 pure-u-md-1-4">
+                <img src="images/bigapps/ussenterprise.png"/>
+              </div>
+              <div class="example pure-u-1-2 pure-u-md-1-4">
+                <img src="images/bigapps/lightswitch.png"/>
+              </div>
+              <div class="example pure-u-1-2 pure-u-md-1-4">
+                <img src="images/bigapps/plane.png"/>
+              </div>
+              <div class="example pure-u-1-2 pure-u-md-1-4">
+                <img src="images/bigapps/phone.png"/>
+              </div>
+              <div class="example pure-u-1-2 pure-u-md-1-4">
+                <img src="images/bigapps/bicycle.png"/>
+              </div>
+              <div class="example pure-u-1-2 pure-u-md-1-4">
+                <img src="images/bigapps/robot.png"/>
+              </div>
+              <div class="example pure-u-1-2 pure-u-md-1-4">
+                <img src="images/bigapps/stoplight.png"/>
+              </div>
+            </div>
+          </div>
         </section>
 
         
@@ -264,7 +302,7 @@ zetta()
       
       <section id="get-started" class="pure-g">
         <h2 class="pure-u-1">Install <strong>Zetta</strong></h2>
-        <div class="npm pure-u-1 pure-u-md-1-2">
+        <div class="npm pure-u-1 pure-u-sm-1-2 pure-u-md-2-3">
                 <div class="install">
                   <input type="text" value="npm install zetta" readonly tabindex=2/>
                 </div>

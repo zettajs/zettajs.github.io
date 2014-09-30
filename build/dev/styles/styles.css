@@ -87,7 +87,8 @@ a:hover{text-decoration:underline}
 @media screen and (min-width:48.1em){#hero #cta .content{max-width:42rem}}
 @media screen and (min-width:64em){#hero #cta .content{max-width:56rem}}
 @media screen and (min-width:80em){#hero #cta .content{max-width:56rem}}
-#hero #cta .build.ga{-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;padding-right:1rem}
+#hero #cta .build.ga{-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box}
+@media screen and (min-width:35.5em){#hero #cta .build.ga{padding-left:1rem}}
 @media screen and (min-width:48.1em){#index #zettais{font-size:1.5rem;line-height:2.5rem;text-shadow:0 1px 0 #fff}}
 #index #zettais h1{line-height:2rem;margin:.5rem 0 0;font-weight:100;color:#000}
 @media screen and (min-width:48.1em){#index #zettais h1{line-height:3rem}}
@@ -128,11 +129,14 @@ a:hover{text-decoration:underline}
 .feature{margin-bottom:2rem}
 @media screen and (min-width:48.1em){.feature h2{margin-left:4rem}}
 .feature .vis .example{text-align:center}
-@media screen and (min-width:48.1em){.feature .vis .example p{margin:2em 0 0}}
+@media screen and (min-width:48.1em){.feature .vis .example p{margin:0 0 2em}}
 .feature .vis .example .vis{height:10rem;padding:1rem}
 .feature .vis .example .vis img{max-width:100%;max-height:100%}
-#bigdata .vis .example .vis{height:8rem}
-@media screen and (min-width:48.1em){#bigdata .vis .example .vis{height:5rem}}
+#bigdata .vis .example{-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box}
+@media screen and (min-width:64em){#bigdata .vis .example:nth-child(even){padding-left:2rem}}
+#bigdata .vis .example .vis{height:12rem;padding:0;margin-top:1rem}
+@media screen and (min-width:48.1em){#bigdata .vis .example .vis{height:8rem}}
+#bigapps .vis .example img{max-width:100%}
 .pairing:not(:first-child){margin-top:7rem}
 #browser .spiel h2,#browser .spiel p{padding-left:0}
 #browser .feature div{-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;padding:.5rem}
