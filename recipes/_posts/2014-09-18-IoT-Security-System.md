@@ -9,7 +9,7 @@ This recipe will guide you through building an IoT Security system using Zetta. 
 
 > This recipe is hands on - it requires writing software and working with hardware. 
 
-> Estimated time to complete is 1-3 hours. 
+> **clockwise**{:.icon} Estimated time to complete is 1-3 hours. 
 
 # Materials
 
@@ -66,7 +66,7 @@ This will retrieve all the packages specified in `package.json`, and install the
 
 *Congratulations!* We just installed a shell zetta app. You could run it now, but it won't do much yet. Follow the rest of this recipe to add the code you'll need to get it working.
 
-# Recipe Steps (needs updating)
+# Recipe Steps
    
 1. [Add the Piezo Buzzer](#add-the-piezo-buzzer)
    This element will get us going with the basics of Zetta. This step will have us dealing with `npm` and `drivers`.
@@ -77,6 +77,7 @@ This will retrieve all the packages specified in `package.json`, and install the
 4. [Turn On The Lights](#turn-on-the-lights)
    Drivers use a state machine model to represent devices in Zetta.
 5. [Next Steps](#next-steps)
+6. [Getting Help](#getting-help)
 {:.steps}
    
 #1. Add the Piezo Buzzer
@@ -685,10 +686,17 @@ Now's the time to test our fully featured security system. Head back to Cloud9's
 
 Devices in zetta are described completely in javascript. This means that there are no configuration files to keep track of - logic can go right into the state machines when you describe them! 
 
-#5. Next Steps
+#Next Steps
 
 1. Wire up our Twilio Driver to send a text message when the movement is detected!
 2. Replace the LED with WeMo to control a real light!
 3. Build an app to consume your new API!
 
-   
+#Getting Help
+
+If you're going through this project, and run into an issue feel free to use these methods to reach out and contact us!
+
+* matt@apigee.com
+* [https://groups.google.com/forum/#!forum/zetta-discuss]()
+* [https://github.com/zettajs/zetta/issues]()
+* [Reference Documentation: http://zettajs.github.io/]()
