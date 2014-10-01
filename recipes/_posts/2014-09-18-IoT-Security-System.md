@@ -36,11 +36,13 @@ Once your board has connected, connect to it and launch it's Cloud9 IDE
 
 ## Download the starter code
 
-Clone [this example repo](http://url.tld) to your beaglebone from the terminal in the Cloud9 IDE - we'll be adding to it for the rest of the tutorial
+Clone [this example repo](https://github.com/alanguir/zetta-security-system/) to your beaglebone from the terminal in the Cloud9 IDE - we'll be adding to it for the rest of the tutorial
 
 ```bash
 root@beaglebone:/var/lib/cloud9/$ git clone git@github.com:zettajs/zetta-js-starter.git
 ```
+
+  > Make sure to checkout step-0 with `git checkout step-0` to get started with a blank project
 
   > **TIP**
   > Make sure you run this command in the beaglebone's terminal in your browser from the Cloud9 IDE. Do not do this from your regular terminal on your computer. 
@@ -110,7 +112,9 @@ Your hardware setup should look like this when you're done:
 
 ## Code
 
-Follow along to add code to your security system, or skip ahead by checking out the `piezo` branch of the starter repo. 
+Follow along to add code to your security system. 
+
+> Don't want to type? All this section's code has been added for you if you checkout the `step-1` branch 
 
 ### Retrieving The Driver
   
@@ -213,7 +217,9 @@ Your hardware setup should look something like this when you're done:
 
 ## Code
 
-Follow along to add code to your security system, or skip ahead by checking out the `microphone` branch of the starter repo. 
+Follow along to add code to your security system. 
+
+> Don't want to type? All this section's code has been added for you if you checkout the `step-2` branch 
 
 ### Retrieving The Driver
 
@@ -300,6 +306,10 @@ In this section you'll learn about creating an app in Zetta. You'll also learn a
 No new hardware in this section - we're going to create an interaction between the existing Microphone and Piezo Buzzer hardware that we setup in the previous two sections. 
 
 ## Code
+
+Follow along to add code to your security system. 
+
+> Don't want to type? All this section's code has been added for you if you checkout the `step-3` branch 
 
 ###Creating your first app
 
@@ -438,7 +448,13 @@ Your hardware setup should look something like this when you're done:
 ![The Connected Microphone](/images/recipes/security_system/security_plus_led_02.jpg){:.fritzing}
 
 
-## Setup
+## Code
+
+Follow along to add code to your security system. 
+
+> Don't want to type? All this section's code has been added for you if you checkout the `step-4` branch 
+
+###Setup
    
 We'll want to setup the directory where our driver will be located. In your project you should already have a `/devices` directory. In there create a folder called `led`. This folder will contain one file - `index.js`. You should end up with a file structure that looks like so:
 
@@ -644,7 +660,6 @@ module.exports = function(server) {
   var ledQuery = server.where({type: 'led'});
 
   server.observe([buzzerQuery, microphoneQuery, ledQuery], function(buzzer, microphone, led){
-    var microphoneReading = 0;
 
     microphone.streams.volume.on('data', function(msg){
       if (msg.data > 10) {
