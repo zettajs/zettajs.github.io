@@ -425,7 +425,7 @@ Just like before, pressing the `beep` button will cause your piezo buzzer to mak
 
 ##What just happened?!
 
-*what just happened?*
+We wrote an app to coordinate actions between devices connected to zetta. The app used zetta queries to find devices registered to our node, and `server.observe()` to guarantee the devices were available before trying to run logic that included them. 
 
 #4. Turn on the Lights
 
@@ -683,12 +683,12 @@ Now's the time to test our fully featured security system. Head back to Cloud9's
 
 ##What just happened?!
 
-*Conclusion*
+Devices in zetta are described completely in javascript. This means that there are no configuration files to keep track of - logic can go right into the state machines when you describe them! 
 
 #5. Next Steps
 
 1. Wire up our Twilio Driver to send a text message when the movement is detected!
-2. WeMo?
+2. Replace the LED with WeMo to control a real light!
 3. Build an app to consume your new API!
 
    
