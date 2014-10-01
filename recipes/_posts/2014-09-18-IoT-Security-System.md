@@ -140,7 +140,7 @@ var Buzzer = require('zetta-buzzer-bonescript-driver');
 zetta()
   .use(Buzzer, 'P9_14')
   .listen(1337, function(){
-    console.log('Zetta is running at http://beaglebone.local:1337');
+    console.log('Zetta is running at http://192.168.7.2:1337');
   });
   
 ```
@@ -174,20 +174,9 @@ In Zetta every device gets an API automatically generated for it. Our API will r
    
 ###Make it Beep!
 
-Now the moment you've been waiting for...buzzing that buzzer! To do this, we'll point the zetta browser to the zetta server node that's now running on the beaglebone black. To do that, we need to know where zetta is running. 
+Now the moment you've been waiting for...buzzing that buzzer! To do this, we'll point the zetta browser to the zetta server node that's now running on the beaglebone black. 
 
-To find our hostname, look in the address bar for the browser that's running the Cloud9 IDE: 
-
-![Finding Your Hostname](/images/recipes/security_system/zetta-server-piezo.png){:.zoom}
-
-The address bar has a url of `http://192.168.7.2:3000/ide.html`. Replace everything after the `:` with the port from our Cloud9 console. So...
-
-> `http://192.168.7.2:3000/ide.html` => `http://192.168.7.2:1337`
-
-In this example, the zetta server is running at `http://192.168.7.2:1337`. Double check your own setup, as your local address may be different. 
-
-  * Visit the zetta browser at [http://browser.zettajs.io](http://browser.zettajs.io)
-  * Paste your server node url into __Server URL__ field and hit __connect__
+> View your app in the [Zetta Browser](http://browser.zettajs.io/#/overview?url=http:%2F%2F192.168.7.2:1337)
   
 It usually only takes a few seconds to connect. Once you do, you should see something like this: 
 
@@ -250,9 +239,10 @@ var Microphone = require('zetta-microphone-bonescript-driver');
 zetta()
   .use(Buzzer, 'P9_14')
   .use(Microphone, 'P9_36')
-  .listen(1337)
+  .listen(1337, function(){
+    console.log('Zetta is running at http://192.168.7.2:1337');
+  });
   
-console.log('Zetta is running on port 1337');
 ```
 
 #### What is this code doing?
@@ -391,9 +381,10 @@ zetta()
   .use(Buzzer, 'P9_14')
   .use(Microphone, 'P9_36')
   .use(app)
-  .listen(1337);
+  .listen(1337, function(){
+    console.log('Zetta is running at http://192.168.7.2:1337');
+  });
   
-console.log('Zetta is running on port 1337');
 ```
 
 We added two lines of code. Here's what they do:
@@ -635,9 +626,10 @@ zetta()
   .use(Microphone, 'P9_36')
   .use(LED, 'P9_41')
   .use(app)
-  .listen(1337);
+  .listen(1337, function(){
+    console.log('Zetta is running at http://192.168.7.2:1337');
+  });
   
-console.log('Zetta is running on port 1337');
 ```
 
 
