@@ -42,10 +42,11 @@ Clone [this example repo](https://github.com/alanguir/zetta-security-system/) to
 root@beaglebone:/var/lib/cloud9/$ git clone https://github.com/alanguir/zetta-security-system.git
 ```
 
+  > **TIP**
+  > Make sure you run all commands in the beaglebone's terminal in your browser from the Cloud9 IDE. Do not do this from your regular terminal on your computer. 
+  
   > Make sure to checkout step-0 with `git checkout -f step-0` to get started with a blank project
 
-  > **TIP**
-  > Make sure you run this command in the beaglebone's terminal in your browser from the Cloud9 IDE. Do not do this from your regular terminal on your computer. 
   
 ### Install Zetta 
 
@@ -220,7 +221,7 @@ Your hardware setup should look something like this when you're done:
 
 Follow along to add code to your security system. 
 
-> Don't want to type? All this section's code has been added for you if move to step 1 in your git repo with `git checkout -f step-2`. Moving to step one will loose modifications you've made so far. 
+> Don't want to type? All this section's code has been added for you if move to step 2 in your git repo with `git checkout -f step-2`. Moving to step one will loose modifications you've made so far. 
 
 ### Retrieving The Driver
 
@@ -310,7 +311,7 @@ No new hardware in this section - we're going to create an interaction between t
 
 Follow along to add code to your security system. 
 
-> Don't want to type? All this section's code has been added for you if move to step 1 in your git repo with `git checkout -f step-3`. Moving to step one will loose modifications you've made so far. 
+> Don't want to type? All this section's code has been added for you if move to step 3 in your git repo with `git checkout -f step-3`. Moving to step one will loose modifications you've made so far. 
 
 ###Creating your first app
 
@@ -453,7 +454,7 @@ Your hardware setup should look something like this when you're done:
 
 Follow along to add code to your security system. 
 
-> Don't want to type? All this section's code has been added for you if move to step 1 in your git repo with `git checkout -f step-4`. Moving to step one will loose modifications you've made so far.  
+> Don't want to type? All this section's code has been added for you if move to step 4 in your git repo with `git checkout -f step-4`. Moving to step one will loose modifications you've made so far.  
 
 ###Setup
    
