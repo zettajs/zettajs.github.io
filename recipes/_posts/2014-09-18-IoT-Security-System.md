@@ -47,7 +47,26 @@ root@beaglebone:/var/lib/cloud9/$ git clone https://github.com/alanguir/zetta-se
   
   > Make sure to checkout step-0 with `git checkout -f step-0` to get started with a blank project
 
-  
+{::comment }
+###Share your internet connection
+
+Turn on internet sharing for your system, and share it with the B3
+
+Run these commands: 
+
+```bash
+
+root@beaglebone:/var/lib/cloud9# dhclient usb0
+
+```
+
+ping to test
+
+change docs so console.log uses beaglebone.local
+
+may need to use `npm cache clean`
+{:/comment}
+
 ### Install Zetta 
 
 Navigate to the folder for the repo you just cloned
@@ -146,7 +165,7 @@ var Buzzer = require('zetta-buzzer-bonescript-driver');
 zetta()
   .use(Buzzer, 'P9_14')
   .listen(1337, function(){
-    console.log('Zetta is running at http://192.168.7.2:1337');
+    console.log('Zetta is running at http://beaglebone.local:1337');
   });
   
 ```
@@ -182,7 +201,7 @@ In Zetta every device gets an API automatically generated for it. Our API will r
 
 Now the moment you've been waiting for...buzzing that buzzer! To do this, we'll point the zetta browser to the zetta server node that's now running on the beaglebone black. 
 
-> View your app in the [Zetta Browser](http://browser.zettajs.io/#/overview?url=http:%2F%2F192.168.7.2:1337)
+> View your app in the [Zetta Browser](http://browser.zettajs.io/#/overview?url=http:%2F%2Fbeaglebone.local:1337)
   
 It usually only takes a few seconds to connect. Once you do, you should see something like this: 
 
@@ -248,7 +267,7 @@ zetta()
   .use(Buzzer, 'P9_14')
   .use(Microphone, 'P9_36')
   .listen(1337, function(){
-    console.log('Zetta is running at http://192.168.7.2:1337');
+    console.log('Zetta is running at http://beaglebone.local:1337');
   });
   
 ```
@@ -394,7 +413,7 @@ zetta()
   .use(Microphone, 'P9_36')
   .use(app)
   .listen(1337, function(){
-    console.log('Zetta is running at http://192.168.7.2:1337');
+    console.log('Zetta is running at http://beaglebone.local:1337');
   });
   
 ```
@@ -645,7 +664,7 @@ zetta()
   .use(LED, 'P9_41')
   .use(app)
   .listen(1337, function(){
-    console.log('Zetta is running at http://192.168.7.2:1337');
+    console.log('Zetta is running at http://beaglebone.local:1337');
   });
   
 ```
