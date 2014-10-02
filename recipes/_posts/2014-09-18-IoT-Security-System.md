@@ -45,7 +45,7 @@ root@beaglebone:/var/lib/cloud9/$ git clone https://github.com/alanguir/zetta-se
   > **TIP**
   > Make sure you run all commands in the beaglebone's terminal in your browser from the Cloud9 IDE. Do not do this from your regular terminal on your computer. 
   
-  > Make sure to checkout step-0 with `git checkout -f step-0` to get started with a blank project
+  > You can optionally follow along without copying this recipe's code by stepping through this repos git history. Run `git checkout -f step-0` to get started down that path, otherwise just follow along. 
 
 {::comment }
 ###Share your internet connection
@@ -331,6 +331,9 @@ No new hardware in this section - we're going to create an interaction between t
 Follow along to add code to your security system. 
 
 > Don't want to type? All this section's code has been added for you if move to step 3 in your git repo with `git checkout -f step-3`. Moving to step one will loose modifications you've made so far. 
+
+> **TIP** 
+> You may have to refresh the file tree in the Cloud9 IDE to see the `apps` folder creating by checking out step-3. You can do that by Right/CTRL clicking on the file pane and selecting  `Refresh` from the contextual menu. 
 
 ###Creating your first app
 
