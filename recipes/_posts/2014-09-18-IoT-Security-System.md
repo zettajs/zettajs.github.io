@@ -39,7 +39,7 @@ Once your board has connected, connect to it and launch it's Cloud9 IDE
 Clone [this example repo](https://github.com/alanguir/zetta-security-system/) to your beaglebone from the terminal in the Cloud9 IDE - we'll be adding to it for the rest of the tutorial
 
 ```bash
-root@beaglebone:/var/lib/cloud9/$ git clone git@github.com:alanguir/zetta-security-system.git
+root@beaglebone:/var/lib/cloud9/$ git clone https://github.com/alanguir/zetta-security-system.git
 ```
 
   > Make sure to checkout step-0 with `git checkout -f step-0` to get started with a blank project
