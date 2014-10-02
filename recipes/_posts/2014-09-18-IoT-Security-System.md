@@ -1,6 +1,6 @@
 ---
 layout: recipe
-title: IoT Security System
+title: Home Security
 author: Matt Dobson
 difficulty: experienced
 ---   
@@ -116,9 +116,8 @@ Connect your hardware like this:
 
 ![Piezo Hookup Diagram](/images/recipes/security_system/hookup_diagram_step_1.png){:.fritzing}
 
+  * Add your piezo buzzer to the breadboard.
   * Connect the breadboard's **-** (negative) row to pin **P9-01** on the _beaglebone_.
-  * Connect the breadboard's **+** (positivie) to pin **P9-07** on the _beaglebone_.
-  * Add your piezo buzzer the the breadboard
   * Connect the piezo buzzer's **-** (negative) lead to the **-** row of the _breadboard_.
   * Connect the piezo buzzer's **+** (positive) lead to pin **P9-14** on the _beaglebone_.
 
