@@ -25,29 +25,36 @@ Here's the parts list:
 
 # Setup
     
-## Get started on beaglebone
+## Get started on BeagleBone
 
-This project uses the Beaglebone Black Rev C. Before you can get started with your home security system, you need to make sure your Beaglebone is working and connected. 
+This project uses the BeagleBone Black Rev C. Before you can get started with your home security system, you need to make sure your BeagleBone is working and connected. 
 
-  > Get your Beaglebone up and running
+  > Get your BeagleBone up and running
   > [http://beagleboard.org/getting-started](http://beagleboard.org/getting-started)  
-  
-Once your board has connected, connect to it and launch it's Cloud9 IDE
+
+## Internet Sharing
+
+Follow our [BeableBone guide]() to make sure your board can connect to the internet. 
+
+Once your board has connected, launch it's [Cloud9 IDE](http://beaglebone.local:3000).
 
 ## Download the starter code
 
-Clone [this example repo](https://github.com/alanguir/zetta-security-system/) to your beaglebone from the terminal in the Cloud9 IDE - we'll be adding to it for the rest of the tutorial
+Clone [this example repo](https://github.com/alanguir/zetta-security-system/) to your BeagleBone from the terminal in the Cloud9 IDE - we'll be adding to it for the rest of the tutorial. Your command prompt should report that you are in the `/var/lib/cloud9/` folder, which is the default top level domain when you connect to the IDE.
 
 ```bash
-root@beaglebone:/var/lib/cloud9/$ git clone https://github.com/alanguir/zetta-security-system.git
+git clone https://github.com/alanguir/zetta-security-system.git
 ```
 
   > **TIP**
-  > Make sure you run all commands in the beaglebone's terminal in your browser from the Cloud9 IDE. Do not do this from your regular terminal on your computer. 
+  > Make sure you run all commands in the BeagleBone's terminal in your browser from the Cloud9 IDE. Do not do this from your regular terminal on your computer. 
   
-  > You can optionally follow along without copying this recipe's code by stepping through this repos git history. Run `git checkout -f step-0` to get started down that path, otherwise just follow along. 
+ 
 
 {::comment }
+
+  > You can optionally follow along without copying this recipe's code by stepping through this repos git history. Run `git checkout -f step-0` to get started down that path, otherwise just follow along.
+
 ###Share your internet connection
 
 Turn on internet sharing for your system, and share it with the B3
@@ -79,10 +86,10 @@ Now, run this command
 
     zetta-security-system/$ npm install
     
-This will retrieve all the packages specified in `package.json`, and install them on your beaglebone. 
+This will retrieve all the packages specified in `package.json`, and install them on your BeagleBone. 
 
 > **TIP**
-> Running `npm install` can take several minutes due to the low speed of the beaglebone's built in flash memory. It's OK to move ahead with connecting hardware while you wait for this to complete. 
+> Running `npm install` can take several minutes due to the low speed of the BeagleBone's built in flash memory. It's OK to move ahead with connecting hardware while you wait for this to complete. 
 
 *Congratulations!* We just installed a shell zetta app. You could run it now, but it won't do much yet. Follow the rest of this recipe to add the code you'll need to get it working.
 
@@ -106,9 +113,9 @@ The piezo element is for making noise, and will function as the sound component 
 
 ##Hardware
     
-We need to attach our buzzer to our beaglebone so zetta can control it. Pins on the Beaglebone Black come in two banks, P8 and P9. Each bank has 46 pins. Here's a pinout diagram: 
+We need to attach our buzzer to our BeagleBone so zetta can control it. Pins on the BeagleBone Black come in two banks, P8 and P9. Each bank has 46 pins. Here's a pinout diagram: 
 
-![Beaglebone Pinout](http://insigntech.files.wordpress.com/2013/09/bbb_pinouts.jpg){:.zoom}
+![BeagleBone Pinout](http://insigntech.files.wordpress.com/2013/09/bbb_pinouts.jpg){:.zoom}
 
 We'll be using bank P9. Notice that that row of pins along the inner edge of the board are evenly numbered (2, 4, 6, 8 etc...), while the exterior row is odd (1, 3, 5, 7...). Only the first and last pins of each row come with printend numbers - this helps you determine which row is even and odd but also means that you just have to count pins to get to the right one. 
 
@@ -116,11 +123,11 @@ Connect your hardware like this:
 
 ![Piezo Hookup Diagram](/images/recipes/security_system/hookup_diagram_step_1.png){:.fritzing}
 
-  * Connect the breadboard's **-** (negative) row to pin **P9-01** on the _beaglebone_.
-  * Connect the breadboard's **+** (positivie) to pin **P9-07** on the _beaglebone_.
+  * Connect the breadboard's **-** (negative) row to pin **P9-01** on the _BeagleBone_.
+  * Connect the breadboard's **+** (positivie) to pin **P9-07** on the _BeagleBone_.
   * Add your piezo buzzer the the breadboard
   * Connect the piezo buzzer's **-** (negative) lead to the **-** row of the _breadboard_.
-  * Connect the piezo buzzer's **+** (positive) lead to pin **P9-14** on the _beaglebone_.
+  * Connect the piezo buzzer's **+** (positive) lead to pin **P9-14** on the _BeagleBone_.
 
 Your hardware setup should look like this when you're done: 
 
@@ -128,7 +135,7 @@ Your hardware setup should look like this when you're done:
 ![The Connected Piezo Buzzer](/images/recipes/security_system/piezo_layout_02.jpg){:.zoom}
 
 > **TIP**
-> The Beaglebone pinout can be confusing. Using it requires that you to count pins. 
+> The BeagleBone pinout can be confusing. Using it requires that you to count pins. 
 > Check your wiring if you're having connectivity issues later on - chances are you're connected something to the wrong pin. 
 
 ## Code
@@ -139,14 +146,14 @@ Follow along to add code to your security system.
 
 ### Retrieving The Driver
   
-Drivers in Zetta are distributed through the Node Package Manager - NPM. We'll be building a driver from scratch later in this recipe, but for now let's just pull this one off the shelf. In the Cloud9 IDE on yor Beaglebone, run this command: 
+Drivers in Zetta are distributed through the Node Package Manager - NPM. We'll be building a driver from scratch later in this recipe, but for now let's just pull this one off the shelf. In the Cloud9 IDE on yor BeagleBone, run this command: 
 
     zetta-security-system/$ npm install zetta-buzzer-bonescript-driver --save
     
 > Note the `--save` switch at the end of the command    
     
 > **TIP**
-> Make sure you're in the right project folder on the beaglebone when you try to run this command. The Cloud9 command prompt should look like this after you type in the command: 
+> Make sure you're in the right project folder on the BeagleBone when you try to run this command. The Cloud9 command prompt should look like this after you type in the command: 
 > `root@beaglebone:/var/lib/cloud9/zetta-security-system/$ npm install zetta-buzzer-bonescript-driver --save`
   
 The driver you just downloaded represents a piezo buzzer in software. It's a state machine that is comprised of the `on`, `off` states. When `on` it will turn the buzzer on, and when `off` it will turn the buzzer off. The changes in state are represented by transitions. Transitions are functions in Zetta that are called when the state of an object changes. Our piezo element has `on`, `off`, and `beep` as transitions. `on` and `off` change to their corresponding states, and `beep` will swap the state from `off` to `on` and back again.
@@ -189,7 +196,7 @@ Zetta will log out this message when it successfully connects to the piezo buzze
 ![Running Your Server](/images/recipes/security_system/zetta-piezo-terminal.png){:.zoom}
 
 > **TIP**
-> It can take up to 20 seconds for the beaglebone to load and run the zetta node. You'll know you're ready once you see "Zetta is running on..." show up in your console. 
+> It can take up to 20 seconds for the BeagleBone to load and run the zetta node. You'll know you're ready once you see "Zetta is running on..." show up in your console. 
 
 
 
@@ -199,7 +206,7 @@ In Zetta every device gets an API automatically generated for it. Our API will r
    
 ###Make it Beep!
 
-Now the moment you've been waiting for...buzzing that buzzer! To do this, we'll point the zetta browser to the zetta server node that's now running on the beaglebone black. 
+Now the moment you've been waiting for...buzzing that buzzer! To do this, we'll point the zetta browser to the zetta server node that's now running on the BeagleBone black. 
 
 > View your app in the [Zetta Browser](http://browser.zettajs.io/#/overview?url=http:%2F%2Fbeaglebone.local:1337)
   
@@ -226,9 +233,9 @@ Here's what you should have once you add your microphone:
 ![Microphone Hookup Diagram](/images/recipes/security_system/hookup_diagram_step_2.png){:.fritzing}
 
   * Add your microphone to your breadboard
-  * Connect the microphone's **VCC** pin to pin **P9-32** on the _beaglebone_.
+  * Connect the microphone's **VCC** pin to pin **P9-32** on the _BeagleBone_.
   * Connect the microphone's **GND** pin to the breadboard's **-** (negative) row with a 2.2k&#8486; resistor
-  * Connect the microphone's **AUD** pin to pin **P9-36** on the _beaglebone_.
+  * Connect the microphone's **AUD** pin to pin **P9-36** on the _BeagleBone_.
 
 Your hardware setup should look something like this when you're done: 
 
@@ -244,14 +251,14 @@ Follow along to add code to your security system.
 
 ### Retrieving The Driver
 
-In the Cloud9 IDE on yor Beaglebone, run this command: 
+In the Cloud9 IDE on yor BeagleBone, run this command: 
 
     zetta-security-system/$ npm install zetta-microphone-bonescript-driver --save
     
 > Note the `--save` switch at the end of the command    
     
 > **TIP**
-> Make sure you're in the right project folder on the beaglebone when you try to run this command. The Cloud9 command prompt should look like this after you type in the command: 
+> Make sure you're in the right project folder on the BeagleBone when you try to run this command. The Cloud9 command prompt should look like this after you type in the command: 
 > `root@beaglebone:/var/lib/cloud9/zetta-security-system/$ npm install zetta-microphone-bonescript-driver --save`
   
 ### The Zetta Server
@@ -300,13 +307,13 @@ This time zetta will log two messages, one for each device it connects to:
 ![Running Your Server](/images/recipes/security_system/zetta-piezo-microphone-terminal.png){:.zoom}
 
 > **TIP**
-> It can take up to 20 seconds for the beaglebone to load and run the zetta node. You'll know you're ready once you see "Zetta is running on..." show up in your console. 
+> It can take up to 20 seconds for the BeagleBone to load and run the zetta node. You'll know you're ready once you see "Zetta is running on..." show up in your console. 
 
 ##Interaction
 
 ###Monitor the values
 
-Once again, we need to point the zetta browser to the zetta server node that's running on the beaglebone. You should just be able to refresh the zetta browser window to see more device - like this: 
+Once again, we need to point the zetta browser to the zetta server node that's running on the BeagleBone. You should just be able to refresh the zetta browser window to see more device - like this: 
 
 ![Zetta Browser root with Microphone](/images/recipes/security_system/zetta-browser-piezo-microphone.png){:.zoom}
 
@@ -462,9 +469,9 @@ Here's what you should have once you add your microphone:
 ![Microphone Hookup Diagram](/images/recipes/security_system/hookup_diagram_step_3.png){:.fritzing}
 
   * Add your microphone to your breadboard
-  * Connect the microphone's **VCC** pin to pin **P9-32** on the _beaglebone_.
+  * Connect the microphone's **VCC** pin to pin **P9-32** on the _BeagleBone_.
   * Connect the microphone's **GND** pin to the breadboard's **-** (negative) row with a 2.2k&#8486; resistor
-  * Connect the microphone's **AUD** pin to pin **P9-36** on the _beaglebone_.
+  * Connect the microphone's **AUD** pin to pin **P9-36** on the _BeagleBone_.
 
 Your hardware setup should look something like this when you're done: 
 
@@ -519,7 +526,7 @@ First we'll require all the necessary libraries we'll need
 
   * We'll need the Device class to create our driver
   * We'll need the util module for inheritance functionality
-  * We'll need bonescript for actually interacting with hardware on the beaglebone
+  * We'll need bonescript for actually interacting with hardware on the BeagleBone
   
 Add this to your empty `/devices/led/index.js` file:
 
