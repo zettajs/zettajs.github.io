@@ -2,14 +2,13 @@
 layout: community
 title: Community
 description: > 
-  <p>The Internet of Things (IoT) has the potential 
-  to impact broad aspects of the human experience. 
+  The Internet of Things will impact 
+  broad aspects of the human experience.
   There are significant risks. There are also 
-  vast opportunities.</p><p>If you want to 
-  brainstorm big ideas, report a little bug, build 
-  a revolutionary new device or write code for 
-  the core platform, we welcome you to the Zetta community.</p>
+  vast opportunities.
 ---
+
+If you want to brainstorm big ideas, report a little bug, build a revolutionary new device or write code for the core platform, we welcome you to the Zetta community.
 
 # Development
 
