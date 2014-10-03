@@ -21,12 +21,6 @@
           </ul>
           {% endif %}
         {% endunless %}  
-        
-        {% if page.path contains 'index' %}
-        <ul class="meta">
-          <li>Displaying {{ site.categories["recipes"].size }} {{page.layout | capitalize }}s</li>
-        </ul>
-        {% endif %}
       </div>
     </section>
 </section>
@@ -36,14 +30,6 @@
   
   <section class="page_content">
     {{ content }}
-
-    <section class="description">
-      <div>
-        <!-- recipe intro text -->
-        <p>Have a recipe to share? Read the <a href="/guides/2014/10/01/Write-A-Recipe.html">How to Share a Recipe</a> guide.</p>
-        <!-- /recipe intro text -->
-      </div>
-    </section>
   </section>
 
 </article>

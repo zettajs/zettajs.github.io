@@ -1,10 +1,11 @@
 ---
 layout: guide
-title: How to Write a Recipe
+title: How to Share a Recipe
 author: Alan Languirand
+description: >
+  This guide is meant to show you the ins and outs of 
+  contributing a recipe to zettajs.org. 
 ---
-
-This guide is meant to show you the ins and outs of contributing a recipe to zettajs.org. 
 
 # When you should write a recipe
 

@@ -143,7 +143,7 @@ a:hover {
 /* header stuff */
 
 #hero {
-  background-color: @light-green-bg;
+  background-color: @white;
   header {
     .topbar {background-color: @white;}
     .content{ .centered() };
@@ -153,7 +153,21 @@ a:hover {
   
 }
 
-
+#thisis {
+    @media @md {
+    font-size: 1.5rem;
+    line-height: 2.5rem;
+      text-shadow: 0 1px 0 #fff;
+    }
+     h1 {
+      line-height: 2rem;
+      @media @md {line-height: 3rem;}
+      margin: .5rem 0 0 0;
+      font-weight: 100;
+      color: #000;
+     }
+    
+  }
 
 
 /* navbar stuff */
@@ -177,7 +191,7 @@ a:hover {
 }
 #hero nav {
   
-  @media @asm {
+  @media @amd {
     background-color: transparent;
     max-height: 18rem;
     
@@ -189,6 +203,7 @@ a:hover {
       margin: 0;
     }
     ul {border: 1px solid @light-grey-bg;margin-top: 1rem; padding: none;}
+    
     a {
       display: block;
       &:hover { 
@@ -202,7 +217,7 @@ a:hover {
     padding-bottom: 1rem;
   }
   
-    @media @sm {
+    @media @md {
       ul {
         padding: 1.4rem 0 1rem 0;
         li {
@@ -211,19 +226,23 @@ a:hover {
         }
       }
     }
-    ul {
-      
-      
-    }
+    ul {}
     a {
       text-transform: uppercase;
-      padding: .5rem 1rem;
+      padding: .5rem 0;
+      margin: 0 1rem;
       color: @yellow-bg;
       &:hover { 
         color: @yellow;
       }
       border-bototm: 1px solid @light-grey-bg;
     }
+  .active a {
+    border-bottom: 3px solid @yellow-bg;
+    &:hover { 
+      border-bottom: 3px solid @yellow;
+    }
+  }
 }
 
 @import 'home.less';
@@ -231,9 +250,21 @@ a:hover {
 .page.docs {
   
   #hero {
-    .content{
-      &.page_meta {
-        padding: 3rem 0 0 0;
+    header {padding-bottom: 2rem;}
+    h1 {        
+        .heading-fonts();
+        font-weight: 200;
+        margin: 1rem 0 1rem 0;
+        @media @md {margin: 1rem 0;}
+      }
+    
+    .page_meta {
+      
+      color: @white;
+      .ul_menu();
+      
+      .content{
+        padding: .5rem 0 1.5rem 0;
         @media @amd {
           width: 100%;
         }
@@ -242,26 +273,22 @@ a:hover {
       
       }
     }
-    
-    h1 {
-        color: @white;
-        .heading-fonts();
-        font-weight: 700;
-        margin: 1rem 0 1rem 2rem;
-        @media @md {margin: 1rem 0;}
-      }
-    
     .meta {
-      padding: .5rem 2rem;
-
-      p {
-        margin: 0;
-        color: @light-gray-bg;
-        font-style: italic;
-        font-size: .8rem;
+      padding-left: 2rem;
+      @media @md {padding-left: 0rem;}
+      margin-bottom: 0;
+      li {
+        margin-right: 1rem;
+        white-space: nowrap;
       }
-      .tags{
-        .ul_menu();
+      .source {
+        color: @yellow;
+        a {color: @yellow;}
+      }
+    }
+    .tags{
+      padding-left: 0rem;
+      margin: 0;
         li a{
           background-color: @white;
           color: @yellow;
@@ -273,8 +300,6 @@ a:hover {
         }
 
       }
-      background-color: hsla(0, 0%, 0%, .1);
-    }
   }
   
   
@@ -290,7 +315,7 @@ a:hover {
       background-color: @white;
       padding: 1rem 2rem;
       h1 {
-        margin: 2rem 0 0 -3rem;
+        margin: 2rem 0 2rem -3rem;
         &:nth-of-type(1){margin-top: 0;}
         padding: 0rem 0 .5rem 3rem;
         color: @white;
@@ -486,7 +511,8 @@ a:hover {
   &.recipe    {  .docColor(@dark-blue-bg); }
   &.guide     {  .docColor(#91D390);  }
   &.blog      {  .docColor(#6CC99C);  }
-  &.workshop  {  .docColor(#D3B670);  }
+  // community and workshop are duplicated for backwards compatibility
+  &.community, &.workshop  {  .docColor(#D3B670);  }
 
 }
 
@@ -510,7 +536,7 @@ footer {
 }
 
 .docColor(@colr){
-  #hero { 
+  #hero .page_meta { 
     background-color: @colr; 
     background: linear-gradient(lighten(@colr, 5%), @colr, darken(@colr, 5%));
   }
