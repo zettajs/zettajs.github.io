@@ -274,7 +274,8 @@ a:hover {
       }
     }
     .meta {
-      padding-left: 0rem;
+      padding-left: 2rem;
+      @media @md {padding-left: 0rem;}
       margin-bottom: 0;
       li {
         margin-right: 1rem;
@@ -314,7 +315,7 @@ a:hover {
       background-color: @white;
       padding: 1rem 2rem;
       h1 {
-        margin: 2rem 0 0 -3rem;
+        margin: 2rem 0 2rem -3rem;
         &:nth-of-type(1){margin-top: 0;}
         padding: 0rem 0 .5rem 3rem;
         color: @white;
@@ -510,7 +511,8 @@ a:hover {
   &.recipe    {  .docColor(@dark-blue-bg); }
   &.guide     {  .docColor(#91D390);  }
   &.blog      {  .docColor(#6CC99C);  }
-  &.workshop  {  .docColor(#D3B670);  }
+  // community and workshop are duplicated for backwards compatibility
+  &.community, &.workshop  {  .docColor(#D3B670);  }
 
 }
 

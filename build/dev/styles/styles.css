@@ -152,7 +152,8 @@ a:hover{text-decoration:underline}
 @media screen and (min-width:48.1em){.page.docs #hero .page_meta .content{max-width:42rem}}
 @media screen and (min-width:64em){.page.docs #hero .page_meta .content{max-width:56rem}}
 @media screen and (min-width:80em){.page.docs #hero .page_meta .content{max-width:56rem}}
-.page.docs #hero .meta{padding-left:0;margin-bottom:0}
+.page.docs #hero .meta{padding-left:2rem;margin-bottom:0}
+@media screen and (min-width:48.1em){.page.docs #hero .meta{padding-left:0}}
 .page.docs #hero .meta li{margin-right:1rem;white-space:nowrap}
 .page.docs #hero .meta .source,.page.docs #hero .meta .source a{color:#faa438}
 .page.docs #hero .tags{padding-left:0;margin:0}
@@ -162,7 +163,7 @@ a:hover{text-decoration:underline}
 @media screen and (min-width:64em){.page.docs article .page_content{max-width:56rem}}
 @media screen and (min-width:80em){.page.docs article .page_content{max-width:56rem}}
 @media screen and (max-width:48.1em){.page.docs article .page_content{width:100%}}
-.page.docs article .page_content h1{margin:2rem 0 0 -3rem;padding:0 0 .5rem 3rem;color:#fff;background-repeat:no-repeat;background-position:1.5rem center;background-size:1rem auto;box-shadow:0 7px 7px #e6e6e6}
+.page.docs article .page_content h1{margin:2rem 0 2rem -3rem;padding:0 0 .5rem 3rem;color:#fff;background-repeat:no-repeat;background-position:1.5rem center;background-size:1rem auto;box-shadow:0 7px 7px #e6e6e6}
 .page.docs article .page_content h1:nth-of-type(1){margin-top:0}
 .page.docs article .page_content h1:hover{background-image:url(../images/link.svg);cursor:pointer}
 .page.docs article .page_content h1:before{content:'';width:0;height:0;border:.38em solid transparent;border-top-width:0;position:relative;display:block;left:-3rem;top:3.1rem;-webkit-transform:rotate(45deg)}
@@ -203,9 +204,9 @@ a:hover{text-decoration:underline}
 .page.docs.blog #hero .page_meta{background:linear-gradient(#7fd0a9,#6cc99c,#59c28f)}
 .page.docs.blog article h1{background-color:#6cc99c}
 .page.docs.blog article h1:before{border-bottom-color:#3eaa76}
-.page.docs.workshop #hero .page_meta{background:linear-gradient(#d9c084,#d3b670,#cdac5c)}
-.page.docs.workshop article h1{background-color:#d3b670}
-.page.docs.workshop article h1:before{border-bottom-color:#bc963a}
+.page.docs.community #hero .page_meta,.page.docs.workshop #hero .page_meta{background:linear-gradient(#d9c084,#d3b670,#cdac5c)}
+.page.docs.community article h1,.page.docs.workshop article h1{background-color:#d3b670}
+.page.docs.community article h1:before,.page.docs.workshop article h1:before{border-bottom-color:#bc963a}
 footer{width:100%;background-color:#0b1a1f;padding:2rem 0 7rem;margin-top:4rem;color:#fff}
 footer li.apigee{margin-top:1rem}
 footer .creative-commons{margin-top:3rem;font-size:.8em}

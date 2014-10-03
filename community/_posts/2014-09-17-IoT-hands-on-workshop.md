@@ -1,6 +1,5 @@
 ---
 title: Internet of Things Hands-on Workshop
-author: Brian Mulloy
 layout: workshop
 ---
 
