@@ -3,13 +3,20 @@ layout: recipe
 title: Home Security
 author: Matt Dobson
 difficulty: experienced
----   
-
-This recipe will guide you through building an IoT Security system using Zetta. In it, we'll cover all the basic concepts of zetta. It's for someone getting their hands dirty with zetta for the first time, or someone looking for a basic implementation of zetta to start hacking on. We won't be replacing any professional security systems just yet, but it's a start.
+duration: 1-3 hours
+description: >
+  This recipe will guide you through building 
+  an IoT Security system using Zetta. In it, 
+  we'll cover all the basic concepts of zetta. 
+  It's for someone getting their hands dirty with 
+  zetta for the first time, or someone looking for 
+  a basic implementation of zetta to start hacking on. 
+  We won't be replacing any professional 
+  security systems just yet, but it's a start.
+repo: https://github.com/alanguir/zetta-security-system/
+--- 
 
 > This recipe is hands on - it requires writing software and working with hardware. 
-
-> **clockwise**{:.icon} Estimated time to complete is 1-3 hours. 
 
 # Materials
 
