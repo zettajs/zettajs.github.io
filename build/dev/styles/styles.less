@@ -486,7 +486,8 @@ a:hover {
   &.recipe    {  .docColor(@dark-blue-bg); }
   &.guide     {  .docColor(#91D390);  }
   &.blog      {  .docColor(#6CC99C);  }
-  &.workshop  {  .docColor(#D3B670);  }
+  // community and workshop are duplicated for backwards compatibility
+  &.community, &.workshop  {  .docColor(#D3B670);  }
 
 }
 

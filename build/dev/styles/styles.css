@@ -199,9 +199,9 @@ a:hover{text-decoration:underline}
 .page.docs.blog #hero{background:linear-gradient(#7fd0a9,#6cc99c,#59c28f)}
 .page.docs.blog article h1{background-color:#6cc99c}
 .page.docs.blog article h1:before{border-bottom-color:#3eaa76}
-.page.docs.workshop #hero{background:linear-gradient(#d9c084,#d3b670,#cdac5c)}
-.page.docs.workshop article h1{background-color:#d3b670}
-.page.docs.workshop article h1:before{border-bottom-color:#bc963a}
+.page.docs.community #hero,.page.docs.workshop #hero{background:linear-gradient(#d9c084,#d3b670,#cdac5c)}
+.page.docs.community article h1,.page.docs.workshop article h1{background-color:#d3b670}
+.page.docs.community article h1:before,.page.docs.workshop article h1:before{border-bottom-color:#bc963a}
 footer{width:100%;background-color:#0b1a1f;padding:2rem 0 7rem;margin-top:4rem;color:#fff}
 footer li.apigee{margin-top:1rem}
 footer .creative-commons{margin-top:3rem;font-size:.8em}

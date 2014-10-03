@@ -1,6 +1,6 @@
 ---
 layout: guide
-title: How to Write a Recipe
+title: How to Share a Recipe
 author: Alan Languirand
 ---
 
