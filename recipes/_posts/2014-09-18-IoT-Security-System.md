@@ -62,9 +62,11 @@ Here's the parts list:
 
 This recipe uses the BeagleBone Black Rev C. Before you can get started with your home security system, you need to make sure your BeagleBone is working and connected.
 
-> **compas**{:.icon} Follow our [BeableBone guide](/guides/2014/10/03/BeagleBone.html) to get setup and make sure your board can connect to the internet.
+> **compass**{:.icon} Follow our [BeableBone guide](/guides/2014/10/03/BeagleBone.html) to get setup and make sure your board can connect to the internet.
 
-Once your board has connected, launch it's [Cloud9 IDE](http://beaglebone.local:3000) (board must be connected for link to work).
+Once your board has connected, launch it's [Cloud9 IDE](http://beaglebone.local:3000) (board must be connected to internet for link to work. It the link doesn't work, use the guide above to troubleshoot your BeagleBone's internet connection).
+
+![Cloud9 Splash Screen](/images/recipes/security_system/screens/cloud9.png){:.zoom}
 
 # Download the starter code
 
@@ -74,20 +76,16 @@ Clone [this example repo](https://github.com/alanguir/zetta-security-system/) to
 git clone https://github.com/alanguir/zetta-security-system.git
 ```
 
+![Cloud9 Splash Screen](/images/recipes/security_system/screens/bash_callout.png){:.zoom}
+
 Cloud9 on the Beaglebone starts out in `/var/lib/cloud9/`, which is similar to the user or home directory on your computer. After cloning your repo, you should have a folder at `/var/lib/cloud9/zetta-security-system`, which is where everything else will go for this recipe.
 
   > **TIP**
   > Make sure you run all commands in the BeagleBone's terminal in your browser from the Cloud9 IDE. Do not do this from your regular terminal on your computer.
-
-{::comment }
-
-  > **list**{:.icon} You can optionally follow along without copying this recipe's code by stepping through this repos git history. Run `git checkout -f step-0` to get started down that path, otherwise just follow along.
-
-{:/comment}
-
+  
 # Following Along
 
-The repo you just cloned has tagged commits that allow you to automatically get your code to the same point as it would have been after following each recipe section. Follow these steps BeagleBone to get to the beginning of this recipe:
+The repo you just cloned has tagged commits that allow you to automatically get your code to the same point as it would have been after following each recipe section. Follow these steps on your BeagleBone to get to the beginning of the recipe:
 
 Navigate to the folder for the repo you just cloned
 
@@ -95,7 +93,7 @@ Navigate to the folder for the repo you just cloned
 cd zetta-security-system
 ```
 
-**list**{:.icon} Advance to **step-0**
+Advance to **step-0**
 
 ```md
 git checkout -f step-0
@@ -142,7 +140,8 @@ Your hardware setup should look like this when you're done:
 
 Follow along to add code to your security system.
 
-> **list**{:.icon} Don't want to type? Optionally add this section's code automatically by moving to step 1 in your git repo with `git checkout -f step-1`. Moving to step one will loose modifications you've made so far.
+> **list**{:.icon} **Step**
+> Don't want to type? Optionally add this section's code automatically by moving to step 1 in your git repo with `git checkout -f step-1`. Moving to step one will loose modifications you've made so far.
 
 ## Retrieving The Driver
 
@@ -262,7 +261,8 @@ Your hardware setup should look something like this when you're done:
 
 Follow along to add code to your security system.
 
-> **list**{:.icon} Don't want to type? Optionally add this section's code automatically by moving to step 2 in your git repo with `git checkout -f step-2`. Moving to step two will loose modifications you've made so far.
+> **list**{:.icon} **Step**
+> Don't want to type? Optionally add this section's code automatically by moving to step 2 in your git repo with `git checkout -f step-2`. Moving to step two will loose modifications you've made so far.
 
 ## Retrieving The Driver
 
@@ -354,7 +354,8 @@ No new hardware in this section - we're going to create an interaction between t
 
 Follow along to add code to your security system.
 
-> **list**{:.icon} Don't want to type? Optionally add this section's code automatically by moving to step 3 in your git repo with `git checkout -f step-3`. Moving to step three will loose modifications you've made so far.
+> **list**{:.icon} **Step**
+> Don't want to type? Optionally add this section's code automatically by moving to step 3 in your git repo with `git checkout -f step-3`. Moving to step three will loose modifications you've made so far.
 
 ##Creating the app
 
@@ -502,7 +503,8 @@ Your hardware setup should look something like this when you're done:
 
 Follow along to add code to your security system.
 
-> **list**{:.icon} Don't want to type? Optionally add this section's code automatically by moving to step 4 in your git repo with `git checkout -f step-4`. Moving to step four will loose modifications you've made so far.
+> **list**{:.icon} **Step**
+> Don't want to type? Optionally add this section's code automatically by moving to step 4 in your git repo with `git checkout -f step-4`. Moving to step four will loose modifications you've made so far.
 
 ##Setup
 
