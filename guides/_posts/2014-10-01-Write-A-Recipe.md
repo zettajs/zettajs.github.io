@@ -60,6 +60,8 @@ Tips are rendered from `<blockquote>` elements. To make a tip, just start a line
 > This will render as a tip!
 ```
 
+In general, having more than one consecutive tip means that the information the tip is modifying should be modified. Try to write your recipe so that there is no more than one tip per paragraph or piece of preceeding information. 
+
 # Code
 
 All `code` used in recipes is written just like on github, with matched pairs of a single ` (backtick) for inline code, and four spaces at the beignning of a line or ``` (3+ backticks) for code fences. Code fences with language definitions will be highlighted using [highlight.js](https://highlightjs.org/) and the **monokai_sublime** theme. Here's an example:

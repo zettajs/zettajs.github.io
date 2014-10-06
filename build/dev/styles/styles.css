@@ -167,14 +167,15 @@ a:hover{text-decoration:underline}
 .page.docs article .page_content h1:nth-of-type(1){margin-top:0}
 .page.docs article .page_content h1:hover{background-image:url(../images/link.svg);cursor:pointer}
 .page.docs article .page_content h1:before{content:'';width:0;height:0;border:.38em solid transparent;border-top-width:0;position:relative;display:block;left:-3rem;top:3.1rem;-webkit-transform:rotate(45deg)}
-.page.docs article .page_content h2,.page.docs article .page_content h3,.page.docs article .page_content h4,.page.docs article .page_content h5,.page.docs article .page_content h6{font-weight:700;margin:1rem 0 1rem -2rem;padding:0 0 0 2rem;background-repeat:no-repeat;background-position:.5em center;background-size:1rem auto}
+.page.docs article .page_content h2,.page.docs article .page_content h3,.page.docs article .page_content h4,.page.docs article .page_content h5,.page.docs article .page_content h6{font-weight:700;margin:2rem 0 1rem -2rem;padding:0 0 0 2rem;background-repeat:no-repeat;background-position:.5em center;background-size:1rem auto}
 .page.docs article .page_content h2:hover,.page.docs article .page_content h3:hover,.page.docs article .page_content h4:hover,.page.docs article .page_content h5:hover,.page.docs article .page_content h6:hover{background-image:url(../images/link_dark.svg);cursor:pointer}
+.page.docs article .page_content h2{border-bottom:1px solid #ededed}
 .page.docs article .page_content dl{padding:1rem;color:#000;background-color:#f2f2f2;border-radius:.25rem}
 .page.docs article .page_content img{width:100%;max-width:30rem;height:auto;display:block}
 .page.docs article .page_content img.fritzing,.page.docs article .page_content img.zoom{padding:1rem;border:1px solid #e6e6e6;border-radius:.25rem;cursor:pointer}
 .page.docs article .page_content ol.steps,.page.docs article .page_content ul.steps{padding-top:1rem}
-.page.docs article .page_content ol.steps li,.page.docs article .page_content ul.steps li{margin-bottom:1rem}
-.page.docs article .page_content ol.steps li a:nth-of-type(1),.page.docs article .page_content ul.steps li a:nth-of-type(1){font-size:1.5rem}
+.page.docs article .page_content ol.steps li,.page.docs article .page_content ul.steps li{margin-bottom:1rem;font-size:1.4rem}
+.page.docs article .page_content ol.steps li li,.page.docs article .page_content ul.steps li li{font-size:1.2rem}
 .page.docs article .page_content blockquote{background-color:#f2f2f2;border-left:3px solid #1a98d5;padding:.25rem 1rem;margin-left:2rem;max-width:40rem;color:#000}
 .page.docs article .page_content code{border-radius:.25rem;color:#23241f;padding:.1rem .25rem 0;font-size:.8rem;line-height:1rem;background-color:#e6e6e6;font-family:fira-mono,courier,monospace}
 .page.docs article .page_content pre code{padding:1rem;margin-bottom:1rem;max-height:21.6rem;overflow:auto;color:#fff;background-color:#23241f}
