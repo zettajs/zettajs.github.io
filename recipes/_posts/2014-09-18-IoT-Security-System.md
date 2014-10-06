@@ -81,7 +81,7 @@ Cloud9 on the Beaglebone starts out in `/var/lib/cloud9/`, which is similar to t
 
 {::comment }
 
-  > You can optionally follow along without copying this recipe's code by stepping through this repos git history. Run `git checkout -f step-0` to get started down that path, otherwise just follow along.
+  > **list**{:.icon} You can optionally follow along without copying this recipe's code by stepping through this repos git history. Run `git checkout -f step-0` to get started down that path, otherwise just follow along.
 
 {:/comment}
 
@@ -95,7 +95,7 @@ Navigate to the folder for the repo you just cloned
 cd zetta-security-system
 ```
 
-Advance to **step-0**
+**list**{:.icon} Advance to **step-0**
 
 ```md
 git checkout -f step-0
@@ -142,7 +142,7 @@ Your hardware setup should look like this when you're done:
 
 Follow along to add code to your security system.
 
-> Don't want to type? Optionally add this section's code automatically by moving to step 1 in your git repo with `git checkout -f step-1`. Moving to step one will loose modifications you've made so far.
+> **list**{:.icon} Don't want to type? Optionally add this section's code automatically by moving to step 1 in your git repo with `git checkout -f step-1`. Moving to step one will loose modifications you've made so far.
 
 ## Retrieving The Driver
 
@@ -262,7 +262,7 @@ Your hardware setup should look something like this when you're done:
 
 Follow along to add code to your security system.
 
-> Don't want to type? Optionally add this section's code automatically by moving to step 2 in your git repo with `git checkout -f step-2`. Moving to step two will loose modifications you've made so far.
+> **list**{:.icon} Don't want to type? Optionally add this section's code automatically by moving to step 2 in your git repo with `git checkout -f step-2`. Moving to step two will loose modifications you've made so far.
 
 ## Retrieving The Driver
 
@@ -354,7 +354,7 @@ No new hardware in this section - we're going to create an interaction between t
 
 Follow along to add code to your security system.
 
-> Don't want to type? Optionally add this section's code automatically by moving to step 3 in your git repo with `git checkout -f step-3`. Moving to step three will loose modifications you've made so far.
+> **list**{:.icon} Don't want to type? Optionally add this section's code automatically by moving to step 3 in your git repo with `git checkout -f step-3`. Moving to step three will loose modifications you've made so far.
 
 ##Creating the app
 
@@ -502,7 +502,7 @@ Your hardware setup should look something like this when you're done:
 
 Follow along to add code to your security system.
 
-> Don't want to type? Optionally add this section's code automatically by moving to step 4 in your git repo with `git checkout -f step-4`. Moving to step four will loose modifications you've made so far.
+> **list**{:.icon} Don't want to type? Optionally add this section's code automatically by moving to step 4 in your git repo with `git checkout -f step-4`. Moving to step four will loose modifications you've made so far.
 
 ##Setup
 
