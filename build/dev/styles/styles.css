@@ -158,7 +158,7 @@ a:hover{text-decoration:underline}
 .page.docs #hero .meta .source,.page.docs #hero .meta .source a{color:#faa438}
 .page.docs #hero .tags{padding-left:0;margin:0}
 .page.docs #hero .tags li a{background-color:#fff;color:#faa438;padding:.1rem .5rem;margin-right:.25rem;font-size:.8rem;text-transform:uppercase}
-.page.docs article .page_content{width:90%;margin:0 auto;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;background-color:#fff;padding:1rem 2rem}
+.page.docs article .page_content{width:90%;margin:0 auto;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;background-color:#fff;padding:1rem 2rem;line-height:1.8rem}
 @media screen and (min-width:48.1em){.page.docs article .page_content{max-width:42rem}}
 @media screen and (min-width:64em){.page.docs article .page_content{max-width:56rem}}
 @media screen and (min-width:80em){.page.docs article .page_content{max-width:56rem}}
@@ -174,11 +174,12 @@ a:hover{text-decoration:underline}
 .page.docs article .page_content img{width:100%;max-width:30rem;height:auto;display:block}
 .page.docs article .page_content img.fritzing,.page.docs article .page_content img.zoom{padding:1rem;border:1px solid #e6e6e6;border-radius:.25rem;cursor:pointer}
 .page.docs article .page_content ol.steps,.page.docs article .page_content ul.steps{padding-top:1rem}
-.page.docs article .page_content ol.steps li,.page.docs article .page_content ul.steps li{margin-bottom:1rem;font-size:1.4rem}
+.page.docs article .page_content ol.steps li,.page.docs article .page_content ul.steps li{margin-bottom:.5rem;font-size:1.4rem}
 .page.docs article .page_content ol.steps li li,.page.docs article .page_content ul.steps li li{font-size:1.2rem}
 .page.docs article .page_content blockquote{background-color:#f2f2f2;border-left:3px solid #1a98d5;padding:.25rem 1rem;margin-left:2rem;max-width:40rem;color:#000}
 .page.docs article .page_content code{border-radius:.25rem;color:#23241f;padding:.1rem .25rem 0;font-size:.8rem;line-height:1rem;background-color:#e6e6e6;font-family:fira-mono,courier,monospace}
 .page.docs article .page_content pre code{padding:1rem;margin-bottom:1rem;max-height:21.6rem;overflow:auto;color:#fff;background-color:#23241f}
+.page.docs article .page_content p{max-width:35.5rem}
 .page.docs article .page_content .sfe-wish-list{border:0 solid transparent;border-top:2px solid #59595b;border-bottom:2px solid #59595b;max-width:30rem;font-family:jaf-facitweb,Helvetica,Arial,sans-serif;margin-bottom:2rem}
 .page.docs article .page_content .sfe-wish-list .sfe-title{display:none}
 .page.docs article .page_content .sfe-wish-list .sfe-inner{max-height:100rem}

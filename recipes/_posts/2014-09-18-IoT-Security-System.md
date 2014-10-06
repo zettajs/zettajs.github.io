@@ -26,7 +26,7 @@ repo: https://github.com/alanguir/zetta-security-system/
   * [Download the Starter Code](#download-the-starter-code)
   * [Following Along](#following-along)
   * [Install Zetta](#install-zetta)
-* [Add the Piezo Buzzer](#adding-the-piezo-buzzer)
+* [Add the Piezo Buzzer](#add-the-piezo-buzzer)
    * [Piezo Buzzer Hardware](#piezo-buzzer-hardware)
    * [Piezo Buzzer Code](#Piezo-buzzer-code)
    * [Interaction](#interaction)
