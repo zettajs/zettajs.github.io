@@ -1,6 +1,6 @@
 ---
 title: Internet of Things Hands-on Workshop
-layout: workshop
+layout: community
 ---
 
 Zetta's IoT workshop gives participants hands-on experience with the newest IoT hardware and software so that they can rapidly build compelling IoT applications.
