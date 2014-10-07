@@ -8,7 +8,7 @@ In this recipe, we will setup a sound detector, create an API for it and show ho
 
 We will also explore how to develop, test, stage and deploy the sensor into production in multiple, geo-distributed locations.
 
-![Sound Sensor Mockup]({{ site.url }}/images/sound_sensor_mock.jpg)
+![Sound Sensor Mockup](/images/sound_sensor_mock.jpg)
 
 ### Preparation Time Estimates
 
@@ -57,7 +57,7 @@ Zetta projects typically include apps and devices. The file structure looks like
 
 ### Install Zetta
 
-Install Zetta and prerequisites, see [Zetta Installation]({% post_url 2014-06-04-installation %}).
+Install Zetta and prerequisites, see [Zetta Installation]().
 
 ### Write Device Driver
 
