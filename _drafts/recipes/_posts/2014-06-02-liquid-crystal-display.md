@@ -6,7 +6,7 @@ layout: recipe
 
 This is a liquid crystal display.
 
-![LCD Mockup]({{ site.url }}/images/lcd_mockup.jpg)
+![LCD Mockup](/images/lcd_mockup.jpg)
 
 ### Preparation Time Estimates
 
@@ -46,7 +46,7 @@ Zetta projects typically include apps and devices. The file structure looks like
 
 ### Install Zetta
 
-Install Zetta and prerequisites, see [Zetta Installation]({% post_url 2014-06-04-installation %}).
+Install Zetta and prerequisites, see [Zetta Installation]().
 
 ### Write Device Driver
 

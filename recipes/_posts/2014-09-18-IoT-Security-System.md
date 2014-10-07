@@ -20,30 +20,30 @@ repo: https://github.com/alanguir/zetta-security-system/
 
 # Recipe Steps
 
-* Setup
+1. Setup
   * [Materials](#materials)
   * [BeagleBone Setup](#beaglebone-setup)
   * [Download the Starter Code](#download-the-starter-code)
   * [Following Along](#following-along)
   * [Install Zetta](#install-zetta)
-* [Add the Piezo Buzzer](#add-the-piezo-buzzer)
+2. [Add the Piezo Buzzer](#add-the-piezo-buzzer)
    * [Piezo Buzzer Hardware](#piezo-buzzer-hardware)
    * [Piezo Buzzer Code](#Piezo-buzzer-code)
    * [Interaction](#interaction)
-* [Add the microphone](#add-the-microphone)
+3. [Add the microphone](#add-the-microphone)
   * [Microphone Hardware](#microphone-hardware)
   * [Microphone Code](#microphone-code)
   * [Interaction](#interaction-1)
-* [Creating the Security App](#creating-the-security-app)
+4. [Creating the Security App](#creating-the-security-app)
   * [Security App Code](#security-app-code)
   * [Load your app when zetta runs](#load-your-app-when-zetta-runs)
   * [Interaction](#interaction-2)
-* [Turn On The Lights](#turn-on-the-lights)
+5. [Turn On The Lights](#turn-on-the-lights)
   * [Light Hardware](#light-hardware)
   * [Light Code](#light-code)
   * [Interaction](#interaction-3)
-* [Next Steps](#next-steps)
-* [Getting Help](#getting-help)
+6. [Next Steps](#next-steps)
+7. [Getting Help](#getting-help)
 {:.steps}
 
 # Materials
@@ -76,13 +76,14 @@ Clone [this example repo](https://github.com/alanguir/zetta-security-system/) to
 git clone https://github.com/alanguir/zetta-security-system.git
 ```
 
-![Cloud9 Splash Screen](/images/recipes/security_system/screens/bash_callout.png){:.zoom}
-
 Cloud9 on the Beaglebone starts out in `/var/lib/cloud9/`, which is similar to the user or home directory on your computer. After cloning your repo, you should have a folder at `/var/lib/cloud9/zetta-security-system`, which is where everything else will go for this recipe.
 
   > **TIP**
   > Make sure you run all commands in the BeagleBone's terminal in your browser from the Cloud9 IDE. Do not do this from your regular terminal on your computer.
+  > ![Cloud9 Splash Screen](/images/recipes/security_system/screens/bash_callout.png){:.zoom}
   
+  
+{::comment}
 # Following Along
 
 The repo you just cloned has tagged commits that allow you to automatically get your code to the same point as it would have been after following each recipe section. Follow these steps on your BeagleBone to get to the beginning of the recipe:
@@ -98,6 +99,7 @@ Advance to **step-0**
 ```md
 git checkout -f step-0
 ```
+{:/comment}
 
 # Install Zetta
 
@@ -110,7 +112,7 @@ npm install
 > **TIP**
 > Running `npm install` can take several minutes due to the low speed of the BeagleBone's built in flash memory. It's OK to move ahead with connecting hardware while you wait for this to complete.
 
-# Add the Piezo Buzzer
+# 2. Add the Piezo Buzzer
 
 The Piezo Buzzer is for making noise, and will function as the sound component of our alarm. The buzzer will get us going with the basics of Zetta. 
 
@@ -140,8 +142,12 @@ Your hardware setup should look like this when you're done:
 
 Follow along to add code to your security system.
 
+{::comment}
+
 > **list**{:.icon} **Step**
 > Don't want to type? Optionally add this section's code automatically by moving to step 1 in your git repo with `git checkout -f step-1`. Moving to step one will loose modifications you've made so far.
+
+{:/comment}
 
 ## Retrieving The Driver
 
@@ -194,15 +200,18 @@ Save changes to `server.js` and start your server by running the following in yo
 node server.js
 ```
 
-When Zetta successfully connects to the piezo buzzer, you will see a log message that looks like this:
+When Zetta successfully connects to the piezo buzzer, you will see a log message that looks something like this:
 
 ```bash
 Zetta is running at http://beaglebone.local:1337
-[timestamp] [scout] Device (buzzer) SOME-GUID was provisioned from registry
+TIMESTAMP [scout] Device (buzzer) SOME-GUID was provisioned from registry
 ```
 
+  * TIMESTAMP will be the time the log was generated
+  * SOME-GUID will be a 32 digit globally uniqe id.
+
 > **TIP**
-> It can take up to 20 seconds for the BeagleBone to load and run the zetta node. You'll know you're ready once you see "Zetta is running at..." show up in your console.
+> It can take up to 20 seconds for the BeagleBone to load and run the zetta node. You'll know you're ready once you see zetta's log messages showing up in your Cloud9 console.
 
 #Interaction
 
@@ -236,7 +245,7 @@ This view has lots of extra details about our Pieze Buzzer, including it's fully
 
 We just got zetta up and running! We installed a device in software, physically connected it, and controlled it's behavior with the zetta browser which uses the API zetta constructed for us. Not too shabby for 4 terminal commands and 5 lines of javascript. The Internet of Things is bending to your will already.
 
-#Add the microphone
+# 3. Add the microphone
 
 Next up is our microphone sensor. This will detect the sound of possible intruders, and serve as another characterisitic that we can use to trigger our alarm. In this section connect another device, and learn how to view it's streaming data in the zetta browser.
 
@@ -261,8 +270,12 @@ Your hardware setup should look something like this when you're done:
 
 Follow along to add code to your security system.
 
+{::comment}
+
 > **list**{:.icon} **Step**
 > Don't want to type? Optionally add this section's code automatically by moving to step 2 in your git repo with `git checkout -f step-2`. Moving to step two will loose modifications you've made so far.
+
+{:/comment}
 
 ## Retrieving The Driver
 
@@ -342,7 +355,7 @@ Now click on the device name `Microphone` in the zetta browser to get a more det
 
 We connected another device to our growing security system. This one, a microphone, produces streaming data. This causes us to see a different type of visualization in the zetta browser, and changes its API to reference a websocket monitor.
 
-# Creating the Security App
+# 4. Creating the Security App
 
 In this section you'll learn about creating an app in Zetta. You'll also learn about streaming sensor data values, and taking advantage of those readings in your Zetta app.
 
@@ -354,8 +367,12 @@ No new hardware in this section - we're going to create an interaction between t
 
 Follow along to add code to your security system.
 
+{::comment}
+
 > **list**{:.icon} **Step**
 > Don't want to type? Optionally add this section's code automatically by moving to step 3 in your git repo with `git checkout -f step-3`. Moving to step three will loose modifications you've made so far.
+
+{:/comment}
 
 ##Creating the app
 
@@ -365,8 +382,12 @@ Follow along to add code to your security system.
 
 Now double-click on the new `app.js` file in your Cloud9 IDE so we can edit it and add functionality.
 
+{::comment}
+
 > **TIP**
 > You may have to refresh the file tree in the Cloud9 IDE to see the `apps` folder creating by checking out step-3. You can do that by Right/CTRL clicking on the file pane and selecting  `Refresh` from the contextual menu.
+
+{:/comment}
 
 2 - The first component of our app is an export statement. This is so that we can keep our apps modular and separated from the rest of our code. Edit `app.js` so it looks like this:
 
@@ -478,7 +499,7 @@ We wrote an app to coordinate actions between devices connected to zetta. The ap
 
 
 
-# Turn on the Lights
+# 5. Turn on the Lights
 
 In this next section, we're going to add an LED to our security system. To do this, we'll take you through writing your own driver. Drivers use a state machine model to represent devices in Zetta. Being able to write your own drivers in Zetta will be key to expanding your IoT system to include any devices that you want.
 
@@ -503,8 +524,12 @@ Your hardware setup should look something like this when you're done:
 
 Follow along to add code to your security system.
 
+{::comment}
+
 > **list**{:.icon} **Step**
 > Don't want to type? Optionally add this section's code automatically by moving to step 4 in your git repo with `git checkout -f step-4`. Moving to step four will loose modifications you've made so far.
+
+{:/comment}
 
 ##Setup
 
@@ -743,13 +768,13 @@ The LED light has become another part of our security system. We interact with i
 
 Devices in zetta are described completely in javascript. This means that there are no configuration files to keep track of - logic can go right into the state machines when you describe them! We described a state machine for an LED, added it to our app and told zetta to look for it. 
 
-#Next Steps
+# 6. Next Steps
 
 1. Wire up our Twilio Driver to send a text message when the movement is detected!
 2. Replace the LED with WeMo to control a real light!
 3. Build an app to consume your new API!
 
-#Getting Help
+# 7. Getting Help
 
 If you're going through this project, and run into an issue feel free to use these methods to reach out and contact us!
 
