@@ -26,14 +26,14 @@ repo: http://github.com/zettajs/zetta-hello-world
 2. [Add the LED](#add-the-led)
   * [LED code](#led-code)
   * [Interaction](#interaction-1)
-3. [Add the Sine Wave Generator](#sine-wave-generator)
-  * [Sine Wave Generator Code](#generator-code)
+3. [Add the Sine Wave Generator](#add-the-sine-wave-generator)
+  * [Sine Wave Generator Code](#sine-wave-generator-code)
   * [Interaction](#interaction-2)
-4. [Link Zetta](#link)
+4. [Link Zetta](#link-zetta)
   * [Link code](#link-code)
   * [Interaction](#interaction-3)
-5. [Creating the app](#interactions)
-  * [Creating app code](#app-code)
+5. [Creating the app](#creating-the-app)
+  * [Creating app code](#creating-app-code)
   * [Interaction](#interaction-4)
 6. [Next Steps](#next-steps)
 7. [Getting Help](#getting-help)
@@ -197,8 +197,6 @@ Follow along to add code to your security system.
 
 > **list**{:.icon} **Step**
 > Don't want to type? Optionally add this section's code automatically by moving to step 2 in your git repo with `git checkout -f step-2`. Moving to step two will loose modifications you've made so far.
-
-{:/comment}
 
 ## Retrieving The Driver
 
