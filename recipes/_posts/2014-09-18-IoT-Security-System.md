@@ -210,6 +210,8 @@ TIMESTAMP [scout] Device (buzzer) SOME-GUID was provisioned from registry
   * TIMESTAMP will be the time the log was generated
   * SOME-GUID will be a 32 digit globally uniqe id.
 
+![The terminal after running server.js for the first time](/images/recipes/security_system/screens/running_zetta.png){:.zoom}
+
 > **TIP**
 > It can take up to 20 seconds for the BeagleBone to load and run the zetta node. You'll know you're ready once you see zetta's log messages showing up in your Cloud9 console.
 
@@ -223,27 +225,31 @@ Now the moment you've been waiting for...buzzing that buzzer! To do this, we'll 
 
 It only takes a few seconds to connect. Once you do, you will see something like this:
 
-![Zetta Browser with Piezo Attached](/images/recipes/security_system/zetta-browser-piezo.png){:.zoom}
+![Zetta Browser with Piezo Attached](/images/recipes/security_system/screens/browser-piezo.png){:.zoom}
+
+{::comment} > Not connecting? See our [Zetta Browser Guide](/guides/zetta-browser.html) {:/comment}
 
 Click the __beep__ button to make your buzzer beep!
 
 > If you don't hear any beeping, double check your wiring and make sure there were no errors when you started up zetta!
 
-In Zetta every device gets an API automatically generated for it. Our API will represents the device in it's current state and the actions that can be taken on it. We use a special hypermedia type known as [Siren](http://sirenspec.org/) to represent devices and servers. You can see a response from your API now by clicking on "buzzer" in the zetta browser, and scrolling down to the API section.
-
 ## The Buzzer's API
 
-You can dig in a little deeper to the zetta browser by clicking on the name of a device. In this case, click on the word "Buzzer". You'll be taken to a detail page that looks something like this: 
+In Zetta every device gets an API automatically generated for it. Our API represents the device in it's current state and the actions that can be taken on it. We use a special hypermedia type known as [Siren](http://sirenspec.org/) to represent devices and servers. You can see a response from your API now by clicking on "buzzer" in the zetta browser.
 
-![Piezo Buzzer Detail Page](img.jpg)
+![Piezo Buzzer Detail Page](/images/recipes/security_system/screens/browser-piezo-show.png){:.zoom}
 
-This view has lots of extra details about our Pieze Buzzer, including it's fully API! Scroll down in the zetta browser to see the API request & response that generated the detail page!
+This view has lots of extra details about our Pieze Buzzer, including it's full API response. Scroll down in the zetta browser to see the API request & response that generated this very detail page.
+
+{::comment}
 
 > Learn more about zetta's device API by reading the [Device API Tour](/guides/device-api-tour) guide
 
+{:/comment}
+
 ##What just happened?!
 
-We just got zetta up and running! We installed a device in software, physically connected it, and controlled it's behavior with the zetta browser which uses the API zetta constructed for us. Not too shabby for 4 terminal commands and 5 lines of javascript. The Internet of Things is bending to your will already.
+We just got zetta up and running! We installed a device in software, physically connected it, and controlled it's behavior with the zetta browser - which uses the API zetta constructed for us. Not too shabby for 4 terminal commands and 5 lines of javascript. The Internet of Things is bending to your will already.
 
 # 3. Add the microphone
 
