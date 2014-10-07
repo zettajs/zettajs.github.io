@@ -7,10 +7,10 @@ duration: 1-3 hours
 description: >
   This recipe will guide you through building
   an IoT Security system using Zetta. In it,
-  we'll cover all the basic concepts of zetta.
+  we'll cover all the basic concepts of Zetta.
   It's for someone getting their hands dirty with
-  zetta for the first time, or someone looking for
-  a basic implementation of zetta to start hacking on.
+  Zetta for the first time, or someone looking for
+  a basic implementation of Zetta to start hacking on.
   We won't be replacing any professional
   security systems just yet, but it's a start.
 repo: https://github.com/alanguir/zetta-security-system/
@@ -36,7 +36,7 @@ repo: https://github.com/alanguir/zetta-security-system/
   * [Interaction](#interaction-1)
 4. [Creating the Security App](#creating-the-security-app)
   * [Security App Code](#security-app-code)
-  * [Load your app when zetta runs](#load-your-app-when-zetta-runs)
+  * [Load your app when Zetta runs](#load-your-app-when-zetta-runs)
   * [Interaction](#interaction-2)
 5. [Turn On The Lights](#turn-on-the-lights)
   * [Light Hardware](#light-hardware)
@@ -118,7 +118,7 @@ The Piezo Buzzer is for making noise, and will function as the sound component o
 
 # Piezo Buzzer Hardware
 
-We need to attach our buzzer to our BeagleBone so zetta can control it. Connect your hardware like this:
+We need to attach our buzzer to our BeagleBone so Zetta can control it. Connect your hardware like this:
 
 ![Piezo Hookup Diagram](/images/recipes/security_system/hookup_diagram_step_1.png){:.fritzing}
 
@@ -213,13 +213,13 @@ TIMESTAMP [scout] Device (buzzer) SOME-GUID was provisioned from registry
 ![The terminal after running server.js for the first time](/images/recipes/security_system/screens/running_zetta.png){:.zoom}
 
 > **TIP**
-> It can take up to 20 seconds for the BeagleBone to load and run the zetta node. You'll know you're ready once you see zetta's log messages showing up in your Cloud9 console.
+> It can take up to 20 seconds for the BeagleBone to load and run the Zetta node. You'll know you're ready once you see Zetta's log messages showing up in your Cloud9 console.
 
 #Interaction
 
 ##Make it Beep!
 
-Now the moment you've been waiting for...buzzing that buzzer! To do this, we'll point the zetta browser to the zetta server node that's running on the BeagleBone.
+Now the moment you've been waiting for...buzzing that buzzer! To do this, we'll point the Zetta browser to the Zetta server node that's running on the BeagleBone.
 
 > View your app in the [Zetta Browser](http://browser.zettajs.io/#/overview?url=http:%2F%2Fbeaglebone.local:1337)
 
@@ -227,33 +227,29 @@ It only takes a few seconds to connect. Once you do, you will see something like
 
 ![Zetta Browser with Piezo Attached](/images/recipes/security_system/screens/browser-piezo.png){:.zoom}
 
-{::comment} > Not connecting? See our [Zetta Browser Guide](/guides/zetta-browser.html) {:/comment}
+> Not connecting? See our [Zetta Browser Guide](/guides/zetta-browser.html)
 
 Click the __beep__ button to make your buzzer beep!
 
-> If you don't hear any beeping, double check your wiring and make sure there were no errors when you started up zetta!
+> If you don't hear any beeping, double check your wiring and make sure there were no errors when you started up Zetta!
 
 ## The Buzzer's API
 
-In Zetta every device gets an API automatically generated for it. Our API represents the device in it's current state and the actions that can be taken on it. We use a special hypermedia type known as [Siren](http://sirenspec.org/) to represent devices and servers. You can see a response from your API now by clicking on "buzzer" in the zetta browser.
+In Zetta every device gets an API automatically generated for it. Our API represents the device in it's current state and the actions that can be taken on it. We use a special hypermedia type known as [Siren](http://sirenspec.org/) to represent devices and servers. You can see a response from your API now by clicking on "buzzer" in the Zetta browser.
 
 ![Piezo Buzzer Detail Page](/images/recipes/security_system/screens/browser-piezo-show.png){:.zoom}
 
-This view has lots of extra details about our Pieze Buzzer, including it's full API response. Scroll down in the zetta browser to see the API request & response that generated this very detail page.
+This view has lots of extra details about our Pieze Buzzer, including it's full API response. Scroll down in the Zetta browser to see the API request & response that generated this very detail page.
 
-{::comment}
-
-> Learn more about zetta's device API by reading the [Device API Tour](/guides/device-api-tour) guide
-
-{:/comment}
+> Learn more about Zetta's device API by reading the [Device API Tour](/guides/device-api-tour) guide
 
 ##What just happened?!
 
-We just got zetta up and running! We installed a device in software, physically connected it, and controlled it's behavior with the zetta browser - which uses the API zetta constructed for us. Not too shabby for 4 terminal commands and 5 lines of javascript. The Internet of Things is bending to your will already.
+We just got Zetta up and running! We installed a device in software, physically connected it, and controlled it's behavior with the Zetta browser - which uses the API Zetta constructed for us. Not too shabby for 4 terminal commands and 5 lines of javascript. The Internet of Things is bending to your will already.
 
 # 3. Add the microphone
 
-Next up is our microphone sensor. This will detect the sound of possible intruders, and serve as another characterisitic that we can use to trigger our alarm. In this section connect another device, and learn how to view it's streaming data in the zetta browser.
+Next up is our microphone sensor. This will detect the sound of possible intruders, and serve as another characterisitic that we can use to trigger our alarm. In this section connect another device, and learn how to view it's streaming data in the Zetta browser.
 
 #Microphone Hardware
 
@@ -291,7 +287,7 @@ In the Cloud9 IDE on yor BeagleBone, run this command:
 npm install zetta-microphone-bonescript-driver --save
 ```
 
-> Note the `--save` switch at the end of the command. This will add `zetta-microphone-bonescript-driver` to your dependancy list in `package.json`
+> Note the `--save` switch at the end of the command. This will add `Zetta-microphone-bonescript-driver` to your dependancy list in `package.json`
 
 > **TIP**
 > Make sure you're in the right project folder on the BeagleBone when you try to run this command. The Cloud9 command prompt should look like this after you type in the command:
@@ -323,12 +319,12 @@ We added two lines to our `server.js` file.
 var Microphone = require('zetta-microphone-bonescript-driver');
 ```
 
-This includes the driver we just installed so that it's available to zetta.
+This includes the driver we just installed so that it's available to Zetta.
 
 ```javascript
 .use(Microphone, 'P9_36')
 ```
-This instructs zetta to use the `Microphone` driver, and to look for a device that uses that driver on pin `P9_36`.
+This instructs Zetta to use the `Microphone` driver, and to look for a device that uses that driver on pin `P9_36`.
 
 
 #Interaction
@@ -341,28 +337,28 @@ Save changes to `server.js` and start your server by running this in your Cloud9
 
 > If your server was still running from before, make sure to shut it down by pressing **CMD+C** before retyping the command above
 
-This time zetta will log two messages, one for each device that connects:
+This time Zetta will log two messages, one for each device that connects:
 
 ![Running Your Server](/images/recipes/security_system/screens/c9_two_devices.png){:.zoom}
 
 > **TIP**
-> It can take up to 20 seconds for the BeagleBone to load and run the zetta node. You'll know you're ready once you see "Zetta is running on..." show up in your console.
+> It can take up to 20 seconds for the BeagleBone to load and run the Zetta node. You'll know you're ready once you see "Zetta is running on..." show up in your console.
 
 ## Monitor the values
 
-Once again, we need to point the zetta browser to the zetta server node that's running on the BeagleBone.
+Once again, we need to point the Zetta browser to the Zetta server node that's running on the BeagleBone.
 
 > View your app in the [Zetta Browser](http://browser.zettajs.io/#/overview?url=http:%2F%2Fbeaglebone.local:1337)
 
 ![Zetta Browser root with Microphone](/images/recipes/security_system/screens/browser-microphone.png){:.zoom}
 
-Now click on the device name `Microphone` in the zetta browser to get a more detailed view of the device. Try making noise or tapping on the microphone to see the waveform change in real time.
+Now click on the device name `Microphone` in the Zetta browser to get a more detailed view of the device. Try making noise or tapping on the microphone to see the waveform change in real time.
 
 ![Zetta Browser root with Microphone](/images/recipes/security_system/zetta-browser-microphone-show.png){:.zoom}
 
 ## What just happened?!
 
-We connected another device to our growing security system. This one, a microphone, produces streaming data. This causes us to see a different type of visualization in the zetta browser, and changes its API to reference a websocket monitor.
+We connected another device to our growing security system. This one, a microphone, produces streaming data. This causes us to see a different type of visualization in the Zetta browser, and changes its API to reference a websocket monitor.
 
 # 4. Creating the Security App
 
@@ -381,7 +377,7 @@ Follow along to add code to your security system.
 
 ##Creating the app
 
-1 - Apps in zetta allow us to orchestrate interactions between devices. To create one, make a new file in your project's `apps` folder:
+1 - Apps in Zetta allow us to orchestrate interactions between devices. To create one, make a new file in your project's `apps` folder:
 
     mkdir apps
     touch apps/app.js
@@ -452,7 +448,7 @@ module.exports = function(server) {
 }
 ```
 
-# Load your app when zetta runs
+# Load your app when Zetta runs
 
 After you're done writing your app, you need to make sure it's included in your server file. Update `server.js` to look like so:
 
@@ -487,27 +483,27 @@ Line 10, the third `.use()` function can determine what type of module you pass 
 .use(app)
 ```
 
-You must both `require` your `app.js` file, and `use()` it in order for zetta to execute it at runtime.
+You must both `require` your `app.js` file, and `use()` it in order for Zetta to execute it at runtime.
 
 #Interaction
 
 ## Running the Server Node
 
-Save your code, and rerun zetta with `node server.js`. Now lets head back over to the zetta browser to see this new interaciton at work. The browser should look just as it did before:
+Save your code, and rerun Zetta with `node server.js`. Now lets head back over to the Zetta browser to see this new interaciton at work. The browser should look just as it did before:
 
 ![Zetta Browser root with Microphone](/images/recipes/security_system/screens/browser-microphone-2.png){:.zoom}
 
 ##Make it Beep! (Again!)
 
-Just like before, pressing the `beep` in the zetta browser button will cause your piezo buzzer to make sound. Click on the `microphone` device to show the detail view, and make a loud noise (like a clap), or just tap on the top of the microphone. Whenever you see a spike in the graph, you should also hear the piezo buzzer sound.
+Just like before, pressing the `beep` in the Zetta browser button will cause your piezo buzzer to make sound. Click on the `microphone` device to show the detail view, and make a loud noise (like a clap), or just tap on the top of the microphone. Whenever you see a spike in the graph, you should also hear the piezo buzzer sound.
 
 ![Zetta Browser root with Microphone](/images/recipes/security_system/screens/browser-microphone-interaction.png){:.zoom}
 
 ## What just happened?!
 
-We wrote an app to coordinate actions between devices connected to zetta. The app used zetta queries to find devices registered to our node, and `server.observe()` to guarantee the devices were available before trying to run logic that included them.
+We wrote an app to coordinate actions between devices connected to Zetta. The app used Zetta queries to find devices registered to our node, and `server.observe()` to guarantee the devices were available before trying to run logic that included them.
 
-Specifically, we told zetta to watch the volume `stream` of our microphone, and to trigger `turn-on-pulse` for the piezzo device when the microphone's volume goes above `20`.
+Specifically, we told Zetta to watch the volume `stream` of our microphone, and to trigger `turn-on-pulse` for the piezzo device when the microphone's volume goes above `20`.
 
 # 5. Turn on the Lights
 
@@ -576,7 +572,7 @@ Now we'll create our state machine for use in Zetta. When drawn out with state m
 
 According to the diagram when our LED is `off` it can only transition to the `on` state, and conversely when the state is `on` it can only transition to `off`.
 
-Our driver will have 4 major parts, all dictated by zetta:
+Our driver will have 4 major parts, all dictated by Zetta:
 
   * Dependencies
   * The constructor function
@@ -720,7 +716,7 @@ Led.prototype.toggle = function(cb) {
 
 ## The Zetta Server
 
-We need to tell zetta about our custom device. To do that, we require the LED device and pass it into another `.use()` function, similar to the modules we've already used (lines 4 and 11):
+We need to tell Zetta about our custom device. To do that, we require the LED device and pass it into another `.use()` function, similar to the modules we've already used (lines 4 and 11):
 
 ```javascript
 var zetta = require('zetta');
@@ -769,21 +765,17 @@ module.exports = function(server) {
 
 ## Running the Server Node
 
-Now's the time to test our fully featured security system. Head back to Cloud9's terminal and run your zetta server:
+Now's the time to test our fully featured security system. Head back to Cloud9's terminal and run your Zetta server:
 
     node server.js
 
 > View your app in the [Zetta Browser](http://browser.zettajs.io/#/overview?url=http:%2F%2Fbeaglebone.local:1337)
 
-As you can see, the LED is now another device that we can interact with in the zetta browser. 
+As you can see, the LED is now another device that we can interact with in the Zetta browser. 
 
-![The LED is now visible in the zetta browser](/images/recipes/security_system/screens/browser-led.png){:.zoom}
+![The LED is now visible in the Zetta browser](/images/recipes/security_system/screens/browser-led.png){:.zoom}
 
-{::comment}
-
-By now, you should also be able to notice the colored bars near the top of the streen in the zetta browser. This is called zetta's "Wampum Belt", and you can read more about that in our [Zetta Browser Guide](/guides/zetta-browser.html#wampum-belt).
-
-{:/comment}
+By now, you should also be able to notice the colored bars near the top of the streen in the Zetta browser. This is called Zetta's "Wampum Belt", and you can read more about that in our [Zetta Browser Guide](/guides/zetta-browser.html#wampum-belt).
 
 ## Make it beep AND light up
 
@@ -791,7 +783,7 @@ The LED light has become another part of our security system. We can interact wi
 
 ## What just happened?!
 
-We described a state machine for an LED, and added it to our server. We also queried for this custom device in our app, and added it to the list of interactions that get triggered when our sound alarm is triggered. Devices in zetta are described completely in javascript. This means that there are no configuration files to keep track of - logic can go right into the state machines when you describe them! 
+We described a state machine for an LED, and added it to our server. We also queried for this custom device in our app, and added it to the list of interactions that get triggered when our sound alarm is triggered. Devices in Zetta are described completely in javascript. This means that there are no configuration files to keep track of - logic can go right into the state machines when you describe them! 
 
 # 6. Next Steps
 

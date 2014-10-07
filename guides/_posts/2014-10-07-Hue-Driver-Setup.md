@@ -4,8 +4,9 @@ title: Getting started with zetta-hue-driver
 description: >
   This guide will take you through the steps 
   of getting started with Phillips Hue on Zetta
-published: false
 ---
+
+> This article could use your help. 
 
 Philips hue is a personal wireless lighting system...
 
