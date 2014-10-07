@@ -1,6 +1,6 @@
 ---
 layout: recipe
-title: Heartbeat Sample
+title: Hello World
 author: Adam Magaluk
 difficulty: beginner
 ---
@@ -9,18 +9,17 @@ The following documentation will guide you through how to build the basic "Hello
 
 #Pre-reqs
 
-Before you begin, you'll need to do the following: 
+Before you begin, you'll need to do the following:
 
-  > 1. Have Zetta and Node.js installed. See [installation instructions](#) if you need to do this. 
+  > 1. Have Zetta and Node.js installed. See [installation instructions](#) if you need to do this.
   > 2. [**download**{:.icon} Download](https://github.com/zettajs/zetta-heartbeat-sample) this recipe's source code
 
 #Recipe Steps
 
 1. [The LED](#the-led)
    Develop a state machine model for our mock LED
-2. [Heartbeat Sensor](#heartbeat-sensor)
-   The heartbeat sensor should look similar to the LED in the previous step. However, instead of actions it has a web socket link for streaming
-pulse data.
+2. [Sine Wave Generator](#sine-wave-generator)
+   The sine wave device outputs a sine wave
 3. [Interactions](#interactions)
    How to use queries, interact with streams, and call actions on devices
 4. [Next Steps](#next-steps)
@@ -264,11 +263,11 @@ Above is the actual full representation of the Zetta device.
 The Zetta team has actually created an API browser that will easily consume this API. Open a new tab in your web browser and navigate to
 http://browser.zettajs.io/. Here we can interact and crawl the API with a convenient, and well designed user interface.
 
-Simply input your server endpoint http://0.0.0.0:1337/ and you should be automatically directed to your LED! 
+Simply input your server endpoint http://0.0.0.0:1337/ and you should be automatically directed to your LED!
 
-#2. Heartbeat Sensor
+#2. Sine Wave
 
-Here we'll add our Heartbeat sensor. We'll go over how to add an additional device, and what benefits sensors have in Zetta.
+Here we'll add our Sine Wave generator. We'll go over how to add an additional device, and what benefits streams have in Zetta.
 
 ##Contents
 
@@ -281,7 +280,7 @@ Here we'll add our Heartbeat sensor. We'll go over how to add an additional devi
 Again we'll use the npm command to retrieve the driver. Type the following into your command line.
 
 ```
-$ npm install zetta-mock-heartbeat-sensor
+$ npm install zetta-sine-wave
 ```
 
 ###Adding Code to the Server
@@ -291,11 +290,11 @@ Next we'll add our device to the server. Update your `server.js` file to look li
 ```javascript
 var zetta = require('zetta');
 var LED = require('zetta-mock-led');
-var Heartbeat = require('zetta-mock-heartbeat-sensor');
+var SineWave = require('zetta-sine-wave');
 
 zetta()
   .use(LED)
-  .use(Heartbeat)
+  .use(SineWave)
   .listen(1337);
 ```
 
@@ -303,7 +302,7 @@ After that run your server with the `node server.js` command.
 
 ###API and Browser
 
-Again, Zetta has generated an API repsone for all the devices we want to use. Here is a sample heartbeat sensor API response.
+Again, Zetta has generated an API response for all the devices we want to use. Here is a sample heartbeat sensor API response.
 
 ```json
 {
@@ -311,11 +310,10 @@ Again, Zetta has generated an API repsone for all the devices we want to use. He
     "device"
   ],
   "properties": {
-    "pulse": 62,
-    "id": "7ae5a550-2594-47a2-af3f-90a3e7a8d1bf",
-    "type": "heartbeat",
-    "name": null,
-    "state": null
+    "id": "c5352e47-7a77-485e-8c0f-065ebd9c6f5e",
+    "wave": -0.4999,
+    "type": "generator",
+    "name": "SineWave"
   },
   "actions": null,
   "links": [
@@ -323,7 +321,7 @@ Again, Zetta has generated an API repsone for all the devices we want to use. He
       "rel": [
         "self"
       ],
-      "href": "http://0.0.0.0:1337/servers/b4984382-4776-43ca-8d9d-329eb571f773/devices/7ae5a550-2594-47a2-af3f-90a3e7a8d1bf"
+      "href": "http://0.0.0.0:1337/servers/b4984382-4776-43ca-8d9d-329eb571f773/devices/c5352e47-7a77-485e-8c0f-065ebd9c6f5e"
     },
     {
       "rel": [
@@ -333,20 +331,12 @@ Again, Zetta has generated an API repsone for all the devices we want to use. He
       "href": "http://0.0.0.0:1337/servers/b4984382-4776-43ca-8d9d-329eb571f773"
     },
     {
-      "title": "state",
+      "title": "wave",
       "rel": [
         "monitor",
         "http://rels.zettajs.io/object-stream"
       ],
-      "href": "ws://0.0.0.0:1337/servers/b4984382-4776-43ca-8d9d-329eb571f773/events?topic=heartbeat%2F7ae5a550-2594-47a2-af3f-90a3e7a8d1bf%2Fstate"
-    },
-    {
-      "title": "pulse",
-      "rel": [
-        "monitor",
-        "http://rels.zettajs.io/object-stream"
-      ],
-      "href": "ws://0.0.0.0:1337/servers/b4984382-4776-43ca-8d9d-329eb571f773/events?topic=heartbeat%2F7ae5a550-2594-47a2-af3f-90a3e7a8d1bf%2Fpulse"
+      "href": "ws://0.0.0.0:1337/servers/b4984382-4776-43ca-8d9d-329eb571f773/events?topic=generator%2Fc5352e47-7a77-485e-8c0f-065ebd9c6f5e%2Fwave"
     },
     {
       "title": "logs",
@@ -354,17 +344,18 @@ Again, Zetta has generated an API repsone for all the devices we want to use. He
         "monitor",
         "http://rels.zettajs.io/object-stream"
       ],
-      "href": "ws://0.0.0.0:1337/servers/b4984382-4776-43ca-8d9d-329eb571f773/events?topic=heartbeat%2F7ae5a550-2594-47a2-af3f-90a3e7a8d1bf%2Flogs"
+      "href": "ws://0.0.0.0:1337/servers/b4984382-4776-43ca-8d9d-329eb571f773/events?topic=generator%2Fc5352e47-7a77-485e-8c0f-065ebd9c6f5e%2Flogs"
     }
   ]
 }
+
 ```
 
-The heartbeat sensor should look similar to the LED in the previous step. However, instead of actions it has a web socket link for streaming
-pulse data. This link can be accessed with the web socket link with the title `"pulse"`. Now let's open our browser, and take a look at our new device.
+The sine wave generator should look similar to the LED in the previous step. However, instead of actions it has a web socket link for streaming
+sine wave data. This link can be accessed with the web socket link with the title `"wave"`. Now let's open our browser, and take a look at our new device.
 
-After opening the browser you should see that we have our LED like before, and now we have our heartbeat sensor as well. The browser will also auto subscribe
-to any sensor streams coming from the API. You should see data in real time updating in the browser!
+After opening the browser you should see that we have our LED like before, and now we have our sine wave generator as well. The browser will also auto subscribe
+to any data streams coming from the API. You should see data in real time updating in the browser!
 
 #3. Interactions
 
@@ -389,12 +380,12 @@ After our app file is created we'll need to put the following code into it.
 
 ```javascript
 module.exports = function(server) {
-  var heartbeatQuery = server.where({type: 'heartbeat'});
+  var generatorQuery = server.where({type: 'generator'});
   var ledQuery = server.where({type: 'led'});
 
-  server.observe([heartbeatQuery, ledQuery], function(heartbeat, led){
-    heartbeat.streams.pulse.on('data', function(message){
-      if(message.data > 65) {
+  server.observe([generatorQuery, ledQuery], function(generator, led){
+    generator.streams.wave.on('data', function(message){
+      if(message.data > 0) {
         led.call('turn-on', function(err) {
           if(err) {
             server.log('Can\'t use that transition');
@@ -421,11 +412,11 @@ module.exports = function(server) {
 + Then we'll use the `observe()` function. This function will take our queries and have Zetta perform the lookup, or wait for the device to come online if not found.
   + Above we're simply looking up or waiting for our sensor and led.
   + The callback function for observe is called when the devices come online.
-+ We'll be accessing the `pulse` data stream to affect our LED. Everytime the pulse stream fires a `"data"` event we know data is ready to be consumed.
++ We'll be accessing the `wave` data stream to affect our LED. Every time the wave stream fires a `"data"` event we know data is ready to be consumed.
   + Streams in Zetta follow the standard for how streams are used in Node.js
-+ If the stream data is over the numerical value 65, then we'll turn our LED on.
++ If the stream data is over the numerical value 0, then we'll turn our LED on.
   + The `call()` function is an asynchronous way to interact with a device that has actions available.
-    + Call will take a callback function that passes in an error if one occured.
+    + Call will take a callback function that passes in an error if one occurred.
     + In our sample we call the `turn-on` or `turn-off` actions based on sensor data. If there is an issue we print it out in the callback.
 
 ###Adding the app to our server
@@ -436,7 +427,7 @@ have Zetta coordinating devices for you.
 ```javascript
 var zetta = require('zetta');
 var LED = require('zetta-mock-led');
-var Heartbeat = require('zetta-mock-heartbeat-sensor');
+var SineWave = require('zetta-sine-wave');
 
 var app = require('./apps/app')
 
@@ -444,7 +435,7 @@ zetta()
   .name('firstname.lastname')
   .link('http://hello-zetta.herokuapp.com/')
   .use(LED)
-  .use(Heartbeat)
+  .use(SineWave)
   .load(app)
   .listen(1337);
 ```
@@ -458,10 +449,10 @@ Here are some next steps you can take.
 + Setup your own Zetta server in the cloud
   + We provided hello-zetta as a way to demonstrate linking. Check out http://github.com/zettajs/zetta-cloud-sample to deploy your own cloud server to heroku or similar service.
 + Add hardware
-  + Our next recipe will iterate on our heartbeat app to include hardware. Check it out!
+  + Our next recipe will iterate on our hello world app to include hardware. Check it out!
 + Create your own mock devices
   + Check out how to write a driver **here**, and get started with your own mock devices.
-  
+
 ###Getting Help
 
 If you're going through this project, and run into an issue feel free to use these methods to reach out and contact us!
