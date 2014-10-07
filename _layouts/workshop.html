@@ -1,15 +1,19 @@
 {% include header.html %}
 <section id="hero">
     {% include nav.html %}
-    <div class="content page_meta">
-      <h1>{{page.title}}</h1>
-      
-        <div class="meta">
+    <section class="page_meta">
+      <div class="content">
           {% unless page.path contains 'index' %}
-          <p>by: <strong>{{page.author}}</strong> on <strong>{{page.date | date: '%b %d, %Y'}}</strong>.
-          {% if page.difficulty %}<br/> difficulty: <strong>{{page.difficulty}}</strong>{% endif %}
-          </p>
-          {% if page.tags %}
+          <ul class="meta">
+            <li><b>wrench</b> {{page.layout | capitalize }}</li>
+            {% if page.author %}<li><b>user</b> {{page.author}}</li>{% endif %}
+            <li><b>calendar</b> {{page.date | date: '%b %d, %Y'}}</li>
+            {% if page.difficulty %}<li><b>upwardsbarchart</b> {{page.difficulty}}</li>{% endif %}
+            {% if page.duration %}<li><b>stopwatch</b> {{page.duration}}</li>{% endif %}  
+            {% if page.repo %}<li class="source"><a href="{{page.repo}}"><b>download</b> Source Code</a></li>{% endif %}
+            
+         </ul>
+          {% if page.tags.size > 0 %}          
           <ul class="tags">
             {% for tag in page.tags %}
             <li><a href="#">{{tag}}</a></li>
@@ -17,28 +21,22 @@
           </ul>
           {% endif %}
         {% endunless %}  
+        
+        {% if page.path contains 'index' %}
+        <ul class="meta">
+          <li>Displaying {{ site.categories["workshop"].size }} {{page.layout | capitalize }}s</li>
+        </ul>
+        {% endif %}
       </div>
-      
-    </div>
+    </section>
 </section>
 
 <article>
   
   
   <section class="page_content">
-    {% if page.path contains 'index' %}
-  
-    <section class="description">
-      <div>
-        <!-- intro text -->
-        <p>Workshops let you learn how to create projects with Zetta in-person with an instructor in a hands-on environment.</p>
-        <!-- /intro text -->
-      </div>
-    </section>
-
-    {% endif %}
-    
     {{ content }}
+
   </section>
 
 </article>

@@ -45,6 +45,24 @@ Eject and unplug the BeagleBone then **restart your computer**. Plug the board b
   * to outside
   * resource
 
+## More Beaglebone Quirks
+
+### Accurate Date & Time
+
+Ever notice that your zetta logs have a timestamp from some other point in the past? Run this terminal command to get your BeagleBone's OS synced up with the current time, where `[server]` is the appropriate time server from [http://www.pool.ntp.org/]()
+
+```
+sudo ntpdate -s pool.ntp.org
+```
+
+Then [set your timezone](http://www.cyberciti.biz/faq/howto-linux-unix-change-setup-timezone-tz-variable/) using: 
+
+```
+dpkg-reconfigure tzdata
+```
+
+And just follow the promps. 
+
 {:/comment}
 
 {::comment}
