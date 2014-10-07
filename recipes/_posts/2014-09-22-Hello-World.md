@@ -12,7 +12,7 @@ The following documentation will guide you through how to build the basic "Hello
 Before you begin, you'll need to do the following:
 
   > 1. Have Zetta and Node.js installed. See [installation instructions](#) if you need to do this.
-  > 2. [**download**{:.icon} Download](https://github.com/zettajs/zetta-heartbeat-sample) this recipe's source code
+  > 2. [**download**{:.icon} Download](https://github.com/zettajs/zetta-hello-world) this recipe's source code
 
 #Recipe Steps
 
@@ -302,7 +302,7 @@ After that run your server with the `node server.js` command.
 
 ###API and Browser
 
-Again, Zetta has generated an API response for all the devices we want to use. Here is a sample heartbeat sensor API response.
+Again, Zetta has generated an API response for all the devices we want to use. Here is a sample sine wave generator API response.
 
 ```json
 {
@@ -371,7 +371,7 @@ how to use queries, interact with streams, and call actions on devices all in ja
 ###Creating an app
 
 An app in Zetta is just a local orchestration between devices based on state or sensor readings. Today our app will search
-for the heartbeat sensor, and turn the LED on or off based on the readings of data it is streaming.
+for the sine wave generator, and turn the LED on or off based on the readings of data it is streaming.
 
 First we'll need to add a file named `app.js` to our `apps/` folder. It's best practice in Zetta to keep these apps in their own
 folder for organizational purposes.
