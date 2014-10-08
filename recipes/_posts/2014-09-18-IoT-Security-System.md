@@ -126,18 +126,21 @@ We need to attach our buzzer to our BeagleBone so Zetta can control it. Connect 
 
 ![Piezo Hookup Diagram](/images/recipes/security_system/hookup_diagram_step_1.png){:.fritzing}
 
+> New to using a solderless breadboard? Get up to speed by reading our [How to Breadboard](/guides/2014/10/07/Breadboard.html) guide.
+
 1. Add your piezo buzzer to the breadboard.
   * put positive pin on a-3 of breadboard
   * put negative pin on a-6 of breadboard
   
 2. Connect your wires in the following way:
 
-    from                        | Wire Color | to  
-    :----                       |:-----:     |----: 
-    Breadboard **E3**           |white       |BeableBone **P9_14**
-    Breadboard **E6**           |black       |Breadboard Negative Column
-    Breadboard Negative Column  |black       |BeableBone **P9_01**
+    From                  | Wire       | To  
+    :----                 |:-----:     |----: 
+    Breadboard **E3**     |White       |BeableBone **P9_14**
+    Breadboard **E6**     |Black       |Breadboard Neg Rail
+    Breadboard Neg Rail   |Black       |BeableBone **P9_01**
     {:.wiring}
+
 
 Your hardware setup should look like this when you're done:
 
@@ -273,11 +276,11 @@ Here's what you should have once you add your microphone:
   * Place AUD on Breadboard **F20**
 3. Connect your wires in the following way:
 
-    from                 | Wire Color           | to  
+    From                 | Wire                 | To  
     :----                |:-----:               |----: 
-    Breadboard **H18**   |red                   |BeableBone **P9_32**
-    Breadboard **J19**   |2.2k&#8486; resistor  |Breadboard Negative Column
-    Breadboard **H20**   |green                 |BeableBone **P9_36**
+    Breadboard **H18**   |Red                   |BeableBone **P9_32**
+    Breadboard **J19**   |2.2k&#8486; Resistor  |Breadboard Neg Rail
+    Breadboard **H20**   |Green                 |BeableBone **P9_36**
     {:.wiring}
 
 Your hardware setup should look something like this when you're done:
@@ -539,11 +542,11 @@ Here's what you should have once you add your microphone:
   * Place AUD on Breadboard **F20**
 2. Connect your wires in the following way:
 
-    from                 | Wire Color           | to  
+    From                 | Wire                 | To  
     :----                |:-----:               |----: 
-    Breadboard **I26**   |orange                |BeableBone **P9_41**
-    Breadboard **C26**   |47&#8486; resistor    |Breadboard **G26**
-    Breadboard **E28**   |black                 |Breadboard's negative column
+    Breadboard **I26**   |Orange                |BeableBone **P9_41**
+    Breadboard **C26**   |47&#8486; Resistor    |Breadboard **G26**
+    Breadboard **E28**   |Black                 |Breadboard's negative column
     {:.wiring}
 
 Your hardware setup should look like this when you're done:
