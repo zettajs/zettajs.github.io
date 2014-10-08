@@ -375,7 +375,7 @@ Once again, we need to point the Zetta browser to the Zetta server node that's r
 
 Now click on the device name `Microphone` in the Zetta browser to get a more detailed view of the device. Try making noise or tapping on the microphone to see the waveform change in real time.
 
-![Zetta Browser root with Microphone](/images/recipes/security_system/zetta-browser-microphone-show.png){:.zoom}
+![Zetta Browser root with Microphone](/images/recipes/security_system/screens/zetta-browser-microphone-show.png){:.zoom}
 
 ## What just happened?!
 
