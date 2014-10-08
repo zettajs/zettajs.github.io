@@ -4,11 +4,13 @@ title: How to BeagleBone
 description: A guide to getting your BeagleBone connected to the internet and ready to go with Zetta. 
 ---
 
+> This article could use your help. 
+
 See the official BeagleBone documentation while we're building this guide. 
 
 > [http://beagleboard.org/getting-started](http://beagleboard.org/getting-started)  
 
-{::comment}
+# Get Setup
 
 If you can connect to your BeagleBone by visiting [http://beaglebone.local]() then everything is going ok. If you have to use it's IP address, then internet shaing is disabled.
 
@@ -16,9 +18,9 @@ If you can connect to your BeagleBone by visiting [http://beaglebone.local]() th
 
 Turn on internet sharing for your system, and share it with the B3
 
-//Mac instructions
+//Mac instructions go here
 
-//windows instructions
+//windows instructions go here
 
 ## Powercycle
 
@@ -45,9 +47,8 @@ Eject and unplug the BeagleBone then **restart your computer**. Plug the board b
   * to outside
   * resource
 
-## More Beaglebone Quirks
 
-### Accurate Date & Time
+# Accurate Date & Time
 
 Ever notice that your zetta logs have a timestamp from some other point in the past? Run this terminal command to get your BeagleBone's OS synced up with the current time, where `[server]` is the appropriate time server from [http://www.pool.ntp.org/]()
 
@@ -63,19 +64,10 @@ dpkg-reconfigure tzdata
 
 And just follow the promps. 
 
-{:/comment}
+# Pinout
 
 Pins on the BeagleBone Black come in two banks, P8 and P9. Each bank has 46 pins. Here's a pinout diagram: 
 
 ![BeagleBone Pinout](http://insigntech.files.wordpress.com/2013/09/bbb_pinouts.jpg){:.zoom}
 
-
-{::comment}
-
-may need to use `npm cache clean` or `npm update` to install latest zetta
-
-
-
-We'll be using bank P9. Notice that that row of pins along the inner edge of the board are evenly numbered (2, 4, 6, 8 etc...), while the exterior row is odd (1, 3, 5, 7...). Only the first and last pins of each row come with printend numbers - this helps you determine which row is even and odd but also means that you just have to count pins to get to the right one. 
-
-{:/comment}
+Taking bank P9 for example, notice that that row of pins along the inner edge of the board are evenly numbered (2, 4, 6, 8 etc...), while the exterior row is odd (1, 3, 5, 7...). Only the first and last pins of each row come with printend numbers - this helps you determine which row is even and odd but also means that you just have to count pins to get to the right one. 

@@ -3,8 +3,9 @@ layout: guide
 title: A Tour of the Zetta Browser
 description: >
   This guide will take you through the features of the zetta browser
-published: false
 ---
+
+> This article could use your help. 
 
 # Connecting
 
