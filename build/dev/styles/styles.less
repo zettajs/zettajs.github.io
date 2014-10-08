@@ -369,6 +369,40 @@ a:hover {
         border-radius: .25rem;
       }
       
+      table {
+        border: 1px solid @light-gray-bg;
+        border-radius: 1rem;
+        tr{
+          th, td {
+            padding: .25rem .5rem;
+            border-bottom: 1px solid @light-gray-bg;
+            &:not(:last-child){
+              border-right: 1px solid @light-gray-bg;
+            }
+          }
+          &:last-child {td{border-bottom: none;}}
+        }
+        th {border-bottom: 2px solid @gray_30;}    
+        
+        &.wiring {
+          
+          border: 1px solid @light-gray-bg;
+          border-radius: .5rem;
+          
+          th, td {
+            padding: .25rem 1rem;
+          }
+          thead {background-color: @gray; color: @white;}
+          tr {
+            &:nth-child(even) {
+              background-color: @gray_5;
+            }
+          }
+          
+          
+        }
+      }
+      
       gallery {
         padding: 1rem;
         border: 1px solid @gray_10;

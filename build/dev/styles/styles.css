@@ -171,6 +171,15 @@ a:hover{text-decoration:underline}
 .page.docs article .page_content h2:hover,.page.docs article .page_content h3:hover,.page.docs article .page_content h4:hover,.page.docs article .page_content h5:hover,.page.docs article .page_content h6:hover{background-image:url(../images/link_dark.svg);cursor:pointer}
 .page.docs article .page_content h2{border-bottom:1px solid #ededed}
 .page.docs article .page_content dl{padding:1rem;color:#000;background-color:#f2f2f2;border-radius:.25rem}
+.page.docs article .page_content table{border:1px solid #ededed;border-radius:1rem}
+.page.docs article .page_content table tr td,.page.docs article .page_content table tr th{padding:.25rem .5rem;border-bottom:1px solid #ededed}
+.page.docs article .page_content table tr td:not(:last-child),.page.docs article .page_content table tr th:not(:last-child){border-right:1px solid #ededed}
+.page.docs article .page_content table tr:last-child td{border-bottom:none}
+.page.docs article .page_content table th{border-bottom:2px solid #b3b3b3}
+.page.docs article .page_content table.wiring{border:1px solid #ededed;border-radius:.5rem}
+.page.docs article .page_content table.wiring td,.page.docs article .page_content table.wiring th{padding:.25rem 1rem}
+.page.docs article .page_content table.wiring thead{background-color:#59595b;color:#fff}
+.page.docs article .page_content table.wiring tr:nth-child(even){background-color:#f2f2f2}
 .page.docs article .page_content gallery{padding:1rem;border:1px solid #e6e6e6;border-radius:.25rem}
 .page.docs article .page_content gallery img{height:75px;padding:0;margin-right:1rem;cursor:pointer}
 .page.docs article .page_content img{width:100%;max-width:30rem;height:auto;display:block}

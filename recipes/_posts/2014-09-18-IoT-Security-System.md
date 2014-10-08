@@ -126,13 +126,18 @@ We need to attach our buzzer to our BeagleBone so Zetta can control it. Connect 
 
 ![Piezo Hookup Diagram](/images/recipes/security_system/hookup_diagram_step_1.png){:.fritzing}
 
-  * Add your piezo buzzer to the breadboard.
-    * put positive pin on a-3 of breadboard
-    * put negative pin on a-6
-  * Connect the _piezo buzzer's_ **-** (negative) lead to the **-** row of the _breadboard_.
-  * Connect the _piezo buzzer's_ **+** (positive) lead to pin **P9_14** on the _BeagleBone_.
-  * Connect the _breadboard's_ **-** (negative) row to pin **P9_01** on the _beaglebone_.
+1. Add your piezo buzzer to the breadboard.
+  * put positive pin on a-3 of breadboard
+  * put negative pin on a-6 of breadboard
+  
+2. Connect your wires in the following way:
 
+    from                        | Wire Color | to  
+    :----                       |:-----:     |----: 
+    Breadboard **E3**           |white       |BeableBone **P9_14**
+    Breadboard **E6**           |black       |Breadboard Negative Column
+    Breadboard Negative Column  |black       |BeableBone **P9_01**
+    {:.wiring}
 
 Your hardware setup should look like this when you're done:
 
@@ -260,11 +265,20 @@ Next up is our microphone sensor. This will detect the sound of possible intrude
 Here's what you should have once you add your microphone:
 
 ![Microphone Hookup Diagram](/images/recipes/security_system/hookup_diagram_step_2.png){:.fritzing}
+  
+1. If your microphone does not have headers attached, solder them in place so the microphone can be added to the breadboard
+2. Add your microphone to the breadboard.
+  * Place VCC on Breadboard **F18**
+  * Place GND on Breadboard **F19**
+  * Place AUD on Breadboard **F20**
+3. Connect your wires in the following way:
 
-  * Add your microphone to your breadboard
-  * Connect the microphone's **VCC** pin to pin **P9_32** on the _BeagleBone_.
-  * Connect the microphone's **GND** pin to the breadboard's **-** (negative) row with a 2.2k&#8486; resistor
-  * Connect the microphone's **AUD** pin to pin **P9_36** on the _BeagleBone_.
+    from                 | Wire Color           | to  
+    :----                |:-----:               |----: 
+    Breadboard **H18**   |red                   |BeableBone **P9_32**
+    Breadboard **J19**   |2.2k&#8486; resistor  |Breadboard Negative Column
+    Breadboard **H20**   |green                 |BeableBone **P9_36**
+    {:.wiring}
 
 Your hardware setup should look something like this when you're done:
 
@@ -519,9 +533,18 @@ Here's what you should have once you add your microphone:
 
 ![Microphone Hookup Diagram](/images/recipes/security_system/hookup_diagram_step_3.png){:.fritzing}
 
-  * Add your LED to your breadboard
-  * Connect the LED's **annode** (long leg) to pin **P9_41** the _BeagleBone_ through a 47&#8486; resistor
-  * Connect the LED's **annode** (short leg) to the _breadboard's_ negative row
+1. Add your LED to the breadboard.
+  * *Annode* (long leg) on Breadboard **A26**
+  * *Cathode* (short leg) on Breadboard **A28**
+  * Place AUD on Breadboard **F20**
+2. Connect your wires in the following way:
+
+    from                 | Wire Color           | to  
+    :----                |:-----:               |----: 
+    Breadboard **I26**   |orange                |BeableBone **P9_41**
+    Breadboard **C26**   |47&#8486; resistor    |Breadboard **G26**
+    Breadboard **E28**   |black                 |Breadboard's negative column
+    {:.wiring}
 
 Your hardware setup should look like this when you're done:
 
