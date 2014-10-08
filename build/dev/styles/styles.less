@@ -368,6 +368,19 @@ a:hover {
         background-color: @gray_5;
         border-radius: .25rem;
       }
+      
+      gallery {
+        padding: 1rem;
+        border: 1px solid @gray_10;
+        border-radius: .25rem;
+        img {
+          height: 75px; 
+          padding: 0; 
+          margin-right: 1rem;
+          cursor: pointer;
+        }
+      }
+      
       img {
         width: 100%;
         max-width: 30rem;
@@ -377,7 +390,12 @@ a:hover {
           padding: 1rem;
           border: 1px solid @gray_10;
           border-radius: .25rem;
-          cursor: pointer;
+          margin-bottom: 1rem;
+          
+        }
+        &.full {
+          max-width: 100%;
+          padding: 0; border: 0;
         }
       }
       
@@ -425,6 +443,8 @@ a:hover {
       
       p {
         max-width: 35.5rem;
+        &.image-only {max-width: 100%;}
+        
       }
       
       //sparkfun wishlist

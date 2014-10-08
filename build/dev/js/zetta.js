@@ -28,8 +28,16 @@ $(function(){
     }
   });
   
+  $('p img:only-child').each(function(){
+    $(this).parent().addClass('image-only');
+  });
+  
   //Modal
   $('#modal .close b').click(function(){$('#modal').hide();});
+  $('gallery img').addClass('zoom');
+  
+  $('img').on('click', '.zoom', function(){ console.log('working'); });
+  
   $('img.fritzing, img.zoom').click(function(){
     $('#modal .main').css({
       'background-image': 'url(' + $(this).attr('src') + ')'

@@ -48,7 +48,11 @@ repo: https://github.com/alanguir/zetta-security-system/
 
 # Materials
 
-These are the materials we use in this recipe. You can order the complete kit from sparkfun:
+Here's everything we'll need for our recipe: 
+
+![All Materials](/images/recipes/security_system/hardware/empty_low.jpg){:.zoom .full}
+
+You can order a complete kit from sparkfun:
 
 > [**cart**{:.icon} Order the Complete Kit](https://www.sparkfun.com/wish_lists/95647)
 
@@ -132,8 +136,8 @@ We need to attach our buzzer to our BeagleBone so zetta can control it. Connect 
 
 Your hardware setup should look like this when you're done:
 
-![The Connected Piezo Buzzer](/images/recipes/security_system/piezo_layout_01.jpg){:.zoom}
-![The Connected Piezo Buzzer](/images/recipes/security_system/piezo_layout_02.jpg){:.zoom}
+![The Connected Piezo Buzzer](/images/recipes/security_system/hardware/piezo_birdseye.jpg){:.zoom}
+![The Connected Piezo Buzzer](/images/recipes/security_system/hardware/piezo_low.jpg){:.zoom}
 
 > **TIP**
 > The BeagleBone pinout can be confusing. See our [BeableBone guide](/guides/2014/10/03/BeagleBone.html) for a pinout diagram and other help with connecting hardware to it.
@@ -268,8 +272,8 @@ Here's what you should have once you add your microphone:
 
 Your hardware setup should look something like this when you're done:
 
-![The Connected Microphone](/images/recipes/security_system/piezo_mic-layout_01.jpg){:.fritzing}
-![The Connected Microphone](/images/recipes/security_system/piezo_mic-layout_02.jpg){:.fritzing}
+![The Connected Microphone](/images/recipes/security_system/hardware/microphone_birdseye.jpg){:.fritzing}
+![The Connected Microphone](/images/recipes/security_system/hardware/microphone_low.jpg){:.fritzing}
 
 
 # Microphone Code
@@ -525,8 +529,8 @@ Here's what you should have once you add your microphone:
 
 Your hardware setup should look like this when you're done:
 
-![The Connected Microphone](/images/recipes/security_system/security_plus_led_01.jpg){:.fritzing}
-![The Connected Microphone](/images/recipes/security_system/security_plus_led_02.jpg){:.fritzing}
+![The Connected Microphone](/images/recipes/security_system/hardware/led_birdseye.jpg){:.fritzing}
+![The Connected Microphone](/images/recipes/security_system/hardware/led_low.jpg){:.fritzing}
 
 
 # Light Code

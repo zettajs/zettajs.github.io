@@ -171,8 +171,11 @@ a:hover{text-decoration:underline}
 .page.docs article .page_content h2:hover,.page.docs article .page_content h3:hover,.page.docs article .page_content h4:hover,.page.docs article .page_content h5:hover,.page.docs article .page_content h6:hover{background-image:url(../images/link_dark.svg);cursor:pointer}
 .page.docs article .page_content h2{border-bottom:1px solid #ededed}
 .page.docs article .page_content dl{padding:1rem;color:#000;background-color:#f2f2f2;border-radius:.25rem}
+.page.docs article .page_content gallery{padding:1rem;border:1px solid #e6e6e6;border-radius:.25rem}
+.page.docs article .page_content gallery img{height:75px;padding:0;margin-right:1rem;cursor:pointer}
 .page.docs article .page_content img{width:100%;max-width:30rem;height:auto;display:block}
-.page.docs article .page_content img.fritzing,.page.docs article .page_content img.zoom{padding:1rem;border:1px solid #e6e6e6;border-radius:.25rem;cursor:pointer}
+.page.docs article .page_content img.fritzing,.page.docs article .page_content img.zoom{padding:1rem;border:1px solid #e6e6e6;border-radius:.25rem;margin-bottom:1rem}
+.page.docs article .page_content img.full{max-width:100%;padding:0;border:0}
 .page.docs article .page_content ol.steps,.page.docs article .page_content ul.steps{padding-top:1rem}
 .page.docs article .page_content ol.steps li,.page.docs article .page_content ul.steps li{margin-bottom:.5rem;font-size:1.4rem}
 .page.docs article .page_content ol.steps li li,.page.docs article .page_content ul.steps li li{font-size:1.2rem}
@@ -180,6 +183,7 @@ a:hover{text-decoration:underline}
 .page.docs article .page_content code{border-radius:.25rem;color:#23241f;padding:.1rem .25rem 0;font-size:.8rem;line-height:1rem;background-color:#e6e6e6;font-family:fira-mono,courier,monospace}
 .page.docs article .page_content pre code{padding:1rem;margin-bottom:1rem;max-height:21.6rem;overflow:auto;color:#fff;background-color:#23241f}
 .page.docs article .page_content p{max-width:35.5rem}
+.page.docs article .page_content p.image-only{max-width:100%}
 .page.docs article .page_content .sfe-wish-list{border:0 solid transparent;border-top:2px solid #59595b;border-bottom:2px solid #59595b;max-width:30rem;font-family:jaf-facitweb,Helvetica,Arial,sans-serif;margin-bottom:2rem}
 .page.docs article .page_content .sfe-wish-list .sfe-title{display:none}
 .page.docs article .page_content .sfe-wish-list .sfe-inner{max-height:100rem}
