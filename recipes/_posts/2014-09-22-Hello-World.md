@@ -17,7 +17,7 @@ repo: http://github.com/zettajs/zetta-hello-world
 
 # Recipe Steps
 
-1. Setup
+1. [Setup](#materials)
   * [Materials](#materials)
   * [Install Node](#install-node)
   * [Following Along](#following-along)
@@ -45,8 +45,7 @@ The only thing needed is a computer with Node.js and npm installed.
 
 # Install Node
 
-Before we get started you'll need to download and install Node.js. It can be found at http://nodejs.org/.
-The standard installation of Node.js comes with npm as well.
+Before we get started you'll need to download and install Node.js. It can be found at [http://nodejs.org/](http://nodejs.org/). The standard installation of Node.js comes with npm as well.
 
 # Download the starter code
 
@@ -71,16 +70,16 @@ Advance to **step-0**
 ```md
 git checkout -f step-0
 ```
-{:/comment}
-
 
 # Install Zetta
 
-Zetta is listed as a dependency in your `package.json` file. Running the following command will retrieve all the packages specified in `package.json` and install them on your computer. At this point you will be installing Zetta itself.
+Zetta distributed through the Node Package Manager - NPM.
 
-```md
-npm install
 ```
+npm install zetta --save
+```
+
+> Note the `--save` switch at the end of the command
 
 # Add the LED
 
@@ -107,7 +106,7 @@ npm install zetta-mock-led --save
 
 > Note the `--save` switch at the end of the command
 
-The driver you just downloaded represents an led in software. It's a state machine that is comprised of the `on`, `off` states. When `on` it will turn the led on, and when `off` it will turn the led off. The changes in state are represented by transitions. Transitions are functions in Zetta that are called when the state of an object changes. Our led has `turn-on`, and `turn-off` as transitions.
+The driver you just downloaded represents an led in software. It's a state machine that is comprised of two states `on` and `off`. When the led is `on` it allows it to only be turned off, and when `off` it can be turned on. The changes in state are represented by transitions. Transitions are functions in Zetta that are called when the state of an object changes. Our led has `turn-on`, and `turn-off` as transitions.
 
 > **DID YOU KNOW?**
 > Every module you'll use in this tutorial is open source. This one can be found here https://github.com/zettajs/zetta-mock-led.
@@ -191,7 +190,13 @@ Now we'll add a Sine Wave Generator to our project. This will act like a mock se
 
 # Sine Wave Generator Code
 
-Follow along to add code to your security system.
+Follow along to add code to your hello world.
+
+Advance to **step-1**
+
+```md
+git checkout -f step-1
+```
 
 {::comment}
 
@@ -204,7 +209,7 @@ Follow along to add code to your security system.
 
 In your terminal, run this command:
 
-    zetta-security-system/$ npm install zetta-sine-wave-driver --save
+    zetta-security-system/$ npm install zetta-sine-wave --save
 
 > Note the `--save` switch at the end of the command
 
@@ -215,7 +220,7 @@ Modify `server.js` to look like this:
 ```javascript
 var zetta = require('zetta');
 var LED = require('zetta-mock-led');
-var Sine = require('zetta-sine-wave-driver');
+var Sine = require('zetta-sine-wave');
 
 zetta()
   .use(LED)
@@ -231,7 +236,7 @@ zetta()
 We added two lines to our `server.js` file.
 
 ```javascript
-var Sine = require('zetta-sine-wave-driver');
+var Sine = require('zetta-sine-wave');
 ```
 
 This includes the driver we just installed so that it's available to zetta.
@@ -276,6 +281,12 @@ Next we'll link our Zetta instance to the cloud. This creates a connection to th
 
 # Link Code
 
+Advance to **step-2**
+
+```md
+git checkout -f step-2
+```
+
 ## The Zetta Server
 
 Modify `server.js` to look like this:
@@ -283,7 +294,7 @@ Modify `server.js` to look like this:
 ```javascript
 var zetta = require('zetta');
 var LED = require('zetta-mock-led');
-var Sine = require('zetta-sine-wave-driver');
+var Sine = require('zetta-sine-wave');
 
 zetta()
   .use(LED)
@@ -316,6 +327,12 @@ Now we can interact with our API on the open internet like we did locally.
 We just successfully connected Zetta to the cloud and interacted with it. To create a true system in the Internet of Things we'll need linking to allow access across the internet.
 
 # Creating the app
+
+Advance to **step-3**
+
+```md
+git checkout -f step-3
+```
 
 1 - Apps in zetta allow us to orchestrate interactions between devices. To create one, make a new file in your project's `apps` folder:
 
@@ -370,15 +387,23 @@ module.exports = function(server) {
 
     wave.streams.wave.on('data', function(m) {
       if(m.data > 0) {
-        led.call('turn-on');
+        if (led.available('turn-on')) {
+          led.call('turn-on');
+        }
       } else {
-        led.call('turn-off');
+        if (led.available('turn-off')) {
+          led.call('turn-off');
+        }
       }
     });
 
   });
 }
 ```
+
+* If the sine wave is greater then `0` we want to turn the led on. We do this by first checking if the led can preform a `turn-on` transition first, then we call it.
+
+* We then do the same thing for `turn-off` but when the sine wave is `0` or below.
 
 # Load your app when zetta runs
 
@@ -387,7 +412,7 @@ After you're done writing your app, you need to make sure it's included in your 
 ```javascript
 var zetta = require('zetta');
 var LED = require('zetta-mock-led');
-var Sine = require('zetta-sine-wave-driver');
+var Sine = require('zetta-sine-wave');
 
 var app = require('./apps/app');
 
@@ -441,7 +466,7 @@ We wrote an app to coordinate actions between devices connected to zetta. The ap
 
 If you're going through this project, and run into an issue feel free to use these methods to reach out and contact us!
 
-* matt@apigee.com
+* [matt@apigee.com](mailto:matt@apigee.com)
 * [https://groups.google.com/forum/#!forum/zetta-discuss]()
 * [https://github.com/zettajs/zetta/issues]()
 * [Reference Documentation: http://zettajs.github.io/]()
