@@ -103,6 +103,12 @@ To get your list of steps in your `# Recipe Steps` section to render larger like
 
 ## Images
 
+Recipe images are served from a subdirectory matching `your_recipe_name` under the `/images/recipes` directory:
+
+```bash
+/images/recipes/{your_recipe_name}/{your_image}.png
+```
+
 Images are scaled down by default. They can be viewed larger in a modal window by using an [inline attribute list](http://kramdown.gettalong.org/syntax.html#inline-attribute-lists) to attach the `zoom` class to the image element. 
 
 ```markdown

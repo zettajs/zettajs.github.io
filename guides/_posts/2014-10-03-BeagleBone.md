@@ -1,7 +1,7 @@
 ---
 layout: guide
-title: How to Setup a BeagleBone Black for Internet Sharing
-description: This guide shows you how to connect your BeagleBone to a personal computer and enable Internet sharing from your computer to the BeagleBone.
+title: How to Share Internet from PC to BeagleBone
+description: This guide shows you how to share the Internet connection from a PC to a BeagleBone Black.
 ---
 
 # Steps
@@ -13,14 +13,67 @@ description: This guide shows you how to connect your BeagleBone to a personal c
 
 # 1. Connect BeagleBone to PC
 
-1. Connect the USB cable between the BeagleBone's Mini-B port and the PC's USB A-Type port.
+1. Connect the USB cable between the BeagleBone and the PC.
 
     From                       | Wire                       | To  
     :----                      |:-----:                     |----: 
     BeagleBone USB Mini-B Port |USB Cable                   |PC USB A-Type Port
 
+> **eye**{:.icon} Notice that the BeagleBone's array of blue LEDs will blink and on the PC the BeagleBone will appear as a network device.
 
-> Notice: The BeagleBone's array of blue LEDs will blink.
+![Mac OS X Network Preferences](/images/guides/beaglebone_internet_sharing/network_preferences_osx.png)
+
+1. Go to [http://beaglebone.local/](http://beaglebone.local/).
+
+> **eye**{:.icon} You will see the BeagleBone 101 page served from the BeagleBone. 
+
+# 2. Test Internet Connection from BeagleBone
+
+* Go to [http://beaglebone.local:3000/](http://beaglebone.local:3000/) to open the Cloud 9 IDE
+
+* Try to ping Google from the BeagleBone's Cloud9 console.
+
+```bash
+ping google.com
+```
+The console should return an unknown host error.
+
+```bash
+root@beaglebone:/var/lib/cloud9# ping google.com
+ping: unknown host google.com
+```
+
+* Run dhclient
+
+```bash
+dhclient usb0
+```
+The console should return with a default prompt. It can take as long as 6 minutes or more.
+
+```bash
+root@beaglebone:/var/lib/cloud9# dhclient
+root@beaglebone:/var/lib/cloud9#
+```
+
+* Now try to ping Google again.
+
+```bash
+ping google.com
+```
+The console should return with good ping responses. Hit `CTRL-c` to cancel the ping.
+
+```bash
+root@beaglebone:/var/lib/cloud9# ping google.com
+PING google.com (74.125.225.6) 56(84) bytes of data.
+64 bytes from ord08s12-in-f6.1e100.net (74.125.225.6): icmp_req=1 ttl=54 time=22.2 ms
+64 bytes from ord08s12-in-f6.1e100.net (74.125.225.6): icmp_req=2 ttl=54 time=22.4 ms
+64 bytes from ord08s12-in-f6.1e100.net (74.125.225.6): icmp_req=3 ttl=54 time=20.6 ms
+64 bytes from ord08s12-in-f6.1e100.net (74.125.225.6): icmp_req=4 ttl=54 time=21.5 ms
+^C
+--- google.com ping statistics ---
+4 packets transmitted, 4 received, 0% packet loss, time 5719ms
+rtt min/avg/max/mdev = 20.615/21.691/22.416/0.713 ms
+```
 
 # Original
 
