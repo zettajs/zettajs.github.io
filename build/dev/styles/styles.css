@@ -50,7 +50,7 @@ section.main{width:90%;margin:2rem auto 0}
 @media screen and (min-width:48.1em){section.main{max-width:42rem}}
 @media screen and (min-width:64em){section.main{max-width:56rem}}
 @media screen and (min-width:80em){section.main{max-width:56rem}}
-.zetta-logo{background:url(../images/zetta-logo.svg) 0 0/auto 2.2rem no-repeat,0 0/auto 2.2rem no-repeat;color:transparent;height:2rem;margin:1rem 0 0}
+.zetta-logo{background:url(../images/logos/zetta-logo.svg) 0 0/auto 2.2rem no-repeat,0 0/auto 2.2rem no-repeat;color:transparent;height:2rem;margin:1rem 0 0}
 @media screen and (min-width:48.1em){.zetta-logo{background-position:0 0;background-size:auto 2rem;height:2rem}}
 .pure-button{padding:.5em 1em;color:#fff;border:0 solid #999;border:none transparent;background-color:#faa438;text-decoration:none;border-radius:0;font-weight:400}
 .pure-button-orange{background-color:#ff4300}
@@ -206,7 +206,7 @@ a:hover{text-decoration:underline}
 .page.docs #modal p.close{text-align:right;padding-top:1rem;font-size:1.5rem}
 .page.docs #modal p.close b{cursor:pointer;padding:1rem;color:#d3990a}
 .page.docs #modal p.close b:hover{color:#faa438}
-.page.docs #modal .main{width:90%;height:80%;margin:0 auto;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;background:url(../images/zetta-logo.svg) no-repeat center/contain}
+.page.docs #modal .main{width:90%;height:80%;margin:0 auto;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;background:url(../images/logos/zetta-logo.svg) no-repeat center/contain}
 .page.docs #hero .page_meta{background:linear-gradient(#536491,#4a5981,#414e71)}
 .page.docs article h1{background-color:#4a5981}
 .page.docs article h1:before{border-bottom-color:#2e3750}
