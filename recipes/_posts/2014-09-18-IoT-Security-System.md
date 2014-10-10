@@ -126,6 +126,8 @@ We need to attach our buzzer to our BeagleBone so Zetta can control it. Connect 
 
 ![Piezo Hookup Diagram](/images/recipes/security_system/hookup_diagram_step_1.png){:.fritzing}
 
+If you use fritzing, you can download the full [Fritzing Diagram](/images/recipes/security_system/fritzing/hookup_diagram.fzz) to reference throughout this recipe. 
+
 > New to using a solderless breadboard? Get up to speed by reading our [How to Breadboard](/guides/2014/10/07/Breadboard.html) guide.
 
 1. Add your piezo buzzer to the breadboard.
