@@ -1,12 +1,33 @@
 ---
 layout: guide
-title: How to BeagleBone
-description: A guide to getting your BeagleBone connected to the internet and ready to go with Zetta. 
+title: How to Setup a BeagleBone Black for Internet Sharing
+description: This guide shows you how to connect your BeagleBone to a personal computer and enable Internet sharing from your computer to the BeagleBone.
 ---
 
-> This article could use your help. 
+# Steps
 
-See the official BeagleBone documentation while we're building this guide. 
+1. [Connect BeagleBone to PC via USB](#Connect-BeagleBone-to-PC-via-USB)
+  * [USB Cable](#usb-cable)
+  * []
+{:.steps}
+
+# 1. Connect BeagleBone to PC
+
+1. Connect the USB cable between the BeagleBone's Mini-B port and the PC's USB A-Type port.
+
+    From                       | Wire                       | To  
+    :----                      |:-----:                     |----: 
+    BeagleBone USB Mini-B Port |USB Cable                   |PC USB A-Type Port
+
+
+> Notice: The BeagleBone's array of blue LEDs will blink.
+
+# Original
+
+
+> This article could use your help.
+
+See the official BeagleBone documentation while following this guide. 
 
 > [http://beagleboard.org/getting-started](http://beagleboard.org/getting-started)  
 
