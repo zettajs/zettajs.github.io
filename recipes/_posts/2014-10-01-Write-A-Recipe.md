@@ -1,5 +1,5 @@
 ---
-layout: guide
+layout: recipe
 title: How to Create and Share a Recipe
 author: Alan Languirand
 description: >
