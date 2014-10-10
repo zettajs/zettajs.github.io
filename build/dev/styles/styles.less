@@ -416,7 +416,7 @@ a:hover {
       }
       
       img {
-        width: 100%;
+        width: 90%;
         max-width: 30rem;
         height: auto;
         display: block;
@@ -424,7 +424,7 @@ a:hover {
           padding: 1rem;
           border: 1px solid @gray_10;
           border-radius: .25rem;
-          margin-bottom: 1rem;
+          margin: 1rem 0;
           
         }
         &.full {
@@ -436,6 +436,7 @@ a:hover {
       ul, ol {
         &.steps{
         padding-top: 1rem;
+        padding-left: 1rem;
         li{ 
             margin-bottom: .5rem;
             font-size: 1.4rem;
@@ -447,10 +448,11 @@ a:hover {
       blockquote {
         background-color: @gray_5;
         border-left: 3px solid @blue;
-        padding: .25rem 1rem;
-        margin-left: 2rem;
+        padding: 1rem;
+        margin-left: 1rem;
         max-width: 40rem;
         color: #000;
+        p:first-child {margin-top: 0;}
       }
       code {
           border-radius: .25rem;
