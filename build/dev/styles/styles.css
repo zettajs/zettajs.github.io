@@ -182,13 +182,14 @@ a:hover{text-decoration:underline}
 .page.docs article .page_content table.wiring tr:nth-child(even){background-color:#f2f2f2}
 .page.docs article .page_content gallery{padding:1rem;border:1px solid #e6e6e6;border-radius:.25rem}
 .page.docs article .page_content gallery img{height:75px;padding:0;margin-right:1rem;cursor:pointer}
-.page.docs article .page_content img{width:100%;max-width:30rem;height:auto;display:block}
-.page.docs article .page_content img.fritzing,.page.docs article .page_content img.zoom{padding:1rem;border:1px solid #e6e6e6;border-radius:.25rem;margin-bottom:1rem}
+.page.docs article .page_content img{width:90%;max-width:30rem;height:auto;display:block}
+.page.docs article .page_content img.fritzing,.page.docs article .page_content img.zoom{padding:1rem;border:1px solid #e6e6e6;border-radius:.25rem;margin:1rem 0}
 .page.docs article .page_content img.full{max-width:100%;padding:0;border:0}
-.page.docs article .page_content ol.steps,.page.docs article .page_content ul.steps{padding-top:1rem}
+.page.docs article .page_content ol.steps,.page.docs article .page_content ul.steps{padding-top:1rem;padding-left:1rem}
 .page.docs article .page_content ol.steps li,.page.docs article .page_content ul.steps li{margin-bottom:.5rem;font-size:1.4rem}
 .page.docs article .page_content ol.steps li li,.page.docs article .page_content ul.steps li li{font-size:1.2rem}
-.page.docs article .page_content blockquote{background-color:#f2f2f2;border-left:3px solid #1a98d5;padding:.25rem 1rem;margin-left:2rem;max-width:40rem;color:#000}
+.page.docs article .page_content blockquote{background-color:#f2f2f2;border-left:3px solid #1a98d5;padding:1rem;margin-left:1rem;max-width:40rem;color:#000}
+.page.docs article .page_content blockquote p:first-child{margin-top:0}
 .page.docs article .page_content code{border-radius:.25rem;color:#23241f;padding:.1rem .25rem 0;font-size:.8rem;line-height:1rem;background-color:#e6e6e6;font-family:fira-mono,courier,monospace}
 .page.docs article .page_content pre code{padding:1rem;margin-bottom:1rem;max-height:21.6rem;overflow:auto;color:#fff;background-color:#23241f}
 .page.docs article .page_content p{max-width:35.5rem}
