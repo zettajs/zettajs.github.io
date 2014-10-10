@@ -32,7 +32,7 @@ If you want to brainstorm big ideas, report a little bug, build a revolutionary 
 
 [Guides](/guides) show you how to do focused tasks with software and hardware.
 
-To [share IoT projects](http://www.zettajs.org/guides/2014/10/01/Write-A-Recipe.html) that you have created read the [How to Share a Recipe ](http://www.zettajs.org/guides/2014/10/01/Write-A-Recipe.html) guide.
+To [share IoT projects](/recipes/2014/10/01/Write-A-Recipe.html) that you have created read the [How to Create and Share a Recipe ](/recipes/2014/10/01/Write-A-Recipe.html) guide.
 
 # Events
 
