@@ -1,6 +1,6 @@
 ---
 layout: guide
-title: How to Share Internet from PC to BeagleBone
+title: How to Connect a BeagleBone to the Internet via a PC
 description: This guide shows you how to share the Internet connection from a PC to a BeagleBone Black.
 ---
 

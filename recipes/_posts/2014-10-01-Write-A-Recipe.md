@@ -3,7 +3,7 @@ layout: recipe
 title: How to Create and Share a Recipe
 author: Alan Languirand
 description: >
-  This recipe is a collection of best practices for creating and sharing Zetta recipes.
+  Create a recipe for your Internet of Things project so that you can share your creativity and the lessons you've learned with the Zetta community.
 ---
 
 # Contents
