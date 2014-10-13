@@ -100,7 +100,7 @@ The goal for this project is to create a simple home security system by assembli
     Breadboard **-**      |**Black**       |BeagleBone **P9_01**
     {:.wiring}
 
-    > **help**{:.icon} Are the BeagleBone pin numbers confusing? Read the [BeagleBone](/guides/2014/10/03/BeagleBone.html) guide.
+    > **help**{:.icon} Are the BeagleBone pin numbers confusing? Read the [BeagleBone](/guides/2014/10/03/BeagleBone.html#pinout) guide.
 
 After assembling the buzzer hardware, your project should look similar to the images below.
 
