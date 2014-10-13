@@ -19,6 +19,7 @@ description: This guide shows you how to share the Internet connection from a PC
    From                         | Wire                       | To  
    :----                        |:-----:                     |----: 
    BeagleBone's USB Mini-B Port |USB Cable                   |PC's USB A-Type Port
+   {:.wiring}
 
 > **eye**{:.icon} Notice that the BeagleBone's array of blue LEDs will blink and on the PC the BeagleBone will appear as a network device.
 
@@ -32,19 +33,24 @@ description: This guide shows you how to share the Internet connection from a PC
 
 # Step #4: Test the Internet Connection from the BeagleBone
 
-* Go to [http://beaglebone.local:3000/](http://beaglebone.local:3000/) to open the Cloud 9 IDE
+1. Open the browser-based Cloud9 IDE at [http://beaglebone.local:3000](http://beaglebone.local:3000).
+1. Click your mouse in the BeagleBone's IDE console.
+![Cloud9 Splash Screen](/images/projects/security_system/screens/bash_callout.png){:.zoom}
 
-* Try to ping Google from the BeagleBone's Cloud9 console.
+1. Ping Google from within the Cloud9 IDE console to ensure the BeagleBone is connected to the Internet.
 
-```bash
-ping google.com
-```
-The console should return an unknown host error.
+   ```bash
+   ping google.com
+   ```
 
-```bash
-root@beaglebone:/var/lib/cloud9# ping google.com
-ping: unknown host google.com
-```
+   You should see a successful ping.
+
+   ```
+   PING google.com (74.125.225.0): 56 data bytes
+   64 bytes from 74.125.225.0: icmp_seq=0 ttl=55 time=93.360 ms
+   64 bytes from 74.125.225.0: icmp_seq=1 ttl=55 time=40.258 ms
+   ```
+   {:.language-bash-noln}
 
 * Run dhclient
 
