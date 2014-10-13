@@ -212,9 +212,9 @@ a:hover{text-decoration:underline}
 .page.docs #hero .page_meta{background:linear-gradient(#536491,#4a5981,#414e71)}
 .page.docs article h1{background-color:#4a5981}
 .page.docs article h1:before{border-bottom-color:#2e3750}
-.page.docs.recipe #hero .page_meta{background:linear-gradient(#536491,#4a5981,#414e71)}
-.page.docs.recipe article h1{background-color:#4a5981}
-.page.docs.recipe article h1:before{border-bottom-color:#2e3750}
+.page.docs.project #hero .page_meta{background:linear-gradient(#536491,#4a5981,#414e71)}
+.page.docs.project article h1{background-color:#4a5981}
+.page.docs.project article h1:before{border-bottom-color:#2e3750}
 .page.docs.guide #hero .page_meta{background:linear-gradient(#a3daa2,#91d390,#7fcc7e)}
 .page.docs.guide article h1{background-color:#91d390}
 .page.docs.guide article h1:before{border-bottom-color:#5bbd59}

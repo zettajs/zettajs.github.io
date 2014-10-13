@@ -6,18 +6,19 @@ description: This guide shows you how to share the Internet connection from a PC
 
 # Steps
 
-1. [Connect BeagleBone to PC via USB](#Connect-BeagleBone-to-PC-via-USB)
-  * [USB Cable](#usb-cable)
-  * []
-{:.steps}
+1. 
 
-# 1. Connect BeagleBone to PC
+# Step #1: Follow BeagleBone's Getting Started Guide
+
+1. Follow the official [Getting Started with BeagleBone & BeagleBone Black](http://beagleboard.org/getting-started) guide.
+
+# Step #2: Connect the BeagleBone to the PC via USB
 
 1. Connect the USB cable between the BeagleBone and the PC.
 
-    From                       | Wire                       | To  
-    :----                      |:-----:                     |----: 
-    BeagleBone USB Mini-B Port |USB Cable                   |PC USB A-Type Port
+   From                         | Wire                       | To  
+   :----                        |:-----:                     |----: 
+   BeagleBone's USB Mini-B Port |USB Cable                   |PC's USB A-Type Port
 
 > **eye**{:.icon} Notice that the BeagleBone's array of blue LEDs will blink and on the PC the BeagleBone will appear as a network device.
 
@@ -27,7 +28,9 @@ description: This guide shows you how to share the Internet connection from a PC
 
 > **eye**{:.icon} You will see the BeagleBone 101 page served from the BeagleBone. 
 
-# 2. Test Internet Connection from BeagleBone
+# Step #3: Share the PC's Internet Connection with the BeagleBone
+
+# Step #4: Test the Internet Connection from the BeagleBone
 
 * Go to [http://beaglebone.local:3000/](http://beaglebone.local:3000/) to open the Cloud 9 IDE
 

@@ -1,29 +1,29 @@
 ---
-layout: recipe
-title: How to Create and Share a Recipe
+layout: project
+title: How to Share a Project
 author: Alan Languirand
 description: >
-  Create a recipe for your Internet of Things project so that you can share your creativity and the lessons you've learned with the Zetta community.
+  People create interesting projects with Zetta. Get started by re-creating the projects of others. Or share the Internet of Things projects you have created with the Zetta community.
 ---
 
 # Contents
 
-1. [What is a Recipe?](#what-is-a-recipe)
-1. [How to Create a Recipe](#how-to-create-a-recipe)
-1. [How to Share a Recipe](#how-to-share-a-recipe)
+1. [What is a Project?](#what-is-a-project)
+1. [How to Create Project Instructions](#how-to-create-a-project)
+1. [How to Share a Project](#how-to-share-a-project)
 1. [Style Guide](#style-guide)
 1. [Markdown Guide](#markdown-guide)
-1. [Recipes versus Guides](#recipes-versus-guides)
+1. [Projects versus Guides](#projects-versus-guides)
 1. [Getting Help](#getting-help)
 {:.steps}
 
-# What is a Recipe?
+# What is a Project?
 
-A recipe instructs a person through a Zetta project step-by-step. The [IoT Security System](/recipes/2014/09/18/IoT-Security-System.html) is an exemplary recipe. Please use it as a model for creating your own recipes.
+A project instructs a person through a Zetta project step-by-step. The [IoT Security System](/projects/2014/09/18/IoT-Security-System.html) is an exemplary project. Please use it as a model for creating your own projects.
 
 # Style Guide
 
-While you're cooking - about to burn tonight's dinner - you don't want to follow a recipe that provides you with long-winded explanations for each step. You want the facts. You want them clear. And you want to easily scan the steps so you can find your place and continue cooking. As you write a Zetta recipe, imagine that you're writing it for a cook who doesn't want to burn tonight's dinner:
+While you're cooking - about to burn tonight's dinner - you don't want to follow a project that provides you with long-winded explanations for each step. You want the facts. You want them clear. And you want to easily scan the steps so you can find your place and continue cooking. As you write a Zetta project, imagine that you're writing it for a cook who doesn't want to burn tonight's dinner:
 
 * Write clear, concise instructions using the tone of a command:
   * Preheat oven to 350 degrees F (175 degrees C).
@@ -39,11 +39,11 @@ While you're cooking - about to burn tonight's dinner - you don't want to follow
 
 # Markdown Guide
   
-Zetta recipes are writeen in markdown, we use [kramdown](http://kramdown.gettalong.org/) as our markdown parser, and it is interpreted as [github flavored markdown](https://help.github.com/articles/github-flavored-markdown). 
+Zetta projects are writeen in markdown, we use [kramdown](http://kramdown.gettalong.org/) as our markdown parser, and it is interpreted as [github flavored markdown](https://help.github.com/articles/github-flavored-markdown). 
 
-## Recipe Template
+## Project Template
 
-Make a copy of the [recipe boilerplate](https://gist.githubusercontent.com/alanguir/92386e8b46101609e17d/raw/recipe.md) to get started quickly with writing your own zetta recipe. 
+Make a copy of the [project boilerplate](https://gist.githubusercontent.com/alanguir/92386e8b46101609e17d/raw/project.md) to get started quickly with writing your own zetta project. 
 
 
 ## As Standard as possible
@@ -54,9 +54,9 @@ Wherever we can, we try to adhere to standard markdown and simply let our styles
 
 Level one headings `#` create horizontal breaks in your content, and make it easy to visually denote sections of your document. This blue bar is an example of level one heading: 
 
-![Heading Example](/images/recipes/meta_recipe/h1_example.png){:.zoom}
+![Heading Example](/images/projects/meta_project/h1_example.png){:.zoom}
 
-> Did you notice the **link**{:.icon} (link) icon to the left of the heading? Clicking on a heading of **any** level changes the URL hash for easy *intra-*page linking, just like github. Use these links in your `#Recipe Steps` section
+> Did you notice the **link**{:.icon} (link) icon to the left of the heading? Clicking on a heading of **any** level changes the URL hash for easy *intra-*page linking, just like github. Use these links in your `#Project Steps` section
 
 All other heading levels `##..######` behave just as you'd expect.
 
@@ -68,11 +68,11 @@ Tips are rendered from `<blockquote>` elements. To make a tip, just start a line
 > This will render as a tip!
 ```
 
-In general, having more than one consecutive tip means that the information the tip is modifying should be modified. Try to write your recipe so that there is no more than one tip per paragraph or piece of preceeding information. 
+In general, having more than one consecutive tip means that the information the tip is modifying should be modified. Try to write your project so that there is no more than one tip per paragraph or piece of preceeding information. 
 
 ## Code
 
-All `code` used in recipes is written just like on github, with matched pairs of a single ` (backtick) for inline code, and four spaces at the beignning of a line or ``` (3+ backticks) for code fences. Code fences with language definitions will be highlighted using [highlight.js](https://highlightjs.org/) and the **monokai_sublime** theme. Here's an example:
+All `code` used in projects is written just like on github, with matched pairs of a single ` (backtick) for inline code, and four spaces at the beignning of a line or ``` (3+ backticks) for code fences. Code fences with language definitions will be highlighted using [highlight.js](https://highlightjs.org/) and the **monokai_sublime** theme. Here's an example:
 
 `````markdown
 This is an example of using `inline code` in markdown. 
@@ -88,10 +88,10 @@ Will be highlighted like markdown.
 
 Kramdown supports [inline attribute lists](http://kramdown.gettalong.org/syntax.html#inline-attribute-lists), and we use them for adding classes to step lists and images.
 
-To get your list of steps in your `# Recipe Steps` section to render larger like it does in the [IoT Security System](/recipes/2014/09/18/IoT-Security-System.html#recipe-steps) recipe add a class of `steps` to the list by following it with a `{:.steps}` attribute list like this: 
+To get your list of steps in your `# Project Steps` section to render larger like it does in the [IoT Security System](/projects/2014/09/18/IoT-Security-System.html#project-steps) project add a class of `steps` to the list by following it with a `{:.steps}` attribute list like this: 
 
 ``` markdown
-# Recipe Steps 
+# Project Steps 
    
 1. [Add the Piezo Buzzer](#add-the-piezo-buzzer)
    This element will get us going with the basics of Zetta. This step will have us dealing with `npm` and `drivers`.
@@ -103,20 +103,20 @@ To get your list of steps in your `# Recipe Steps` section to render larger like
 
 ## Images
 
-Recipe images are served from a subdirectory matching `your_recipe_name` under the `/images/recipes` directory:
+Project images are served from a subdirectory matching `your_project_name` under the `/images/projects` directory:
 
 ```bash
-/images/recipes/{your_recipe_name}/{your_image}.png
+/images/projects/{your_project_name}/{your_image}.png
 ```
 
 Images are scaled down by default. They can be viewed larger in a modal window by using an [inline attribute list](http://kramdown.gettalong.org/syntax.html#inline-attribute-lists) to attach the `zoom` class to the image element. 
 
 ```markdown
 Regular image:
-![Heading Example](/images/recipes/meta_recipe/h1_example.png)
+![Heading Example](/images/projects/meta_project/h1_example.png)
 
 Image with modal zoom: 
-![Heading Example](/images/recipes/meta_recipe/h1_example.png){:.zoom}
+![Heading Example](/images/projects/meta_project/h1_example.png){:.zoom}
 ```
 
 > Add the `{:.zoom}` attribute to an image without any whitespace after the closing `)` parenthesis, or else the image may be wrapped in a `<p>` tag, and the `zoom` class will be applied to that `<p>` tag. 
@@ -138,13 +138,13 @@ Are written semantically in markdown like this:
 
 > View the [icon reference](http://styleguide.thenextweb.com/ss-pika/documentation.html) to see the full list of 504 icons available, and the text used to create them.  
 
-# Recipes versus Guides
+# Projects versus Guides
 
-Recipes differ from [Guides](/guides) in both length and complexity. Recipes are generally for longer and more complex topics while guides are a great place to put tangential information that is generally shorter and often relates to a topic covered in multiple recipies. This article is written as a guide because it is more like a reference doc than a step-by-step procedure. 
+Projects differ from [Guides](/guides) in both length and complexity. Projects are generally for longer and more complex topics while guides are a great place to put tangential information that is generally shorter and often relates to a topic covered in multiple recipies. This article is written as a guide because it is more like a reference doc than a step-by-step procedure. 
 
 {::comment}
 
-For example, [IoT Security System](/recipes/2014/09/18/IoT-Security-System.html) recipe uses a BeagleBone Black for running zetta. That recipe links to the [Getting Started with BeagleBone Black](/guides/url.html) guide, rather than reiterating that setup process in the recipe. 
+For example, [IoT Security System](/projects/2014/09/18/IoT-Security-System.html) project uses a BeagleBone Black for running zetta. That project links to the [Getting Started with BeagleBone Black](/guides/url.html) guide, rather than reiterating that setup process in the project. 
 
 {:/comment}
 

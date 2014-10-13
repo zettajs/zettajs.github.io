@@ -1,0 +1,14 @@
+---
+title: Projects
+layout: project
+description: >
+  People create interesting projects with Zetta. Get started by re-creating the projects of others. Or share your project with the Zetta community.
+---
+
+<ul>
+  {% for project in site.categories["projects"] %}
+    <li>
+      <a href="{{ project.url }}">{{ project.title }}</a>
+    </li>
+  {% endfor %}
+</ul>

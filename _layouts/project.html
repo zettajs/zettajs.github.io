@@ -5,7 +5,7 @@
       <div class="content">
           {% unless page.path contains 'index' %}
           <ul class="meta">
-            <li><b>file</b> {{page.layout | capitalize }}</li>
+            <li><b>nodes</b> {{page.layout | capitalize }}</li>
             {% if page.author %}<li><b>user</b> {{page.author}}</li>{% endif %}
             <li><b>calendar</b> {{page.date | date: '%b %d, %Y'}}</li>
             {% if page.difficulty %}<li><b>upwardsbarchart</b> {{page.difficulty}}</li>{% endif %}
@@ -24,7 +24,7 @@
         
         {% if page.path contains 'index' %}
         <ul class="meta">
-          <li>Displaying {{ site.categories["recipes"].size }} {{page.layout | capitalize }}s</li>
+          <li>Displaying {{ site.categories["projects"].size }} {{page.layout | capitalize }}s</li>
         </ul>
         {% endif %}
       </div>
@@ -36,6 +36,14 @@
   
   <section class="page_content">
     {{ content }}
+
+    <section class="description">
+      <div>
+        <!-- project intro text -->
+        <p>Have a project to share? Read <a href="/projects/2014/10/01/Share-A-Project.html">How to Share a Project</a></p>
+        <!-- /project intro text -->
+      </div>
+    </section>
   </section>
 
 </article>

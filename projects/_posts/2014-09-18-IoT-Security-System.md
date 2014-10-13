@@ -1,5 +1,5 @@
 ---
-layout: recipe
+layout: project
 title: Home Security
 author: Matt Dobson
 difficulty: experienced
@@ -11,7 +11,7 @@ repo: https://github.com/alanguir/zetta-security-system/
 
 # Ingredients
 
-![All Materials](/images/recipes/security_system/hardware/empty_low.jpg){:.zoom .full}
+![All Materials](/images/projects/security_system/hardware/empty_low.jpg){:.zoom .full}
 
 <script src="https://www.sparkfun.com/wish_lists/95647.js"></script>
 
@@ -35,9 +35,9 @@ repo: https://github.com/alanguir/zetta-security-system/
 1. Follow the guide on [How to Connect a BeagleBone to the Internet via a PC](/guides/2014/10/03/BeagleBone.html).
 1. Open the browser-based Cloud9 IDE at [http://beaglebone.local:3000](http://beaglebone.local:3000).
 1. Click your mouse in the BeagleBone's IDE console.
-![Cloud9 Splash Screen](/images/recipes/security_system/screens/bash_callout.png){:.zoom}
+![Cloud9 Splash Screen](/images/projects/security_system/screens/bash_callout.png){:.zoom}
 
-1. From the Cloud9 IDE console, ensure the BeagleBone is connected to the Internet by pinging Google.
+1. Ping Google from within the Cloud9 IDE console to ensure the BeagleBone is connected to the Internet.
 
    ```bash
    ping google.com
@@ -52,7 +52,7 @@ repo: https://github.com/alanguir/zetta-security-system/
    ```
    {:.language-bash-noln}
 
-> **caution**{:.icon} All console commands are to be executed on the BeagleBone via the Cloud9 IDE. A common mistake is to issue the commands on your PC terminal, which won't get the recipe working on the BeagleBone and should be avoided.
+> **caution**{:.icon} All console commands are to be executed on the BeagleBone via the Cloud9 IDE. A common mistake is to issue the commands on your PC terminal, which won't get the project working on the BeagleBone and should be avoided.
 
 > **help**{:.icon} Can't ping Google? Refer again to the [BeagleBone guide](/guides/2014/10/03/BeagleBone.html) or [ask for help](/community/#discussion).
 
@@ -90,9 +90,9 @@ The Piezo Buzzer is for making noise, and will function as the sound component o
 
 We need to attach our buzzer to our BeagleBone so Zetta can control it. Connect your hardware like this:
 
-![Piezo Hookup Diagram](/images/recipes/security_system/hookup_diagram_step_1.png){:.fritzing}
+![Piezo Hookup Diagram](/images/projects/security_system/hookup_diagram_step_1.png){:.fritzing}
 
-If you use fritzing, you can download the full [Fritzing Diagram](/images/recipes/security_system/fritzing/hookup_diagram.fzz) to reference throughout this recipe. 
+If you use fritzing, you can download the full [Fritzing Diagram](/images/projects/security_system/fritzing/hookup_diagram.fzz) to reference throughout this project. 
 
 > New to using a solderless breadboard? Get up to speed by reading our [How to Breadboard](/guides/2014/10/07/Breadboard.html) guide.
 
@@ -112,8 +112,8 @@ If you use fritzing, you can download the full [Fritzing Diagram](/images/recipe
 
 Your hardware setup should look like this when you're done:
 
-![The Connected Piezo Buzzer](/images/recipes/security_system/hardware/piezo_birdseye.jpg){:.zoom}
-![The Connected Piezo Buzzer](/images/recipes/security_system/hardware/piezo_low.jpg){:.zoom}
+![The Connected Piezo Buzzer](/images/projects/security_system/hardware/piezo_birdseye.jpg){:.zoom}
+![The Connected Piezo Buzzer](/images/projects/security_system/hardware/piezo_low.jpg){:.zoom}
 
 > **TIP**
 > The BeagleBone pinout can be confusing. See our [BeableBone guide](/guides/2014/10/03/BeagleBone.html) for a pinout diagram and other help with connecting hardware to it.
@@ -131,7 +131,7 @@ Follow along to add code to your security system.
 
 ## Retrieving The Driver
 
-Drivers in Zetta are distributed through the Node Package Manager - NPM. We'll be building a driver from scratch later in this recipe, but for now let's just pull this one off the shelf. In the Cloud9 IDE on yor BeagleBone, run this command:
+Drivers in Zetta are distributed through the Node Package Manager - NPM. We'll be building a driver from scratch later in this project, but for now let's just pull this one off the shelf. In the Cloud9 IDE on yor BeagleBone, run this command:
 
 ```md
 npm install zetta-buzzer-bonescript-driver --save
@@ -190,7 +190,7 @@ TIMESTAMP [scout] Device (buzzer) SOME-GUID was provisioned from registry
   * TIMESTAMP will be the time the log was generated
   * SOME-GUID will be a 32 digit globally uniqe id.
 
-![The terminal after running server.js for the first time](/images/recipes/security_system/screens/running_zetta.png){:.zoom}
+![The terminal after running server.js for the first time](/images/projects/security_system/screens/running_zetta.png){:.zoom}
 
 > **TIP**
 > It can take up to 20 seconds for the BeagleBone to load and run the Zetta node. You'll know you're ready once you see Zetta's log messages showing up in your Cloud9 console.
@@ -205,7 +205,7 @@ Now the moment you've been waiting for...buzzing that buzzer! To do this, we'll 
 
 It only takes a few seconds to connect. Once you do, you will see something like this:
 
-![Zetta Browser with Piezo Attached](/images/recipes/security_system/screens/browser-piezo.png){:.zoom}
+![Zetta Browser with Piezo Attached](/images/projects/security_system/screens/browser-piezo.png){:.zoom}
 
 > Not connecting? See our [Zetta Browser Guide](/guides/zetta-browser.html)
 
@@ -217,7 +217,7 @@ Click the __beep__ button to make your buzzer beep!
 
 In Zetta every device gets an API automatically generated for it. Our API represents the device in it's current state and the actions that can be taken on it. We use a special hypermedia type known as [Siren](http://sirenspec.org/) to represent devices and servers. You can see a response from your API now by clicking on "buzzer" in the Zetta browser.
 
-![Piezo Buzzer Detail Page](/images/recipes/security_system/screens/browser-piezo-show.png){:.zoom}
+![Piezo Buzzer Detail Page](/images/projects/security_system/screens/browser-piezo-show.png){:.zoom}
 
 This view has lots of extra details about our Pieze Buzzer, including it's full API response. Scroll down in the Zetta browser to see the API request & response that generated this very detail page.
 
@@ -235,7 +235,7 @@ Next up is our microphone sensor. This will detect the sound of possible intrude
 
 Here's what you should have once you add your microphone:
 
-![Microphone Hookup Diagram](/images/recipes/security_system/hookup_diagram_step_2.png){:.fritzing}
+![Microphone Hookup Diagram](/images/projects/security_system/hookup_diagram_step_2.png){:.fritzing}
   
 1. If your microphone does not have headers attached, solder them in place so the microphone can be added to the breadboard
 2. Add your microphone to the breadboard.
@@ -253,8 +253,8 @@ Here's what you should have once you add your microphone:
 
 Your hardware setup should look something like this when you're done:
 
-![The Connected Microphone](/images/recipes/security_system/hardware/microphone_birdseye.jpg){:.fritzing}
-![The Connected Microphone](/images/recipes/security_system/hardware/microphone_low.jpg){:.fritzing}
+![The Connected Microphone](/images/projects/security_system/hardware/microphone_birdseye.jpg){:.fritzing}
+![The Connected Microphone](/images/projects/security_system/hardware/microphone_low.jpg){:.fritzing}
 
 
 # Write Microphone Code
@@ -328,7 +328,7 @@ Save changes to `server.js` and start your server by running this in your Cloud9
 
 This time Zetta will log two messages, one for each device that connects:
 
-![Running Your Server](/images/recipes/security_system/screens/c9_two_devices.png){:.zoom}
+![Running Your Server](/images/projects/security_system/screens/c9_two_devices.png){:.zoom}
 
 > **TIP**
 > It can take up to 20 seconds for the BeagleBone to load and run the Zetta node. You'll know you're ready once you see "Zetta is running on..." show up in your console.
@@ -339,11 +339,11 @@ Once again, we need to point the Zetta browser to the Zetta server node that's r
 
 > View your app in the [Zetta Browser](http://browser.zettajs.io/#/overview?url=http:%2F%2Fbeaglebone.local:1337)
 
-![Zetta Browser root with Microphone](/images/recipes/security_system/screens/browser-microphone.png){:.zoom}
+![Zetta Browser root with Microphone](/images/projects/security_system/screens/browser-microphone.png){:.zoom}
 
 Now click on the device name `Microphone` in the Zetta browser to get a more detailed view of the device. Try making noise or tapping on the microphone to see the waveform change in real time.
 
-![Zetta Browser root with Microphone](/images/recipes/security_system/screens/zetta-browser-microphone-show.png){:.zoom}
+![Zetta Browser root with Microphone](/images/projects/security_system/screens/zetta-browser-microphone-show.png){:.zoom}
 
 ## What Just Happened?!
 
@@ -480,13 +480,13 @@ You must both `require` your `app.js` file, and `use()` it in order for Zetta to
 
 Save your code, and rerun Zetta with `node server.js`. Now lets head back over to the Zetta browser to see this new interaciton at work. The browser should look just as it did before:
 
-![Zetta Browser root with Microphone](/images/recipes/security_system/screens/browser-microphone-2.png){:.zoom}
+![Zetta Browser root with Microphone](/images/projects/security_system/screens/browser-microphone-2.png){:.zoom}
 
 ## Make it Beep! (Again!)
 
 Just like before, pressing the `beep` in the Zetta browser button will cause your piezo buzzer to make sound. Click on the `microphone` device to show the detail view, and make a loud noise (like a clap), or just tap on the top of the microphone. Whenever you see a spike in the graph, you should also hear the piezo buzzer sound.
 
-![Zetta Browser root with Microphone](/images/recipes/security_system/screens/browser-microphone-interaction.png){:.zoom}
+![Zetta Browser root with Microphone](/images/projects/security_system/screens/browser-microphone-interaction.png){:.zoom}
 
 ## What Just Happened?!
 
@@ -502,7 +502,7 @@ In this next section, we're going to add an LED to our security system. To do th
 
 Here's what you should have once you add your microphone:
 
-![Microphone Hookup Diagram](/images/recipes/security_system/hookup_diagram_step_3.png){:.fritzing}
+![Microphone Hookup Diagram](/images/projects/security_system/hookup_diagram_step_3.png){:.fritzing}
 
 1. Add your LED to the breadboard.
   * *Annode* (long leg) on Breadboard **A26**
@@ -519,8 +519,8 @@ Here's what you should have once you add your microphone:
 
 Your hardware setup should look like this when you're done:
 
-![The Connected Microphone](/images/recipes/security_system/hardware/led_birdseye.jpg){:.fritzing}
-![The Connected Microphone](/images/recipes/security_system/hardware/led_low.jpg){:.fritzing}
+![The Connected Microphone](/images/projects/security_system/hardware/led_birdseye.jpg){:.fritzing}
+![The Connected Microphone](/images/projects/security_system/hardware/led_low.jpg){:.fritzing}
 
 
 # Write Light Code
@@ -681,7 +681,7 @@ Now's the time to test our fully featured security system. Head back to Cloud9's
 
 As you can see, the LED is now another device that we can interact with in the Zetta browser. 
 
-![The LED is now visible in the Zetta browser](/images/recipes/security_system/screens/browser-led.png){:.zoom}
+![The LED is now visible in the Zetta browser](/images/projects/security_system/screens/browser-led.png){:.zoom}
 
 By now, you should also be able to notice the colored bars near the top of the streen in the Zetta browser. This is called Zetta's "Wampum Belt", and you can read more about that in our [Zetta Browser Guide](/guides/zetta-browser.html#wampum-belt).
 
