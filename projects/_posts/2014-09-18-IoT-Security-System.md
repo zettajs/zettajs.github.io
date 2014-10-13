@@ -32,7 +32,7 @@ The goal for this project is to create a simple home security system by assembli
 1. [Setup the BeagleBone](#step-1-setup-the-beaglebone)
 1. [Buzz the Buzzer](#step-2-buzz-the-piezo-buzzer)
 1. [Soundcheck the Microphone](#step-3-soundcheck-the-microphone)
-1. [Write the Security App](#step-4-write-the-security-app)
+1. [Secure the Area](#step-4-secure-the-area)
 1. [Blink the LED](#step-5-blink-the-led)
 1. [Next Steps](#next-steps)
 1. [Get Help](#get-help)
@@ -220,7 +220,8 @@ After assembling the microphone hardware, your project should look similar to th
    ```javascript
    .use(Microphone, 'P9_36')
    ```
-   So that `server.js` looks like the code below.
+
+1. Ensure `server.js` looks like the code below.
    
    ```javascript
    var zetta = require('zetta');
@@ -234,6 +235,7 @@ After assembling the microphone hardware, your project should look similar to th
      console.log('Zetta is running at http://beaglebone.local:1337');
    });
    ```
+
 1. From the Cloud9 IDE, click `File > Save` to save the changes you made to `server.js`.
 
 1. From the Cloud9 IDE console, restart the Zetta server by pressing `CTRL-c` or `COMMAND-c` and then running `node server.js`
@@ -270,133 +272,91 @@ After assembling the microphone hardware, your project should look similar to th
 
 1. Ensure the values and waveform for the `:volume` characteristic in the Zetta Browser are streaming over time and change as you make noise.
 
-# Step #4: Write the Security App
+# Step #4: Secure the Area
 
-##Write app.js
+## Create Security App File and Folder
 
 1. From the Cloud9 IDE console, create the app file and directory.
 
-    ```bash
-    mkdir apps
-    touch apps/app.js
-    ```
-    {:.language-bash-noln}
+   ```bash
+   mkdir apps
+   touch apps/app.js
+   ```
+   {:.language-bash-noln}
 
-1. From the Cloud9 IDE, double-click on the new `app.js` file to edit it.
+1. From the Cloud9 IDE, double-click on the new `apps/app.js` file to edit it.
 
-1. Write the export statement for the app to keep it modular.
+## Write  Security App Logic
 
-    ```javascript
-    module.exports = function(server) {
-      //app goes here
-    }
-    ```
+1. Write the app logic.
 
-1. Write our first query. Zetta uses queries to look for devices, or wait for devices to come online that fill all the parameters given. Our first query tells Zetta to retrieve the buzzer for us, the second one retrieves the Microphone sensor.
+   ```javascript
+   module.exports = function(server) {
+     var buzzerQuery = server.where({type: 'buzzer'});
+     var microphoneQuery = server.where({type: 'microphone'});
+     server.observe([buzzerQuery, microphoneQuery], function(buzzer, microphone){
+       microphone.streams.volume.on('data', function(msg){
+         if (buzzer.state === 'off' && msg.data > 30) {
+           buzzer.call('turn-on-pulse', function() {});
+           setTimeout(function(buzzer) {
+               buzzer.call('turn-off', function(err) {})
+             }, 3000, buzzer);
+         }
+       });
+     });
+   }
+   ```
 
-```javascript
-module.exports = function(server) {
-  var buzzerQuery = server.where({type: 'buzzer'});
-  var microphoneQuery = server.where({type: 'microphone'});
+## Use Security App in the Zetta Server
 
-}
-```
+1. From the Cloud9 IDE, edit the `server.js` file. Add Zetta code to `require` and `use` the `app` from the `apps` folder.
 
-4 - The `server` variable is an instance of Zetta. We can use functionality attached to it to search for devices. We can use the method `server.observe()` to waits for devices that fit queries given in the first argument to come online, and then fire a callback.
+   Add **line 5**.
 
-  * We want the callback function to fire when `"buzzer"` and `"microphone"` devices come online.
-  * The function passes in the state machines of the devices in as individual arguments.
+   ```javascript
+   var app = require('./apps/app');
+   ```
 
-```javascript
-module.exports = function(server) {
-  var buzzerQuery = server.where({type: 'buzzer'});
-  var microphoneQuery = server.where({type: 'microphone'});
+   Add **line 10**.
 
-  server.observe([buzzerQuery, microphoneQuery], function(buzzer, microphone){
-    //do something with the devices after we find them
+   ```javascript
+   .use(app)
+   ```
 
-  });
-}
-```
+1. Ensure `server.js` looks like the code below.
 
-5 - Now we can work with our buzzer and microphone inside the `observe()` callback. Our microphone's driver defines it as having streams with volume. We'll listen for a `"data"` event to happen on a `"volume"` *stream*. Once we get that data, we want to test to see if value is above `10`. If it is, call the `"turn-on"` transition on the buzzer.
+   ```javascript
+   var zetta = require('zetta');
+   var Buzzer = require('zetta-buzzer-bonescript-driver');
+   var Microphone = require('zetta-microphone-bonescript-driver');
 
-When we're all done, this is what our `app.js` file should look like:
+   var app = require('./apps/app');
 
-```javascript
-module.exports = function(server) {
-  var buzzerQuery = server.where({type: 'buzzer'});
-  var microphoneQuery = server.where({type: 'microphone'});
-  server.observe([buzzerQuery, microphoneQuery], function(buzzer, microphone){
+   zetta()
+   .use(Buzzer, 'P9_14')
+   .use(Microphone, 'P9_36')
+   .use(app)
+   .listen(1337, function(){
+     console.log('Zetta is running at http://beaglebone.local:1337');
+   });
+   ```
+1. From the Cloud9 IDE, click `File > Save` to save the changes you made to `server.js`.
 
-    microphone.streams.volume.on('data', function(msg){
-      if (msg.data > 20) {
-        buzzer.call('turn-on-pulse', function() {});
-      } else {
-        //buzzer.call('turn-off', function() {});
-      }
-    });
+## Secure the Area
 
-  });
-}
-```
+1. From the Cloud9 IDE console, restart the Zetta server by pressing `CTRL-c` or `COMMAND-c` and then running `node server.js`
 
-# Load Your App When Zetta Runs
+   ```bash
+   node server.js
+   ```
+1. Make a noise near or gently tap on the microphone.
 
-After you're done writing your app, you need to make sure it's included in your server file. Update `server.js` to look like so:
+1. Ensure that the alarm sounds for approximately 3 seconds.
 
-```javascript
-var zetta = require('zetta');
-var Buzzer = require('zetta-buzzer-bonescript-driver');
-var Microphone = require('zetta-microphone-bonescript-driver');
+1. Open the Zetta Browser to observe state changes:
 
-var app = require('./apps/app');
+   [http://browser.zettajs.io/#/overview?url=http:%2F%2Fbeaglebone.local:1337](http://browser.zettajs.io/#/overview?url=http:%2F%2Fbeaglebone.local:1337)
 
-zetta()
-  .use(Buzzer, 'P9_14')
-  .use(Microphone, 'P9_36')
-  .use(app)
-  .listen(1337, function(){
-    console.log('Zetta is running at http://beaglebone.local:1337');
-  });
-
-```
-
-We added two lines of code. Here's what they do:
-
-Line 5 includes our app. Because it's built like other node modules (remember `module.exports`?), we just have this single additional `require`. This includes our app like a library and makes it available to use later.
-
-```javascript
-var app = require('./apps/app');
-```
-
-Line 10, the third `.use()` function can determine what type of module you pass into it, and is smart enough to know wheter you're passing it a device driver or an app.
-
-```javascript
-.use(app)
-```
-
-You must both `require` your `app.js` file, and `use()` it in order for Zetta to execute it at runtime.
-
-# Test Interaction
-
-## Running the Server Node
-
-Save your code, and rerun Zetta with `node server.js`. Now lets head back over to the Zetta browser to see this new interaciton at work. The browser should look just as it did before:
-
-![Zetta Browser root with Microphone](/images/projects/security_system/screens/browser-microphone-2.png){:.zoom}
-
-## Make it Beep! (Again!)
-
-Just like before, pressing the `beep` in the Zetta browser button will cause your piezo buzzer to make sound. Click on the `microphone` device to show the detail view, and make a loud noise (like a clap), or just tap on the top of the microphone. Whenever you see a spike in the graph, you should also hear the piezo buzzer sound.
-
-![Zetta Browser root with Microphone](/images/projects/security_system/screens/browser-microphone-interaction.png){:.zoom}
-
-## What Just Happened?!
-
-We wrote an app to coordinate actions between devices connected to Zetta. The app used Zetta queries to find devices registered to our node, and `server.observe()` to guarantee the devices were available before trying to run logic that included them.
-
-Specifically, we told Zetta to watch the volume `stream` of our microphone, and to trigger `turn-on-pulse` for the piezzo device when the microphone's volume goes above `20`.
 
 # Step #5: Blink the LED
 
