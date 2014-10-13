@@ -5,7 +5,7 @@ layout: community
 
 Zetta's IoT workshop gives participants hands-on experience with the newest IoT hardware and software so that they can rapidly build compelling IoT applications.
 
-![Hands-on lab]({{ site.url }}/images/workshops/handson.jpg)
+![Hands-on lab]({{ site.url }}/images/community/workshops/handson.jpg)
 
 Zetta's Internet of Things workshop guides participants through the hands-on creation of an IoT system.
 Workshop participants make a DIY home automation system using off-the-shelf physical components, open source software and open source hardware. The workshop duration is four hours. It is designed for twelve students and is taught by two engineers.
@@ -61,11 +61,11 @@ Participants get exposure to a diverse hardware kit so that they can tinker with
 
 If you'd like an IoT workshop at your makerspace, your company, your school or an upcoming event please contact us on Twitter [@zettajs](http://twitter.com/zettajs) or email [zetta@apigee.com](mailto:zetta@apigee.com).
 
-![The crowd]({{ site.url }}/images/workshops/crowd.jpg)
+![The crowd]({{ site.url }}/images/community/workshops/crowd.jpg)
 
-![Kits]({{ site.url }}/images/workshops/kits.jpg)
+![Kits]({{ site.url }}/images/community/workshops/kits.jpg)
 
-![Sign]({{ site.url }}/images/workshops/sign.jpg)
+![Sign]({{ site.url }}/images/community/workshops/sign.jpg)
 
-![Instruction]({{ site.url }}/images/workshops/instruction.jpg)
+![Instruction]({{ site.url }}/images/community/workshops/instruction.jpg)
 

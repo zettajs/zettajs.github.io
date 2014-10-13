@@ -57,7 +57,7 @@ The goal for this project is to create a simple home security system by assembli
    git clone https://github.com/alanguir/zetta-security-system
    ```
 
-> **info**{:.icon} By default your clone will be stored in the `/var/lib/cloud9/` folder, which is recommended for working with the Cloud9 IDE.
+   > **info**{:.icon} By default your clone will be stored in the `/var/lib/cloud9/` folder, which is recommended for working with the Cloud9 IDE.
 
 ## Install Zetta
 
@@ -73,7 +73,7 @@ The goal for this project is to create a simple home security system by assembli
    npm install
    ```
 
-> **clock**{:.icon} Running `npm install` on the BeagleBone can take several minutes. Move ahead with the hardware steps during installation.
+   > **clock**{:.icon} Running `npm install` on the BeagleBone can take several minutes. Move ahead with the hardware steps during installation.
 
 # Step #2: Buzz the Piezo Buzzer
 
@@ -163,7 +163,7 @@ After assembling the buzzer hardware, your project should look similar to the im
 
 1. Ensure that your buzzer buzzed and the device state changed in the Zetta Browser visualization.
 
-> **help**{:.icon} Didn't hear a beep? Double check your wiring and make sure there were no errors reported in the Cloud9 IDE console.
+   > **help**{:.icon} Didn't hear a beep? Double check your wiring and make sure there were no errors reported in the Cloud9 IDE console.
 
 # Step #3: Soundcheck the Microphone
 
@@ -272,44 +272,27 @@ After assembling the microphone hardware, your project should look similar to th
 
 # Step #4: Write the Security App
 
-In this section you'll learn about creating an app in Zetta. You'll also learn about streaming sensor data values, and taking advantage of those readings in your Zetta app. No new hardware in this section - we're going to write code that creates an interaction between the existing Microphone and Piezo Buzzer hardware that we setup in the previous two sections.
+##Write app.js
 
-# Security App Code
+1. From the Cloud9 IDE console, create the app file and directory.
 
-Follow along to add code to your security system.
-
-{::comment}
-
-> **list**{:.icon} **Step**
-> Don't want to type? Optionally add this section's code automatically by moving to step 3 in your git repo with `git checkout -f step-3`. Moving to step three will loose modifications you've made so far.
-
-{:/comment}
-
-##Creating the App
-
-1 - Apps in Zetta allow us to orchestrate interactions between devices. To create one, make a new file in your project's `apps` folder:
-
+    ```bash
     mkdir apps
     touch apps/app.js
+    ```
+    {:.language-bash-noln}
 
-Now double-click on the new `app.js` file in your Cloud9 IDE so we can edit it and add functionality.
+1. From the Cloud9 IDE, double-click on the new `app.js` file to edit it.
 
-{::comment}
+1. Write the export statement for the app to keep it modular.
 
-> **TIP**
-> You may have to refresh the file tree in the Cloud9 IDE to see the `apps` folder creating by checking out step-3. You can do that by Right/CTRL clicking on the file pane and selecting  `Refresh` from the contextual menu.
+    ```javascript
+    module.exports = function(server) {
+      //app goes here
+    }
+    ```
 
-{:/comment}
-
-2 - The first component of our app is an export statement. This is so that we can keep our apps modular and separated from the rest of our code. Edit `app.js` so it looks like this:
-
-```javascript
-module.exports = function(server) {
-  //app goes here
-}
-```
-
-3 - Next, we create our first query. Zetta uses queries to look for devices, or wait for devices to come online that fill all the parameters given. Our first query tells Zetta to retrieve the buzzer for us, the second one retrieves the Microphone sensor.
+1. Write our first query. Zetta uses queries to look for devices, or wait for devices to come online that fill all the parameters given. Our first query tells Zetta to retrieve the buzzer for us, the second one retrieves the Microphone sensor.
 
 ```javascript
 module.exports = function(server) {
