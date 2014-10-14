@@ -1,5 +1,5 @@
 ---
-layout: recipe
+layout: project
 title: Hello World
 author: Adam Magaluk
 difficulty: beginner
@@ -12,9 +12,9 @@ The following documentation will guide you through how to build the basic "Hello
 Before you begin, you'll need to do the following:
 
   > 1. Have Zetta and Node.js installed. See [installation instructions](#) if you need to do this.
-  > 2. [**download**{:.icon} Download](https://github.com/zettajs/zetta-hello-world) this recipe's source code
+  > 2. [**download**{:.icon} Download](https://github.com/zettajs/zetta-hello-world) this project's source code
 
-#Recipe Steps
+#Project Steps
 
 1. [The LED](#the-led)
    Develop a state machine model for our mock LED
@@ -359,7 +359,7 @@ to any data streams coming from the API. You should see data in real time updati
 
 #3. Interactions
 
-Zetta can also locally make devices interact with each other using simple javascript. In this part of our recipe we'll go over
+Zetta can also locally make devices interact with each other using simple javascript. In this part of our project we'll go over
 how to use queries, interact with streams, and call actions on devices all in javascript.
 
 ##Contents
@@ -449,7 +449,7 @@ Here are some next steps you can take.
 + Setup your own Zetta server in the cloud
   + We provided hello-zetta as a way to demonstrate linking. Check out http://github.com/zettajs/zetta-cloud-sample to deploy your own cloud server to heroku or similar service.
 + Add hardware
-  + Our next recipe will iterate on our hello world app to include hardware. Check it out!
+  + Our next project will iterate on our hello world app to include hardware. Check it out!
 + Create your own mock devices
   + Check out how to write a driver **here**, and get started with your own mock devices.
 
