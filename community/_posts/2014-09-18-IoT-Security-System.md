@@ -33,6 +33,7 @@ The goal for this project is to create a simple home security system by assembli
 1. [Buzz the Buzzer](#step-2-buzz-the-piezo-buzzer)
 1. [Soundcheck the Microphone](#step-3-soundcheck-the-microphone)
 1. [Secure the Area](#step-4-secure-the-area)
+1. [Link to the Internet](#step-5-link-to-the-internet)
 {:.steps}
 
 # Step #1: Setup the BeagleBone
@@ -353,3 +354,205 @@ After assembling the microphone hardware, your project should look similar to th
 1. Open the Zetta Browser to observe state changes:
 
    [http://browser.zettajs.io/#/overview?url=http:%2F%2Fbeaglebone.local:1337](http://browser.zettajs.io/#/overview?url=http:%2F%2Fbeaglebone.local:1337)
+
+# Step #5: Link to the Internet
+
+## Create link between two Zetta nodes
+
+1. Ensure `server.js` looks like the code below.
+
+```javascript
+var zetta = require('zetta');
+var Buzzer = require('zetta-buzzer-bonescript-driver');
+var Microphone = require('zetta-microphone-bonescript-driver');
+
+zetta()
+ .use(Buzzer, 'P9_14')
+ .use(Microphone, 'P9_36')
+ .link('http://hello-zetta.herokuapp.com/')
+ .listen(1337, function(){
+ console.log('Zetta is running at http://beaglebone.local:1337');
+});
+```
+
+1. From the Cloud9 IDE, click `File > Save` to save the changes you made to `server.js`.
+
+## Investigate a new Zetta server
+
+1. Open the Zetta Browser from a new location.
+
+  [http://browser.zettajs.io/#/overview?url=http:%2F%2Fhello-zetta.herokuapp.com](http://browser.zettajs.io/#/overview?url=http:%2F%2Fhell-zetta.herokuapp.com)
+
+2. Observe the state changes occuring, and interact with the system from the open internet.
+
+# Step #6: Blink the LED
+
+## Assemble Light Hardware
+
+![Microphone Hookup Diagram](/images/projects/security_system/hookup_diagram_step_3.png){:.fritzing}
+
+1. Add your LED to the breadboard.
+  * *Annode* (long leg) on Breadboard **A26**
+  * *Cathode* (short leg) on Breadboard **A28**
+  * Place AUD on Breadboard **F20**
+2. Connect your wires in the following way:
+
+    From                 | Wire                 | To  
+    :----                |:-----:               |----:
+    Breadboard **I26**   |Orange                |BeableBone **P9_41**
+    Breadboard **C26**   |47&#8486; Resistor    |Breadboard **G26**
+    Breadboard **E28**   |Black                 |Breadboard's negative column
+    {:.wiring}
+
+Your hardware setup should look like this when you're done:
+
+![The Connected Microphone](/images/projects/security_system/hardware/led_birdseye.jpg){:.fritzing}
+![The Connected Microphone](/images/projects/security_system/hardware/led_low.jpg){:.fritzing}
+
+# Write Light Code
+
+## Create Device File and Folder
+
+We'll want to setup the directory where our driver will be located. Create a `/devices` directory, and within it create another folder called `led`. This folder will contain one file - `index.js`.
+
+Use the Cloud9 GUI, or run the following terminal commands to create the files and folder that you need:
+
+```bash
+mkdir devices
+mkdir devices/led
+```
+
+```bash
+touch devices/led/index.js
+```
+
+You should end up with a file structure that looks like so:
+
+<pre><code class="bash-noln">
+└── zetta-security-system
+    ├── apps
+    │   └── app.js
+    ├── devices
+    │   └── led
+    │       └── index.js
+    ├── package.json
+    └── server.js
+</code></pre>
+
+## Write the LED Driver Code
+
+1. Ensure `index.js` looks like the code below.
+
+```javascript
+var Device = require('zetta').Device;
+var util = require('util');
+var bone = require('bonescript');
+
+var Led = module.exports = function(pin) {
+  Device.call(this);
+  this.pin = "P9_41";
+};
+util.inherits(Led, Device);
+
+Led.prototype.init = function(config) {
+  config
+    .state('off')
+    .type('led')
+    .name('LED')
+    .when('on', { allow: ['turn-off', 'toggle'] })
+    .when('off', { allow: ['turn-on', 'toggle'] })
+    .map('turn-on', this.turnOn)
+    .map('turn-off', this.turnOff)
+    .map('toggle', this.toggle);
+
+  //Everything is off to start
+  bone.pinMode(this.pin, bone.OUTPUT);
+  bone.digitalWrite(this.pin, 0);
+};
+
+Led.prototype.turnOn = function(cb) {
+  var self = this;
+  bone.digitalWrite(this.pin, 1, function() {
+    self.state = 'on';
+    cb();
+  });
+};
+
+Led.prototype.turnOff = function(cb) {
+  var self = this;
+  bone.digitalWrite(this.pin, 0, function() {
+    self.state = 'off';
+    cb();
+  });
+};
+
+Led.prototype.toggle = function(cb) {
+  if (this.state === 'on') {
+    this.call('turn-off', cb);
+  } else {
+    this.call('turn-on', cb);
+  }
+};
+```
+
+## Run The Zetta Server
+
+1. Ensure `server.js` looks like the code below.
+
+```javascript
+var zetta = require('zetta');
+var Buzzer = require('zetta-buzzer-bonescript-driver');
+var Microphone = require('zetta-microphone-bonescript-driver');
+var LED = require('./devices/led');
+
+var app = require('./apps/app');
+
+zetta()
+  .use(Buzzer, 'P9_14')
+  .use(Microphone, 'P9_36')
+  .use(LED, 'P9_41')
+  .use(app)
+  .listen(1337, function(){
+    console.log('Zetta is running at http://beaglebone.local:1337');
+  });
+
+```
+
+
+## Adding to Our App
+
+1. Ensure `app.js` looks like the code below.
+
+```javascript
+module.exports = function(server) {
+  var buzzerQuery = server.where({type: 'buzzer'});
+  var microphoneQuery = server.where({type: 'microphone'});
+  var ledQuery = server.where({type: 'led'});
+
+  server.observe([buzzerQuery, microphoneQuery, ledQuery], function(buzzer, microphone, led){
+
+    microphone.streams.volume.on('data', function(msg){
+      if (msg.data > 20) {
+          buzzer.call('turn-on-pulse', function() {});
+          led.call('turn-on', function(){});
+        }
+    });
+
+  });
+}
+```
+
+## Test Interaction
+
+1. From the Cloud9 IDE console, restart the Zetta server by pressing `CTRL-c` or `COMMAND-c` and then running `node server.js`
+
+   ```bash
+   node server.js
+   ```
+1. Make a noise near or gently tap on the microphone.
+
+1. Ensure that the alarm sounds for approximately 3 seconds, and the LED turns on.
+
+1. Open the Zetta Browser to observe state changes:
+
+   [http://browser.zettajs.io/#/overview?url=http:%2F%2hello-zetta.herokuapp.com](http://browser.zettajs.io/#/overview?url=http:%2F%2Fhello-zetta.herokuapp.com)
