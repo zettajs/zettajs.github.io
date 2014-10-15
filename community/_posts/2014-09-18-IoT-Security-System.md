@@ -1,5 +1,5 @@
 ---
-layout: project
+layout: community
 title: Home Security
 author: Matt Dobson
 difficulty: experienced
@@ -81,7 +81,7 @@ The goal for this project is to create a simple home security system by assembli
 1. Attach the piezo buzzer to the breadboard.
 
     From              | To  
-    :----             |----: 
+    :----             |----:
     Buzzer **-** pin  |Breadboard **A3**
     Buzzer **+** pin  |Breadboard **A6**
     {:.wiring}
@@ -91,7 +91,7 @@ The goal for this project is to create a simple home security system by assembli
 1. Create a circuit between the BeagleBone and the buzzer.
 
     From                  | Wire           | To  
-    :----                 |:-----:         |----: 
+    :----                 |:-----:         |----:
     Breadboard **E3**     |**White**       |BeagleBone **P9_14**
     Breadboard **E6**     |**Black**       |Breadboard **-**
     Breadboard **-**      |**Black**       |BeagleBone **P9_01**
@@ -107,11 +107,11 @@ After assembling the buzzer hardware, your project should look similar to the im
 ## Write the Buzzer Software
 
 1. From the Cloud9 IDE console, install the Zetta device driver for the buzzer.
-   
+
    ```bash
    npm install zetta-buzzer-bonescript-driver --save
    ```
-   
+
    > **caution**{:.icon} Ensure the BeagleBone Cloud9 IDE console is in the correct working directory when you run `npm install`. The Cloud9 IDE console prompt should be: `root@beaglebone:/var/lib/cloud9/zetta-security-system/#`
 
 1. From the Cloud9 IDE workspace, click on the arrow to the left of the `zetta-security-system` folder. Then double-click on the file `server.js` to open it in the Cloud9 IDE editor.
@@ -167,7 +167,7 @@ After assembling the buzzer hardware, your project should look similar to the im
 ## Assemble Microphone Hardware
 
 ![Microphone Hookup Diagram](/images/projects/security_system/hookup_diagram_step_2.png){:.fritzing}
-  
+
 1. If your microphone does not have headers attached, solder them in place so the microphone can be attached to the breadboard.
 
    > **help**{:.icon} New to soldering? Read the [How to Solder](/guides/2014/10/13/solder.html) guide.
@@ -175,7 +175,7 @@ After assembling the buzzer hardware, your project should look similar to the im
 2. Attach your microphone to the breadboard.
 
     From                  | To  
-    :----                 |----: 
+    :----                 |----:
     Microphone **VCC**    |Breadboard **F18**
     Microphone **GND**    |Breadboard **F19**
     Microphone **AUD**    |Breadboard **F20**
@@ -184,14 +184,14 @@ After assembling the buzzer hardware, your project should look similar to the im
 3. Create a circuit between the BeagleBone and the microphone.
 
     From                 | Wire                     | To  
-    :----                |:-----:                   |----: 
+    :----                |:-----:                   |----:
     Breadboard **H18**   |**Red**                   |BeableBone **P9_32**
     Breadboard **H19**   |**2.2k&#8486;** Resistor  |Breadboard **-**
     Breadboard **H20**   |**Green**                 |BeableBone **P9_36**
     {:.wiring}
 
    > **help**{:.icon} Don't know how to read resistor values? Read the [How to Read Resistor Values](/guides/2014/10/13/2014.html) guide.
-   
+
 After assembling the microphone hardware, your project should look similar to the images below.
 
 ![The Connected Microphone](/images/projects/security_system/hardware/microphone_birdseye.jpg){:.fritzing}
@@ -205,7 +205,7 @@ After assembling the microphone hardware, your project should look similar to th
    npm install zetta-microphone-bonescript-driver --save
    ```
 
-1. In the `server.js` file, write Zetta code to `require` and `use` the `Microphone` driver on BeagleBone pin `P9_36`. 
+1. In the `server.js` file, write Zetta code to `require` and `use` the `Microphone` driver on BeagleBone pin `P9_36`.
 
    Add **line 3**:
 
@@ -219,7 +219,7 @@ After assembling the microphone hardware, your project should look similar to th
    ```
 
 1. Ensure `server.js` looks like the code below.
-   
+
    ```javascript
    var zetta = require('zetta');
    var Buzzer = require('zetta-buzzer-bonescript-driver');
@@ -353,5 +353,3 @@ After assembling the microphone hardware, your project should look similar to th
 1. Open the Zetta Browser to observe state changes:
 
    [http://browser.zettajs.io/#/overview?url=http:%2F%2Fbeaglebone.local:1337](http://browser.zettajs.io/#/overview?url=http:%2F%2Fbeaglebone.local:1337)
-
-
