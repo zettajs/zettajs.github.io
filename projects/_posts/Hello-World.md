@@ -3,6 +3,7 @@ layout: recipe
 title: Hello World
 author: Adam Magaluk
 difficulty: beginner
+published: false
 ---
 
 The following documentation will guide you through how to build the basic "Hello World!" sample in Zetta. This is all in code, so no hardware is required, other than your computer.
