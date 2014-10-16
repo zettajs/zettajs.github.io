@@ -123,7 +123,11 @@ Image with modal zoom:
 
 ## Icons
 
-Zetta uses a [symbolset](https://symbolset.com/) font to render icons in the style of [SSPika](https://symbolset.com/icons/pika). A symbolset converts text into an icon by using font ligatures. For example, these icons: 
+Zetta uses a [symbolset](https://symbolset.com/) font to render icons in the style of [SSPika](https://symbolset.com/icons/pika). A symbolset converts text into an icon by using font ligatures. 
+
+> **openbook**{:.icon} View the [icon reference](http://styleguide.thenextweb.com/ss-pika/documentation.html) to see the full list of 504 icons available, and the text used to create them. 
+
+For example, these icons: 
 
 **like**{:.icon} **clockwise**{:.icon}
 
@@ -135,8 +139,6 @@ Are written semantically in markdown like this:
 ```
 
 > Icon text is made by giving a word's containing element a class of `icon`. Since we probably only want one icon at a time, we need to wrap that text in a `<strong>` tag using `**` (bold). This gives the `{:.icon}` attribute list something to be applied to. 
-
-> View the [icon reference](http://styleguide.thenextweb.com/ss-pika/documentation.html) to see the full list of 504 icons available, and the text used to create them.  
 
 # Projects versus Guides
 

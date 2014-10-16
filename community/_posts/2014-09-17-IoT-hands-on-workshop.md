@@ -3,16 +3,26 @@ title: Internet of Things Hands-on Workshop
 layout: community
 ---
 
-Zetta's IoT workshop gives participants hands-on experience with the newest IoT hardware and software so that they can rapidly build compelling IoT applications.
+Zetta's IoT workshops provide participants a rich, hands-on experience with the latest IoT hardware and software so that they can interconnect geo-distributed devices, build sensor networks and stream video and numerical data to the cloud and mobile apps.
+
+Participants run their code on IoT hardware platforms like [Intel Edison](http://www.intel.com/content/www/us/en/do-it-yourself/edison.html) and [Texas Instruments BeagleBone](http://www.ti.com/tool/beaglebk?DCMP=PPC_Google_TI&k_clickid=3a482c21-c619-1449-a25f-0000454eb959). And interoperate with a range of device protocols including [Bluetooth Low Energy](http://en.wikipedia.org/wiki/Bluetooth_low_energy), [ZigBee](http://www.zigbee.org/), [M-Bus](http://www.m-bus.com/) and [Z-Wave](http://www.z-wave.com/).
+
 
 ![Hands-on lab]({{ site.url }}/images/community/workshops/handson.jpg)
 
-Zetta's Internet of Things workshop guides participants through the hands-on creation of an IoT system.
-Workshop participants make a DIY home automation system using off-the-shelf physical components, open source software and open source hardware. The workshop duration is from one to four hours. It is designed for twelve students and is taught by two engineers.
+Workshop participants will create a network of home automation sensors and actuators using off-the-shelf physical components, open source software and open source hardware.
 
-The workshop instructors are the engineers who lead, design and build Zetta.
+The workshop duration is from one to four hours. It is designed for twelve students and is taught by two engineers. 
+
+> **users**{:.icon} The workshop instructors are two of the engineers who conceived, designed and built Zetta.
 
 Zetta is an API-first IoT development platform. Zetta is free and open source.
+
+## Zetta in the Press
+
+* [Out in the Open: A Free Platform for Building Gear on the Internet of Things](http://www.wired.com/2014/09/zetta/) - **Wired**
+* [Meet Zetta, an Internet of Things platform from the API wizards at Apigee](https://gigaom.com/2014/09/09/meet-zetta-an-internet-of-things-platform-from-the-api-wizards-at-apigee/) - **GigaOm**
+* [Zetta Wants to Connect Your Devices to Make the IoT Vision Real](http://www.programmableweb.com/news/zetta-wants-to-connect-your-devices-to-make-iot-vision-real/2014/09/16) - **ProgrammableWeb**
 
 ## Duration
 
@@ -23,7 +33,7 @@ Zetta is an API-first IoT development platform. Zetta is free and open source.
 * Our place
 * Or yours
 
-## Class Size
+## Ideal Class Size
 
 * 12 coders
 
@@ -36,10 +46,13 @@ Zetta is an API-first IoT development platform. Zetta is free and open source.
 
 The workshop will provide all required hardware.
 
-* BeagleBone Black
+* Single-board computer
+  * [Intel Edison](http://www.intel.com/content/www/us/en/do-it-yourself/edison.html)
+  * [BeagleBone Black](http://www.ti.com/tool/beaglebk?DCMP=PPC_Google_TI&k_clickid=3a482c21-c619-1449-a25f-0000454eb959)
 * Breadboard
 * Wires
 * Microphone
+* Camera
 * Buzzer
 * Motion detector
 * LEDs
