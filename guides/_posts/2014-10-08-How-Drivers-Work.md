@@ -11,7 +11,7 @@ description: >
 
 Let's create our state machine for use in Zetta. When drawn out with state machine notation, our LED should look a little like this:
 
-![LED State Machine](/images/recipes/security_system/state_machine.png){:.zoom}
+![LED State Machine](/images/projects/security_system/state_machine.png){:.zoom}
 
 According to the diagram when our LED is `off` it can only transition to the `on` state, and conversely when the state is `on` it can only transition to `off`.
 
