@@ -10,7 +10,7 @@ Participants run their code on IoT hardware platforms like [Intel Edison](http:/
 
 ![Hands-on lab]({{ site.url }}/images/community/workshops/handson.jpg)
 
-Workshop participants will create a network of home automation sensors and actuators using off-the-shelf physical components, open source software and open source hardware.
+Workshop participants will create a network of sensors and actuators using off-the-shelf physical components, open source software and open source hardware.
 
 The workshop duration is from one to four hours. It is designed for twelve students and is taught by two engineers. 
 
