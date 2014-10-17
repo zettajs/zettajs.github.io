@@ -134,15 +134,11 @@ Image with modal zoom:
 
 ## Icons
 
-<<<<<<< HEAD
-Zetta uses a [symbolset](https://symbolset.com/) font to render icons in the style of [SSPika](https://symbolset.com/icons/pika). A symbolset converts text into an icon by using font ligatures. For example, these icons:
-=======
 Zetta uses a [symbolset](https://symbolset.com/) font to render icons in the style of [SSPika](https://symbolset.com/icons/pika). A symbolset converts text into an icon by using font ligatures. 
 
 > **openbook**{:.icon} View the [icon reference](http://styleguide.thenextweb.com/ss-pika/documentation.html) to see the full list of 504 icons available, and the text used to create them. 
 
 For example, these icons: 
->>>>>>> a70249c121ab92832b8267771dab9115952e4026
 
 **like**{:.icon} **clockwise**{:.icon}
 
