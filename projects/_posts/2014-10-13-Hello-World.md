@@ -9,14 +9,14 @@ description: >
   the hello world project for Zetta. In it,
   we'll cover Zetta's basic concepts. This
   tutorial is good for those looking to see
-  zetta for the first time.
+  Zetta for the first time.
 repo: http://github.com/zettajs/zetta-hello-world
 ---
 
 # Goal
 This project is meant to get you up and running with the essential concepts in Zetta. It is a sample Zetta app with two devices - A mock LED and a Sine Wave Generator.
 
-![Screenshot of zetta browser w/ finished system](/images/projects/hello_world/browser_complete_project.png){:.zoom}
+![Screenshot of Zetta browser w/ finished system](/images/projects/hello_world/browser_complete_project.png){:.zoom}
 
 # Parts
 
@@ -145,18 +145,19 @@ Where:
 
 We'll add a Sine Wave Generator as a stand-in for a sensor stream.
 
-## 3.1 Retrive The Driver
+## Retrive The Driver
 
 1. Run this code in your command line:
   ```markdown
   npm install zetta-sine-wave --save
   ```
 
-## Tell the Zetta Server About It
+## Add the Sine Wave Driver to your Server
 
-1. Add another `require()` statement to import the Sine Wave Generator
-2. Pass the Sine Wave Generator to Zetta with another `.use()` statement in the init chain.
-3. Confirm that `server.js` looks like this after you've added the new code:
+1. Open `server.js`
+2. Add another `require()` statement to import the Sine Wave Generator
+3. Pass the Sine Wave Generator to Zetta with another `.use()` statement in the init chain.
+4. Confirm that `server.js` looks like this after you've added the new code:
 
 ```javascript
 var zetta = require('zetta');
@@ -178,7 +179,7 @@ zetta()
   ```
   node server.js
   ```
-3. Confirm that zetta logs two messages, one for each device it finds:
+3. Confirm that Zetta logs two messages, one for each device it finds:
 
 ![Log output with both devices connected](/images/projects/hello_world/log_led_sine.png){:.zoom}
 
@@ -186,12 +187,12 @@ zetta()
 
 ## Monitor the values
 
-1. Point the zetta browser to your local Zetta server node. 
+1. Point the Zetta browser to your local Zetta server node. 
   * You may be able to just refresh the Zetta browser window to see both devices
 2. Confirm that you see something like this: 
   ![Browser with LED and Sine Wave](/images/projects/hello_world/browser_led_sine.png){:.zoom}
 
-3. Now click on the device name `Sine Wave` in the zetta browser to get a more detailed view of the device. 
+3. Now click on the device name `Sine Wave` in the Zetta browser to get a more detailed view of the device. 
 4. It should display a smooth sine curve!
   ![Sine Wave Detail Page](/images/projects/hello_world/browser_sine_show.png){:.zoom}
 
@@ -201,7 +202,7 @@ Next we'll link our Zetta instance to the cloud. This creates a connection to th
 
 ## Visit a Hosted Zetta Instance
 
-We have an instance of zetta running on **heroku** for you to play with at [http://hello-zetta.herokuapp.com](http://hello-zetta.herokuapp.com). 
+We have an instance of Zetta running on **heroku** for you to play with at [http://hello-zetta.herokuapp.com](http://hello-zetta.herokuapp.com). 
 
 1. Visit the remote Zetta instance in the [Zetta Browser](http://browser.zettajs.io/#/overview?url=http:%2F%2Fhello-zetta.herokuapp.com%2F).
 2. Take note of what you see here - this is the *before* state
@@ -211,9 +212,8 @@ We have an instance of zetta running on **heroku** for you to play with at [http
 ## Add Link Code
 
 1. Open `server.js` 
-2. Link our local Zetta instance to one in the cloud by including the `.link()` method in the Zetta init chain 
-3. Point the link to the remote url by passing `http://hello-zetta.herokuapp.com` as the function's only argument
-4. Confirm that your `server.js` file looks like the following:
+2. Link our local Zetta instance to one in the cloud by including `.link(http://hello-zetta.herokuapp.com)` in the Zetta init chain 
+3. Confirm that your `server.js` file looks like the following:
 
 ```javascript
 var zetta = require('zetta');
@@ -244,7 +244,7 @@ zetta()
 ![Browser Showing Remote Peer](/images/projects/hello_world/browser_remote_callout.png){:.zoom}
 
 4. Things you can try now that your local Zetta API is available over the web:
-  * Access the zetta browser on a mobile device with it's wifi turned off to prove your local devices are visible over the web
+  * Access the Zetta browser on a mobile device with it's wifi turned off to prove your local devices are visible over the web
   * Ask a friend to load the browser from a different location and watch as they trigger your local device transitions
 
 # Step #5: Coordinate Behavior
@@ -295,14 +295,14 @@ module.exports = function(server) {
 
 3. Dig deeper into our docs to get details about [Device Queries](/docs/queries.html.html), the [Zetta app server variable](/docs/server.html), [Streams](/docs/streams.html), and [State Machines](/docs/state_machines.html).
 
-## Load your app when zetta runs
+## Load your app when Zetta runs
 
 After you're done writing your app, you need to make sure it's included in your server file.
 
 1. Open `server.js`
 2. Import your app with another `require()` statement
 3. include it in the init chain with another `.use()` statement.
-4. Your `server.js` should to match the following code:
+4. Your `server.js` file should now match the following code:
 
 ```javascript
 var zetta = require('zetta');
@@ -334,7 +334,7 @@ zetta()
 3. The browser should look similar to before:
   ![Browser Showing App at Work](/images/projects/hello_world/browser_complete_project.png){:.zoom}
   
-4. Notice now how the LED turns `on` and `off` in sync with the sinewave, 
+4. Notice now how the LED turns `on` and `off` in sync with the sinewave! 
 5. You can see this interaction both locally and from the remote Zetta instance.
 
 # Next Steps
