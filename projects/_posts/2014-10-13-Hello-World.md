@@ -109,7 +109,6 @@ zetta()
 ## Run the server
 
 1. Run this code in your command line:
-
   ```
   node server.js
   ```
