@@ -28,11 +28,11 @@ If you want to brainstorm big ideas, report a little bug, build a revolutionary 
 
 # Learning
 
-[Recipes](/recipes) walk you through step-by-step the process of making Internet of Things projects that combine physical and digital technology.
+[Projects](/projects) walk you step-by-step through the flow of making Internet of Things projects that combine physical and digital technology.
 
 [Guides](/guides) show you how to do focused tasks with software and hardware.
 
-To [share IoT projects](/recipes/2014/10/01/Write-A-Recipe.html) that you have created read the [How to Create and Share a Recipe ](/recipes/2014/10/01/Write-A-Recipe.html) guide.
+To [share IoT projects](/projects/2014/10/01/Share-A-Project.html) that you have created read the [How to Share a Project ](/projects/2014/10/01/Share-A-Project.html) guide.
 
 # Events
 
