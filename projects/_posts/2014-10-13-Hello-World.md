@@ -113,6 +113,7 @@ zetta()
   ```
   node server.js
   ```
+  
 Zetta will start up and locate our software LED.
 2. Confirm that your console shows something like this:
 
