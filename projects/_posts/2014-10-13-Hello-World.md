@@ -110,12 +110,10 @@ zetta()
 
 1. Run this code in your command line:
 
-```
-node server.js
-```
-
+  ```
+  node server.js
+  ```
 Zetta will start up and locate our software LED.
-
 2. Confirm that your console shows something like this:
 
 ![Example Log Output](/images/projects/hello_world/log_led.png){:.zoom}
