@@ -6,8 +6,18 @@ difficulty: experienced
 duration: 1-3 hours
 description: >
   Create an Internet-connected, home security system with a microphone, piezo speaker, an LED and a BeagleBone Black.
-repo: https://github.com/alanguir/zetta-security-system/
+repo: https://github.com/zettajs/zetta-home-security/
 ---
+
+# Directions
+
+1. [Setup Zetta on the BeagleBone](#step-1-setup-zetta-on-the-beaglebone)
+1. [Blink the LEDs](#step-2-blink-the-leds)
+1. [Link to the Cloud](#step-3-link-to-the-cloud)
+1. [Buzz the Buzzer](#step-4-buzz-the-buzzer)
+1. [Soundcheck the Microphone](#step-5-soundcheck-the-microphone)
+1. [Run the Security App](#step-6-run-the-security-app)
+{:.steps}
 
 # Goal
 
@@ -27,15 +37,7 @@ The goal for this project is to create a simple home security system by assembli
 
 > **cart**{:.icon} [Buy the parts](https://www.sparkfun.com/wish_lists/95647) for the Home Security project from [SparkFun](http://www.sparkfun.com).
 
-# Directions
-
-1. [Setup the BeagleBone](#step-1-setup-the-beaglebone)
-1. [Buzz the Buzzer](#step-2-buzz-the-piezo-buzzer)
-1. [Soundcheck the Microphone](#step-3-soundcheck-the-microphone)
-1. [Secure the Area](#step-4-secure-the-area)
-{:.steps}
-
-# Step #1: Setup the BeagleBone
+# Step #1: Setup Zetta on the BeagleBone
 
 ## Connect the BeagleBone
 
@@ -48,31 +50,194 @@ The goal for this project is to create a simple home security system by assembli
 1. Click your mouse in the BeagleBone's IDE console.
 ![Cloud9 Splash Screen](/images/projects/security_system/screens/bash_callout.png){:.zoom}
 
-1. From the Cloud9 IDE console, clone [the starter code](https://github.com/alanguir/zetta-security-system) to your BeagleBone.
+1. From the Cloud9 IDE console, clone [the Zetta starter project](https://github.com/zettajs/zetta-starter-project) to a new `home-security` directory on your BeagleBone.
 
    ```bash
-   git clone https://github.com/alanguir/zetta-security-system
+   git clone https://github.com/zettajs/zetta-starter-project home-security
    ```
+   
+   > **help**{:.icon} Are you seeing `error: Couldn't resolve host 'github.com'`? Be sure to run `dhclient` on the BeagleBone, restart your browser and don't be shy about rebooting the BeagleBone and your PC. It can be finicky getting the BeagleBone connected, but once it's connected it's usually solid. Read [How to Connect a BeagleBone to the Internet via a PC](/guides/2014/10/03/BeagleBone.html) for more details. 
 
+   The `home-security` folder will include `server.js` and `package.json` files along with directories for `devices` and `apps`.
+
+   ```bash
+   ├── README.md
+   ├── apps
+   │   └── README.md
+   ├── devices
+   │   └── README.md
+   ├── package.json
+   └── server.js
+   ```
+   {:.language-bash-noln}
+   
    > **info**{:.icon} By default your clone will be stored in the `/var/lib/cloud9/` folder, which is recommended for working with the Cloud9 IDE.
 
 ## Install Zetta
 
-1. From the Cloud9 IDE console, `cd` to `zetta-security-system`.
+1. From the Cloud9 IDE console, `cd` to `home-security`.
 
    ```bash
-   cd zetta-security-system
+   cd home-security
    ```
 
-1. From the Cloud9 IDE console, [install Zetta with NPM](/reference/2014/10/12/npm.html).
+1. From the Cloud9 IDE console, install Zetta with [NPM](/reference/2014/10/12/npm.html).
 
    ```bash
    npm install
    ```
 
-   > **clock**{:.icon} Running `npm install` on the BeagleBone can take several minutes. Move ahead with the hardware steps during installation.
+   > **clock**{:.icon} Running `npm install` on the BeagleBone can take several minutes.  
 
-# Step #2: Buzz the Piezo Buzzer
+## Write Zetta Server Code
+
+1. From the Cloud9 IDE workspace, click on the arrow to the left of the `home-security` folder. Then double-click on the file `server.js` to open it in the Cloud9 IDE editor.
+
+   ![Saving a file](/images/projects/security_system/screens/serverjs-callout.png)
+
+1. In the `server.js` file, write Zetta code to `require` Zetta  and `listen` on server port `1337`.
+
+   ```javascript
+   var zetta = require('zetta');
+
+   zetta()
+     .listen(1337, function(){
+      console.log('Zetta is running at http://beaglebone.local:1337');
+   });
+   ```
+
+1. From the Cloud9 IDE, click `File > Save` to save the changes you made to `server.js`.
+
+1. From the Cloud9 IDE console, run the Zetta server.
+
+   ```bash
+   node server.js
+   ```
+   Notice the console output indicating the server is running.
+
+   ```bash
+   Apr-23-2014 18:14:23 [server] Server (beaglebone) beaglebone listening on http://127.0.0.1:1337
+   Zetta is running at http://beaglebone.local:1337
+   ```
+
+## Call Your API
+
+1. In the Cloud9 IDE, open a new terminal tab.
+
+   ![New terminal tab](/images/projects/security_system/screens/terminal-tab.png)
+
+1. Use the command line to call Zetta's web API.
+
+   ```bash
+   curl http://beaglebone.local:1337 | python -m json.tool
+   ```
+   
+   ```json
+   { "actions": [{ 
+       "fields": [
+         { "name": "server", "type": "text"}, 
+         { "name": "ql", "type": "text"}], 
+       "href": "http://beaglebone.local:1337/", 
+       "method": "POST", 
+       "name": "query-devices", 
+       "type": "application/x-www-form-urlencoded"}], 
+     "class": ["root"],
+     "links": [
+       {"href": "http://beaglebone.local:1337/", "rel": ["self"]}, 
+       {"href": "http://beaglebone.local:1337/servers/beaglebone", 
+         "rel": ["http://rels.zettajs.io/server"], "title": "beaglebone"},
+       {"href": "http://beaglebone.local:1337/peer-management", 
+         "rel": ["http://rels.zettajs.io/peer-management"]}]}
+   ```
+   {:.language-json-noln}
+
+   > **info**{:.icon} As we `use` devices in `server.js` they will appear in the web API. For the following steps we'll access the API via the [Zetta Browser](/guides/2014/10/18/Zetta-Browser.html). However,  the `curl` command is helpful way to use the API from the command line.
+
+1. In the Cloud9 IDE, close the second console tab with the `curl` command and switch to the first console tab. Stop the Zetta server.
+
+   ```bash
+   CTRL-c
+   ``` 
+   or 
+   
+   ```bash
+   COMMAND-c
+   ```
+
+# Step #2: Blink the LEDs
+
+## Write the LED Code
+
+1. In the Cloud9 IDE console, ensure that your working directory is `home-security`. Install the Zetta device driver for BeagleBone LEDs.
+
+   ```bash
+   npm install zetta-led-bonescript-driver --save
+   ```
+
+1. In the `server.js` file, write Zetta code to `require` and `use` the BeagleBone user `LEDs`: 'USR0', 'USR1', 'USR2' and 'USR3'.
+
+   Add **line 2**:
+
+   ```javascript
+   var LED = require('zetta-led-bonescript-driver');
+   ```
+   Add **line 5**:
+
+   ```javascript
+   .use(LED, 'USR0', 'USR1', 'USR2', 'USR3')
+   ```
+
+1. Ensure `server.js` looks like the code below.
+   
+   ```javascript
+   var zetta = require('zetta');
+   var LED = require('zetta-led-bonescript-driver');
+
+   zetta()
+   .use(LED, 'USR0', 'USR1', 'USR2', 'USR3')
+     .listen(1337, function(){
+     console.log('Zetta is running at http://beaglebone.local:1337');
+   });
+   ```
+
+1. From the Cloud9 IDE, click `File > Save` to save the changes you made to `server.js`.
+
+1. From the Cloud9 IDE console, start the Zetta server.
+
+   ```bash
+   node server.js
+   ```
+
+1. When Zetta discovers the LEDs, Zetta will log messages about the devices to the Cloud9 IDE console.
+
+   ```bash
+   {timestamp} [scout] Device (led) {guid} was discovered
+   {timestamp} [server] Server (beaglebone) beaglebone listening on http://127.0.0.1:1337
+   Zetta is running at http://beaglebone.local:1337
+   {timestamp} [scout] Device (led) {guid} was discovered
+   {timestamp} [scout] Device (led) {guid} was discovered
+   {timestamp} [scout] Device (led) {guid} was discovered
+   ```
+   {:.language-bash-noln}
+
+## Blink the LEDs
+
+1. Open the Zetta Browser:
+   [http://browser.zettajs.io/#/overview?url=http:%2F%2Fbeaglebone.local:1337](http://browser.zettajs.io/#/overview?url=http:%2F%2Fbeaglebone.local:1337)
+
+1. Ensure your **LED** devices are listed.
+
+   ![Zetta Browser with LEDs](/images/projects/security_system/screens/browser-leds.png){:.zoom}
+
+1. Click the `turn-on` button for the various LEDs.
+
+1. Ensure that the LEDs on your BeagleBone turned on and that the device state changed in the Zetta Browser visualization.
+
+# Step #3: Link to the Cloud
+
+
+
+# Step #4: Buzz the Buzzer
 
 ## Assemble the Buzzer Hardware
 
@@ -104,7 +269,7 @@ After assembling the buzzer hardware, your project should look similar to the im
 ![The Connected Piezo Buzzer](/images/projects/security_system/hardware/piezo_birdseye.jpg){:.zoom}
 ![The Connected Piezo Buzzer](/images/projects/security_system/hardware/piezo_low.jpg){:.zoom}
 
-## Write the Buzzer Software
+## Write the Buzzer Code
 
 1. From the Cloud9 IDE console, install the Zetta device driver for the buzzer.
    
@@ -112,32 +277,7 @@ After assembling the buzzer hardware, your project should look similar to the im
    npm install zetta-buzzer-bonescript-driver --save
    ```
    
-   > **caution**{:.icon} Ensure the BeagleBone Cloud9 IDE console is in the correct working directory when you run `npm install`. The Cloud9 IDE console prompt should be: `root@beaglebone:/var/lib/cloud9/zetta-security-system/#`
-
-1. From the Cloud9 IDE workspace, click on the arrow to the left of the `zetta-security-system` folder. Then double-click on the file `server.js` to open it in the Cloud9 IDE editor.
-
-   ![Saving a file](/images/projects/security_system/screens/serverjs-callout.png)
-
-1. In the `server.js` file, write Zetta code to `require` and `use` the `Buzzer` driver on BeagleBone pin `P9_14` and `listen` on server port `1337`.
-
-   ```javascript
-   var zetta = require('zetta');
-   var Buzzer = require('zetta-buzzer-bonescript-driver');
-
-   zetta()
-     .use(Buzzer, 'P9_14')
-     .listen(1337, function(){
-      console.log('Zetta is running at http://beaglebone.local:1337');
-   });
-   ```
-
-1. From the Cloud9 IDE, click `File > Save` to save the changes you made to `server.js`.
-
-1. From the Cloud9 IDE console, run the Zetta server.
-
-   ```bash
-   node server.js
-   ```
+   > **caution**{:.icon} Ensure the BeagleBone Cloud9 IDE console is in the correct working directory when you run `npm install`. The Cloud9 IDE console prompt should be: `root@beaglebone:/var/lib/cloud9/home-security/#`
 
 1. When Zetta discovers the buzzer, Zetta will log a message about the device to the Cloud9 IDE console.
 
@@ -162,7 +302,7 @@ After assembling the buzzer hardware, your project should look similar to the im
 
    > **help**{:.icon} Didn't hear a beep? Double check your wiring and make sure there were no errors reported in the Cloud9 IDE console.
 
-# Step #3: Soundcheck the Microphone
+# Step #5: Soundcheck the Microphone
 
 ## Assemble Microphone Hardware
 
@@ -197,7 +337,7 @@ After assembling the microphone hardware, your project should look similar to th
 ![The Connected Microphone](/images/projects/security_system/hardware/microphone_birdseye.jpg){:.fritzing}
 ![The Connected Microphone](/images/projects/security_system/hardware/microphone_low.jpg){:.fritzing}
 
-# Write Microphone Software
+## Write Microphone Software
 
 1. From the Cloud9 IDE console, install the Zetta device driver for the microphone.
 
@@ -269,7 +409,7 @@ After assembling the microphone hardware, your project should look similar to th
 
 1. Ensure the values and waveform for the `:volume` characteristic in the Zetta Browser are streaming over time and change as you make noise.
 
-# Step #4: Secure the Area
+# Step #6: Run the Security App
 
 ## Create Security App File and Folder
 
@@ -283,7 +423,7 @@ After assembling the microphone hardware, your project should look similar to th
 
 1. From the Cloud9 IDE, double-click on the new `apps/app.js` file to edit it.
 
-## Write  Security App Logic
+## Write  Security App Code
 
 1. Write the app logic.
 
