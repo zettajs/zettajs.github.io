@@ -497,19 +497,24 @@ After assembling the microphone hardware, your project should look similar to th
 
    ```javascript
    module.exports = function(server) {
+    
+     var ledQuery = server.where({type: 'led'});
      var buzzerQuery = server.where({type: 'buzzer'});
      var microphoneQuery = server.where({type: 'microphone'});
-     server.observe([buzzerQuery, microphoneQuery], function(buzzer, microphone){
+  
+     server.observe([ledQuery,buzzerQuery, microphoneQuery], function(led, buzzer, microphone){
        microphone.streams.volume.on('data', function(msg){
          if (buzzer.state === 'off' && msg.data > 30) {
+           led.call('turn-on-pulse', function() {});
            buzzer.call('turn-on-pulse', function() {});
            setTimeout(function(buzzer) {
-               buzzer.call('turn-off', function(err) {})
-             }, 3000, buzzer);
+             buzzer.call('turn-off', function(err) {})
+             led.call('turn-off', function(err) {})
+           }, 3000, buzzer);
          }
        });
      });
-   }
+   }   
    ```
 
 ## Use Security App
@@ -550,7 +555,7 @@ After assembling the microphone hardware, your project should look similar to th
    ```
 1. From the Cloud9 IDE, click `File > Save` to save the changes you made to `server.js`.
 
-## Secure the Area
+## Run the Security App
 
 1. From the Cloud9 IDE console, restart the Zetta server by pressing `CTRL-c` or `COMMAND-c` and then running `node server.js`
 
