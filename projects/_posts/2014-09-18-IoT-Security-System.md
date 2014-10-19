@@ -565,4 +565,6 @@ After assembling the microphone hardware, your project should look similar to th
 
    [http://browser.zettajs.io/#/overview?url=http:%2F%2Fhello-zetta.herokuapp.com](http://browser.zettajs.io/#/overview?url=http:%2F%2Fhello-zetta.herokuapp.com)
 
+# Congratulations!
 
+Congratulations. You built a home-security system that is connected to the Internet and programmable from anywhere in the world.
