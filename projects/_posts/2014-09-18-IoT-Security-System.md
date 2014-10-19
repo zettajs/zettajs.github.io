@@ -259,8 +259,6 @@ The goal for this project is to create a simple home security system by assembli
 
 1. Ensure your **LED** devices are listed.
 
-   ![Zetta Browser with LEDs](/images/projects/security_system/screens/browser-leds.png){:.zoom}
-
 1. Click the `turn-on` button for the various LEDs.
 
 1. Ensure the LEDs on your BeagleBone turned on and that the device state changed in the Zetta Browser visualization.
