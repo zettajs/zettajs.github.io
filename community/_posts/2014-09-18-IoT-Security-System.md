@@ -6,7 +6,7 @@ difficulty: experienced
 duration: 1-3 hours
 description: >
   Create an Internet-connected, home security system with a microphone, piezo speaker, an LED and a BeagleBone Black.
-repo: https://github.com/alanguir/zetta-security-system/
+repo: https://github.com/alanguir/zetta-security-system/g
 ---
 
 # Goal
@@ -128,8 +128,8 @@ After assembling the buzzer hardware, your project should look similar to the im
    zetta()
      .use(Buzzer, 'P9_14')
      .listen(1337, function(){
-      console.log('Zetta is running at http://beaglebone.local:1337');
-   });
+       console.log('Zetta is running at http://beaglebone.local:1337');
+     });
    ```
 
 1. From the Cloud9 IDE, click `File > Save` to save the changes you made to `server.js`.
@@ -230,8 +230,8 @@ After assembling the microphone hardware, your project should look similar to th
      .use(Buzzer, 'P9_14')
      .use(Microphone, 'P9_36')
      .listen(1337, function(){
-     console.log('Zetta is running at http://beaglebone.local:1337');
-   });
+       console.log('Zetta is running at http://beaglebone.local:1337');
+     });
    ```
 
 1. From the Cloud9 IDE, click `File > Save` to save the changes you made to `server.js`.
@@ -288,22 +288,22 @@ After assembling the microphone hardware, your project should look similar to th
 
 1. Write the app logic.
 
-   ```javascript
-   module.exports = function(server) {
-     var buzzerQuery = server.where({type: 'buzzer'});
-     var microphoneQuery = server.where({type: 'microphone'});
-     server.observe([buzzerQuery, microphoneQuery], function(buzzer, microphone){
-       microphone.streams.volume.on('data', function(msg){
-         if (buzzer.state === 'off' && msg.data > 30) {
-           buzzer.call('turn-on-pulse', function() {});
-           setTimeout(function(buzzer) {
-               buzzer.call('turn-off', function(err) {})
-             }, 3000, buzzer);
-         }
-       });
-     });
-   }
-   ```
+```javascript
+module.exports = function(server) {
+  var buzzerQuery = server.where({ type: 'buzzer' });
+  var microphoneQuery = server.where({ type: 'microphone' });
+
+  server.observe([buzzerQuery, microphoneQuery], function(buzzer, microphone){
+    microphone.streams.volume.on('data', function(msg){
+      if (msg.data > 30) {
+        buzzer.call('turn-on-pulse', function() {});
+      } else {
+        buzzer.call('turn-off', function() {});
+      }
+    });
+  });
+}
+```
 
 ## Use Security App in the Zetta Server
 
@@ -367,12 +367,12 @@ var Buzzer = require('zetta-buzzer-bonescript-driver');
 var Microphone = require('zetta-microphone-bonescript-driver');
 
 zetta()
- .use(Buzzer, 'P9_14')
- .use(Microphone, 'P9_36')
- .link('http://hello-zetta.herokuapp.com/')
- .listen(1337, function(){
- console.log('Zetta is running at http://beaglebone.local:1337');
-});
+  .use(Buzzer, 'P9_14')
+  .use(Microphone, 'P9_36')
+  .link('http://hello-zetta.herokuapp.com/')
+  .listen(1337, function(){
+    console.log('Zetta is running at http://beaglebone.local:1337');
+  });
 ```
 
 1. From the Cloud9 IDE, click `File > Save` to save the changes you made to `server.js`.
@@ -450,7 +450,7 @@ var bone = require('bonescript');
 
 var Led = module.exports = function(pin) {
   Device.call(this);
-  this.pin = "P9_41";
+  this.pin = pin || 'P9_41';
 };
 util.inherits(Led, Device);
 
@@ -466,7 +466,6 @@ Led.prototype.init = function(config) {
     .map('toggle', this.toggle);
 
   //Everything is off to start
-  bone.pinMode(this.pin, bone.OUTPUT);
   bone.digitalWrite(this.pin, 0);
 };
 
@@ -525,21 +524,24 @@ zetta()
 
 ```javascript
 module.exports = function(server) {
-  var buzzerQuery = server.where({type: 'buzzer'});
-  var microphoneQuery = server.where({type: 'microphone'});
-  var ledQuery = server.where({type: 'led'});
+  var buzzerQuery = server.where({ type: 'buzzer' });
+  var microphoneQuery = server.where({ type: 'microphone' });
+  var ledQuery = server.where({ type: 'led' });
 
   server.observe([buzzerQuery, microphoneQuery, ledQuery], function(buzzer, microphone, led){
-
     microphone.streams.volume.on('data', function(msg){
-      if (msg.data > 20) {
-          buzzer.call('turn-on-pulse', function() {});
-          led.call('turn-on', function(){});
-        }
-    });
+      if (buzzer.state === 'off' && msg.data > 30) {
+        buzzer.call('turn-on-pulse', function() {});
+        led.call('turn-on', function() {});
 
+        setTimeout(function() {
+          buzzer.call('turn-off', function() {});
+        }, 3000);
+      }
+    });
   });
 }
+
 ```
 
 ## Test Interaction
