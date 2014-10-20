@@ -92,7 +92,7 @@ npm install zetta-mock-led --save
 
 ## Setup The Zetta Server
 
-1. Open `server.js` in your code editor of choice 
+1. Open `server.js` in your code editor of choice
 2. Add the following code to create your Zetta server node:
 
 ```javascript
@@ -112,7 +112,7 @@ zetta()
   ```
   node server.js
   ```
-  
+
 Zetta will start up and locate our software LED.
 2. Confirm that your console shows something like this:
 
@@ -174,7 +174,7 @@ zetta()
 
 ## Rerun the Server Node
 
-1. Save changes to `server.js` 
+1. Save changes to `server.js`
 2. Restart your server by running this in your command line:
   ```
   node server.js
@@ -187,12 +187,12 @@ zetta()
 
 ## Monitor the values
 
-1. Point the Zetta browser to your local Zetta server node. 
+1. Point the Zetta browser to your local Zetta server node.
   * You may be able to just refresh the Zetta browser window to see both devices
-2. Confirm that you see something like this: 
+2. Confirm that you see something like this:
   ![Browser with LED and Sine Wave](/images/projects/hello_world/browser_led_sine.png){:.zoom}
 
-3. Now click on the device name `Sine Wave` in the Zetta browser to get a more detailed view of the device. 
+3. Now click on the device name `Sine Wave` in the Zetta browser to get a more detailed view of the device.
 4. It should display a smooth sine curve!
   ![Sine Wave Detail Page](/images/projects/hello_world/browser_sine_show.png){:.zoom}
 
@@ -202,7 +202,7 @@ Next we'll link our Zetta instance to the cloud. This creates a connection to th
 
 ## Visit a Hosted Zetta Instance
 
-We have an instance of Zetta running on **heroku** for you to play with at [http://hello-zetta.herokuapp.com](http://hello-zetta.herokuapp.com). 
+We have an instance of Zetta running on **heroku** for you to play with at [http://hello-zetta.herokuapp.com](http://hello-zetta.herokuapp.com).
 
 1. Visit the remote Zetta instance in the [Zetta Browser](http://browser.zettajs.io/#/overview?url=http:%2F%2Fhello-zetta.herokuapp.com%2F).
 2. Take note of what you see here - this is the *before* state
@@ -211,8 +211,8 @@ We have an instance of Zetta running on **heroku** for you to play with at [http
 
 ## Add Link Code
 
-1. Open `server.js` 
-2. Link our local Zetta instance to one in the cloud by including `.link(http://hello-zetta.herokuapp.com)` in the Zetta init chain 
+1. Open `server.js`
+2. Link our local Zetta instance to one in the cloud by including `.link(http://hello-zetta.herokuapp.com)` in the Zetta init chain
 3. Confirm that your `server.js` file looks like the following:
 
 ```javascript
@@ -236,9 +236,9 @@ zetta()
 
 1. Rerun your server by typing `node server.js` in your command line
 2. Go back to the [Zetta Browser](http://browser.zettajs.io/#/overview?url=http:%2F%2Fhello-zetta.herokuapp.com%2F)
-  * You can just reload the page if it's still open. 
+  * You can just reload the page if it's still open.
 3. You should now be able to see your local server listed as a `peer`, with your local devices available for interaction. Examples:
-  * **Before Linking:** 
+  * **Before Linking:**
 ![Browser Showing Local Server](/images/projects/hello_world/browser_local_callout.png){:.zoom}
   * **After Linking:**
 ![Browser Showing Remote Peer](/images/projects/hello_world/browser_remote_callout.png){:.zoom}
@@ -249,7 +249,7 @@ zetta()
 
 # Step #5: Coordinate Behavior
 
-Apps in Zetta allow us to orchestrate interactions between devices. 
+Apps in Zetta allow us to orchestrate interactions between devices.
 
 ## Create App Directory & File
 
@@ -263,6 +263,7 @@ touch apps/app.js
 ## Author App Code
 
 1. Edit `apps/app.js` so it looks like this:
+
 ```javascript
 module.exports = function(server) {
   var waveQuery = server.where({ type: 'generator' });
@@ -284,7 +285,7 @@ module.exports = function(server) {
   });
 }
 ```
-  > Make sure you save changes to `app.js` before going further 
+  > Make sure you save changes to `app.js` before going further
 
 2. A quick tour of this code:
 
@@ -333,8 +334,8 @@ zetta()
 
 3. The browser should look similar to before:
   ![Browser Showing App at Work](/images/projects/hello_world/browser_complete_project.png){:.zoom}
-  
-4. Notice now how the LED turns `on` and `off` in sync with the sinewave! 
+
+4. Notice now how the LED turns `on` and `off` in sync with the sinewave!
 5. You can see this interaction both locally and from the remote Zetta instance.
 
 # Next Steps
