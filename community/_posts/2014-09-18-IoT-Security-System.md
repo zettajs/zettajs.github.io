@@ -49,10 +49,10 @@ The goal for this project is to create a simple home security system by assembli
 1. Click your mouse in the BeagleBone's IDE console.
 ![Cloud9 Splash Screen](/images/projects/security_system/screens/bash_callout.png){:.zoom}
 
-1. From the Cloud9 IDE console, clone [the starter code](https://github.com/alanguir/zetta-security-system) to your BeagleBone.
+1. From the Cloud9 IDE console, clone [the starter code](https://github.com/zettajs/zetta-starter-project) to your BeagleBone.
 
    ```bash
-   git clone https://github.com/alanguir/zetta-security-system
+   git clone https://github.com/zettajs/zetta-starter-project.git
    ```
 
    > **info**{:.icon} By default your clone will be stored in the `/var/lib/cloud9/` folder, which is recommended for working with the Cloud9 IDE.
