@@ -158,7 +158,7 @@ article{background-color:#fff;width:100%;margin:0 auto}
 article img{max-width:100%;border-radius:.25rem}
 article .sfe-wish-list,article blockquote,article p,article table{margin:1rem 2.5rem}
 article .sfe-wish-list .sfe-item-title{height:1rem;overflow:visible}
-article pre{background-color:#000;color:#fff;margin:1.25rem;padding:.75rem 1.25rem;font-size:80%;border-radius:.5rem}
+article pre{background-color:#23241f;color:#fff;margin:1.25rem;padding:.75rem 1.25rem;font-size:80%;border-radius:.5rem}
 article dl,article ol,article ul{padding-left:2.5rem}
 article dl dd,article dl li,article ol dd,article ol li,article ul dd,article ul li{margin-left:2.5rem}
 article li blockquote,article li p,article li pre,article li table{margin:0 0 1rem}
@@ -182,7 +182,7 @@ header .content nav .toggle{text-align:right}
 header .content nav ul{margin:0;padding:0}
 header .content nav ul li{display:inline-block;margin:0;float:right}
 header .content nav ul li a{padding:.5rem 0 .5rem 1rem}
-article{padding-bottom:2rem}
+article{padding-bottom:2rem;padding-top:1rem}
 article .content{background-color:#fff;padding:1rem 0}
 article h1{margin-left:-1.5rem;padding-left:4rem;color:#fff;background-repeat:no-repeat;background-position:1.5rem center;background-size:1rem auto;box-shadow:0 7px 7px #e6e6e6}
 article h1:hover{background-image:url(../images/link.svg);cursor:pointer}
