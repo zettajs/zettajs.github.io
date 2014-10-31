@@ -23,9 +23,9 @@ The goal for this project is to create a simple home security system by assembli
 
 ![All Materials](/images/projects/security_system/hardware/empty_low.jpg){:.zoom .full}
 
-<script src="https://www.sparkfun.com/wish_lists/95647.js"></script>
+<script src="https://www.sparkfun.com/wish_lists/98550.js"></script>
 
-> **cart**{:.icon} [Buy the parts](https://www.sparkfun.com/wish_lists/95647) for the Home Security project from [SparkFun](http://www.sparkfun.com).
+> **cart**{:.icon} [Buy the parts](https://www.sparkfun.com/wish_lists/98550) for the Home Security project from [SparkFun](http://www.sparkfun.com).
 
 # Directions
 
