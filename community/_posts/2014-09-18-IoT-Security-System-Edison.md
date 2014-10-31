@@ -6,7 +6,7 @@ difficulty: experienced
 duration: 1-3 hours
 description: >
   Create an Internet-connected, home security system with a microphone, piezo speaker, an LED and a Intel Edison.
-repo: https://github.com/zettajs/zetta-security-system-edison/g
+repo: https://github.com/zettajs/zetta-security-system-edison
 ---
 
 # Goal
