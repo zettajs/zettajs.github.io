@@ -1,3 +1,5 @@
+@font-face{font-family:ars-maquette-web;src:url(../fonts/arsmaqboltr-webfont.woff) format('woff');font-weight:700;font-style:normal}
+@font-face{font-family:ars-maquette-web;src:url(../fonts/arsmaqligtr-webfont.woff) format('woff');font-weight:400;font-style:normal}
 @font-face{font-family:SSPika;src:url(../fonts/ss-pika.eot);src:url(../fonts/ss-pika.eot?#iefix) format('embedded-opentype'),url(../fonts/ss-pika.woff) format('woff'),url(../fonts/ss-pika.ttf) format('truetype'),url(../fonts/ss-pika.svg#SSPika) format('svg');font-weight:400;font-style:normal}
 .orange{color:#ff4300}
 .dark-cyan,.green{color:#129b4d}
