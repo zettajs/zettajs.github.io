@@ -95,7 +95,7 @@ This project requires a PC with an Internet connection and [Node.js](http://node
 
 ## Call the API
 
-1. Open the Zetta API in a web browser [http://127.0.0.1:1337](http://127.0.0.1:1337).
+1. Open the Zetta API in a web browser: [http://127.0.0.1:1337](http://127.0.0.1:1337).
 
 2. Confirm the API looks like the response below.
 
@@ -127,7 +127,7 @@ This project requires a PC with an Internet connection and [Node.js](http://node
    npm install zetta-led-mock-driver --save
    ```
 
-   > **info**{:.icon} Zetta driver names follow the pattern `zetta-[device name]-[platform]-driver`. The Hello World project uses mock devices so `mock` is considered to be the platform.
+   > **info**{:.icon} Zetta driver names follow the pattern `zetta-[device]-[platform]-driver`. The Hello World project uses mock devices so `mock` is considered to be the platform.
 
 1. In the `server.js` file, write code to `require` and `use` the mock `LED`.
 
