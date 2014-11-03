@@ -469,7 +469,7 @@ After assembling the microphone hardware, your project should look similar to th
 
    [http://browser.zettajs.io/#/overview?url=http:%2F%2Fhello-zetta.herokuapp.com](http://browser.zettajs.io/#/overview?url=http:%2F%2Fhello-zetta.herokuapp.com)
 
-1. Ensure your **Microphone** device is listed.
+1. Ensure the **Microphone** device is listed.
    ![Zetta Browser root with Microphone](/images/projects/security_system/screens/browser-microphone.png){:.zoom}
 
 1. In the Zetta Browser, click on the **Microphone** link to open a detailed view of the device.
