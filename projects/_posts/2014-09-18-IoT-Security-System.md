@@ -158,7 +158,7 @@ The goal for this project is to create a simple home security system by assembli
    ```javascript
    var LED = require('zetta-led-bonescript-driver');
    ```
-   Add **line 5**:
+   Add **line 6**:
 
    ```javascript
    .use(LED, 'USR0', 'USR1', 'USR2', 'USR3')
@@ -213,7 +213,7 @@ The goal for this project is to create a simple home security system by assembli
 
 1. In the Cloud9 IDE console, open the `server.js` file. Write code to `link` your Zetta server on the BeagleBone to a Zetta server running in the cloud.
 
-   Add **line 6**:
+   Add **line 7**:
 
    ```javascript
    .link('http://hello-zetta.herokuapp.com/')
