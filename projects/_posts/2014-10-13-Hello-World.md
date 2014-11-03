@@ -4,351 +4,418 @@ title: Hello World
 author: Adam Magaluk
 difficulty: beginner
 duration: 1 hour
-description: >
-  This will guide you through building
-  the hello world project for Zetta. In it,
-  we'll cover Zetta's basic concepts. This
-  tutorial is good for those looking to see
-  Zetta for the first time.
+description: Create an Internet-connected, dusk-to-dawn lighting system with a mock LED and a mock photocell.
 repo: http://github.com/zettajs/zetta-hello-world
 ---
 
-# Goal
-This project is meant to get you up and running with the essential concepts in Zetta. It is a sample Zetta app with two devices - A mock LED and a Sine Wave Generator.
+# Directions
 
-![Screenshot of Zetta browser w/ finished system](/images/projects/hello_world/browser_complete_project.png){:.zoom}
+1. [Setup Zetta on the PC](#step-1-setup-zetta-on-the-pc)
+1. [Blink the LED](#step-2-blink-the-led)
+1. [Link to the Cloud](#step-3-link-to-the-cloud)
+1. [Sense Light with Photocell](#step-4-sense-light-with-photocell)
+1. [Run the Dusk to Dawn Light App](#step-5-run-the-dusk-to-dawn-light-app)
+{:.steps}
+
+# Goal
+
+The goal for this project is to create a dusk-to-dawn lighting system by assembling a mock LED and a mock photocell into a Zetta app running on a PC. We will connect the app to the Internet by linking the PC with a second Zetta server running in the cloud.
+
+![Screenshot of Zetta browser with dusk to dawn lighting system](/images/projects/hello_world/browser_complete_project.png){:.zoom}
 
 # Parts
 
-This project is all software. You will need a computer with Node.js and npm installed.
+This project requires a PC with an Internet connection and [Node.js](http://nodejs.org/download/).
 
-> **question**{:.icon} Need help installing nodejs? Read our [Getting Started With Zetta](/guides/getting-started-with-zetta.html) Guide.
+# Step #1: Setup Zetta on the PC
 
-# Directions
+## Initialize the Project
 
-1. [Initialize Your Project](#step-1-initialize-your-project)
-2. [Blink the \[mock\] LED](#step-2-blink-the-mock-led)
-3. [Stream a Sine Wave](#step-3-add-the-sine-wave-generator)
-4. [Link to a Remote Zetta Instance](#step-4-link-to-a-remote-zetta-instance)
-5. [Coordinate Behavior](#step-5-coordinate-behavior)
-{:.steps}
+1. From the PC command line, create the project directory.
 
-# Step #1: Initialize Your Project
+   ```bash
+   mkdir zetta-hello-world
+   ```
 
-## Create Your Folder Structure
+1. Change to the project directory.
 
-1. Run this code in your command line:
+   ```bash
+   cd zetta-hello-world
+   ```
 
-```bash
-mkdir zetta-hello-world
-cd zetta-hello-world
-npm init
-```
+1. Initialize the project by following the `npm init` utility walk-through.
 
-Those commands will:
+   ```bash
+   npm init
+   ```
 
-* Create a new folder for you project
-* Navigate to that folder
-* Initialize node.js boilerplate
-  * Follow the prompts that `npm init` generates to create a `package.json` file.
+   > **action**{:.icon} Press `<ENTER>` multiple times to accept the `npm init` defaults.
 
 ## Install Zetta
 
-1. Run this code in your command line:
+1. Install Zetta and save it as a dependency to the `package.json` file that was created by `npm init`.
 
-```markdown
-npm install zetta --save
-```
+   ```markdown
+   npm install zetta --save
+   ```
 
-## Stub Out the Server File
+## Write the Zetta Server Code
 
-1. Create the `server.js` file a the top of of the `zetta-hello-world` directory. The Zetta server will run from this file.
+1. Create the `server.js` file.
 
-```
-touch server.js
-```
+   ```
+   touch server.js
+   ```
 
-## Confirm Setup
+1. In a text editor, write code in `server.js` to `require` Zetta, give the server a `name` and `listen` on server port `1337`.
 
-1. Your should now have the following structure:
+   > **info**{:.icon} Consider replacing `FirstName` and `LastName` with your first and last name.
 
-<pre><code class="bash-noln">zetta-hello-world
-    ├── node_modules
-    ├── package.json
-    └── server.js
-</code></pre>
+   ```js
+   var zetta = require('zetta');
 
-# Step #2: Blink the \[mock\] LED
+   zetta()
+     .name('FirstName LastName')
+     .listen(1337, function(){
+        console.log('Zetta is running at http://127.0.0.1:1337');
+   });
+   ```
 
-We're going to add a mock LED to our project, then blink it. This will show us how to interact with devices in Zetta without actually needing physical devices.
+1. Save the file and run the Zetta server from within the `zetta-hello-world` project folder.
 
-## Retrieving The Driver
+   ```bash
+   node server.js
+   ```
+   Notice the console output indicating the server is running.
 
-1. Install the driver from `npm`:
+   ```bash
+   {timestamp} [server] Server (FirstName LastName) FirstName LastName listening on http://127.0.0.1:1337
+   Zetta is running at http://127.0.0.1:1337
+   ```
 
-```md
-npm install zetta-mock-led --save
-```
+## Call the API
 
-## Setup The Zetta Server
+1. Open the Zetta API in a web browser: [http://127.0.0.1:1337](http://127.0.0.1:1337).
 
-1. Open `server.js` in your code editor of choice
-2. Add the following code to create your Zetta server node:
+2. Confirm the API looks like the response below.
 
-```javascript
-var zetta = require('zetta');
-var LED = require('zetta-mock-led');
+   ```json
+     { "class":["root"],
+       "links":[
+         {"rel":["self"],
+           "href":"http://127.0.0.1:1337/"},
+         { "title":"FirstName LastName","rel":["http://rels.zettajs.io/server"],
+           "href":"http://127.0.0.1:1337/servers/FirstName%20LastName"},
+         {"rel":["http://rels.zettajs.io/peer-management"],
+           "href":"http://127.0.0.1:1337/peer-management"}],
+       "actions":[
+         {"name":"query-devices","method":"GET",
+           "href":"http://127.0.0.1:1337/","type":"application/x-www-form-urlencoded",
+           "fields":[{"name":"server","type":"text"},{"name":"ql","type":"text"}]}]}
+   ```
+   {:.language-json-noln}
 
-zetta()
-  .use(LED)
-  .listen(1337, function(){
-    console.log('Zetta is running at http://127.0.0.1:1337');
-  });
-```
+   > **info**{:.icon} As we `use` devices in `server.js` they will appear in the web API. For the following steps we'll access the API via the [Zetta Browser](/guides/2014/10/18/Zetta-Browser.html).
 
-## Run the server
+# Step #2: Blink the LED
 
-1. Run this code in your command line:
-  ```
-  node server.js
-  ```
+## Write the LED Code
 
-Zetta will start up and locate our software LED.
-2. Confirm that your console shows something like this:
+1. Install the mock LED driver from `npm`.
 
-![Example Log Output](/images/projects/hello_world/log_led.png){:.zoom}
+   ```bash
+   npm install zetta-led-mock-driver --save
+   ```
 
-The log takes the form of:
+   > **info**{:.icon} Zetta driver names follow the pattern `zetta-[device]-[platform]-driver`. The Hello World project uses mock devices so `mock` is considered to be the platform.
 
-```bash
-TIMESTAMP [scout] Device (led) SOME-GUID was provisioned from registry
-Zetta is running at http://127.0.0.1:1337
-```
-Where:
+1. In the `server.js` file, write code to `require` and `use` the mock `LED`.
 
-* TIMESTAMP will be the time the log was generated
-* SOME-GUID will be a 32 digit globally unique id.
+   Add **line 2**:
 
-## Blink [mock] LED in the Zetta Browser
+   ```javascript
+   var LED = require('zetta-led-mock-driver');
+   ```
 
-1. Open the Zetta Browser:
-[http://browser.zettajs.io/#/overview?url=http://127.0.0.1:1337](http://browser.zettajs.io/#/overview?url=http://127.0.0.1:1337)
-![Zetta Browser with LED](/images/projects/hello_world/browser_led_off.png){:.zoom}
+   Add **line 6**:
 
-2. Ensure your **LED** Device is listed
-3. Click the `turn-on` button
-  You should see the LED state change from `off` to `on`
-  ![Zetta Browser with LED On](/images/projects/hello_world/browser_led_on_callout.png){:.zoom}
+   ```javascript
+   .use(LED)
+   ```
 
+1. Ensure `server.js` looks like the code below.
 
-# Step #3: Stream a Sine Wave
+   ```js
+   var zetta = require('zetta');
+   var LED = require('zetta-led-mock-driver');
 
-We'll add a Sine Wave Generator as a stand-in for a sensor stream.
+   zetta()
+     .name('FirstName LastName')
+     .use(LED)
+     .listen(1337, function(){
+        console.log('Zetta is running at http://127.0.0.1:1337');
+   });
+   ```
 
-## Retrive The Driver
+1. Stop and restart the Zetta server by pressing `CTRL-C` then run `node server.js`.
 
-1. Run this code in your command line:
-  ```markdown
-  npm install zetta-sine-wave --save
-  ```
+   ```bash
+   node server.js
+   ```
 
-## Add the Sine Wave Driver to your Server
+1. When Zetta discovers the mock LED, it will log a message about the device.
 
-1. Open `server.js`
-2. Add another `require()` statement to import the Sine Wave Generator
-3. Pass the Sine Wave Generator to Zetta with another `.use()` statement in the init chain.
-4. Confirm that `server.js` looks like this after you've added the new code:
+   ```bash
+   {timestamp} [scout] Device (led) {id} was discovered
+   ```
+   {:.language-bash-noln}
 
-```javascript
-var zetta = require('zetta');
-var LED = require('zetta-mock-led');
-var Sine = require('zetta-sine-wave');
+## Blink the LED from the PC
 
-zetta()
-  .use(LED)
-  .use(Sine)
-  .listen(1337, function(){
-    console.log('Zetta is running at http://127.0.0.1:1337');
-  });
-```
+1. Open the Zetta Browser and point it at the **PC server**:
 
-## Rerun the Server Node
+   [http://browser.zettajs.io/#/overview?url=http://127.0.0.1:1337](http://browser.zettajs.io/#/overview?url=http://127.0.0.1:1337)
 
-1. Save changes to `server.js`
-2. Restart your server by running this in your command line:
-  ```
-  node server.js
-  ```
-3. Confirm that Zetta logs two messages, one for each device it finds:
+1. Ensure the **LED** is listed.
 
-![Log output with both devices connected](/images/projects/hello_world/log_led_sine.png){:.zoom}
+   ![Zetta Browser with LED](/images/projects/hello_world/browser_led_off.png){:.zoom}
 
-> If your server was still running from an earlier step, make sure to shut it down by pressing **CMD+C** before rerunning `node server.js`
+1. Click the `turn-on` button and ensure the LED state changed from `off` to `on`.
 
-## Monitor the values
+1. Click the `turn-off` button and ensure the LED state changed from `on` to `off`.
 
-1. Point the Zetta browser to your local Zetta server node.
-  * You may be able to just refresh the Zetta browser window to see both devices
-2. Confirm that you see something like this:
-  ![Browser with LED and Sine Wave](/images/projects/hello_world/browser_led_sine.png){:.zoom}
+# Step #3: Link to the Cloud
 
-3. Now click on the device name `Sine Wave` in the Zetta browser to get a more detailed view of the device.
-4. It should display a smooth sine curve!
-  ![Sine Wave Detail Page](/images/projects/hello_world/browser_sine_show.png){:.zoom}
+At this point, the LED API is only available locally. Let's make the LED API available from the cloud.
 
-# Step #4: Link to a Remote Zetta Instance
+## Write the Link Code
 
-Next we'll link our Zetta instance to the cloud. This creates a connection to the open internet and allows us to make API calls to our laptop. To create a true system in the Internet of Things we'll need linking that allows access across the internet.
+1. In the `server.js` file, write code to `link` the Zetta server on the PC to a Zetta server running in the cloud.
 
-## Visit a Hosted Zetta Instance
+   Add **line 7**:
 
-We have an instance of Zetta running on **heroku** for you to play with at [http://hello-zetta.herokuapp.com](http://hello-zetta.herokuapp.com).
+   ```javascript
+   .link('http://hello-zetta.herokuapp.com/')
+   ```
+1. Ensure `server.js` looks like the code below.
 
-1. Visit the remote Zetta instance in the [Zetta Browser](http://browser.zettajs.io/#/overview?url=http:%2F%2Fhello-zetta.herokuapp.com%2F).
-2. Take note of what you see here - this is the *before* state
+   ```js
+   var zetta = require('zetta');
+   var LED = require('zetta-led-mock-driver');
 
-> **question**{:.icon} Want to setup your own hosted node? Read our [Setting up Zetta in the Cloud](/guides/zetta-in-the-cloud.html) guide.
+   zetta()
+     .name('FirstName LastName')
+     .use(LED)
+     .link('http://hello-zetta.herokuapp.com/')
+     .listen(1337, function(){
+       console.log('Zetta is running at http://127.0.0.1:1337');
+   });
+   ```
 
-## Add Link Code
+1. Stop and restart the Zetta server by pressing `CTRL-C` then run `node server.js`.
 
-1. Open `server.js`
-2. Link our local Zetta instance to one in the cloud by including `.link(http://hello-zetta.herokuapp.com)` in the Zetta init chain
-3. Confirm that your `server.js` file looks like the following:
+   ```bash
+   node server.js
+   ```
 
-```javascript
-var zetta = require('zetta');
-var LED = require('zetta-mock-led');
-var Sine = require('zetta-sine-wave');
+1. Ensure the console log includes notifications that the peer was established.
 
-zetta()
-  .use(LED)
-  .use(Sine)
-  .link('http://hello-zetta.herokuapp.com/')
-  .listen(1337, function(){
-    console.log('Zetta is running at http://beaglebone.local:1337');
-  });
+   ```bash
+   {timestamp} [peer-client] WebSocket to peer established (ws://hello-zetta.herokuapp.com/peers/FirstName LastName)
+   {timestamp} [peer-client] Peer connection established (ws://hello-zetta.herokuapp.com/peers/FirstName LastName)
+   ```
+   {:.language-bash-noln}
 
-```
+   > **info**{:.icon} By `link`ing the Zetta server on the PC to a Zetta server running in the cloud, you can access devices via a web API from anywhere in the world.
 
-> Make sure you've saved changes to `server.js`
+## Blink the LED from the Cloud
 
-## Revisit the Hosted Instance
+1. Open the Zetta Browser and point it at the Zetta **cloud server**:
 
-1. Rerun your server by typing `node server.js` in your command line
-2. Go back to the [Zetta Browser](http://browser.zettajs.io/#/overview?url=http:%2F%2Fhello-zetta.herokuapp.com%2F)
-  * You can just reload the page if it's still open.
-3. You should now be able to see your local server listed as a `peer`, with your local devices available for interaction. Examples:
-  * **Before Linking:**
-![Browser Showing Local Server](/images/projects/hello_world/browser_local_callout.png){:.zoom}
-  * **After Linking:**
-![Browser Showing Remote Peer](/images/projects/hello_world/browser_remote_callout.png){:.zoom}
+   [http://browser.zettajs.io/#/overview?url=http:%2F%2Fhello-zetta.herokuapp.com](http://browser.zettajs.io/#/overview?url=http:%2F%2Fhello-zetta.herokuapp.com)
 
-4. Things you can try now that your local Zetta API is available over the web:
-  * Access the Zetta browser on a mobile device with it's wifi turned off to prove your local devices are visible over the web
-  * Ask a friend to load the browser from a different location and watch as they trigger your local device transitions
+1. Ensure the **LED** is listed.
 
-# Step #5: Coordinate Behavior
+1. Click the `turn-on` button for the LED and ensure the LED state changed in the Zetta Browser visualization.
 
-Apps in Zetta allow us to orchestrate interactions between devices.
+> **world**{:.icon} Now anyone in the world can control the mock LED on the PC. Try it. Copy the cloud URL and send it to friends so they can control the LED from afar: [http://browser.zettajs.io/#/overview?url=http:%2F%2Fhello-zetta.herokuapp.com](http://browser.zettajs.io/#/overview?url=http:%2F%2Fhello-zetta.herokuapp.com).
 
-## Create App Directory & File
+# Step #4: Sense Light with Photocell
 
-1. Run this code in your command line:
+## Write Photocell Software
 
-```
-mkdir apps
-touch apps/app.js
-```
+1. Install the Zetta device driver for the mock photocell.
 
-## Author App Code
+   ```bash
+   npm install zetta-photocell-mock-driver --save
+   ```
 
-1. Edit `apps/app.js` so it looks like this:
+1. In the `server.js` file, write code to `require` and `use` the `Photocell` driver. 
 
-```javascript
-module.exports = function(server) {
-  var waveQuery = server.where({ type: 'generator' });
-  var ledQuery = server.where({ type: 'led' });
-  server.observe([waveQuery, ledQuery], function(wave, led){
+   Add **line 3**:
 
-    wave.streams.wave.on('data', function(m) {
-      if(m.data > 0) {
-        if (led.available('turn-on')) {
-          led.call('turn-on');
+   ```javascript
+   var Photocell = require('zetta-photocell-mock-driver');
+   ```
+   Add **line 8**:
+
+   ```javascript
+   .use(Photocell)
+   ```
+
+1. Ensure `server.js` looks like the code below.
+   
+   ```javascript
+   var zetta = require('zetta');
+   var LED = require('zetta-led-mock-driver');
+   var Photocell = require('zetta-photocell-mock-driver');
+
+   zetta()
+     .name('FirstName LastName')
+     .use(LED)
+     .use(Photocell)
+     .listen(1337, function(){
+     console.log('Zetta is running at http://127.0.0.1:1337');
+   });
+   ```
+1. Stop and restart the Zetta server by pressing `CTRL-C` then run `node server.js`.
+
+   ```bash
+   node server.js
+   ```
+
+1. When Zetta discovers the mock Photocell, it will log a message about the device.
+
+   ```bash
+   {timestamp} [scout] Device (photocell) {id} was discovered
+   ```
+   {:.language-bash-noln}
+
+## Sense Light with Photocell
+
+### Zetta Browser
+
+1. Open the Zetta browser and point it at the Zetta cloud server:
+
+   [http://browser.zettajs.io/#/overview?url=http:%2F%2Fhello-zetta.herokuapp.com](http://browser.zettajs.io/#/overview?url=http:%2F%2Fhello-zetta.herokuapp.com)
+
+1. In the Zetta Browser, ensure the **photocell** device is listed.
+
+1. Click on the **photocell** link to see a detailed view.
+
+   ![Photocell Wave Detail Page](/images/projects/hello_world/browser_photocell_show.png){:.zoom}
+
+1. Ensure the values and waveform for the `:intensity` characteristic in the Zetta Browser change over time and stream like a sine wave.
+
+### Command Line
+
+Zetta uses WebSockets to stream device data. Use a command line tool to subscribe to the WebSockets from the cloud.
+
+1. Install `wscat`
+
+   ```bash
+   npm install -g ws
+   ```
+
+1. Use the Zetta Browser to determine the URL of the `photocell intensity` WebSocket by clicking on the `photocell` link and searching for `ws:`. The first WebSocket URL you find should be for monitoring the intensity.
+
+1. Connect to the WebSockets stream with the URL. The URL will use your `FirstName`, `LastName` and a device `id`.
+
+   ```bash
+   wscat --connect ws://hello-zetta.herokuapp.com/servers/{FirstName%20LastName}/events?topic=photocell%2F{id}%2Fintensity
+   ```
+
+# Step #5: Run the Dusk to Dawn Light App
+
+## Write the Dusk to Dawn Light App Code
+
+1. Create an `apps` directory in the `zetta-hello-world` directory.
+
+   ```bash
+   mkdir apps
+   ```
+
+1. Create the `dusk_to_dawn_light.js` file.
+
+   ```bash
+   touch apps/dusk_to_dawn_light.js
+   ```
+
+1. Write code in `apps/dusk_to_dawn_light.js` to find the `led` and the `photocell`, monitor the `photocell intensity` and toggle the `led` as the `intensity` changes.
+
+   ```javascript
+   module.exports = function(server) {
+     var photocellQuery = server.where({ type: 'photocell' });
+     var ledQuery = server.where({ type: 'led' });
+     server.observe([photocellQuery, ledQuery], function(photocell, led){
+       photocell.streams.intensity.on('data', function(m) {
+         if(m.data < 0.5) {
+           if (led.available('turn-on')) {
+             led.call('turn-on');
+           }
+         } else {
+           if (led.available('turn-off')) {
+             led.call('turn-off');
+          }
         }
-      } else {
-        if (led.available('turn-off')) {
-          led.call('turn-off');
-        }
-      }
-    });
+      });
+   });}
+   ```
 
-  });
-}
-```
-  > Make sure you save changes to `app.js` before going further
+## Use the Dusk to Dawn Light App
 
-2. A quick tour of this code:
+1. Edit the `server.js` file. Add code to `require` and `use` the `dusk_to_dawn_light` app from the `apps` folder.
 
-  * `module.exports` keeps our app modular and separated from the rest of our code.
-  * device queries are built from SQL-like statements in `server.where()`
-  * We wait for all devices to come online by passing those query results into `server.observe()`
-  * We listen to `data` from our `wave` `stream`, and modify the `led` `state machine`.
+   Add **line 5**.
 
-3. Dig deeper into our docs to get details about [Device Queries](/docs/queries.html.html), the [Zetta app server variable](/docs/server.html), [Streams](/docs/streams.html), and [State Machines](/docs/state_machines.html).
+   ```javascript
+   var duskToDawnLight = require('./apps/dusk_to_dawn_light');
+   ```
 
-## Load your app when Zetta runs
+   Add **line 11**.
 
-After you're done writing your app, you need to make sure it's included in your server file.
+   ```javascript
+   .use(duskToDawnLight)
+   ```
 
-1. Open `server.js`
-2. Import your app with another `require()` statement
-3. include it in the init chain with another `.use()` statement.
-4. Your `server.js` file should now match the following code:
+1. Ensure `server.js` looks like the code below.
 
-```javascript
-var zetta = require('zetta');
-var LED = require('zetta-mock-led');
-var Sine = require('zetta-sine-wave');
+   ```javascript
+   var zetta = require('zetta');
+   var LED = require('zetta-led-mock-driver');
+   var Photocell = require('zetta-photocell-mock-driver');
 
-var app = require('./apps/app');
+   var duskToDawnLight = require('./apps/dusk_to_dawn_light');
 
-zetta()
-  .use(LED)
-  .use(Sine)
-  .use(app)
-  .link('http://hello-zetta.herokuapp.com/')
-  .listen(1337, function(){
-    console.log('Zetta is running at http://beaglebone.local:1337');
-  });
+   zetta()
+     .name('FirstName LastName')
+     .use(LED)
+     .use(Photocell)
+     .use(duskToDawnLight)
+     .link('http://hello-zetta.herokuapp.com/')
+     .listen(1337, function(){
+       console.log('Zetta is running at http://127.0.0.1:1337');
+   });
+   ```
 
-```
-> Make sure to save changes to `server.js` before continuing
+## Run the Dusk to Dawn Light App
 
-## Test the app
+1. Stop and restart the Zetta server by pressing `CTRL-C` then run `node server.js`.
 
-1. Rerun Zetta with
-  ```
-  node server.js
-  ```
-2. Head back over to the [Zetta Browser](http://browser.zettajs.io/#/overview?url=http:%2F%2Fhello-zetta.herokuapp.com%2F) to see this new interaction at work.
+   ```bash
+   node server.js
+   ```
 
-3. The browser should look similar to before:
-  ![Browser Showing App at Work](/images/projects/hello_world/browser_complete_project.png){:.zoom}
+1. Open the Zetta Browser and point it at the Zetta **cloud server**:
 
-4. Notice now how the LED turns `on` and `off` in sync with the sinewave!
-5. You can see this interaction both locally and from the remote Zetta instance.
+   [http://browser.zettajs.io/#/overview?url=http:%2F%2Fhello-zetta.herokuapp.com](http://browser.zettajs.io/#/overview?url=http:%2F%2Fhello-zetta.herokuapp.com)
 
-# Next Steps
 
-1. Create a mock device of your own. See how we use javascript to represent devices.
-2. Create a mock sensor of your own. See how we set up streaming values.
-3. Replace our pure software LED with a hardware LED.
+4. Ensure the LED turns `on` and `off` based on the `photocell intensity`.
 
-# Getting Help
+   ![Screenshot of Zetta browser with dusk to dawn lighting system](/images/projects/hello_world/browser_complete_project.png){:.zoom}
 
-If you're going through this project, and run into an issue feel free to use these methods to reach out and contact us!
 
-* [matt@apigee.com](mailto:matt@apigee.com)
-* [https://groups.google.com/forum/#!forum/zetta-discuss]()
-* [https://github.com/zettajs/zetta/issues]()
-* [Reference Documentation: http://zettajs.github.io/]()
+# Congratulations!
+
+Congratulations. You built a dusk to dawn lighting system that is connected to the Internet and programmable from anywhere in the world.
