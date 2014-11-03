@@ -108,7 +108,7 @@ The goal for this project is to create a simple home security system by assembli
    Zetta is running at http://beaglebone.local:1337
    ```
 
-## Call Your API
+## Call the API
 
 1. In the Cloud9 IDE, open a new terminal tab.
 
@@ -158,7 +158,7 @@ The goal for this project is to create a simple home security system by assembli
    ```javascript
    var LED = require('zetta-led-bonescript-driver');
    ```
-   Add **line 5**:
+   Add **line 6**:
 
    ```javascript
    .use(LED, 'USR0', 'USR1', 'USR2', 'USR3')
@@ -211,9 +211,11 @@ The goal for this project is to create a simple home security system by assembli
 
 # Step #3: Link to the Cloud
 
+At this point, your LED API is only available locally. Let's make the LED API available from the cloud.
+
 1. In the Cloud9 IDE console, open the `server.js` file. Write code to `link` your Zetta server on the BeagleBone to a Zetta server running in the cloud.
 
-   Add **line 6**:
+   Add **line 7**:
 
    ```javascript
    .link('http://hello-zetta.herokuapp.com/')
@@ -467,7 +469,7 @@ After assembling the microphone hardware, your project should look similar to th
 
    [http://browser.zettajs.io/#/overview?url=http:%2F%2Fhello-zetta.herokuapp.com](http://browser.zettajs.io/#/overview?url=http:%2F%2Fhello-zetta.herokuapp.com)
 
-1. Ensure your **Microphone** device is listed.
+1. Ensure the **Microphone** device is listed.
    ![Zetta Browser root with Microphone](/images/projects/security_system/screens/browser-microphone.png){:.zoom}
 
 1. In the Zetta Browser, click on the **Microphone** link to open a detailed view of the device.
