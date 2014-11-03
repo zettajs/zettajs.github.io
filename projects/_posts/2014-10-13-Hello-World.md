@@ -172,7 +172,7 @@ This project requires a PC with an Internet connection and [Node.js](http://node
 
 ## Blink the LED from the PC
 
-1. Open the Zetta Browser and point it to the **PC server**:
+1. Open the Zetta Browser and point it at the **PC server**:
 
    [http://browser.zettajs.io/#/overview?url=http://127.0.0.1:1337](http://browser.zettajs.io/#/overview?url=http://127.0.0.1:1337)
 
@@ -295,7 +295,7 @@ At this point, the LED API is only available locally. Let's make the LED API ava
 
 ### Zetta Browser
 
-1. Open the Zetta browser and point it to the Zetta cloud server:
+1. Open the Zetta browser and point it at the Zetta cloud server:
 
    [http://browser.zettajs.io/#/overview?url=http:%2F%2Fhello-zetta.herokuapp.com](http://browser.zettajs.io/#/overview?url=http:%2F%2Fhello-zetta.herokuapp.com)
 
