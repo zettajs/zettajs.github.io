@@ -293,6 +293,8 @@ At this point, the LED API is only available locally. Let's make the LED API ava
 
 ## Sense Light with Photocell
 
+### Zetta Browser
+
 1. Open the Zetta browser and point it to the Zetta cloud server:
 
    [http://browser.zettajs.io/#/overview?url=http:%2F%2Fhello-zetta.herokuapp.com](http://browser.zettajs.io/#/overview?url=http:%2F%2Fhello-zetta.herokuapp.com)
@@ -300,9 +302,28 @@ At this point, the LED API is only available locally. Let's make the LED API ava
 1. In the Zetta Browser, ensure the **Photocell** device is listed.
 
 1. Click on the **photocell** link to see a detailed view.
+
    ![Photocell Wave Detail Page](/images/projects/hello_world/browser_photocell_show.png){:.zoom}
 
 1. Ensure the values and waveform for the `:intensity` characteristic in the Zetta Browser change over time and stream like a sine wave.
+
+### Or Command Line
+
+Zetta uses WebSockets to stream device. Use a command line tool to subscribe to the raw WebSockets data from the cloud to the PC.
+
+1. Install `wscat`
+
+   ```bash
+   npm install -g ws
+   ```
+
+1. Use the Zetta Browser to determine the URL of the `photocell intensity` WebSocket by clicking on the `photocell` link and searching for `ws:`. The first WebSocket URL you find should be for monitoring the intensity.
+
+1. Connect to the WebSockets stream with the URL. The URL will use your `FirstName`, `LastName` and a device `id`.
+
+   ```bash
+   wscat --connect ws://hello-zetta.herokuapp.com/servers/{FirstName%20LastName}/events?topic=photocell%2F{id}%2Fintensity
+   ```
 
 # Step #5: Run the Dusk to Dawn Light App
 
