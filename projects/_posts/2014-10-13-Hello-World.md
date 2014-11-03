@@ -299,7 +299,7 @@ At this point, the LED API is only available locally. Let's make the LED API ava
 
    [http://browser.zettajs.io/#/overview?url=http:%2F%2Fhello-zetta.herokuapp.com](http://browser.zettajs.io/#/overview?url=http:%2F%2Fhello-zetta.herokuapp.com)
 
-1. In the Zetta Browser, ensure the **Photocell** device is listed.
+1. In the Zetta Browser, ensure the **photocell** device is listed.
 
 1. Click on the **photocell** link to see a detailed view.
 
@@ -307,9 +307,9 @@ At this point, the LED API is only available locally. Let's make the LED API ava
 
 1. Ensure the values and waveform for the `:intensity` characteristic in the Zetta Browser change over time and stream like a sine wave.
 
-### Or Command Line
+### Command Line
 
-Zetta uses WebSockets to stream device. Use a command line tool to subscribe to the raw WebSockets data from the cloud to the PC.
+Zetta uses WebSockets to stream device data. Use a command line tool to subscribe to the WebSockets from the cloud.
 
 1. Install `wscat`
 
