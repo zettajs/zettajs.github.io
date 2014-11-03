@@ -93,6 +93,11 @@ table.wiring{border:1px solid #ededed;border-radius:.5rem}
 table.wiring td,table.wiring th{padding:.25rem 1rem}
 table.wiring thead{background-color:#59595b;color:#fff}
 table.wiring tr:nth-child(even){background-color:#f2f2f2}
+ul.placards{margin:0;padding:0 2.5rem}
+ul.placards li{list-style-type:none;display:inline-block;padding:0;margin:0;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box}
+ul.placards li .content .meta{border-top:1px solid #ededed;font-size:.8em;color:#999}
+ul.placards li .content .meta a b,ul.placards li .content .meta b:not(:first-of-type){padding-left:1rem}
+ul.placards li .content h2{margin:0;padding:0}
 #hero #cta{background:linear-gradient(#536491,#4a5981,#414e71);border-bottom:2px solid #fff}
 #hero #cta .content{width:90%;margin:0 auto}
 @media screen and (min-width:48.1em){#hero #cta .content{max-width:42rem}}
@@ -100,6 +105,7 @@ table.wiring tr:nth-child(even){background-color:#f2f2f2}
 @media screen and (min-width:80em){#hero #cta .content{max-width:56rem}}
 #hero #cta .build.ga{-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box}
 @media screen and (min-width:35.5em){#hero #cta .build.ga{padding-left:1rem}}
+#hero #cta button{width:100%}
 #index #hero{background-color:#fff}
 .install{background-color:#fff;height:2.65rem;border-bottom:.35rem solid #faa438;margin:0 0 1rem}
 .install input{width:100%;font-size:1.2rem;font-family:fira-mono,courier,monospace;padding:.7rem 0 0 1rem;border:none;background-color:transparent}
@@ -107,7 +113,6 @@ table.wiring tr:nth-child(even){background-color:#f2f2f2}
 #cta{padding-bottom:2rem}
 #cta .build,#cta .learn,#cta .npm{margin:0;padding:0;overflow:hidden}
 #cta p{font-family:jaf-facitweb,Helvetica,Arial,sans-serif;font-size:.8em;height:2rem;margin:1rem 0 0;color:#fff;font-weight:300}
-.build button{height:3rem;font-size:1.2rem;width:100%}
 .learn{margin:0;padding:0}
 .learn ul{margin:0;padding:0;width:100%}
 .learn ul li{display:inline-block;list-style-type:none;margin:.9rem .5rem 0 0;font-size:.9em}
@@ -156,6 +161,9 @@ header .meta ul{margin:0 2.5rem;padding:0}
 header .meta ul li{list-style-type:none;margin:0;padding:0 1.25rem 0 0;display:inline-block}
 header .meta ul li:first-child{padding-left:0}
 article{background-color:#fff;width:100%;margin:0 auto}
+@media screen and (min-width:48.1em){article{max-width:42rem}}
+@media screen and (min-width:64em){article{max-width:56rem}}
+@media screen and (min-width:80em){article{max-width:56rem}}
 @media screen and (min-width:48.1em){article{width:60rem}}
 article img{max-width:100%;border-radius:.25rem}
 article .sfe-wish-list,article blockquote,article p,article table{margin:1rem 2.5rem}
@@ -189,6 +197,7 @@ article .content{background-color:#fff;padding:1rem 0}
 article h1{margin-left:-1.5rem;padding-left:4rem;color:#fff;background-repeat:no-repeat;background-position:1.5rem center;background-size:1rem auto;box-shadow:0 7px 7px #e6e6e6}
 article h1:hover{background-image:url(../images/link.svg);cursor:pointer}
 article h1:before{content:'';width:0;height:0;border:.55em solid transparent;border-top-width:0;position:relative;display:block;left:-4rem;top:3.9rem;-webkit-transform:rotate(45deg)}
+#cta button,.meta button{height:3rem;font-size:1.2rem}
 .page.docs #hero header{padding-bottom:2rem}
 .page.docs #hero .page_meta{color:#fff;margin:0;padding:0}
 .page.docs #hero .page_meta li{list-style-type:none;display:inline;margin:0;padding:0}

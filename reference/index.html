@@ -6,12 +6,20 @@ description: >
 ---
 
 <div>
-  <ul>
-    {% for reference in site.categories["reference"] %}
-      <li>
-        <a href="{{ reference.url }}">{{ reference.title }}</a>
-      </li>
-    {% endfor %}
-  </ul>
+  
+  
+  <ul class="placards pure-g">
+      {% for reference in site.categories["reference"] %}
+        <li class="placard pure-u-1">
+
+          <div class="content">
+            <a href="{{ reference.url }}"><h2>{{ reference.title }}</h2></a>
+            {% if reference.description %}<p>{{reference.description}}</p>{% endif %}
+
+          </div>
+
+        </li>
+      {% endfor %}
+    </ul>
 </div>
 <div>

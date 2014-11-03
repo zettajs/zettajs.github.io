@@ -287,6 +287,36 @@ table {
 }
 
 
+ul.placards {
+  margin: 0; 
+  padding: 0 2.5rem;
+  
+  
+  
+  li {
+    list-style-type: none;
+    display: inline-block;
+    padding: 0; margin: 0;
+    .border-box();
+    
+    .content {
+      .meta  {
+        border-top: 1px solid @light-gray-bg;
+        font-size: .8em;
+        color: @gray_40;
+        b:not(:first-of-type), a b {padding-left: 1rem;}
+      }   
+      h2 {
+        margin: 0; padding: 0;
+      }
+    
+    }
+  }
+
+}
+
+
+
 @import 'home.less';
 
 
@@ -317,6 +347,7 @@ header {
 }
 
 article {
+  .centered();
   background-color: #fff;
   width: 100%;
   @media @md { width: 60rem; }
@@ -435,6 +466,13 @@ article {
         
       }
 
+}
+
+#cta, .meta {
+    button {
+      height: 3rem;
+      font-size: 1.2rem;
+    }
 }
 
 .page.docs {
