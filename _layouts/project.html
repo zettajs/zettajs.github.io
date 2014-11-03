@@ -24,7 +24,7 @@
         
         {% if page.path contains 'index' %}
         <ul class="meta">
-          <li>Displaying {{ site.categories["projects"].size }} {{page.layout | capitalize }}s</li>
+          <li><a href="/projects/2014/10/01/Share-A-Project.html"><button class="pure-button">How to Share a Project <b>action</b></button></a></li>
         </ul>
         {% endif %}
       </div>
@@ -39,9 +39,17 @@
 
     <section class="description">
       <div>
-        <!-- project intro text -->
+        {% if page.path contains 'index' %}
+        
+        <p>Displaying {{ site.categories["projects"].size }} {{page.layout | capitalize }}{% if site.categories["projects"].size != 1 %}s{% endif %}</p>
+        
+        {% endif %}
+        
+        {% unless page.path contains 'index' %}
+        
         <p>Have a project to share? Read <a href="/projects/2014/10/01/Share-A-Project.html">How to Share a Project</a></p>
-        <!-- /project intro text -->
+        
+        {% endunless %} 
       </div>
     </section>
   </section>

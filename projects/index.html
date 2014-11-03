@@ -5,10 +5,23 @@ description: >
   People create interesting projects with Zetta. Get started by re-creating the projects of others. Or share your project with the Zetta community.
 ---
 
-<ul>
+<ul class="placards pure-g">
   {% for project in site.categories["projects"] %}
-    <li>
-      <a href="{{ project.url }}">{{ project.title }}</a>
+    <li class="placard pure-u-1">
+      
+      <div class="content">
+        <a href="{{ project.url }}"><h2>{{ project.title }}</h2></a>
+        {% if project.description %}<p>{{project.description}}</p>{% endif %}
+        <div class="meta">
+          {% if project.author %}<b>user</b> {{project.author}}{% endif %}
+          <b>calendar</b> {{project.date | date: '%b %d, %Y'}}
+          {% if project.difficulty %} <b>upwardsbarchart</b> {{project.difficulty}}{% endif %}
+          {% if project.duration %} <b>stopwatch</b> {{project.duration}}{% endif %}
+          {% if project.repo %}<a href="{{project.repo}}"><b>download</b> Source Code</a>{% endif %}
+        </div>
+        
+      </div>
+      
     </li>
   {% endfor %}
 </ul>

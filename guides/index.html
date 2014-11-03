@@ -6,12 +6,20 @@ description: >
 ---
 
 <div>
-  <ul>
-    {% for guide in site.categories["guides"] %}
-      <li>
-        <a href="{{ guide.url }}">{{ guide.title }}</a>
-      </li>
-    {% endfor %}
-  </ul>
+    <ul class="placards pure-g">
+      {% for guide in site.categories["guides"] %}
+        <li class="placard pure-u-1">
+
+          <div class="content">
+            <a href="{{ guide.url }}"><h2>{{ guide.title }}</h2></a>
+            {% if guide.description %}<p>{{guide.description}}</p>{% endif %}
+
+          </div>
+
+        </li>
+      {% endfor %}
+    </ul>
 </div>
 <div>
+  
+  

@@ -5,7 +5,7 @@ author: Adam Magaluk
 difficulty: beginner
 duration: 1 hour
 description: >
-  This recipe will guide you through building
+  This will guide you through building
   the hello world project for Zetta. In it,
   we'll cover Zetta's basic concepts. This
   tutorial is good for those looking to see
