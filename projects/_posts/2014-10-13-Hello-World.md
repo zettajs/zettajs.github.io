@@ -29,7 +29,7 @@ This project requires a PC with an Internet connection and [Node.js](http://node
 
 # Step #1: Setup Zetta on the PC
 
-## Initialize your Project
+## Initialize the Project
 
 1. From the PC command line, create the project directory.
 
@@ -67,7 +67,7 @@ This project requires a PC with an Internet connection and [Node.js](http://node
    touch server.js
    ```
 
-1. In a text editor, write code in `server.js` to `require` Zetta, give your server a `name` and `listen` on server port `1337`.
+1. In a text editor, write code in `server.js` to `require` Zetta, give the server a `name` and `listen` on server port `1337`.
 
    > **info**{:.icon} Consider replacing `FirstName` and `LastName` with your first and last name.
 
@@ -81,7 +81,7 @@ This project requires a PC with an Internet connection and [Node.js](http://node
    });
    ```
 
-1. Save your file and run the Zetta server from within the `zetta-hello-world` project folder.
+1. Save the file and run the Zetta server from within the `zetta-hello-world` project folder.
 
    ```bash
    node server.js
@@ -89,7 +89,7 @@ This project requires a PC with an Internet connection and [Node.js](http://node
    Notice the console output indicating the server is running.
 
    ```bash
-   Nov-02-2014 22:56:59 [server] Server (FirstName LastName) FirstName LastName listening on http://127.0.0.1:1337
+   {timestamp} [server] Server (FirstName LastName) FirstName LastName listening on http://127.0.0.1:1337
    Zetta is running at http://127.0.0.1:1337
    ```
 
@@ -157,7 +157,7 @@ This project requires a PC with an Internet connection and [Node.js](http://node
    });
    ```
 
-1. Stop and restart the Zetta server, press `CTRL-C` then run `node server.js`.
+1. Stop and restart the Zetta server by pressing `CTRL-C` then run `node server.js`.
 
    ```bash
    node server.js
@@ -176,7 +176,7 @@ This project requires a PC with an Internet connection and [Node.js](http://node
 
    [http://browser.zettajs.io/#/overview?url=http://127.0.0.1:1337](http://browser.zettajs.io/#/overview?url=http://127.0.0.1:1337)
 
-1. Ensure your **LED** is listed.
+1. Ensure the **LED** is listed.
 
    ![Zetta Browser with LED](/images/projects/hello_world/browser_led_off.png){:.zoom}
 
@@ -186,18 +186,18 @@ This project requires a PC with an Internet connection and [Node.js](http://node
 
 # Step #3: Link to the Cloud
 
-At this point, your LED API is only available locally. Let's make the LED API available from the cloud.
+At this point, the LED API is only available locally. Let's make the LED API available from the cloud.
 
 ## Write the Link Code
 
-1. In the `server.js` file, write code to `link` your Zetta server on the PC to a Zetta server running in the cloud.
+1. In the `server.js` file, write code to `link` the Zetta server on the PC to a Zetta server running in the cloud.
 
    Add **line 7**:
 
    ```javascript
    .link('http://hello-zetta.herokuapp.com/')
    ```
-1. Ensure `server.js` looks like code below.
+1. Ensure `server.js` looks like the code below.
 
    ```js
    var zetta = require('zetta');
@@ -212,13 +212,13 @@ At this point, your LED API is only available locally. Let's make the LED API av
    });
    ```
 
-1. Stop and restart the Zetta server, press `CTRL-C` then run `node server.js`.
+1. Stop and restart the Zetta server by pressing `CTRL-C` then run `node server.js`.
 
    ```bash
    node server.js
    ```
 
-1. Ensure the peer connection to the cloud is established and the console log includes notifications that  the peer was established.
+1. Ensure console log includes notifications that the peer was established.
 
    ```bash
    {timestamp} [peer-client] WebSocket to peer established (ws://hello-zetta.herokuapp.com/peers/FirstName LastName)
@@ -226,7 +226,7 @@ At this point, your LED API is only available locally. Let's make the LED API av
    ```
    {:.language-bash-noln}
 
-   > **info**{:.icon} By `link`ing the Zetta server on the PC to a Zetta server running in the cloud, you can access your devices via a web API from anywhere in the world.
+   > **info**{:.icon} By `link`ing the Zetta server on the PC to a Zetta server running in the cloud, you can access devices via a web API from anywhere in the world.
 
 ## Blink the LED from the Cloud
 
@@ -234,11 +234,11 @@ At this point, your LED API is only available locally. Let's make the LED API av
 
    [http://browser.zettajs.io/#/overview?url=http:%2F%2Fhello-zetta.herokuapp.com](http://browser.zettajs.io/#/overview?url=http:%2F%2Fhello-zetta.herokuapp.com)
 
-1. Ensure your **LED** is listed.
+1. Ensure the **LED** is listed.
 
 1. Click the `turn-on` button for the LED and ensure the LED state changed in the Zetta Browser visualization.
 
-> **world**{:.icon} Now anyone in the world can control the mock LED on your PC. Try it. Copy the cloud URL and send it to friends so they can control your LEDs from afar: [http://browser.zettajs.io/#/overview?url=http:%2F%2Fhello-zetta.herokuapp.com](http://browser.zettajs.io/#/overview?url=http:%2F%2Fhello-zetta.herokuapp.com).
+> **world**{:.icon} Now anyone in the world can control the mock LED on the PC. Try it. Copy the cloud URL and send it to friends so they can control the LED from afar: [http://browser.zettajs.io/#/overview?url=http:%2F%2Fhello-zetta.herokuapp.com](http://browser.zettajs.io/#/overview?url=http:%2F%2Fhello-zetta.herokuapp.com).
 
 # Step #4: Sense Light with Photocell
 
@@ -278,7 +278,7 @@ At this point, your LED API is only available locally. Let's make the LED API av
      console.log('Zetta is running at http://127.0.0.1:1337');
    });
    ```
-1. Stop and restart the Zetta server, press `CTRL-C` then run `node server.js`.
+1. Stop and restart the Zetta server by pressing `CTRL-C` then run `node server.js`.
 
    ```bash
    node server.js
@@ -308,7 +308,7 @@ At this point, your LED API is only available locally. Let's make the LED API av
 
 ## Write the Dusk to Dawn Light App Code
 
-1. Create an apps directory under in the `zetta-hello-world` directory.
+1. Create an `apps` directory in the `zetta-hello-world` directory.
 
    ```bash
    mkdir apps
@@ -320,7 +320,7 @@ At this point, your LED API is only available locally. Let's make the LED API av
    touch apps/dusk_to_dawn_light.js
    ```
 
-1. Write code in `app/dusk_to_dawn_light.js` to find the `led` and the `photocell`, monitor the `photocell intensity` and toggle the `led` as the `intensity` changes.
+1. Write code in `apps/dusk_to_dawn_light.js` to find the `led` and the `photocell`, monitor the `photocell intensity` and toggle the `led` as the `intensity` changes.
 
    ```javascript
    module.exports = function(server) {
@@ -379,18 +379,11 @@ At this point, your LED API is only available locally. Let's make the LED API av
 
 ## Run the Dusk to Dawn Light App
 
-1. Stop and restart the Zetta server, press `CTRL-C` then run `node server.js`.
+1. Stop and restart the Zetta server by pressing `CTRL-C` then run `node server.js`.
 
    ```bash
    node server.js
    ```
-
-1. When Zetta discovers the mock LED, it will log a message about the device.
-
-   ```bash
-   {timestamp} [scout] Device (led) {id} was discovered
-   ```
-   {:.language-bash-noln}
 
 1. Open the Zetta Browser and point it at the Zetta **cloud server**:
 
