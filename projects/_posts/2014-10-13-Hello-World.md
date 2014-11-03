@@ -4,7 +4,7 @@ title: Hello World
 author: Adam Magaluk
 difficulty: beginner
 duration: 1 hour
-description: Create an Internet-connected, dusk-to-dawn lighting system with a mock LED and a mock photo cell.
+description: Create an Internet-connected, dusk-to-dawn lighting system with a mock LED and a mock photocell.
 repo: http://github.com/zettajs/zetta-hello-world
 ---
 
@@ -19,7 +19,7 @@ repo: http://github.com/zettajs/zetta-hello-world
 
 # Goal
 
-The goal for this project is to create a dusk-to-dawn lighting system by assembling a mock LED and a mock photo cell into a Zetta app running on a PC. We will connect the app to the Internet by linking the PC with a second Zetta server running in the cloud.
+The goal for this project is to create a dusk-to-dawn lighting system by assembling a mock LED and a mock photocell into a Zetta app running on a PC. We will connect the app to the Internet by linking the PC with a second Zetta server running in the cloud.
 
 ![Screenshot of Zetta browser with dusk to dawn lighting system](/images/projects/hello_world/browser_complete_project.png){:.zoom}
 
