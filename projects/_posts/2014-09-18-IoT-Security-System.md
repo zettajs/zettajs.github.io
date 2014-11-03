@@ -211,6 +211,8 @@ The goal for this project is to create a simple home security system by assembli
 
 # Step #3: Link to the Cloud
 
+At this point, your LED API is only available locally. Let's make the LED API available from the cloud.
+
 1. In the Cloud9 IDE console, open the `server.js` file. Write code to `link` your Zetta server on the BeagleBone to a Zetta server running in the cloud.
 
    Add **line 7**:
