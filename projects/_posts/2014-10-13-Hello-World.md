@@ -218,7 +218,7 @@ At this point, the LED API is only available locally. Let's make the LED API ava
    node server.js
    ```
 
-1. Ensure console log includes notifications that the peer was established.
+1. Ensure the console log includes notifications that the peer was established.
 
    ```bash
    {timestamp} [peer-client] WebSocket to peer established (ws://hello-zetta.herokuapp.com/peers/FirstName LastName)
