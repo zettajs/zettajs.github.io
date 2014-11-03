@@ -4,79 +4,119 @@ title: Hello World
 author: Adam Magaluk
 difficulty: beginner
 duration: 1 hour
-description: >
-  This recipe will guide you through building
-  the hello world project for Zetta. In it,
-  we'll cover Zetta's basic concepts. This
-  tutorial is good for those looking to see
-  Zetta for the first time.
+description: Create an Internet-connected, dusk-to-dawn lighting system with a mock LED and a mock photo cell.
 repo: http://github.com/zettajs/zetta-hello-world
 ---
 
-# Goal
-This project is meant to get you up and running with the essential concepts in Zetta. It is a sample Zetta app with two devices - A mock LED and a Sine Wave Generator.
-
-![Screenshot of Zetta browser w/ finished system](/images/projects/hello_world/browser_complete_project.png){:.zoom}
-
-# Parts
-
-This project is all software. You will need a computer with Node.js and npm installed.
-
-> **question**{:.icon} Need help installing nodejs? Read our [Getting Started With Zetta](/guides/getting-started-with-zetta.html) Guide.
-
 # Directions
 
-1. [Initialize Your Project](#step-1-initialize-your-project)
+1. [Setup Zetta on the PC](#step-1-setup-zetta-on-the-pc)
 2. [Blink the \[mock\] LED](#step-2-blink-the-mock-led)
 3. [Stream a Sine Wave](#step-3-add-the-sine-wave-generator)
 4. [Link to a Remote Zetta Instance](#step-4-link-to-a-remote-zetta-instance)
 5. [Coordinate Behavior](#step-5-coordinate-behavior)
 {:.steps}
 
-# Step #1: Initialize Your Project
+# Goal
 
-## Create Your Folder Structure
+The goal for this project is to create a dusk-to-dawn light by assembling a mock LED and a mock photo cell into a Zetta app running on a PC. We will connect the app to the Internet by linking the PC with a second Zetta server running in the cloud.
 
-1. Run this code in your command line:
+![Screenshot of Zetta browser with dusk to dawn lighting system](/images/projects/hello_world/browser_dusk_to_dawn.png){:.zoom}
 
-```bash
-mkdir zetta-hello-world
-cd zetta-hello-world
-npm init
-```
+# Parts
 
-Those commands will:
+This project requires a PC with an Internet connection and [Node.js](http://nodejs.org/download/).
 
-* Create a new folder for you project
-* Navigate to that folder
-* Initialize node.js boilerplate
-  * Follow the prompts that `npm init` generates to create a `package.json` file.
+# Step #1: Setup Zetta on the PC
+
+## Initialize your Project
+
+1. From the PC command line, create the project directory.
+
+   ```bash
+   mkdir zetta-hello-world
+   ```
+
+1. Change to the project directory.
+
+   ```bash
+   cd zetta-hello-world
+   ```
+
+1. Initialize the project by following the `npm init` utility walk-through.
+
+   ```bash
+   npm init
+   ```
+
+   > **info**{:.icon} Press `<ENTER>` multiple times to accept the `npm init` defaults.
 
 ## Install Zetta
 
-1. Run this code in your command line:
+1. Install Zetta and save it as a dependency to the `package.json` file that was created by `npm init`.
 
-```markdown
-npm install zetta --save
-```
+   ```markdown
+   npm install zetta --save
+   ```
 
-## Stub Out the Server File
 
-1. Create the `server.js` file a the top of of the `zetta-hello-world` directory. The Zetta server will run from this file.
+## Write Zetta Server Code
 
-```
-touch server.js
-```
+1. Create the `server.js` file.
 
-## Confirm Setup
+   ```
+   touch server.js
+   ```
 
-1. Your should now have the following structure:
+1. In a text editor, write code in `server.js` to `require` Zetta, give your server a `name` and `listen` on server port `1337`.
 
-<pre><code class="bash-noln">zetta-hello-world
-    ├── node_modules
-    ├── package.json
-    └── server.js
-</code></pre>
+   > **info**{:.icon} Consider replacing `FirstName` and `LastName` with your first and last name.
+
+   ```javascript
+   var zetta = require('zetta');
+
+   zetta()
+     .name('FirstName LastName')
+     .listen(1337, function(){
+        console.log('Zetta is running at http://127.0.0.1:1337');
+   });
+   ```
+
+1. Save your file and run the Zetta server from within the `zetta-hello-world` project folder.
+
+   ```bash
+   node server.js
+   ```
+   Notice the console output indicating the server is running.
+
+   ```bash
+   Nov-02-2014 22:56:59 [server] Server (FirstName LastName) FirstName LastName listening on http://127.0.0.1:1337
+   Zetta is running at http://127.0.0.1:1337
+   ```
+
+## Call the API
+
+1. Open the Zetta API in a web browser [http://127.0.0.1:1337](http://127.0.0.1:1337).
+
+2. Confirm the API looks like the response below.
+
+   ```json
+     { "class":["root"],
+       "links":[
+         {"rel":["self"],
+           "href":"http://127.0.0.1:1337/"},
+         { "title":"FirstName LastName","rel":["http://rels.zettajs.io/server"],
+           "href":"http://127.0.0.1:1337/servers/FirstName%20LastName"},
+         {"rel":["http://rels.zettajs.io/peer-management"],
+           "href":"http://127.0.0.1:1337/peer-management"}],
+       "actions":[
+         {"name":"query-devices","method":"GET",
+           "href":"http://127.0.0.1:1337/","type":"application/x-www-form-urlencoded",
+           "fields":[{"name":"server","type":"text"},{"name":"ql","type":"text"}]}]}
+   ```
+   {:.language-json-noln}
+
+   > **info**{:.icon} As we `use` devices in `server.js` they will appear in the web API. For the following steps we'll access the API via the [Zetta Browser](/guides/2014/10/18/Zetta-Browser.html).
 
 # Step #2: Blink the \[mock\] LED
 

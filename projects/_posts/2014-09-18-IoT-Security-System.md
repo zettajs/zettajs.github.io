@@ -108,7 +108,7 @@ The goal for this project is to create a simple home security system by assembli
    Zetta is running at http://beaglebone.local:1337
    ```
 
-## Call Your API
+## Call the API
 
 1. In the Cloud9 IDE, open a new terminal tab.
 
