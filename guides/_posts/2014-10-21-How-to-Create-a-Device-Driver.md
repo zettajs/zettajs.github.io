@@ -73,7 +73,7 @@ git clone https://github.com/zettajs/zetta-starter-device-driver zetta-{device}-
 
    [http://browser.zettajs.io/#/overview?url=http:%2F%2F127.0.0.1:1337](http://browser.zettajs.io/#/overview?url=http:%2F%2F127.0.0.1:1337)
 
-You now have a working device driver, example server and example app running on your development machine. 
+You now have a working device driver, scout, example server and example app running on your development machine. 
 
 # Step #4: Search and Replace the Starter Code
 
