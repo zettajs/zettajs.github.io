@@ -5,13 +5,13 @@ author: Matt Dobson
 difficulty: experienced
 duration: 1-3 hours
 description: >
-  Create an Internet-connected, home security system with a microphone, piezo speaker, an LED and a BeagleBone Black.
-repo: https://github.com/alanguir/zetta-security-system/g
+  Create an Internet-connected, home security system with a microphone, piezo speaker, an LED and a Intel Edison.
+repo: https://github.com/zettajs/zetta-security-system-edison
 ---
 
 # Goal
 
-The goal for this project is to create a simple home security system by assembling a microphone, a piezo speaker and an LED into a Zetta app running on a BeagleBone Black. We will connect the app to the Internet by linking the BeagleBone with a second Zetta server running in the cloud.
+The goal for this project is to create a simple home security system by assembling a microphone, a piezo speaker and an LED into a Zetta app running on a Intel Edison. We will connect the app to the Internet by linking the Edison with a second Zetta server running in the cloud.
 
 ![The Connected Microphone](/images/projects/security_system/hardware/led_birdseye.jpg)
 
@@ -23,55 +23,68 @@ The goal for this project is to create a simple home security system by assembli
 
 ![All Materials](/images/projects/security_system/hardware/empty_low.jpg){:.zoom .full}
 
-<script src="https://www.sparkfun.com/wish_lists/95647.js"></script>
+<script src="https://www.sparkfun.com/wish_lists/98550.js"></script>
 
-> **cart**{:.icon} [Buy the parts](https://www.sparkfun.com/wish_lists/95647) for the Home Security project from [SparkFun](http://www.sparkfun.com).
+> **cart**{:.icon} [Buy the parts](https://www.sparkfun.com/wish_lists/98550) for the Home Security project from [SparkFun](http://www.sparkfun.com).
 
 # Directions
 
-1. [Setup the BeagleBone](#step-1-setup-the-beaglebone)
+1. [Setup the Edison](#step-1-setup-the-edison-and-pc)
 1. [Buzz the Buzzer](#step-2-buzz-the-piezo-buzzer)
 1. [Soundcheck the Microphone](#step-3-soundcheck-the-microphone)
 1. [Secure the Area](#step-4-secure-the-area)
 1. [Link to the Internet](#step-5-link-to-the-internet)
 {:.steps}
 
-# Step #1: Setup the BeagleBone
+# Step #1: Setup the Edison and PC
 
-## Connect the BeagleBone
+## Connect the Edison
 
-1. Follow the guide on [How to Connect a BeagleBone to the Internet via a PC](/guides/2014/10/03/BeagleBone.html).
+Follow the guide on [How to Connect a Edison to the Internet via a PC](https://communities.intel.com/docs/DOC-23148).
 
-## Clone the Starter Code to the BeagleBone
 
-1. Open the browser-based Cloud9 IDE at [http://beaglebone.local:3000](http://beaglebone.local:3000).
+## Setting up your PC
 
-1. Click your mouse in the BeagleBone's IDE console.
-![Cloud9 Splash Screen](/images/projects/security_system/screens/bash_callout.png){:.zoom}
+1. Make sure you have a code editor on your PC you're comfortable with. Here's a few:
 
-1. From the Cloud9 IDE console, clone [the starter code](https://github.com/zettajs/zetta-starter-project) to your BeagleBone.
+    - [Atom](https://atom.io/)
+    - [Sublime Text](http://www.sublimetext.com/)
 
-   ```bash
-   git clone https://github.com/zettajs/zetta-starter-project.git
-   ```
+2. Make sure you have Node.js installed [Install Node.js on your PC](http://nodejs.org/)
 
-   > **info**{:.icon} By default your clone will be stored in the `/var/lib/cloud9/` folder, which is recommended for working with the Cloud9 IDE.
+3. Install the edison-cli, using your command line.
+
+```bash
+npm install -g edison-cli
+
+# or on linux/mac
+
+sudo npm install -g edison-cli
+```
+
+## Setup the Security System Project on your PC
+
+Create a directory that we will use to write code in.
+
+```bash
+mkdir zetta-security-system
+```
+
+Move into the newly created directory.
+
+```bash
+cd zetta-security-system
+```
 
 ## Install Zetta
 
-1. From the Cloud9 IDE console, `cd` to `zetta-security-system`.
+1. From your PC's command line, [install Zetta with NPM](/reference/2014/10/12/npm.html).
 
    ```bash
-   cd zetta-security-system
+   npm install zetta --save
    ```
 
-1. From the Cloud9 IDE console, [install Zetta with NPM](/reference/2014/10/12/npm.html).
-
-   ```bash
-   npm install
-   ```
-
-   > **clock**{:.icon} Running `npm install` on the BeagleBone can take several minutes. Move ahead with the hardware steps during installation.
+   >  Using `--save` flag will add zetta to your project's dependencies.
 
 # Step #2: Buzz the Piezo Buzzer
 
@@ -89,16 +102,14 @@ The goal for this project is to create a simple home security system by assembli
 
     > **help**{:.icon} New to solderless breadboards? Read the [How to Use a  Breadboard](/guides/2014/10/07/Breadboard.html) guide.
 
-1. Create a circuit between the BeagleBone and the buzzer.
+1. Create a circuit between the Edison and the buzzer.
 
     From                  | Wire           | To  
     :----                 |:-----:         |----:
-    Breadboard **E3**     |**White**       |BeagleBone **P9_14**
+    Breadboard **E3**     |**White**       |Edison **D3**
     Breadboard **E6**     |**Black**       |Breadboard **-**
-    Breadboard **-**      |**Black**       |BeagleBone **P9_01**
+    Breadboard **-**      |**Black**       |Edison **GND**
     {:.wiring}
-
-    > **help**{:.icon} Are the BeagleBone pin numbers confusing? Read the [BeagleBone](/guides/2014/10/03/BeagleBone.html#pinout) guide.
 
 After assembling the buzzer hardware, your project should look similar to the images below.
 
@@ -107,52 +118,101 @@ After assembling the buzzer hardware, your project should look similar to the im
 
 ## Write the Buzzer Software
 
-1. From the Cloud9 IDE console, install the Zetta device driver for the buzzer.
+1. From your PC's command line, install the Zetta device driver for the buzzer.
 
    ```bash
-   npm install zetta-buzzer-bonescript-driver --save
+   npm install zetta-buzzer-edison-driver --save
    ```
 
-   > **caution**{:.icon} Ensure the BeagleBone Cloud9 IDE console is in the correct working directory when you run `npm install`. The Cloud9 IDE console prompt should be: `root@beaglebone:/var/lib/cloud9/zetta-security-system/#`
+2. Create a new file called `server.js`
 
-1. From the Cloud9 IDE workspace, click on the arrow to the left of the `zetta-security-system` folder. Then double-click on the file `server.js` to open it in the Cloud9 IDE editor.
-
-   ![Saving a file](/images/projects/security_system/screens/serverjs-callout.png)
-
-1. In the `server.js` file, write Zetta code to `require` and `use` the `Buzzer` driver on BeagleBone pin `P9_14` and `listen` on server port `1337`.
+3. In the `server.js` file, write Zetta code to `require` and `use` the `Buzzer` driver on Edison pin `3` and `listen` on server port `1337`.
 
    ```javascript
    var zetta = require('zetta');
-   var Buzzer = require('zetta-buzzer-bonescript-driver');
+   var Buzzer = require('zetta-buzzer-edison-driver');
 
    zetta()
-     .use(Buzzer, 'P9_14')
+     .use(Buzzer, 3)
      .listen(1337, function(){
-       console.log('Zetta is running at http://beaglebone.local:1337');
+       console.log('Zetta is running at http://localhost:1337');
      });
    ```
 
-1. From the Cloud9 IDE, click `File > Save` to save the changes you made to `server.js`.
+   > You can test your code is written properly by running `node server.js` on your pc.
 
-1. From the Cloud9 IDE console, run the Zetta server.
+
+4. Init the `package.json` file with `server.js` as the main file.
+
+```bash
+npm init
+```
+
+  Hit enter to all the questions.
+
+## Deploying to the Edison
+
+1. Locate your Edison on the network.
+
+```bash
+edison-cli list
+
+You should see an output similar to below:
+
+  Devices Found: 1
+  1 - 10.0.1.15
+```
+
+  We use the `10.0.1.15` based on the output.
+
+2. Deploy your code.
+
+```bash
+edison-cli -H 10.0.1.15 deploy
+
+You should see a build output:
+
+  XDK - IoT App Daemon v0.0.13 - commands: run, list, debug, status
+
+  XDK Message Received: clean
+
+  |================================================================
+  |    Intel (R) IoT - NPM Rebuild - (may take several minutes)
+  |================================================================
+
+  ...
+
+  |================================================================
+  |    NPM REBUILD COMPLETE![ 0 ]   [ 0 ]
+  |================================================================
+
+  XDK Message Received: run
+  => Stopping App <=
+  Application restarted
+```
+
+  > **clock**{:.icon} Running `deploy` the first time will take a few minutes to rebuild the native npm modules. Only changes to the `node_modules` will require a rebuild, this is done automatically.
+
+
+3. Start the application to see the output:
+
+```bash
+edison-cli -H 10.0.1.15 start
+```
+
+4. When Zetta discovers the buzzer, Zetta will log a message about the device to the `start` command.
 
    ```bash
-   node server.js
-   ```
-
-1. When Zetta discovers the buzzer, Zetta will log a message about the device to the Cloud9 IDE console.
-
-   ```bash
-   Zetta is running at http://beaglebone.local:1337
+   Zetta is running at http://localhost:1337
    {TIMESTAMP} [scout] Device (buzzer) {GUID} was provisioned from registry
    ```
-   > **clock**{:.icon} The BeagleBone can take up to 30 seconds to run the Zetta server before you will see the device discovery log in the console.
 
 ## Buzz the Buzzer
 
-1. Open the Zetta Browser:
+1. Open the Zetta Browser: [http://browser.zettajs.io](http://browser.zettajs.io)
 
-   [http://browser.zettajs.io/#/overview?url=http:%2F%2Fbeaglebone.local:1337](http://browser.zettajs.io/#/overview?url=http:%2F%2Fbeaglebone.local:1337)
+  Enter the address to the Edison `http://10.0.1.15:1337` in the box.
+
 
 1. Ensure your **Buzzer** device is listed.
 ![Zetta Browser with Piezo Attached](/images/projects/security_system/screens/browser-piezo.png){:.zoom}
@@ -161,7 +221,7 @@ After assembling the buzzer hardware, your project should look similar to the im
 
 1. Ensure that your buzzer buzzed and the device state changed in the Zetta Browser visualization.
 
-   > **help**{:.icon} Didn't hear a beep? Double check your wiring and make sure there were no errors reported in the Cloud9 IDE console.
+   > **help**{:.icon} Didn't hear a beep? Double check your wiring and make sure there were no errors reported.
 
 # Step #3: Soundcheck the Microphone
 
@@ -182,13 +242,13 @@ After assembling the buzzer hardware, your project should look similar to the im
     Microphone **AUD**    |Breadboard **F20**
     {:.wiring}
 
-3. Create a circuit between the BeagleBone and the microphone.
+3. Create a circuit between the Edison and the microphone.
 
     From                 | Wire                     | To  
     :----                |:-----:                   |----:
-    Breadboard **H18**   |**Red**                   |BeableBone **P9_32**
+    Breadboard **H18**   |**Red**                   |Edison **3.3V**
     Breadboard **H19**   |**2.2k&#8486;** Resistor  |Breadboard **-**
-    Breadboard **H20**   |**Green**                 |BeableBone **P9_36**
+    Breadboard **H20**   |**Green**                 |Edison **A0**
     {:.wiring}
 
    > **help**{:.icon} Don't know how to read resistor values? Read the [How to Read Resistor Values](/guides/2014/10/13/2014.html) guide.
@@ -200,66 +260,62 @@ After assembling the microphone hardware, your project should look similar to th
 
 # Write Microphone Software
 
-1. From the Cloud9 IDE console, install the Zetta device driver for the microphone.
+1. From the your PC's command line, install the Zetta device driver for the microphone.
 
    ```bash
-   npm install zetta-microphone-bonescript-driver --save
+   npm install zetta-microphone-edison-driver --save
    ```
 
-1. In the `server.js` file, write Zetta code to `require` and `use` the `Microphone` driver on BeagleBone pin `P9_36`.
+1. In the `server.js` file, write Zetta code to `require` and `use` the `Microphone` driver on Edison's analog pin `0`.
 
    Add **line 3**:
 
    ```javascript
-   var Microphone = require('zetta-microphone-bonescript-driver');
+   var Microphone = require('zetta-microphone-edison-driver');
    ```
    Add **line 7**:
 
    ```javascript
-   .use(Microphone, 'P9_36')
+   .use(Microphone, 0)
    ```
 
 1. Ensure `server.js` looks like the code below.
 
    ```javascript
    var zetta = require('zetta');
-   var Buzzer = require('zetta-buzzer-bonescript-driver');
-   var Microphone = require('zetta-microphone-bonescript-driver');
+   var Buzzer = require('zetta-buzzer-edison-driver');
+   var Microphone = require('zetta-microphone-edison-driver');
 
    zetta()
-     .use(Buzzer, 'P9_14')
-     .use(Microphone, 'P9_36')
+     .use(Buzzer, 3)
+     .use(Microphone, 0)
      .listen(1337, function(){
-       console.log('Zetta is running at http://beaglebone.local:1337');
+       console.log('Zetta is running at http://localhost:1337');
      });
    ```
 
-1. From the Cloud9 IDE, click `File > Save` to save the changes you made to `server.js`.
-
-1. From the Cloud9 IDE console, restart the Zetta server by pressing `CTRL-c` or `COMMAND-c` and then running `node server.js`
+1. Deploy the new code using the `edison-cli`
 
    ```bash
-   node server.js
+   edison-cli -H 10.0.1.15 deploy
+
+   and restart
+
+   edison-cli -H 10.0.1.15 start
    ```
 
-1. When Zetta discovers the microphone, Zetta will log a message about the device to the Cloud9 IDE console.
+1. When Zetta discovers the microphone, Zetta will log a message about the device to the output.
 
    ```bash
-   Zetta is running at http://beaglebone.local:1337
+   Zetta is running at http://localhost:1337
    {TIMESTAMP} [scout] Device (buzzer) {GUID} was provisioned from registry.
    {TIMESTAMP} [scout] Device (microphone) {GUID} was discovered
    ```
    {:.language-bash-noln}
 
-   ![Running Your Server](/images/projects/security_system/screens/c9_two_devices.png){:.zoom}
-
 ## Soundcheck the Microphone
 
-1. Open the Zetta Browser:
-
-   [http://browser.zettajs.io/#/overview?url=http:%2F%2Fbeaglebone.local:1337](http://browser.zettajs.io/#/overview?url=http:%2F%2Fbeaglebone.local:1337)
-
-1. Ensure your **Microphone** device is listed.
+1. Open the Zetta Browser and ensure your **Microphone** device is listed.
    ![Zetta Browser root with Microphone](/images/projects/security_system/screens/browser-microphone.png){:.zoom}
 
 1. In the Zetta Browser, click on the **Microphone** link to open a detailed view of the device.
@@ -274,7 +330,7 @@ After assembling the microphone hardware, your project should look similar to th
 
 ## Create Security App File and Folder
 
-1. From the Cloud9 IDE console, create the app file and directory.
+1. From your PC's command line, create the app file and directory.
 
    ```bash
    mkdir apps
@@ -282,11 +338,9 @@ After assembling the microphone hardware, your project should look similar to th
    ```
    {:.language-bash-noln}
 
-1. From the Cloud9 IDE, double-click on the new `apps/app.js` file to edit it.
-
 ## Write  Security App Logic
 
-1. Write the app logic.
+1. Write the app logic in `apps/app.js`.
 
 ```javascript
 module.exports = function(server) {
@@ -295,10 +349,10 @@ module.exports = function(server) {
 
   server.observe([buzzerQuery, microphoneQuery], function(buzzer, microphone){
     microphone.streams.volume.on('data', function(msg){
-      if (msg.data > 30) {
-        buzzer.call('turn-on-pulse', function() {});
+      if (msg.data > 600) {
+        buzzer.call('turn-on-pulse', function(){});
       } else {
-        buzzer.call('turn-off', function() {});
+        buzzer.call('turn-off', function(){});
       }
     });
   });
@@ -307,7 +361,7 @@ module.exports = function(server) {
 
 ## Use Security App in the Zetta Server
 
-1. From the Cloud9 IDE, edit the `server.js` file. Add Zetta code to `require` and `use` the `app` from the `apps` folder.
+1. Edit the `server.js` file. Add Zetta code to `require` and `use` the `app` from the `apps` folder.
 
    Add **line 5**.
 
@@ -325,35 +379,37 @@ module.exports = function(server) {
 
    ```javascript
    var zetta = require('zetta');
-   var Buzzer = require('zetta-buzzer-bonescript-driver');
-   var Microphone = require('zetta-microphone-bonescript-driver');
+   var Buzzer = require('zetta-buzzer-edison-driver');
+   var Microphone = require('zetta-microphone-edison-driver');
 
    var app = require('./apps/app');
 
    zetta()
-   .use(Buzzer, 'P9_14')
-   .use(Microphone, 'P9_36')
+   .use(Buzzer, 3)
+   .use(Microphone, 0)
    .use(app)
    .listen(1337, function(){
-     console.log('Zetta is running at http://beaglebone.local:1337');
+     console.log('Zetta is running at http://localhost:1337');
    });
    ```
-1. From the Cloud9 IDE, click `File > Save` to save the changes you made to `server.js`.
 
 ## Secure the Area
 
-1. From the Cloud9 IDE console, restart the Zetta server by pressing `CTRL-c` or `COMMAND-c` and then running `node server.js`
+1. Deploy the new code using the `edison-cli`
 
    ```bash
-   node server.js
+   edison-cli -H 10.0.1.15 deploy
+
+   and restart
+
+   edison-cli -H 10.0.1.15 start
    ```
+
 1. Make a noise near or gently tap on the microphone.
 
-1. Ensure that the alarm sounds for approximately 3 seconds.
+1. Ensure that the alarm beeps when you make a loud noise.
 
 1. Open the Zetta Browser to observe state changes:
-
-   [http://browser.zettajs.io/#/overview?url=http:%2F%2Fbeaglebone.local:1337](http://browser.zettajs.io/#/overview?url=http:%2F%2Fbeaglebone.local:1337)
 
 # Step #5: Link to the Internet
 
@@ -363,27 +419,38 @@ module.exports = function(server) {
 
 ```javascript
 var zetta = require('zetta');
-var Buzzer = require('zetta-buzzer-bonescript-driver');
-var Microphone = require('zetta-microphone-bonescript-driver');
+var Buzzer = require('zetta-buzzer-edison-driver');
+var Microphone = require('zetta-microphone-edison-driver');
+
+var app = require('./apps/app');
 
 zetta()
-  .use(Buzzer, 'P9_14')
-  .use(Microphone, 'P9_36')
+  .use(Buzzer, 3)
+  .use(Microphone, 0)
+  .use(app)
   .link('http://hello-zetta.herokuapp.com/')
   .listen(1337, function(){
-    console.log('Zetta is running at http://beaglebone.local:1337');
+    console.log('Zetta is running at http://localhost:1337');
   });
 ```
 
-1. From the Cloud9 IDE, click `File > Save` to save the changes you made to `server.js`.
+1. Deploy the new code using the `edison-cli`
+
+   ```bash
+   edison-cli -H 10.0.1.15 deploy
+
+   and restart
+
+   edison-cli -H 10.0.1.15 start
+   ```
 
 ## Investigate a new Zetta server
 
 1. Open the Zetta Browser from a new location.
 
-  [http://browser.zettajs.io/#/overview?url=http:%2F%2Fhello-zetta.herokuapp.com](http://browser.zettajs.io/#/overview?url=http:%2F%2Fhell-zetta.herokuapp.com)
+  [http://browser.zettajs.io/#/overview?url=http:%2F%2Fhello-zetta.herokuapp.com](http://browser.zettajs.io/#/overview?url=http:%2F%2Fhello-zetta.herokuapp.com)
 
-2. Observe the state changes occuring, and interact with the system from the open internet.
+2. Observe the state changes occurring, and interact with the system from the open internet.
 
 # Step #6: Blink the LED
 
@@ -399,7 +466,7 @@ zetta()
 
     From                 | Wire                 | To  
     :----                |:-----:               |----:
-    Breadboard **I26**   |Orange                |BeableBone **P9_41**
+    Breadboard **I26**   |Orange                |Edison **D13**
     Breadboard **C26**   |47&#8486; Resistor    |Breadboard **G26**
     Breadboard **E28**   |Black                 |Breadboard's negative column
     {:.wiring}
@@ -415,7 +482,7 @@ Your hardware setup should look like this when you're done:
 
 We'll want to setup the directory where our driver will be located. Create a `/devices` directory, and within it create another folder called `led`. This folder will contain one file - `index.js`.
 
-Use the Cloud9 GUI, or run the following terminal commands to create the files and folder that you need:
+Use your PC's command line and run the following terminal commands to create the files and folder that you need:
 
 ```bash
 mkdir devices
@@ -441,57 +508,57 @@ You should end up with a file structure that looks like so:
 
 ## Write the LED Driver Code
 
+1. Install `zetta-device` module, run:
+
+```bash
+npm install zetta-device --save
+```
+
+1. Install `mraa-js` module used to talk to the Edison's pins, run:
+
+```bash
+npm install mraa-js --save
+```
+
 1. Ensure `index.js` looks like the code below.
 
 ```javascript
-var Device = require('zetta').Device;
+var Device = require('zetta-device');
 var util = require('util');
-var bone = require('bonescript');
+var mraa = require('mraa-js');
 
-var Led = module.exports = function(pin) {
+var LED = module.exports = function(pin) {
   Device.call(this);
-  this.pin = pin || 'P9_41';
+  this.pin = pin;
+  this._led = new mraa.Gpio(this.pin);
 };
-util.inherits(Led, Device);
+util.inherits(LED, Device);
 
-Led.prototype.init = function(config) {
+LED.prototype.init = function(config) {
   config
-    .state('off')
     .type('led')
-    .name('LED')
-    .when('on', { allow: ['turn-off', 'toggle'] })
-    .when('off', { allow: ['turn-on', 'toggle'] })
+    .state('off')
+    .name('led ' + this.pin)
+    .when('off', { allow: ['turn-on'] })
+    .when('on', { allow: ['turn-off'] })
     .map('turn-on', this.turnOn)
-    .map('turn-off', this.turnOff)
-    .map('toggle', this.toggle);
+    .map('turn-off', this.turnOff);
 
-  //Everything is off to start
-  bone.digitalWrite(this.pin, 0);
+  this._led.dir(mraa.DIR_OUT);
 };
 
-Led.prototype.turnOn = function(cb) {
-  var self = this;
-  bone.digitalWrite(this.pin, 1, function() {
-    self.state = 'on';
-    cb();
-  });
+LED.prototype.turnOn = function(cb) {
+  this._led.write(1);
+  this.state = 'on';
+  cb();
 };
 
-Led.prototype.turnOff = function(cb) {
-  var self = this;
-  bone.digitalWrite(this.pin, 0, function() {
-    self.state = 'off';
-    cb();
-  });
+LED.prototype.turnOff = function(cb) {
+  this._led.write(0);
+  this.state = 'off';
+  cb();
 };
 
-Led.prototype.toggle = function(cb) {
-  if (this.state === 'on') {
-    this.call('turn-off', cb);
-  } else {
-    this.call('turn-on', cb);
-  }
-};
 ```
 
 ## Run The Zetta Server
@@ -500,19 +567,19 @@ Led.prototype.toggle = function(cb) {
 
 ```javascript
 var zetta = require('zetta');
-var Buzzer = require('zetta-buzzer-bonescript-driver');
-var Microphone = require('zetta-microphone-bonescript-driver');
+var Buzzer = require('zetta-buzzer-edison-driver');
+var Microphone = require('zetta-microphone-edison-driver');
 var LED = require('./devices/led');
 
 var app = require('./apps/app');
 
 zetta()
-  .use(Buzzer, 'P9_14')
-  .use(Microphone, 'P9_36')
-  .use(LED, 'P9_41')
+  .use(Buzzer, 3)
+  .use(Microphone, 0)
+  .use(LED, 13)
   .use(app)
   .listen(1337, function(){
-    console.log('Zetta is running at http://beaglebone.local:1337');
+    console.log('Zetta is running at http://localhost:1337');
   });
 
 ```
@@ -530,12 +597,12 @@ module.exports = function(server) {
 
   server.observe([buzzerQuery, microphoneQuery, ledQuery], function(buzzer, microphone, led){
     microphone.streams.volume.on('data', function(msg){
-      if (buzzer.state === 'off' && msg.data > 30) {
-        buzzer.call('turn-on-pulse', function() {});
-        led.call('turn-on', function() {});
+      if (buzzer.state === 'off' && msg.data > 600) {
+        buzzer.call('turn-on-pulse', function(){});
+        led.call('turn-on', function(){});
 
         setTimeout(function() {
-          buzzer.call('turn-off', function() {});
+          buzzer.call('turn-off', function(){});
         }, 3000);
       }
     });
@@ -546,11 +613,16 @@ module.exports = function(server) {
 
 ## Test Interaction
 
-1. From the Cloud9 IDE console, restart the Zetta server by pressing `CTRL-c` or `COMMAND-c` and then running `node server.js`
+1. Deploy the new code using the `edison-cli`
 
    ```bash
-   node server.js
+   edison-cli -H 10.0.1.15 deploy
+
+   and restart
+
+   edison-cli -H 10.0.1.15 start
    ```
+
 1. Make a noise near or gently tap on the microphone.
 
 1. Ensure that the alarm sounds for approximately 3 seconds, and the LED turns on.

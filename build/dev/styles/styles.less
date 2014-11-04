@@ -4,9 +4,24 @@
   author: 2014 Alan Languirand alanguirand@apigee.com
 ***/
 
+@font-face {
+  font-family: 'ars-maquette-web';
+  src: url('../fonts/arsmaqboltr-webfont.woff') format('woff');
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'ars-maquette-web';
+  src: url('../fonts/arsmaqligtr-webfont.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+}
+
 @import 'ss-pika.less';
 @import 'apigee-colors.less';
 @import 'breakpoints.less';
+
 
 @images: "../images";
 
@@ -72,14 +87,6 @@ h1, h2, h3, h4, h5, h6 {
     color: @apigee-orange;
     }
 }
-
-h1 { 
-  font: normal 2em/3rem; margin: 2rem 0 1rem 0; 
-  line-height: 2rem;
-}
-h2 { font: normal 1.6em/2rem; margin: .7rem 0; }
-h3 { font: normal 1.2em/2rem; margin: .4rem 0; }
-h4 { font: normal 1.0em/2rem; margin: .5rem 0; }
 
 section.main{
   .centered();
@@ -245,18 +252,233 @@ a:hover {
   }
 }
 
+table {
+  border: 1px solid @light-gray-bg;
+  border-radius: 1rem;
+  tr{
+    th, td {
+      padding: .25rem .5rem;
+      border-bottom: 1px solid @light-gray-bg;
+      &:not(:last-child){
+        border-right: 1px solid @light-gray-bg;
+      }
+    }
+    &:last-child {td{border-bottom: none;}}
+  }
+  th {border-bottom: 2px solid @gray_30;}    
+
+  &.wiring {
+
+    border: 1px solid @light-gray-bg;
+    border-radius: .5rem;
+
+    th, td {
+      padding: .25rem 1rem;
+    }
+    thead {background-color: @gray; color: @white;}
+    tr {
+      &:nth-child(even) {
+        background-color: @gray_5;
+      }
+    }
+
+
+  }
+}
+
+
+ul.placards {
+  margin: 0; 
+  padding: 0 2.5rem;
+  
+  
+  
+  li {
+    list-style-type: none;
+    display: inline-block;
+    padding: 0; margin: 0;
+    .border-box();
+    
+    .content {
+      .meta  {
+        border-top: 1px solid @light-gray-bg;
+        font-size: .8em;
+        color: @gray_40;
+        b:not(:first-of-type), a b {padding-left: 1rem;}
+      }   
+      h2 {
+        margin: 0; padding: 0;
+      }
+    
+    }
+  }
+
+}
+
+
+
 @import 'home.less';
+
+
+////////  Experimental stuff
+
+body {
+  line-height: 1.8rem;
+  //font-size: 1.5em;
+  }
+header {
+  h1{ margin: 1rem 2.5rem; }
+  .meta {
+    background-color: #ddd;
+    background-image: linear-gradient(#eee 10%, #ddd 10%, #ddd 90%, #ccc 90%);
+    padding: 1rem 0;
+    ul {
+      margin: 0 2.5rem;
+      padding: 0;
+      li {
+        list-style-type: none;
+        margin: 0;
+        padding: 0 1.25rem 0 0rem;
+        display: inline-block;
+        &:first-child {padding-left: 0;}
+      }
+    }
+  }
+}
+
+article {
+  .centered();
+  background-color: #fff;
+  width: 100%;
+  @media @md { width: 60rem; }
+  margin: 0 auto;
+  img {
+    max-width: 100%;
+    border-radius: .25rem;
+  }
+  
+  table { min-width: 60%; }
+  p, blockquote, table, .sfe-wish-list { margin: 1rem 2.5rem; }
+  
+  .sfe-wish-list {
+    .sfe-item-title {
+      height: 1rem;
+      overflow: visible;
+    }
+  }
+  
+  pre {
+    background-color: #23241f;
+    color: #fff;
+    margin: 1.25rem;
+    padding: .75rem 1.25rem;
+    font-size: 80%;
+    border-radius: .5rem;
+  }
+  ul, ol, dl {
+    padding-left: 2.5rem;
+    li, dd { margin-left: 2.5rem; }
+  }
+  li p, li blockquote, li table, li pre { margin: 0 0 1rem 0; }
+  li img, li pre, li blockquote { width: 90%; }
+  li blockquote p { margin-left: 1.5rem; }
+  
+  blockquote {
+    background-color: #eee;
+    background-image: linear-gradient(to right, #888 1%, #eee 1%, #eee 75%, #fff 100%);
+    padding: 1rem 0;
+    p:first-child {margin-top: 0;}
+    p:last-child {margin-bottom: 0;}
+  }
+  table { min-width: 60%; }
+  h1, h2, h3, h4, h5, h6 {
+    padding: 0 2.5rem 1rem 2.5rem;
+    margin: 2rem 0 0 0;
+    line-height: 2rem;
+    font-weight: 200;
+  }
+  h1 { margin-bottom: 2rem; }
+  h4, h5, h6 { font-weight: 600; }
+  @h1: 2rem;
+  h6{font-size: @h1 * 50%;}
+  h5{font-size: @h1 * 52%;}
+  h4{font-size: @h1 * 55%; }
+  h3{font-size: @h1 * 60%;}
+  h2{font-size: @h1 * 70%;}
+  h1{font-size: @h1 * 100%; }
+}
+
+header {background-color: #fff; }
+header .content {
+  .logo {}
+  nav{
+
+   .toggle { text-align: right; }
+   ul {
+     margin: 0; padding: 0;
+     li {
+         display: inline-block;
+         margin: 0;
+         float: right;
+         a { padding: .5rem 0 .5rem 1rem; }
+     }
+   }
+ }
+}
+
+article {
+  padding-bottom: 2rem;
+  padding-top: 1rem;
+  .content {
+    background-color: #fff;
+    padding: 1rem 0;
+  }
+  
+   h1 {
+        margin-left: -1.5rem;
+        //&:nth-of-type(1){margin-top: 0;}
+        padding-left: 4rem;
+        color: @white;
+        
+        background-repeat: no-repeat;
+        background-position: 1.5rem center;
+        background-size: 1rem auto;
+        
+        box-shadow: 0px 7px 7px @gray_10;
+        
+        &:hover{ 
+          background-image: url(../images/link.svg);
+          cursor: pointer;
+        }
+        
+        &:before {
+          content: '';
+          width: 0;
+          height: 0;
+          border: .55em solid transparent;
+          border-top-width: 0;
+          position: relative;
+          display: block;
+          left: -4rem;
+          top: 3.9rem;
+          -webkit-transform: rotate(45deg);
+        }
+        
+      }
+
+}
+
+#cta, .meta {
+    button {
+      height: 3rem;
+      font-size: 1.2rem;
+    }
+}
 
 .page.docs {
   
   #hero {
     header {padding-bottom: 2rem;}
-    h1 {        
-        .heading-fonts();
-        font-weight: 200;
-        margin: 1rem 0 1rem 0;
-        @media @md {margin: 1rem 0;}
-      }
     
     .page_meta {
       
@@ -265,9 +487,7 @@ a:hover {
       
       .content{
         padding: .5rem 0 1.5rem 0;
-        @media @amd {
-          width: 100%;
-        }
+        @media @amd { width: 100%; }
         .centered();
         .border-box();
       
@@ -275,7 +495,7 @@ a:hover {
     }
     .meta {
       padding-left: 2rem;
-      @media @md {padding-left: 0rem;}
+      @media @md { padding-left: 0rem; }
       margin-bottom: 0;
       li {
         margin-right: 1rem;
@@ -302,215 +522,24 @@ a:hover {
       }
   }
   
+  //color schemes
   
-  article {
-    .page_content {
-      .centered();
-      .border-box();
-      @media @amd {
-        width: 100%;
-      }
-    }
-    .page_content {
-      background-color: @white;
-      padding: 1rem 2rem;
-      line-height: 1.8rem;
-      h1 {
-        margin: 2rem 0 2rem -3rem;
-        &:nth-of-type(1){margin-top: 0;}
-        padding: 0rem 0 .5rem 3rem;
-        color: @white;
-        
-        background-repeat: no-repeat;
-        background-position: 1.5rem center;
-        background-size: 1rem auto;
-        
-        box-shadow: 0px 7px 7px @gray_10;
-        
-        &:hover{ 
-          background-image: url(../images/link.svg);
-          cursor: pointer;
-        }
-        
-        &:before {
-          content: '';
-          width: 0;
-          height: 0;
-          border: .38em solid transparent;
-          border-top-width: 0;
-          position: relative;
-          display: block;
-          left: -3rem;
-          top: 3.1rem;
-          -webkit-transform: rotate(45deg);
-        }
-        
-      }
-      h2, h3, h4, h5, h6 {
-        font-weight: bold;
-        margin: 2rem 0 1rem -2rem;
-        padding: 0rem 0 0rem 2rem;
-        
-        background-repeat: no-repeat;
-        background-position: .5em center;
-        background-size: 1rem auto;
-        
-        &:hover{ 
-          background-image: url(../images/link_dark.svg);
-          cursor: pointer;
-        }
-        
-      }
-      h2 { border-bottom: 1px solid @light-gray-bg;}
-      dl {
-        padding: 1rem;
-        color: #000;
-        background-color: @gray_5;
-        border-radius: .25rem;
-      }
-      
-      table {
-        border: 1px solid @light-gray-bg;
-        border-radius: 1rem;
-        tr{
-          th, td {
-            padding: .25rem .5rem;
-            border-bottom: 1px solid @light-gray-bg;
-            &:not(:last-child){
-              border-right: 1px solid @light-gray-bg;
-            }
-          }
-          &:last-child {td{border-bottom: none;}}
-        }
-        th {border-bottom: 2px solid @gray_30;}    
-        
-        &.wiring {
-          
-          border: 1px solid @light-gray-bg;
-          border-radius: .5rem;
-          
-          th, td {
-            padding: .25rem 1rem;
-          }
-          thead {background-color: @gray; color: @white;}
-          tr {
-            &:nth-child(even) {
-              background-color: @gray_5;
-            }
-          }
-          
-          
-        }
-      }
-      
-      gallery {
-        padding: 1rem;
-        border: 1px solid @gray_10;
-        border-radius: .25rem;
-        img {
-          height: 75px; 
-          padding: 0; 
-          margin-right: 1rem;
-          cursor: pointer;
-        }
-      }
-      
-      img {
-        width: 90%;
-        max-width: 30rem;
-        height: auto;
-        display: block;
-        &.fritzing, &.zoom {
-          padding: 1rem;
-          border: 1px solid @gray_10;
-          border-radius: .25rem;
-          margin: 1rem 0;
-          
-        }
-        &.full {
-          max-width: 100%;
-          padding: 0; border: 0;
-        }
-      }
-      
-      ul, ol {
-        padding-left: 1rem;
-        list-style-position: inside;
-        &.steps{
-        padding-top: 1rem;
-        
-        li{ 
-            margin-bottom: .5rem;
-            font-size: 1.4rem;
-            li {font-size: 1.2rem;}
-          }
-        }
-      }
-      
-      blockquote {
-        background-color: @gray_5;
-        border-left: 3px solid @blue;
-        padding: 1rem;
-        margin-left: 1rem;
-        max-width: 40rem;
-        color: #000;
-        p:first-child {margin-top: 0;}
-      }
-      code {
-          border-radius: .25rem;
-          color: #23241f;
-          padding: .1rem .25rem 0 .25rem;
-          font-size: .8rem;
-          line-height: 1rem;
-          
-          
-          background-color: @gray_10;
-          .mono();
-        }
-      
-      pre {
-        code {
-          padding: 1rem;
-          margin-bottom: 1rem;
-          max-height: 21.6rem;
-          overflow: auto;
-          color: @white;
-          background-color: #23241f;
-        }
-      }
-      
-      p {
-        max-width: 35.5rem;
-        &.image-only {max-width: 100%;}
-        
-      }
-      
-      //sparkfun wishlist
-      .sfe-wish-list {
-        border: 0px solid transparent;
-        border-top: 2px solid @gray;
-        border-bottom: 2px solid @gray;
-        max-width: 30rem;
-        .body-font();
-        .sfe-title {display: none;}
-        .sfe-inner {max-height: 100rem;}
-        .sfe-row{ 
-          img {width: auto; display: inline;}
-          a{color: @blue; font-size: 1rem;}
-        }
-        .sfe-description {font-weight: 200; color: @gray_30; }
-        .sfe-footer a {
-          text-align: right;
-          color: @blue;
-          font-style: normal;
-          height: 2rem;
-        }
-        margin-bottom: 2rem;
-      }
-      
-    }
-  }
-  #modal {
+  //Default
+  .docColor(@dark-blue-bg);
+  
+  //Specific
+  
+  &.project    {  .docColor(@dark-blue-bg); }
+  &.guide     {  .docColor(#91D390);  }
+  &.blog      {  .docColor(#6CC99C);  }
+  // community and workshop are duplicated for backwards compatibility
+  &.community, &.workshop  {  .docColor(#D3B670);  }
+}
+ 
+
+
+
+ #modal {
     display: none;
     z-index: 4000;
     background-color: @white;
@@ -522,16 +551,6 @@ a:hover {
     width: 100%;
     height: 100%;
     
-    @media @md {
-      top: 2.5%; 
-      left: 2.5%;
-      width: 95%;
-      height: 95%;
-      border-radius: 1rem;
-      box-shadow: 0px 5px 10px @gray_60;
-      background-color: hsla(0, 100%, 100%, .9);
-    }
-
     p {
       margin: 0;
       padding: .25rem;
@@ -563,21 +582,7 @@ a:hover {
     }
     
   }
-  
-  //color schemes
-  
-  //Default
-  .docColor(@dark-blue-bg);
-  
-  //Specific
-  
-  &.project    {  .docColor(@dark-blue-bg); }
-  &.guide     {  .docColor(#91D390);  }
-  &.blog      {  .docColor(#6CC99C);  }
-  // community and workshop are duplicated for backwards compatibility
-  &.community, &.workshop  {  .docColor(#D3B670);  }
 
-}
 
 /* footer */
 
