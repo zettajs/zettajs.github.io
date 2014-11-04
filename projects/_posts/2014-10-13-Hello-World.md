@@ -234,6 +234,8 @@ At this point, the LED API is only available locally. Let's make the LED API ava
 
    [http://browser.zettajs.io/#/overview?url=http:%2F%2Fhello-zetta.herokuapp.com](http://browser.zettajs.io/#/overview?url=http:%2F%2Fhello-zetta.herokuapp.com)
 
+   > **info**{:.icon} Notice that you are now accessing the LED on your laptop from a **cloud server** on Heroku.
+
 1. Ensure the **LED** is listed.
 
 1. Click the `turn-on` button for the LED and ensure the LED state changed in the Zetta Browser visualization.
@@ -292,6 +294,8 @@ At this point, the LED API is only available locally. Let's make the LED API ava
    {:.language-bash-noln}
 
 ## Sense Light with Photocell
+
+> **info**{:.icon} Streaming data in Zetta is done via WebSockets.
 
 ### Zetta Browser
 
