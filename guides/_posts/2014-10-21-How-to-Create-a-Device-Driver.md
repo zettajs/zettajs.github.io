@@ -131,3 +131,7 @@ After renaming the starter device you will likely want to push changes to your o
 # Step #6: Build the Driver
 
 Starting with the `{device}.js` driver and `index.js` scout files model the state machine and scout for your device driver.
+
+# Step #7: Publish with NPM
+
+Follow these steps to publish your device driver to NPM: [https://gist.github.com/coolaj86/1318304](https://gist.github.com/coolaj86/1318304)
