@@ -130,4 +130,4 @@ After renaming the starter device you will likely want to push changes to your o
 
 # Step #6: Build the Driver
 
-Starting with the `{device}.js` driver and `index.js' scout files model the state machine and scout for your device driver.
+Starting with the `{device}.js` driver and `index.js` scout files model the state machine and scout for your device driver.
