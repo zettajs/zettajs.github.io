@@ -163,4 +163,4 @@ For example, [IoT Security System](/projects/2014/09/18/IoT-Security-System.html
 
 # Getting Help
 
-Do you have questions about this guide? Discuss with the [Zetta community](http://localhost:4000/community/#discussion).
+Do you have questions about this guide? Discuss with the [Zetta community](/community).
