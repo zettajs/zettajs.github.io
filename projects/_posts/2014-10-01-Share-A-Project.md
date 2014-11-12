@@ -163,9 +163,4 @@ For example, [IoT Security System](/projects/2014/09/18/IoT-Security-System.html
 
 # Getting Help
 
-Do you have questions about this guide? Feel free to reach out through any of these methods:
-
-* alanguirand@apigee.com
-* [https://groups.google.com/forum/#!forum/zetta-discuss]()
-* [https://github.com/zettajs/zetta/issues]()
-* [Reference Documentation: http://zettajs.github.io/]()
+Do you have questions about this guide? Discuss with the [Zetta community](http://localhost:4000/community/#discussion).
