@@ -33,6 +33,10 @@ gulp.task('styles',['css'], function() {
       generateSourceMap: false, 
       paths: [ path.join(__dirname, 'less', 'includes') ]
     }))
+    .pipe(prefix({
+          browsers: ['> 5%', 'last 5 versions', 'Firefox ESR', 'Opera 12.1', 'ios 6'],
+          cascade: true
+    }))
     .pipe(minifyCSS({keepBreaks:true}))
     .pipe(gulp.dest('./dev/styles'));
   
@@ -42,10 +46,10 @@ gulp.task('css', function() {
   gulp.src(['./dev/styles/pure.css',
             './dev/styles/grids-responsive-min.css', 
             './dev/styles/animate.min.css', 
-            './dev/styles/monokai_sublime.css', 
+            './dev/styles/monokai_sublime.css',
+            './dev/styles/material-shadow.css',
             './dev/styles/styles.css'])
     /*.pipe(sourcemaps.init()) */
-      /*.pipe(prefix("last 2 version", "> 5%", "ie 9"))*/
       .pipe(concat('styles.css'))
       .pipe(minifyCSS({noAdvanced:true, keepSpecialComments: 0}))
     /*.pipe(sourcemaps.write('./')) */

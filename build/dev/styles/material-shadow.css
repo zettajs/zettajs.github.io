@@ -1,0 +1,136 @@
+/*****
+Material Shadow
+---------------
+
+A stylesheet to produce shadows on html elements that create subtle depth cues. Inspired by [google's material design](http://www.google.com/design/spec/what-is-material/environment.html#environment-light-shadow).
+
+http://alanguir.github.io/material-shadows/
+License: MIT
+2014 Alan Languirand
+
+******/
+/*
+
+Mixin to generate shadows
+
+If using the mixin directly in your .less stylesheet, remember to copy the transition style into your element's styles for animations.
+
+example:
+
+div {
+  transition: box-shadow .2s ease;
+  .shadow(2);
+  &:hover { .shadow(5) }
+}
+
+*/
+/*
+Recursive mixin to generate shadow classes
+
+This allows you to use shadow classes in your html from the compiled stylesheet
+
+example:
+
+<div class="shadow-2 shadow-active-5">...</div>
+
+Basic Usage
+
+.shadow-[number] sets the 'resting' shadow for an element.
+.shadow-active-[number] is the shadow height animated to on element `:hover`
+
+*/
+.shadow-10 {
+  box-shadow: 0px 13px 20px rgba(0, 0, 0, 0.12), 0px 0px 13px rgba(0, 0, 0, 0.05);
+}
+.shadow-active-10 {
+  box-shadow: 0px 13px 20px rgba(0, 0, 0, 0.12), 0px 0px 13px rgba(0, 0, 0, 0.05);
+}
+.shadow-active-10:hover {
+  box-shadow: 0px 13px 20px rgba(0, 0, 0, 0.12), 0px 0px 13px rgba(0, 0, 0, 0.05);
+}
+.shadow-9 {
+  box-shadow: 0px 11px 18px rgba(0, 0, 0, 0.14), 0px 0px 11px rgba(0, 0, 0, 0.05);
+}
+.shadow-active-9 {
+  box-shadow: 0px 11px 18px rgba(0, 0, 0, 0.14), 0px 0px 11px rgba(0, 0, 0, 0.05);
+}
+.shadow-active-9:hover {
+  box-shadow: 0px 11px 18px rgba(0, 0, 0, 0.14), 0px 0px 11px rgba(0, 0, 0, 0.05);
+}
+.shadow-8 {
+  box-shadow: 0px 10px 16px rgba(0, 0, 0, 0.15), 0px 0px 10px rgba(0, 0, 0, 0.05);
+}
+.shadow-active-8 {
+  box-shadow: 0px 10px 16px rgba(0, 0, 0, 0.15), 0px 0px 10px rgba(0, 0, 0, 0.05);
+}
+.shadow-active-8:hover {
+  box-shadow: 0px 10px 16px rgba(0, 0, 0, 0.15), 0px 0px 10px rgba(0, 0, 0, 0.05);
+}
+.shadow-7 {
+  box-shadow: 0px 9px 14px rgba(0, 0, 0, 0.16), 0px 0px 9px rgba(0, 0, 0, 0.07);
+}
+.shadow-active-7 {
+  box-shadow: 0px 9px 14px rgba(0, 0, 0, 0.16), 0px 0px 9px rgba(0, 0, 0, 0.07);
+}
+.shadow-active-7:hover {
+  box-shadow: 0px 9px 14px rgba(0, 0, 0, 0.16), 0px 0px 9px rgba(0, 0, 0, 0.07);
+}
+.shadow-6 {
+  box-shadow: 0px 7px 12px rgba(0, 0, 0, 0.18), 0px 0px 7px rgba(0, 0, 0, 0.11);
+}
+.shadow-active-6 {
+  box-shadow: 0px 7px 12px rgba(0, 0, 0, 0.18), 0px 0px 7px rgba(0, 0, 0, 0.11);
+}
+.shadow-active-6:hover {
+  box-shadow: 0px 7px 12px rgba(0, 0, 0, 0.18), 0px 0px 7px rgba(0, 0, 0, 0.11);
+}
+.shadow-5 {
+  box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.19), 0px 0px 6px rgba(0, 0, 0, 0.13);
+}
+.shadow-active-5 {
+  box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.19), 0px 0px 6px rgba(0, 0, 0, 0.13);
+}
+.shadow-active-5:hover {
+  box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.19), 0px 0px 6px rgba(0, 0, 0, 0.13);
+}
+.shadow-4 {
+  box-shadow: 0px 5px 8px rgba(0, 0, 0, 0.2), 0px 0px 5px rgba(0, 0, 0, 0.15);
+}
+.shadow-active-4 {
+  box-shadow: 0px 5px 8px rgba(0, 0, 0, 0.2), 0px 0px 5px rgba(0, 0, 0, 0.15);
+}
+.shadow-active-4:hover {
+  box-shadow: 0px 5px 8px rgba(0, 0, 0, 0.2), 0px 0px 5px rgba(0, 0, 0, 0.15);
+}
+.shadow-3 {
+  box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.22), 0px 0px 3px rgba(0, 0, 0, 0.19);
+}
+.shadow-active-3 {
+  box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.22), 0px 0px 3px rgba(0, 0, 0, 0.19);
+}
+.shadow-active-3:hover {
+  box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.22), 0px 0px 3px rgba(0, 0, 0, 0.19);
+}
+.shadow-2 {
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.23), 0px 0px 2px rgba(0, 0, 0, 0.21);
+}
+.shadow-active-2 {
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.23), 0px 0px 2px rgba(0, 0, 0, 0.21);
+}
+.shadow-active-2:hover {
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.23), 0px 0px 2px rgba(0, 0, 0, 0.21);
+}
+.shadow-1 {
+  box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.24), 0px 0px 1px rgba(0, 0, 0, 0.23);
+}
+.shadow-active-1 {
+  box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.24), 0px 0px 1px rgba(0, 0, 0, 0.23);
+}
+.shadow-active-1:hover {
+  box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.24), 0px 0px 1px rgba(0, 0, 0, 0.23);
+}
+/* Apply a box shadow transition to all shadow classes */
+[class*="shadow-"] {
+  -webkit-transition: box-shadow 0.2s ease;
+          transition: box-shadow 0.2s ease;
+}

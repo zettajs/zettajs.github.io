@@ -169,7 +169,8 @@ a:hover {
      h1 {
       line-height: 2rem;
       @media @md {line-height: 3rem;}
-      margin: .5rem 0 0 0;
+      margin: .5rem 0 1rem 0;
+       
       font-weight: 100;
       color: #000;
      }
@@ -289,9 +290,7 @@ table {
 
 ul.placards {
   margin: 0; 
-  padding: 0 2.5rem;
-  
-  
+  padding: 0 1.5rem;
   
   li {
     list-style-type: none;
@@ -300,12 +299,45 @@ ul.placards {
     .border-box();
     
     .content {
+      padding: 0 0 .5rem 0;
+      img {
+        width: 100%;
+        border-radius: 0;
+        margin-bottom: .25rem;
+      }
+      margin: 1em;
+      
+      .title h3, .description, .meta {padding: .25rem 1rem;}
+      .title h3 {margin: 0;}
+      .description {
+        font-size: .8rem;
+        line-height: 1rem;
+        
+      }
       .meta  {
-        border-top: 1px solid @light-gray-bg;
+        
         font-size: .8em;
         color: @gray_40;
         b:not(:first-of-type), a b {padding-left: 1rem;}
-      }   
+        .author {
+      
+          .photo {
+            width: 2em;
+            height: 2em;
+            display: block;
+            float: left;
+            padding: 0; 
+            background-size: cover;
+            border-radius: 1.1em;
+            margin: 0 .5em 0 0;
+            border: 1px solid white;
+          }
+        }
+        
+      }
+      
+      
+      
       h2 {
         margin: 0; padding: 0;
       }
@@ -504,6 +536,19 @@ article {
       .source {
         color: @yellow;
         a {color: @yellow;}
+      }
+      
+      .author {
+      
+        div.photo {
+          width: 2em;
+          height: 2em;
+          float: left;
+          background-size: cover;
+          border-radius: 1em;
+          margin: -.25em .5em 0 0;
+          border: 1px solid white;
+        }
       }
     }
     .tags{

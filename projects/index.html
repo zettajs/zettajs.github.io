@@ -7,17 +7,42 @@ description: >
 
 <ul class="placards pure-g">
   {% for project in site.categories["projects"] %}
-    <li class="placard pure-u-1">
+  
+    {% assign author_data = site.data.authors | where:"name", project.author %}
+    {% assign author = author_data | first %} 
+  
+    <li class="placard pure-u-1-3">
       
-      <div class="content">
-        <a href="{{ project.url }}"><h2>{{ project.title }}</h2></a>
-        {% if project.description %}<p>{{project.description}}</p>{% endif %}
-        <div class="meta">
-          {% if project.author %}<b>user</b> {{project.author}}{% endif %}
-          <b>calendar</b> {{project.date | date: '%b %d, %Y'}}
-          {% if project.difficulty %} <b>upwardsbarchart</b> {{project.difficulty}}{% endif %}
-          {% if project.duration %} <b>stopwatch</b> {{project.duration}}{% endif %}
-          {% if project.repo %}<a href="{{project.repo}}"><b>download</b> Source Code</a>{% endif %}
+      <div class="content shadow-1 shadow-active-4">
+        
+        {% assign foundImage = 0 %}
+        {% assign images = project.content | split: '<img'  %}
+        {% for image in images %}
+          {% if image contains 'src' %}
+
+              {% if foundImage == 0 %}
+                  {% assign html = image | split:"/>" | first %}
+                  <img {{ html }} />
+                  {% assign foundImage = 1 %}
+              {% endif %}
+          {% endif %}
+        {% endfor %}
+        
+        
+        <a href="{{ project.url }}" class="title"><h3>{{ project.title }}</h3></a>
+        {% if project.description %}<p class="description">{{project.description}}</p>{% endif %}
+        <div class="meta pure-g">
+          <div class="author pure-u-11-12">
+          
+            {% if author %}
+            <span class="photo" style="background-image: url({{ author.photo }})"></span> 
+            {{ author.name }}
+            {% endif %}
+          </div>
+          
+          <div class="difficulty pure-u-1-12">
+          {% if project.difficulty %} <b>upwardsbarchart</b> {% endif %}
+          </div>
         </div>
         
       </div>
