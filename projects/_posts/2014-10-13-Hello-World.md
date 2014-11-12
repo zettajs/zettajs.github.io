@@ -115,7 +115,7 @@ This project requires a PC with an Internet connection and [Node.js](http://node
    ```
    {:.language-json-noln}
 
-   > **info**{:.icon} As we `use` devices in `server.js` they will appear in the web API. For the following steps we'll access the API via the [Zetta Browser](/guides/2014/10/18/Zetta-Browser.html).
+   > **info**{:.icon} As we `use` devices in `server.js` they will appear in the web API. For the following steps we'll access the API via the [Zetta Browser](/guides/2014/10/07/Zetta-Browser.html).
 
 # Step #2: Blink the LED
 
