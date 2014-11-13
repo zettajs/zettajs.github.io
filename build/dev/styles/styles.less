@@ -366,6 +366,9 @@ article {
       overflow: visible;
     }
   }
+  h2 {
+    &+ p  {margin-top: 0;}
+  }
   
   pre {
     background-color: #23241f;
@@ -380,8 +383,10 @@ article {
     li, dd { margin-left: 2.5rem; }
     ul, ol, dl {
       padding-left: 0;
+      margin-top: 0em; margin-bottom: 0em;
       li, dd { 
-        margin-left: 2.5rem; 
+        margin-left: 2.8rem; 
+        
       }
     }
     
