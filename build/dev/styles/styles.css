@@ -171,6 +171,8 @@ article .sfe-wish-list .sfe-item-title{height:1rem;overflow:visible}
 article pre{background-color:#23241f;color:#fff;margin:1.25rem;padding:.75rem 1.25rem;font-size:80%;border-radius:.5rem}
 article dl,article ol,article ul{padding-left:2.5rem}
 article dl dd,article dl li,article ol dd,article ol li,article ul dd,article ul li{margin-left:2.5rem}
+article dl dl,article dl ol,article dl ul,article ol dl,article ol ol,article ol ul,article ul dl,article ul ol,article ul ul{padding-left:0}
+article dl dl dd,article dl dl li,article dl ol dd,article dl ol li,article dl ul dd,article dl ul li,article ol dl dd,article ol dl li,article ol ol dd,article ol ol li,article ol ul dd,article ol ul li,article ul dl dd,article ul dl li,article ul ol dd,article ul ol li,article ul ul dd,article ul ul li{margin-left:2.5rem}
 article li blockquote,article li p,article li pre,article li table{margin:0 0 1rem}
 article li blockquote,article li img,article li pre{width:90%}
 article li blockquote p{margin-left:1.5rem}
