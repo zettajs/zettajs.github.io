@@ -14,8 +14,13 @@ description: >
     <li class="placard pure-u-1-3">
       
       <div class="content shadow-1 shadow-active-4">
-        
         {% assign foundImage = 0 %}
+        
+        {% if project.cover %}
+          <img src="{{ project.cover }}" />
+          {% assign foundImage = 1 %}
+        {% endif %}
+        
         {% assign images = project.content | split: '<img'  %}
         {% for image in images %}
           {% if image contains 'src' %}
@@ -27,6 +32,11 @@ description: >
               {% endif %}
           {% endif %}
         {% endfor %}
+          
+        {% if project.tags.size > 0 %}
+          {% if foundImage == 0 %}{% assign tagClass = 'flat' %}{% endif %}
+          <div class="tag_callout {{ tagClass }}"><b>tag</b> {{ project.tags | first }} </div>
+        {% endif %}
         
         
         <a href="{{ project.url }}" class="title"><h3>{{ project.title }}</h3></a>

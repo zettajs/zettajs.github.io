@@ -7,6 +7,11 @@ duration: 1-3 hours
 description: >
   Create an Internet-connected, home security system with a microphone, piezo speaker, an LED and a BeagleBone Black.
 repo: https://github.com/zettajs/zetta-home-security/
+cover: /images/projects/security_system/hardware/microphone_4.jpg
+tags: 
+- BeableBone Black
+- Home Security
+- Zetta Basics
 ---
 
 # Directions

@@ -6,6 +6,7 @@ difficulty: beginner
 duration: 1 hour
 description: Create an Internet-connected, dusk-to-dawn lighting system with a mock LED and a mock photocell.
 repo: http://github.com/zettajs/zetta-hello-world
+cover: /images/projects/hello_world/hello-world.png
 ---
 
 # Directions
