@@ -38,4 +38,4 @@ Zetta runs well on a 500MHz CPU. 500mb of RAM is the ideal minimum. Storage of 1
 
 * CPU: 500 Mhz
 * Memory: 500 MB
-* Storage: 500mb free space
+* Storage: 500 MB of free space
