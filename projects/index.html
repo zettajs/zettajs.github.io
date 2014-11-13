@@ -5,13 +5,13 @@ description: >
   People create interesting projects with Zetta. Get started by re-creating the projects of others. Or share your project with the Zetta community.
 ---
 
-<ul class="placards pure-g">
+<ul class="placards pure-g grid" data-columns>
   {% for project in site.categories["projects"] %}
   
     {% assign author_data = site.data.authors | where:"name", project.author %}
     {% assign author = author_data | first %} 
   
-    <li class="placard pure-u-1-3">
+    <li class="placard">
       
       <div class="content shadow-1 shadow-active-4">
         {% assign foundImage = 0 %}
@@ -35,7 +35,9 @@ description: >
           
         {% if project.tags.size > 0 %}
           {% if foundImage == 0 %}{% assign tagClass = 'flat' %}{% endif %}
-          <div class="tag_callout {{ tagClass }}"><b>tag</b> {{ project.tags | first }} </div>
+          <div class="tag_callout {{ tagClass }}">
+            <span class="shadow-2">{{ project.tags | first }}</span>
+          </div>
         {% endif %}
         
         
@@ -50,8 +52,20 @@ description: >
             {% endif %}
           </div>
           
-          <div class="difficulty pure-u-1-12">
-          {% if project.difficulty %} <b>upwardsbarchart</b> {% endif %}
+          {% for level in site.data.difficulty %}
+            {% for key in level.keywords %}
+              {% if project.difficulty == key %}
+                {% assign difficulty = level.level %} 
+              {% endif %}
+            {% endfor %}  
+          {% endfor %}
+          
+          <div class="difficulty level_{{ difficulty | intermediate }} pure-u-1-12">
+          {% if project.difficulty %} 
+            <span class="icon background">upwardsbarchart</span>
+            <span class="icon overlay">upwardsbarchart</span>
+            
+          {% endif %}
           </div>
         </div>
         
@@ -59,4 +73,6 @@ description: >
       
     </li>
   {% endfor %}
+                  
+          
 </ul>

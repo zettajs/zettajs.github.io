@@ -18,12 +18,13 @@ gulp.task('jshint', function() {
 gulp.task('scripts', function() {
   gulp.src(["./dev/js/jquery-1.11.1.min.js",
             "./dev/js/highlight.pack.js",
+            "./dev/js/salvattore.js",
             "./dev/js/zetta.js"])
-    .pipe(sourcemaps.init())
+  /*  .pipe(sourcemaps.init()) */
       .pipe(concat('scripts.js'))
   /*  .pipe(stripDebug()) */
       .pipe(uglify({mangle:false}))
-    .pipe(sourcemaps.write('./'))
+  /*  .pipe(sourcemaps.write('./')) */
     .pipe(gulp.dest('../scripts'))
 });
 
@@ -37,15 +38,12 @@ gulp.task('styles',['css'], function() {
           browsers: ['> 5%', 'last 5 versions', 'Firefox ESR', 'Opera 12.1', 'ios 6'],
           cascade: true
     }))
-    .pipe(minifyCSS({keepBreaks:true}))
     .pipe(gulp.dest('./dev/styles'));
-  
 });
 
 gulp.task('css', function() {
   gulp.src(['./dev/styles/pure.css',
             './dev/styles/grids-responsive-min.css', 
-            './dev/styles/animate.min.css', 
             './dev/styles/monokai_sublime.css',
             './dev/styles/material-shadow.css',
             './dev/styles/styles.css'])
