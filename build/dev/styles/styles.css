@@ -1194,6 +1194,9 @@ article blockquote p:first-child {
 article blockquote p:last-child {
   margin-bottom: 0;
 }
+article blockquote code {
+  background-color: #fff;
+}
 article table {
   min-width: 60%;
 }
