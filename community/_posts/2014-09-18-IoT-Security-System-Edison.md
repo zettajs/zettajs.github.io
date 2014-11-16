@@ -34,6 +34,8 @@ The goal for this project is to create a simple home security system by assembli
 1. [Soundcheck the Microphone](#step-3-soundcheck-the-microphone)
 1. [Secure the Area](#step-4-secure-the-area)
 1. [Link to the Internet](#step-5-link-to-the-internet)
+1. [Add a Remote Device](#step-6-add-a-remote-device)
+1. [Blink The LED](#step-7-blink-the-led)
 {:.steps}
 
 # Step #1: Setup the Edison and PC
@@ -67,13 +69,16 @@ sudo npm install -g edison-cli
 Create a directory that we will use to write code in.
 
 ```bash
-mkdir zetta-security-system
+git clonehttps://github.com/zettajs/zetta-starter-project.git
+
+// or go to https://github.com/zettajs/zetta-starter-project
+and download the zip folder.
 ```
 
 Move into the newly created directory.
 
 ```bash
-cd zetta-security-system
+cd zetta-starter-project
 ```
 
 ## Install Zetta
@@ -81,10 +86,8 @@ cd zetta-security-system
 1. From your PC's command line, [install Zetta with NPM](/reference/2014/10/12/npm.html).
 
    ```bash
-   npm install zetta --save
+   npm install
    ```
-
-   >  Using `--save` flag will add zetta to your project's dependencies.
 
 # Step #2: Buzz the Piezo Buzzer
 
@@ -193,14 +196,7 @@ You should see a build output:
 
   > **clock**{:.icon} Running `deploy` the first time will take a few minutes to rebuild the native npm modules. Only changes to the `node_modules` will require a rebuild, this is done automatically.
 
-
-3. Start the application to see the output:
-
-```bash
-edison-cli -H 10.0.1.15 start
-```
-
-4. When Zetta discovers the buzzer, Zetta will log a message about the device to the `start` command.
+3. When Zetta discovers the buzzer, Zetta will log a message about the device to the `start` command.
 
    ```bash
    Zetta is running at http://localhost:1337
@@ -298,10 +294,6 @@ After assembling the microphone hardware, your project should look similar to th
 
    ```bash
    edison-cli -H 10.0.1.15 deploy
-
-   and restart
-
-   edison-cli -H 10.0.1.15 start
    ```
 
 1. When Zetta discovers the microphone, Zetta will log a message about the device to the output.
@@ -333,7 +325,6 @@ After assembling the microphone hardware, your project should look similar to th
 1. From your PC's command line, create the app file and directory.
 
    ```bash
-   mkdir apps
    touch apps/app.js
    ```
    {:.language-bash-noln}
@@ -351,8 +342,10 @@ module.exports = function(server) {
     microphone.streams.volume.on('data', function(msg){
       if (msg.data > 600) {
         buzzer.call('turn-on-pulse', function(){});
-      } else {
-        buzzer.call('turn-off', function(){});
+
+        setTimeout(function() {
+          buzzer.call('turn-off', function(){});
+        }, 3000);
       }
     });
   });
@@ -399,10 +392,6 @@ module.exports = function(server) {
 
    ```bash
    edison-cli -H 10.0.1.15 deploy
-
-   and restart
-
-   edison-cli -H 10.0.1.15 start
    ```
 
 1. Make a noise near or gently tap on the microphone.
@@ -434,14 +423,10 @@ zetta()
   });
 ```
 
-1. Deploy the new code using the `edison-cli`
+2. Deploy the new code using the `edison-cli`
 
    ```bash
    edison-cli -H 10.0.1.15 deploy
-
-   and restart
-
-   edison-cli -H 10.0.1.15 start
    ```
 
 ## Investigate a new Zetta server
@@ -452,7 +437,41 @@ zetta()
 
 2. Observe the state changes occurring, and interact with the system from the open internet.
 
-# Step #6: Blink the LED
+# Step #6 Add A Remote Device
+
+1. Make sure your Bean has its battery plugged in.
+
+## Add the Bean to our Zetta code
+
+
+1. Ensure `server.js` looks like the code below.
+
+```javascript
+var zetta = require('zetta');
+var Buzzer = require('zetta-buzzer-edison-driver');
+var Microphone = require('zetta-microphone-edison-driver');
+var Bean = require('zetta-bean-driver');
+
+var app = require('./apps/app');
+
+zetta()
+  .use(Buzzer, 3)
+  .use(Microphone, 0)
+  .use(Bean, 'Bean1') // Note Bean1 is the beans name.
+  .use(app)
+  .link('http://hello-zetta.herokuapp.com/')
+  .listen(1337, function(){
+    console.log('Zetta is running at http://localhost:1337');
+  });
+```
+
+2. Deploy the new code using the `edison-cli`
+
+   ```bash
+   edison-cli -H 10.0.1.15 deploy
+   ```
+
+# Step #7: Blink the LED
 
 ## Assemble Light Hardware
 
@@ -485,7 +504,6 @@ We'll want to setup the directory where our driver will be located. Create a `/d
 Use your PC's command line and run the following terminal commands to create the files and folder that you need:
 
 ```bash
-mkdir devices
 mkdir devices/led
 ```
 
@@ -569,6 +587,7 @@ LED.prototype.turnOff = function(cb) {
 var zetta = require('zetta');
 var Buzzer = require('zetta-buzzer-edison-driver');
 var Microphone = require('zetta-microphone-edison-driver');
+var Bean = require('zetta-bean-driver');
 var LED = require('./devices/led');
 
 var app = require('./apps/app');
@@ -576,6 +595,7 @@ var app = require('./apps/app');
 zetta()
   .use(Buzzer, 3)
   .use(Microphone, 0)
+  .use(Bean, 'Bean1')
   .use(LED, 13)
   .use(app)
   .listen(1337, function(){
@@ -597,7 +617,7 @@ module.exports = function(server) {
 
   server.observe([buzzerQuery, microphoneQuery, ledQuery], function(buzzer, microphone, led){
     microphone.streams.volume.on('data', function(msg){
-      if (buzzer.state === 'off' && msg.data > 600) {
+      if (msg.data > 600) {
         buzzer.call('turn-on-pulse', function(){});
         led.call('turn-on', function(){});
 
@@ -617,10 +637,6 @@ module.exports = function(server) {
 
    ```bash
    edison-cli -H 10.0.1.15 deploy
-
-   and restart
-
-   edison-cli -H 10.0.1.15 start
    ```
 
 1. Make a noise near or gently tap on the microphone.
