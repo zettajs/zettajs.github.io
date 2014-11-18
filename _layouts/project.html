@@ -1,25 +1,25 @@
 {% include header.html %}
+
+{% assign author_data = site.data.authors | where:"name", page.author %}
+{% assign author = author_data | first %}  
+
 <section id="hero">
     {% include nav.html %}
     <section class="page_meta">
       <div class="content">
           {% unless page.path contains 'index' %}
           <ul class="meta">
-            <li><b>nodes</b> {{page.layout | capitalize }}</li>
-            {% if page.author %}<li><b>user</b> {{page.author}}</li>{% endif %}
+            
+            {% if author %}<li class="author">
+            <div class="photo" style="background-image: url({{ author.photo }})"></div> {{ author.name }}
+            </li>{% endif %}
             <li><b>calendar</b> {{page.date | date: '%b %d, %Y'}}</li>
             {% if page.difficulty %}<li><b>upwardsbarchart</b> {{page.difficulty}}</li>{% endif %}
             {% if page.duration %}<li><b>stopwatch</b> {{page.duration}}</li>{% endif %}  
             {% if page.repo %}<li class="source"><a href="{{page.repo}}"><b>download</b> Source Code</a></li>{% endif %}
-            
+            <li><b>nodes</b> {{page.layout | capitalize }}</li>
          </ul>
-          {% if page.tags.size > 0 %}          
-          <ul class="tags">
-            {% for tag in page.tags %}
-            <li><a href="#">{{tag}}</a></li>
-            {% endfor %}
-          </ul>
-          {% endif %}
+          
         {% endunless %}  
         
         {% if page.path contains 'index' %}
@@ -29,12 +29,14 @@
         {% endif %}
       </div>
     </section>
+    
 </section>
 
 <article>
   
-  
   <section class="page_content">
+    
+    
     {{ content }}
 
     <section class="description">
@@ -46,9 +48,22 @@
         {% endif %}
         
         {% unless page.path contains 'index' %}
+        {% if author %}
+        
+          <section class="author_credit">
+            <h1 id="about-the-author">About The Author</h1>
+            <img src="{{author.photo}}" class="shadow-1">
+            <h3>{{author.name}}</h3>
+            {% if author.bio %}<p>{{ author.bio }}</p>{% endif %}
+            <p>Get in touch with {{author.name | split: " " | first}} and other contributors on <a href="https://groups.google.com/forum/#!forum/zetta-discuss">Zetta Discuss</a>.</p>
+          </section>
+        {% endif %}
+        
+        {% if page.tags.size > 0 %}    
+        <p><strong>File under:</strong> {{page.tags | join:", "}}</p>
+        {% endif %}
         
         <p>Have a project to share? Read <a href="/projects/2014/10/01/Share-A-Project.html">How to Share a Project</a></p>
-        
         {% endunless %} 
       </div>
     </section>

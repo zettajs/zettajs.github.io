@@ -151,16 +151,30 @@ Are written semantically in markdown like this:
 
 > Icon text is made by giving a word's containing element a class of `icon`. Since we probably only want one icon at a time, we need to wrap that text in a `<strong>` tag using `**` (bold). This gives the `{:.icon}` attribute list something to be applied to.
 
+## Cover images
+
+When your project is listed on the [project list](zettajs.org/projects/) page, we automatically pull out the first image from your project to display as it's cover photo. Adding your own cover image overrides the default behavior of crawling your content for image files and gives you greater control over how your project is represented visually. 
+
+To specify a cover image add it's url as the `cover` property in your yaml frontmatter like this:
+
+```yml
+layout: project
+title: How to Share a Project
+...
+cover: /path/to/cover/image.jpg
+
+```
+
 # Projects versus Guides
 
-Projects differ from [Guides](/guides) in both length and complexity. Projects are generally for longer and more complex topics while guides are a great place to put tangential information that is generally shorter and often relates to a topic covered in multiple recipies. This article is written as a guide because it is more like a reference doc than a step-by-step procedure.
+Projects differ from [Guides](/guides) in both length and complexity. Projects are generally for longer and more complex topics while guides are a great place to put tangential information that is generally shorter and often relates to a topic covered in multiple projects.
 
 {::comment}
 
-For example, [IoT Security System](/projects/2014/09/18/IoT-Security-System.html) project uses a BeagleBone Black for running zetta. That project links to the [Getting Started with BeagleBone Black](/guides/url.html) guide, rather than reiterating that setup process in the project.
+For example, the [Home Security](/projects/2014/09/18/IoT-Security-System.html) project uses a BeagleBone Black for running Zetta. That project links to the [Getting Started with BeagleBone Black](/guides/url.html) guide, rather than reiterating that setup process in the project.
 
 {:/comment}
 
 # Getting Help
 
-Do you have questions about this guide? Discuss with the [Zetta community](http://localhost:4000/community/#discussion).
+Do you have questions about this project? Discuss with the [Zetta community](http://localhost:4000/community/#discussion).
