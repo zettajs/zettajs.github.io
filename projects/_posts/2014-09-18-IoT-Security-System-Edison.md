@@ -1,35 +1,20 @@
 ---
-layout: community
-title: Home Security
-author: Matt Dobson
+layout: project
+title: Home Security with Edison
+author: Adam Magaluk
 difficulty: experienced
 duration: 1-3 hours
 description: >
-  Create an Internet-connected, home security system with a microphone, piezo speaker, an LED and a Intel Edison.
+  Create an Internet-connected, home security system with a microphone, piezo speaker, LED, LightBlue Bean and an Intel Edison.
 repo: https://github.com/zettajs/zetta-security-system-edison
+tags: 
+- Intel Edison
+- LightBlue Bean
 ---
-
-# Goal
-
-The goal for this project is to create a simple home security system by assembling a microphone, a piezo speaker and an LED into a Zetta app running on a Intel Edison. We will connect the app to the Internet by linking the Edison with a second Zetta server running in the cloud.
-
-![The Connected Microphone](/images/projects/security_system/hardware/led_birdseye.jpg)
-
-![Microphone Hookup Diagram](/images/projects/security_system/hookup_diagram_step_3.png)
-
-> **downloadcloud**{:.icon} Download the [Fritzing](http://fritzing.org) diagram for the finished project: [home_security_system.fzz](/images/projects/security_system/fritzing/home_security_system.fzz).
-
-# Parts
-
-![All Materials](/images/projects/security_system/hardware/empty_low.jpg){:.zoom .full}
-
-<script src="https://www.sparkfun.com/wish_lists/98550.js"></script>
-
-> **cart**{:.icon} [Buy the parts](https://www.sparkfun.com/wish_lists/98550) for the Home Security project from [SparkFun](http://www.sparkfun.com).
 
 # Directions
 
-1. [Setup the Edison](#step-1-setup-the-edison-and-pc)
+1. [Setup the Edison and PC](#step-1-setup-the-edison-and-pc)
 1. [Buzz the Buzzer](#step-2-buzz-the-piezo-buzzer)
 1. [Soundcheck the Microphone](#step-3-soundcheck-the-microphone)
 1. [Secure the Area](#step-4-secure-the-area)
@@ -38,96 +23,122 @@ The goal for this project is to create a simple home security system by assembli
 1. [Blink The LED](#step-7-blink-the-led)
 {:.steps}
 
+# Goal
+
+The goal for this project is to create a simple home security system by assembling a microphone, a piezo speaker and an LED into a Zetta app running on an Intel Edison. We will also use Bluetooth low energy (BLE) to communicate with a LightBlue Bean's on-board temperature and accelerometer sensors plus an additional LED. We will connect the app to the Internet by linking the Edison with a second Zetta server running in the cloud.
+
+![The Connected Microphone](/images/projects/security_system_edison/hardware/led_birdseye.jpg)
+
+![Final Project](/images/projects/security_system_edison/hookup_diagram_step_4.png)
+
+> **downloadcloud**{:.icon} Download the [Fritzing](http://fritzing.org) diagram for the finished project: [home_security_system.fzz](/images/projects/security_system_edison/fritzing/home_security_system.fzz).
+
+# Parts
+
+![All Materials](/images/projects/security_system_edison/hardware/empty_low.jpg){:.zoom .full}
+
+<script src="https://www.sparkfun.com/wish_lists/98550.js"></script>
+
+> **cart**{:.icon} [Buy the parts](https://www.sparkfun.com/wish_lists/98550) for the Home Security project from [SparkFun](http://www.sparkfun.com).
+
 # Step #1: Setup the Edison and PC
 
 ## Connect the Edison
 
-Follow the guide on [How to Connect a Edison to the Internet via a PC](https://communities.intel.com/docs/DOC-23148).
+Follow the guide on [How to Connect an Edison to the Internet via a PC](https://communities.intel.com/docs/DOC-23148).
 
 
-## Setting up your PC
+## Setting up the PC
 
-1. Make sure you have a code editor on your PC you're comfortable with. Here's a few:
+1. Ensure you have a code editor on the PC.
 
-    - [Atom](https://atom.io/)
-    - [Sublime Text](http://www.sublimetext.com/)
+   > **help**{:.icon} Need a code editor? Try [Atom](https://atom.io/) or [Sublime Text](http://www.sublimetext.com/).
 
-2. Make sure you have Node.js installed [Install Node.js on your PC](http://nodejs.org/)
+1. Ensure you have [node.js](http://nodejs.org/) installed on the PC.
 
-3. Install the edison-cli, using your command line.
+   > **help**{:.icon} Need to install node.js? Click the INSTALL button at [node.js](http://nodejs.org/).
 
-```bash
-npm install -g edison-cli
+1. From the PC terminal, install the edison-cli from the the command line.
 
-# or on linux/mac
+   ```bash
+   npm install -g edison-cli
+   ```
 
-sudo npm install -g edison-cli
-```
+   > **help**{:.icon} Problem with installation? Try `sudo npm install -g edison-cli`.
 
-## Setup the Security System Project on your PC
+## Clone the Starter Code to the PC
 
-Create a directory that we will use to write code in.
 
-```bash
-git clonehttps://github.com/zettajs/zetta-starter-project.git
+1. From the PC terminal, clone [the Zetta starter project](https://github.com/zettajs/zetta-starter-project) to a new `home-security` directory.
 
-// or go to https://github.com/zettajs/zetta-starter-project
-and download the zip folder.
-```
+   ```bash
+   git clone https://github.com/zettajs/zetta-starter-project home-security
+   ```
 
-Move into the newly created directory.
-
-```bash
-cd zetta-starter-project
-```
+   > **help**{:.icon} Problem with `git clone`? Try downloading the zip file from [https://github.com/zettajs/zetta-starter-project](https://github.com/zettajs/zetta-starter-project)
 
 ## Install Zetta
 
-1. From your PC's command line, [install Zetta with NPM](/reference/2014/10/12/npm.html).
+1. From the PC terminal, `cd` to `home-security`.
+
+   ```bash
+   cd home-security
+   ```
+
+1. From the PC terminal, install Zetta with [NPM](/reference/2014/10/12/npm.html).
 
    ```bash
    npm install
    ```
 
+## Connect PC to Intel Edison
+
+1. Connect the PC to the Intel Edison development board via a USB cable.
+
+    From                  | Wire           | To  
+    :----                 |:-----:         |----:
+    PC **USB A-Female**   |**USB**         |Edison **USB Micro J16**
+    {:.wiring}
+
 # Step #2: Buzz the Piezo Buzzer
 
 ## Assemble the Buzzer Hardware
 
-![Piezo Hookup Diagram](/images/projects/security_system/hookup_diagram_step_1.png){:.fritzing}
+![Piezo Hookup Diagram](/images/projects/security_system_edison/hookup_diagram_step_1.png){:.fritzing}
 
 1. Attach the piezo buzzer to the breadboard.
 
-    From              | To  
+    From              | To
     :----             |----:
     Buzzer **-** pin  |Breadboard **A3**
     Buzzer **+** pin  |Breadboard **A6**
     {:.wiring}
 
-    > **help**{:.icon} New to solderless breadboards? Read the [How to Use a  Breadboard](/guides/2014/10/07/Breadboard.html) guide.
+    > **help**{:.icon} New to solderless breadboards? Read the [How to Use a Breadboard](/guides/2014/10/07/Breadboard.html) guide.
 
 1. Create a circuit between the Edison and the buzzer.
 
     From                  | Wire           | To  
     :----                 |:-----:         |----:
-    Breadboard **E3**     |**White**       |Edison **D3**
+    Breadboard **E3**     |**Green**       |Edison **DIGITAL ~3**
     Breadboard **E6**     |**Black**       |Breadboard **-**
     Breadboard **-**      |**Black**       |Edison **GND**
     {:.wiring}
 
-After assembling the buzzer hardware, your project should look similar to the images below.
+After assembling the buzzer hardware, the project should look similar to the images below.
 
-![The Connected Piezo Buzzer](/images/projects/security_system/hardware/piezo_birdseye.jpg){:.zoom}
-![The Connected Piezo Buzzer](/images/projects/security_system/hardware/piezo_low.jpg){:.zoom}
+![The Connected Piezo Buzzer](/images/projects/security_system_edison/hardware/piezo_birdseye.jpg){:.zoom}
+![The Connected Piezo Buzzer](/images/projects/security_system_edison/hardware/piezo_low.jpg){:.zoom}
 
 ## Write the Buzzer Software
 
-1. From your PC's command line, install the Zetta device driver for the buzzer.
+1. From the PC's command line, install the Zetta device driver for the buzzer.
 
    ```bash
    npm install zetta-buzzer-edison-driver --save
    ```
 
-2. Create a new file called `server.js`
+2. Create a new file called `server.js` in the project directory.
 
 3. In the `server.js` file, write Zetta code to `require` and `use` the `Buzzer` driver on Edison pin `3` and `listen` on server port `1337`.
 
@@ -142,94 +153,101 @@ After assembling the buzzer hardware, your project should look similar to the im
      });
    ```
 
-   > You can test your code is written properly by running `node server.js` on your pc.
+   > **info**{:.icon} You can test that the code is written properly by running `node server.js` on the PC.
 
 
-4. Init the `package.json` file with `server.js` as the main file.
-
-```bash
-npm init
-```
-
-  Hit enter to all the questions.
-
-## Deploying to the Edison
-
-1. Locate your Edison on the network.
-
-```bash
-edison-cli list
-
-You should see an output similar to below:
-
-  Devices Found: 1
-  1 - 10.0.1.15
-```
-
-  We use the `10.0.1.15` based on the output.
-
-2. Deploy your code.
-
-```bash
-edison-cli -H 10.0.1.15 deploy
-
-You should see a build output:
-
-  XDK - IoT App Daemon v0.0.13 - commands: run, list, debug, status
-
-  XDK Message Received: clean
-
-  |================================================================
-  |    Intel (R) IoT - NPM Rebuild - (may take several minutes)
-  |================================================================
-
-  ...
-
-  |================================================================
-  |    NPM REBUILD COMPLETE![ 0 ]   [ 0 ]
-  |================================================================
-
-  XDK Message Received: run
-  => Stopping App <=
-  Application restarted
-```
-
-  > **clock**{:.icon} Running `deploy` the first time will take a few minutes to rebuild the native npm modules. Only changes to the `node_modules` will require a rebuild, this is done automatically.
-
-3. When Zetta discovers the buzzer, Zetta will log a message about the device to the `start` command.
+4. Initialize the `package.json` file for your project. NPM will use the newly created `server.js` file as the `main` file.
 
    ```bash
-   Zetta is running at http://localhost:1337
+   npm init
+   ```
+
+   > **info**{:.icon} Accept all defaults, by pressing `enter` at each command line prompt.
+
+## Deploy Buzzer Software to the Edison
+
+1. Locate the Edison on the network.
+
+   ```bash
+   edison-cli list
+   ```
+
+1. Ensure the command line output looks like the results below.
+
+   ```bash
+   Edison Devices Found: 1
+   1 - {ip address}
+   ```
+   {:.language-bash-noln}
+
+   We use the `{ip address}` based on the output.
+
+2. Deploy and run the Zetta server and buzzer code.
+
+   ```bash
+   edison-cli -H {ip address} deploy
+   ```
+
+1. Ensure the build output looks like the output below.
+
+   ```bash
+   XDK - IoT App Daemon v0.0.13 - commands: run, list, debug, status
+
+   XDK Message Received: clean
+
+   |================================================================
+   |    Intel (R) IoT - NPM Rebuild - (may take several minutes)
+   |================================================================
+
+   ...
+
+   |================================================================
+   |    NPM REBUILD COMPLETE![ 0 ]   [ 0 ]
+   |================================================================
+
+   XDK Message Received: run
+   => Stopping App <=
+   Application restarted
+   ```
+   {:.language-bash-noln}
+  
+   > **clock**{:.icon} Running `deploy` the first time will take a few minutes to build the npm modules that require native code.
+
+   > **info**{:.icon} The code that was deployed to the Edison resides at `/node_app_slot`.
+
+1. Ensure that a message about the buzzer device is displayed in the console and looks like the output below.
+
+   ```bash
    {TIMESTAMP} [scout] Device (buzzer) {GUID} was provisioned from registry
+   Zetta is running at http://localhost:1337
    ```
 
 ## Buzz the Buzzer
 
 1. Open the Zetta Browser: [http://browser.zettajs.io](http://browser.zettajs.io)
 
-  Enter the address to the Edison `http://10.0.1.15:1337` in the box.
+  Enter the address to the Edison `http://{ip address}:1337` in the box.
 
-
-1. Ensure your **Buzzer** device is listed.
-![Zetta Browser with Piezo Attached](/images/projects/security_system/screens/browser-piezo.png){:.zoom}
+1. Ensure the **Buzzer** device is listed.
+![Zetta Browser with Piezo Attached](/images/projects/security_system_edison/screens/browser-piezo.png){:.zoom}
 
 1. Click the `beep` button.
 
-1. Ensure that your buzzer buzzed and the device state changed in the Zetta Browser visualization.
+1. Ensure that the buzzer buzzed and the device state changed in the Zetta Browser visualization.
 
-   > **help**{:.icon} Didn't hear a beep? Double check your wiring and make sure there were no errors reported.
+   > **help**{:.icon} Didn't hear a beep? Double check the wiring and make sure there were no errors reported.
 
 # Step #3: Soundcheck the Microphone
 
 ## Assemble Microphone Hardware
 
-![Microphone Hookup Diagram](/images/projects/security_system/hookup_diagram_step_2.png){:.fritzing}
+![Microphone Hookup Diagram](/images/projects/security_system_edison/hookup_diagram_step_2.png){:.fritzing}
 
-1. If your microphone does not have headers attached, solder them in place so the microphone can be attached to the breadboard.
+1. If the microphone does not have headers attached, solder them in place so the microphone can be attached to the breadboard.
 
    > **help**{:.icon} New to soldering? Read the [How to Solder](/guides/2014/10/13/solder.html) guide.
 
-2. Attach your microphone to the breadboard.
+2. Attach the microphone to the breadboard.
 
     From                  | To  
     :----                 |----:
@@ -249,14 +267,14 @@ You should see a build output:
 
    > **help**{:.icon} Don't know how to read resistor values? Read the [How to Read Resistor Values](/guides/2014/10/13/2014.html) guide.
 
-After assembling the microphone hardware, your project should look similar to the images below.
+After assembling the microphone hardware, the project should look similar to the images below.
 
-![The Connected Microphone](/images/projects/security_system/hardware/microphone_birdseye.jpg){:.fritzing}
-![The Connected Microphone](/images/projects/security_system/hardware/microphone_low.jpg){:.fritzing}
+![The Connected Microphone](/images/projects/security_system_edison/hardware/microphone_birdseye.jpg){:.fritzing}
+![The Connected Microphone](/images/projects/security_system_edison/hardware/microphone_low.jpg){:.fritzing}
 
 # Write Microphone Software
 
-1. From the your PC's command line, install the Zetta device driver for the microphone.
+1. From the PC's command line, install the Zetta device driver for the microphone.
 
    ```bash
    npm install zetta-microphone-edison-driver --save
@@ -293,7 +311,7 @@ After assembling the microphone hardware, your project should look similar to th
 1. Deploy the new code using the `edison-cli`
 
    ```bash
-   edison-cli -H 10.0.1.15 deploy
+   edison-cli -H {ip address} deploy
    ```
 
 1. When Zetta discovers the microphone, Zetta will log a message about the device to the output.
@@ -307,12 +325,12 @@ After assembling the microphone hardware, your project should look similar to th
 
 ## Soundcheck the Microphone
 
-1. Open the Zetta Browser and ensure your **Microphone** device is listed.
-   ![Zetta Browser root with Microphone](/images/projects/security_system/screens/browser-microphone.png){:.zoom}
+1. Open the Zetta Browser and ensure the **Microphone** device is listed.
+   ![Zetta Browser root with Microphone](/images/projects/security_system_edison/screens/browser-microphone.png){:.zoom}
 
 1. In the Zetta Browser, click on the **Microphone** link to open a detailed view of the device.
 
-   ![Zetta Browser root with Microphone](/images/projects/security_system/screens/zetta-browser-microphone-show.png){:.zoom}
+   ![Zetta Browser root with Microphone](/images/projects/security_system_edison/screens/zetta-browser-microphone-show.png){:.zoom}
 
 1. Make a noise near or gently tap on the microphone.
 
@@ -322,7 +340,7 @@ After assembling the microphone hardware, your project should look similar to th
 
 ## Create Security App File and Folder
 
-1. From your PC's command line, create the app file and directory.
+1. From the PC's command line, create the app file and directory.
 
    ```bash
    touch apps/app.js
@@ -391,7 +409,7 @@ module.exports = function(server) {
 1. Deploy the new code using the `edison-cli`
 
    ```bash
-   edison-cli -H 10.0.1.15 deploy
+   edison-cli -H {ip address} deploy
    ```
 
 1. Make a noise near or gently tap on the microphone.
@@ -426,7 +444,7 @@ zetta()
 2. Deploy the new code using the `edison-cli`
 
    ```bash
-   edison-cli -H 10.0.1.15 deploy
+   edison-cli -H {ip address} deploy
    ```
 
 ## Investigate a new Zetta server
@@ -439,10 +457,11 @@ zetta()
 
 # Step #6 Add A Remote Device
 
-1. Make sure your Bean has its battery plugged in.
+1. Make sure the Bean has its battery plugged in.
 
 ## Add the Bean to our Zetta code
 
+![Bean Hookup Diagram](/images/projects/security_system_edison/hookup_diagram_step_3.png){:.fritzing}
 
 1. Ensure `server.js` looks like the code below.
 
@@ -468,20 +487,20 @@ zetta()
 2. Deploy the new code using the `edison-cli`
 
    ```bash
-   edison-cli -H 10.0.1.15 deploy
+   edison-cli -H {ip address} deploy
    ```
 
 # Step #7: Blink the LED
 
 ## Assemble Light Hardware
 
-![Microphone Hookup Diagram](/images/projects/security_system/hookup_diagram_step_3.png){:.fritzing}
+![Microphone Hookup Diagram](/images/projects/security_system_edison/hookup_diagram_step_4.png){:.fritzing}
 
-1. Add your LED to the breadboard.
+1. Add the LED to the breadboard.
   * *Annode* (long leg) on Breadboard **A26**
   * *Cathode* (short leg) on Breadboard **A28**
   * Place AUD on Breadboard **F20**
-2. Connect your wires in the following way:
+2. Connect the wires in the following way:
 
     From                 | Wire                 | To  
     :----                |:-----:               |----:
@@ -490,10 +509,10 @@ zetta()
     Breadboard **E28**   |Black                 |Breadboard's negative column
     {:.wiring}
 
-Your hardware setup should look like this when you're done:
+the hardware setup should look like this when you're done:
 
-![The Connected Microphone](/images/projects/security_system/hardware/led_birdseye.jpg){:.fritzing}
-![The Connected Microphone](/images/projects/security_system/hardware/led_low.jpg){:.fritzing}
+![The Connected Microphone](/images/projects/security_system_edison/hardware/led_birdseye.jpg){:.fritzing}
+![The Connected Microphone](/images/projects/security_system_edison/hardware/led_low.jpg){:.fritzing}
 
 # Write Light Code
 
@@ -501,7 +520,7 @@ Your hardware setup should look like this when you're done:
 
 We'll want to setup the directory where our driver will be located. Create a `/devices` directory, and within it create another folder called `led`. This folder will contain one file - `index.js`.
 
-Use your PC's command line and run the following terminal commands to create the files and folder that you need:
+Use the PC's command line and run the following terminal commands to create the files and folder that you need:
 
 ```bash
 mkdir devices/led
@@ -636,7 +655,7 @@ module.exports = function(server) {
 1. Deploy the new code using the `edison-cli`
 
    ```bash
-   edison-cli -H 10.0.1.15 deploy
+   edison-cli -H {ip address} deploy
    ```
 
 1. Make a noise near or gently tap on the microphone.

@@ -1,6 +1,6 @@
 ---
 layout: project
-title: Home Security
+title: Home Security with Beaglebone
 author: Matt Dobson
 difficulty: experienced
 duration: 1-3 hours
@@ -9,7 +9,7 @@ description: >
 repo: https://github.com/zettajs/zetta-home-security/
 cover: /images/projects/security_system/hardware/microphone_4.jpg
 tags: 
-- BeableBone Black
+- BeagleBone Black
 - Home Security
 - Zetta Basics
 ---
