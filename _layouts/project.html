@@ -51,11 +51,11 @@
         {% if author %}
         
           <section class="author_credit">
-            <h1 id="about-the-author">About The Author</h1>
+            <h1 id="about-the-author">Author</h1>
             <img src="{{author.photo}}" class="shadow-1">
             <h3>{{author.name}}</h3>
             {% if author.bio %}<p>{{ author.bio }}</p>{% endif %}
-            <p>Get in touch with {{author.name | split: " " | first}} and other contributors on <a href="https://groups.google.com/forum/#!forum/zetta-discuss">Zetta Discuss</a>.</p>
+            <p>Connect with {{author.name | split: " " | first}} and other Zettanauts. Join the <a href="/community/#discussion">Zetta community discussion</a>.</p>
           </section>
         {% endif %}
         

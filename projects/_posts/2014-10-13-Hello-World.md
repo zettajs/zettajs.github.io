@@ -15,12 +15,14 @@ cover: /images/projects/hello_world/hello-world.png
 1. [Blink the LED](#step-2-blink-the-led)
 1. [Link to the Cloud](#step-3-link-to-the-cloud)
 1. [Sense Light with Photocell](#step-4-sense-light-with-photocell)
-1. [Run the Dusk to Dawn Light App](#step-5-run-the-dusk-to-dawn-light-app)
+1. [Run Dusk to Dawn App](#step-5-run-dusk-to-dawn-app)
 {:.steps}
 
 # Goal
 
-The goal for the Hello World project is to create a mock dusk-to-dawn lighting system by assembling a mock LED and a mock photocell into a Zetta app running on a PC - no additional hardware required. We will connect the app to the Internet by linking the PC with a second Zetta server running in the cloud.
+The goal for the Hello World project is to create a mock dusk-to-dawn lighting system by assembling a mock LED and a mock photocell into a Zetta app running on a PC - no additional hardware required. We will connect the app to the Internet by linking the PC with a second Zetta server running in the cloud. 
+
+> **info**{:.icon} After you've followed the steps below, please read [How Zetta Works](/reference/2014/11/20/How-Zetta-Works.html) to gain a deeper understanding of Zetta.
 
 ![Screenshot of Zetta browser with dusk to dawn lighting system](/images/projects/hello_world/browser_complete_project.png){:.zoom}
 
@@ -177,7 +179,10 @@ This project requires a PC with an Internet connection and [Node.js](http://node
    ```
    {:.language-bash-noln}
 
-## Blink the LED from the API
+## Blink the LED from the PC
+
+1. Open the Zetta Browser and point it at the **PC server**:
+   [http://browser.zettajs.io/#/overview?url=http://127.0.0.1:1337](http://browser.zettajs.io/#/overview?url=http://127.0.0.1:1337)
 
 1. Ensure the **LED** is listed.
 
@@ -186,8 +191,6 @@ This project requires a PC with an Internet connection and [Node.js](http://node
 1. Click the `turn-on` button and ensure the LED state changed from `off` to `on`.
 
 1. Click the `turn-off` button and ensure the LED state changed from `on` to `off`.
-
-For the following steps we'll access the API via the [Zetta Browser](/guides/2014/10/07/Zetta-Browser.html).
 
 # Step #3: Link to the Cloud
 
@@ -316,27 +319,9 @@ At this point, the LED API is only available locally. Let's make the LED API ava
 
 1. Ensure the values and waveform for the `:intensity` characteristic in the Zetta Browser change over time and stream like a sine wave.
 
-### Command Line
+# Step #5: Run Dusk to Dawn App
 
-Zetta uses WebSockets to stream device data. Use a command line tool to subscribe to the WebSockets from the cloud.
-
-1. Install `wscat`
-
-   ```bash
-   npm install -g ws
-   ```
-
-1. Use the Zetta Browser to determine the URL of the `photocell intensity` WebSocket by clicking on the `photocell` link and searching for `ws:`. The first WebSocket URL you find should be for monitoring the intensity.
-
-1. Connect to the WebSockets stream with the URL. The URL will use your `FirstName`, `LastName` and a device `id`.
-
-   ```bash
-   wscat --connect ws://hello-zetta.herokuapp.com/servers/{FirstName%20LastName}/events?topic=photocell%2F{id}%2Fintensity
-   ```
-
-# Step #5: Run the Dusk to Dawn Light App
-
-## Write the Dusk to Dawn Light App Code
+## Write the Dusk to Dawn App Code
 
 1. Create an `apps` directory in the `zetta-hello-world` directory.
 
@@ -407,7 +392,7 @@ Zetta uses WebSockets to stream device data. Use a command line tool to subscrib
    });
    ```
 
-## Run the Dusk to Dawn Light App
+## Run Dusk to Dawn App
 
 1. Stop and restart the Zetta server by pressing `CTRL-C` then run `node server.js`.
 

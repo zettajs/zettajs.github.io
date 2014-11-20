@@ -17,7 +17,7 @@ description: >
         {% assign foundImage = 0 %}
         
         {% if project.cover %}
-          <img src="{{ project.cover }}" />
+          <a href="{{project.url}}"><img src="{{ project.cover }}" /></a>
           {% assign foundImage = 1 %}
         {% endif %}
         
@@ -27,7 +27,7 @@ description: >
 
               {% if foundImage == 0 %}
                   {% assign html = image | split:"/>" | first %}
-                  <img {{ html }} />
+                  <a href="{{project.url}}"><img {{ html }} /></a>
                   {% assign foundImage = 1 %}
               {% endif %}
           {% endif %}
