@@ -540,6 +540,82 @@ At this point, the LED API is only available locally. Let's make the LED API ava
 
 1. Ensure the values and waveform for the `:volume` characteristic in the Zetta Browser are streaming over time and change as you make noise.
 
+# Step #6 Detect Motion
+
+
+## Assemble the LightBlue Bean Harware
+
+1. Ensure sure the LightBlue Bean has its battery plugged in.
+
+![Bean Hookup Diagram](/images/projects/security_system_edison/hookup_diagram_step_3.png){:.fritzing}
+
+## Write the Motion Detector Software
+
+1. From the PC's command line, install the Zetta device driver for the Bean.
+
+   ```bash
+   npm install zetta-bean-driver --save
+   ```
+
+1. In the `server.js` file, write Zetta code to `require` and `use` the `Bean` driver.
+
+   Add **line 5**:
+
+   ```javascript
+   var Bean = require('zetta-bean-driver');
+   ```
+
+   Add **line 12**:
+
+   ```javascript
+   .use(Bean, 'BeanName')
+   ```
+
+   > **info**{:.icon} `BeanName` is the name of the Bean. A common pattern is to name Beans sequentially like Bean1, Bean2 and so on. Naming Beans is helpful when there are multiple Beans on the same local network.
+
+1. Ensure `server.js` looks like the code below.
+
+   ```js
+   var zetta = require('zetta');
+   var LED = require('zetta-led-edison-driver');
+   var Buzzer = require('zetta-buzzer-edison-driver');
+   var Microphone = require('zetta-microphone-edison-driver');
+   var Bean = require('zetta-bean-driver');
+
+   zetta()
+     .name('FirstName-LastName')
+     .use(LED, 13)
+     .use(Buzzer, 3)
+     .use(Microphone, 0)
+     .use(Bean, 'Bean35')
+     .link('http://hello-zetta.herokuapp.com/')
+     .listen(1337, function(){
+        console.log('Zetta is running at http://127.0.0.1:1337');
+   });
+   ```
+
+1. Deploy the new code using the `edison-cli`
+
+   ```bash
+   edison-cli -H {ip address} deploy
+   ```
+
+1. Ensure the `ble-bean` is discovered by conferring with the console output.
+
+   ```bash
+   {date} [scout] Device (ble-bean) {id} was discovered
+   ```
+
+## Detect Motion
+
+1. Open the Zetta Browser and ensure the **BeanName** device is listed.
+
+1. In the Zetta Browser, click on the **BeanName** link to open a detailed view of the device.
+
+1. Pick up the Bean and move it around in three dimensions.
+
+1. Ensure the values and waveforms for the `:accelerationX`, `:accelerationY` and `:accelerationZ` characteristics in the Zetta Browser are streaming over time and change as you move the Bean.
+
 # Step #7: Secure the Area
 
 ## Create Security App File and Folder
@@ -621,41 +697,6 @@ module.exports = function(server) {
 1. Ensure that the alarm beeps when you make a loud noise.
 
 1. Open the Zetta Browser to observe state changes:
-
-# Step #6 Detect Motion
-
-1. Make sure the Bean has its battery plugged in.
-
-## Add the Bean to our Zetta code
-
-![Bean Hookup Diagram](/images/projects/security_system_edison/hookup_diagram_step_3.png){:.fritzing}
-
-1. Ensure `server.js` looks like the code below.
-
-```javascript
-var zetta = require('zetta');
-var Buzzer = require('zetta-buzzer-edison-driver');
-var Microphone = require('zetta-microphone-edison-driver');
-var Bean = require('zetta-bean-driver');
-
-var app = require('./apps/app');
-
-zetta()
-  .use(Buzzer, 3)
-  .use(Microphone, 0)
-  .use(Bean, 'Bean1') // Note Bean1 is the beans name.
-  .use(app)
-  .link('http://hello-zetta.herokuapp.com/')
-  .listen(1337, function(){
-    console.log('Zetta is running at http://127.0.0.1:1337');
-  });
-```
-
-2. Deploy the new code using the `edison-cli`
-
-   ```bash
-   edison-cli -H {ip address} deploy
-   ```
 
 # Step #7: Blink the LED
 
