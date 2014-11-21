@@ -15,12 +15,12 @@ tags:
 # Directions
 
 1. [Setup the Edison and PC](#step-1-setup-the-edison-and-pc)
+1. [Blink The LED](#step-2-blink-the-led).
 1. [Buzz the Buzzer](#step-2-buzz-the-piezo-buzzer)
 1. [Soundcheck the Microphone](#step-3-soundcheck-the-microphone)
 1. [Secure the Area](#step-4-secure-the-area)
 1. [Link to the Internet](#step-5-link-to-the-internet)
 1. [Add a Remote Device](#step-6-add-a-remote-device)
-1. [Blink The LED](#step-7-blink-the-led)
 {:.steps}
 
 # Goal
@@ -69,26 +69,42 @@ Follow the guide on [How to Connect an Edison to the Internet via a PC](https://
 ## Clone the Starter Code to the PC
 
 
-1. From the PC terminal, clone [the Zetta starter project](https://github.com/zettajs/zetta-starter-project) to a new `home-security` directory.
+1. From the PC terminal, clone [the Zetta starter project](https://github.com/zettajs/zetta-starter-project) to a new `zetta-home-security` directory.
 
    ```bash
-   git clone https://github.com/zettajs/zetta-starter-project home-security
+   git clone https://github.com/zettajs/zetta-starter-project zetta-home-security
    ```
 
    > **help**{:.icon} Problem with `git clone`? Try downloading the zip file from [https://github.com/zettajs/zetta-starter-project](https://github.com/zettajs/zetta-starter-project)
 
 ## Install Zetta
 
-1. From the PC terminal, `cd` to `home-security`.
+1. From the PC terminal, `cd` to `zetta-home-security`.
 
    ```bash
-   cd home-security
+   cd zetta-home-security
    ```
 
 1. From the PC terminal, install Zetta with [NPM](/reference/2014/10/12/npm.html).
 
    ```bash
    npm install
+   ```
+   
+## Write Zetta Server Code
+
+1. Write code in `server.js` to `require` Zetta, give the server a `name` and `listen` on server port `1337`.
+
+   > **info**{:.icon} Choose a name for the server. Consider using your first and last name.
+
+   ```javascript
+   var zetta = require('zetta');
+
+   zetta()
+     .name('FirstName-LastName')
+     .listen(1337, function(){
+        console.log('Zetta is running at http://127.0.0.1:1337');
+   });
    ```
 
 ## Connect PC to Intel Edison
@@ -100,7 +116,192 @@ Follow the guide on [How to Connect an Edison to the Internet via a PC](https://
     PC **USB A-Female**   |**USB**         |Edison **USB Micro J16**
     {:.wiring}
 
-# Step #2: Buzz the Piezo Buzzer
+> **clock**{:.icon} Upon connecting the Edison to the PC, a few minutes will elapse before the Edison is visible on the local WiFi network.
+
+## Run the Zetta Server
+
+1. Run the server on the PC.
+
+   ```bash
+   node server.js
+   ```
+   Notice the console output indicating the server is running.
+
+   ```bash
+   Nov-20-2014 22:56:39 [server] Server (FirstName-LastName) FirstName-LastName listening on http://127.0.0.1:1337
+   Zetta is running at http://127.0.0.1:1337
+   ```
+
+   Upon ensuring the server will run on the PC, stop the PC server.
+
+1. Locate the Edison on the network.
+
+   ```bash
+   edison-cli list
+   ```
+
+1. Ensure the command line output looks like the results below.
+
+   ```bash
+   Edison Devices Found: 1
+   1 - {ip address}
+   ```
+   {:.language-bash-noln}
+
+   Remember the `{ip address}` to use in the commands that follow.
+
+1. Run the Zetta server on the Edison
+
+   ```bash
+   edison-cli -H {ip address} deploy
+   ```
+
+   Ensure the console begins with output like this:
+
+   ```bash
+   XDK - IoT App Dameon v0.0.13 - commands: run, list, debug, status
+
+   XDK Message Received: clean
+
+   |================================================================
+   |    Intel (R) IoT - NPM Rebuild - (may take several minutes)
+   |================================================================
+   ```
+
+   And ends with output like this:
+
+   ```bash
+   => Stopping App <=
+   Application restarted
+   Nov-21-2014 04:01:32 [server] Server (FirstName-LastName) FirstName-LastName listening on http://127.0.0.1:1337
+   Zetta is running at http://127.0.0.1:1337
+   ```
+
+## Call the Zetta API
+
+1. In the terminal, call Zetta's web API.
+
+   ```bash
+   curl http://{ip address}:1337
+   ```
+
+   Ensure the API response is similar to the response below.
+
+   ```json
+   {
+     "actions": [
+       {
+         "fields": [
+           {
+             "name": "server",
+             "type": "text"
+           },
+           {
+             "name": "ql",
+             "type": "text"
+           }
+         ],
+         "href": "http://10.1.10.53:1337/",
+         "method": "GET",
+         "name": "query-devices",
+         "type": "application/x-www-form-urlencoded"
+       }
+     ],
+     "class": [
+       "root"
+     ],
+     "links": [
+       {
+         "href": "http://10.1.10.53:1337/",
+         "rel": [
+           "self"
+         ]
+       },
+       {
+         "href": "http://10.1.10.53:1337/servers/FirstName-LastName",
+         "rel": [
+           "http://rels.zettajs.io/server"
+         ],
+         "title": "FirstName-LastName"
+       },
+       {
+         "href": "http://10.1.10.53:1337/peer-management",
+         "rel": [
+           "http://rels.zettajs.io/peer-management"
+         ]
+       }
+     ]
+   }
+   ```
+   {:.language-json-noln}
+
+   > **info**{:.icon} As we `use` devices in `server.js` they will appear in the web API. For the following steps we'll access the API via the [Zetta Browser](/guides/2014/10/18/Zetta-Browser.html).
+
+# Step #2: Blink the LED
+
+## Write the LED Code
+
+1. Ensure the working directory is `zetta-home-security`. Install the Zetta device driver for Edison LEDs.
+
+   ```bash
+   npm install zetta-led-edison-driver --save
+   ```
+
+1. In the `server.js` file, write code to `require` and `use` the Edison on-board `LED`: 13.
+
+   Add **line 2**:
+
+   ```javascript
+   var LED = require('zetta-led-edison-driver');
+   ```
+   Add **line 6**:
+
+   ```javascript
+   .use(LED, 13)
+   ```
+
+1. Ensure `server.js` looks like the code below.
+   
+   ```javascript
+   var zetta = require('zetta');
+   var LED = require('zetta-led-edison-driver');
+
+   zetta()
+    .name('FirstName-LastName')
+    .use(LED, 13)
+    .listen(1337, function(){
+      console.log('Zetta is running at http://127.0.0.1:1337');
+   });
+   ```
+
+1. Stop and restart the Zetta server.
+
+   ```bash
+   edison-cli -H {ip address} deploy
+   ```
+
+1. When Zetta discovers the LED, it will log a message about the device to the console.
+
+   ```bash
+   {timestamp} [scout] Device (led) {id} was discovered
+   ```
+   {:.language-bash-noln}
+
+## Blink the LEDs from the Edison
+
+1. Open the Zetta Browser. Point it to the **Edison server**.
+
+   [http://browser.zettajs.io](http://browser.zettajs.io)
+
+1. Ensure the **LED** devices are listed.
+
+   ![Zetta Browser with LEDs](/images/projects/security_system/screens/browser-leds.png){:.zoom}
+
+1. Click the `turn-on` button for the various LEDs.
+
+1. Ensure the LEDs on the Edison turned on and that the device state changed in the Zetta Browser visualization.
+
+# Step #3: Buzz the Piezo Buzzer
 
 ## Assemble the Buzzer Hardware
 
@@ -149,14 +350,14 @@ After assembling the buzzer hardware, the project should look similar to the ima
    zetta()
      .use(Buzzer, 3)
      .listen(1337, function(){
-       console.log('Zetta is running at http://localhost:1337');
+       console.log('Zetta is running at http://127.0.0.1:1337');
      });
    ```
 
    > **info**{:.icon} You can test that the code is written properly by running `node server.js` on the PC.
 
 
-4. Initialize the `package.json` file for your project. NPM will use the newly created `server.js` file as the `main` file.
+4. Initialize the `package.json` file for the project. NPM will use the newly created `server.js` file as the `main` file.
 
    ```bash
    npm init
@@ -165,22 +366,6 @@ After assembling the buzzer hardware, the project should look similar to the ima
    > **info**{:.icon} Accept all defaults, by pressing `enter` at each command line prompt.
 
 ## Deploy Buzzer Software to the Edison
-
-1. Locate the Edison on the network.
-
-   ```bash
-   edison-cli list
-   ```
-
-1. Ensure the command line output looks like the results below.
-
-   ```bash
-   Edison Devices Found: 1
-   1 - {ip address}
-   ```
-   {:.language-bash-noln}
-
-   We use the `{ip address}` based on the output.
 
 2. Deploy and run the Zetta server and buzzer code.
 
@@ -219,7 +404,7 @@ After assembling the buzzer hardware, the project should look similar to the ima
 
    ```bash
    {TIMESTAMP} [scout] Device (buzzer) {GUID} was provisioned from registry
-   Zetta is running at http://localhost:1337
+   Zetta is running at http://127.0.0.1:1337
    ```
 
 ## Buzz the Buzzer
@@ -304,7 +489,7 @@ After assembling the microphone hardware, the project should look similar to the
      .use(Buzzer, 3)
      .use(Microphone, 0)
      .listen(1337, function(){
-       console.log('Zetta is running at http://localhost:1337');
+       console.log('Zetta is running at http://127.0.0.1:1337');
      });
    ```
 
@@ -317,7 +502,7 @@ After assembling the microphone hardware, the project should look similar to the
 1. When Zetta discovers the microphone, Zetta will log a message about the device to the output.
 
    ```bash
-   Zetta is running at http://localhost:1337
+   Zetta is running at http://127.0.0.1:1337
    {TIMESTAMP} [scout] Device (buzzer) {GUID} was provisioned from registry.
    {TIMESTAMP} [scout] Device (microphone) {GUID} was discovered
    ```
@@ -400,7 +585,7 @@ module.exports = function(server) {
    .use(Microphone, 0)
    .use(app)
    .listen(1337, function(){
-     console.log('Zetta is running at http://localhost:1337');
+     console.log('Zetta is running at http://127.0.0.1:1337');
    });
    ```
 
@@ -437,7 +622,7 @@ zetta()
   .use(app)
   .link('http://hello-zetta.herokuapp.com/')
   .listen(1337, function(){
-    console.log('Zetta is running at http://localhost:1337');
+    console.log('Zetta is running at http://127.0.0.1:1337');
   });
 ```
 
@@ -480,7 +665,7 @@ zetta()
   .use(app)
   .link('http://hello-zetta.herokuapp.com/')
   .listen(1337, function(){
-    console.log('Zetta is running at http://localhost:1337');
+    console.log('Zetta is running at http://127.0.0.1:1337');
   });
 ```
 
@@ -618,7 +803,7 @@ zetta()
   .use(LED, 13)
   .use(app)
   .listen(1337, function(){
-    console.log('Zetta is running at http://localhost:1337');
+    console.log('Zetta is running at http://127.0.0.1:1337');
   });
 
 ```
