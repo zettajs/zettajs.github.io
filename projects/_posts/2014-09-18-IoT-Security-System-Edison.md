@@ -19,7 +19,7 @@ tags:
 1. [Link to the Internet](#step-3-link-to-the-internet)
 1. [Buzz the Buzzer](#step-4-buzz-the-buzzer)
 1. [Soundcheck the Microphone](#step-5-soundcheck-the-microphone)
-1. [Detect Motion](#step-6-detect-motion)
+1. [Detect Acceleration](#step-6-detect-acceleration)
 1. [Secure the Area](#step-7-secure-the-area)
 {:.steps}
 
@@ -540,7 +540,7 @@ At this point, the LED API is only available locally. Let's make the LED API ava
 
 1. Ensure the values and waveform for the `:volume` characteristic in the Zetta Browser are streaming over time and change as you make noise.
 
-# Step #6 Detect Motion
+# Step #6 Detect Acceleration
 
 
 ## Assemble the LightBlue Bean Hardware
@@ -549,7 +549,7 @@ At this point, the LED API is only available locally. Let's make the LED API ava
 
 ![Bean Hookup Diagram](/images/projects/security_system_edison/hookup_diagram_step_3.png){:.fritzing}
 
-## Write the Motion Detector Software
+## Write the Acceleration Detector Software
 
 1. From the PC's command line, install the Zetta device driver for the Bean.
 
@@ -606,35 +606,35 @@ At this point, the LED API is only available locally. Let's make the LED API ava
    {date} [scout] Device (ble-bean) {id} was discovered
    ```
 
-## Detect Motion
+## Detect Acceleration
 
 1. Open the Zetta Browser and ensure the **BeanName** device is listed.
 
 1. In the Zetta Browser, click on the **BeanName** link to open a detailed view of the device.
 
-1. Pick up the Bean and move it around in three dimensions.
+1. Pick up the Bean and rotate it around its three axes.
 
 1. Ensure the values and waveforms for the `:accelerationX`, `:accelerationY` and `:accelerationZ` characteristics in the Zetta Browser are streaming over time and change as you move the Bean.
 
 # Step #7: Secure the Area
 
-## Write Motion Alarm Code
+## Write Acceleration Alarm Code
 
-1. Create an `apps` directory and a `motion_alarm` file.
+1. Create an `apps` directory and an `acceleration_alarm` file.
 
    ```bash
-   touch apps/motion_alarm.js
+   touch apps/acceleration_alarm.js
    ```
-1. Write the app logic for detecting motion in `apps/motion_alarm.js`.
+1. Write the app logic for detecting acceleration in `apps/acceleration_alarm.js`.
 
    ```javascript
    module.exports = function(server) {
      var ledQuery = server.where({ type: 'led' });
      var buzzerQuery = server.where({ type: 'buzzer' });
-     var motionQuery = server.where({ type: 'ble-bean' });
+     var accelerationQuery = server.where({ type: 'ble-bean' });
 
-     server.observe([ledQuery, buzzerQuery, motionQuery], function(led, buzzer, motion){
-       motion.streams.accelerationZ.on('data', function(msg){
+     server.observe([ledQuery, buzzerQuery, accelerationQuery], function(led, buzzer, acceleration){
+       acceleration.streams.accelerationZ.on('data', function(msg){
          if (msg.data < -0.5) {
            buzzer.call('turn-on-pulse', function(){});
            led.call('turn-on-pulse', function(){});
@@ -678,7 +678,7 @@ At this point, the LED API is only available locally. Let's make the LED API ava
    }
    ```
 
-## Use Sound and Motion Alarm Apps in the Zetta Server
+## Use Sound and Acceleration Alarm Apps in the Zetta Server
 
 1. Edit the `server.js` file. Add Zetta code to `require` and `use` the app.
 
@@ -686,7 +686,7 @@ At this point, the LED API is only available locally. Let's make the LED API ava
 
    ```javascript
    var soundAlarm = require('./apps/sound_alarm');
-   var motionAlarm = require('./apps/motion_alarm');
+   var accelerationAlarm = require('./apps/acceleration_alarm');
    ```
    {:.language-js-noln}
 
@@ -694,7 +694,7 @@ At this point, the LED API is only available locally. Let's make the LED API ava
 
    ```javascript
    .use(soundAlarm)
-   .use(motionAlarm)
+   .use(accelerationAlarm)
    ```
    {:.language-js-noln}
 
@@ -707,7 +707,7 @@ At this point, the LED API is only available locally. Let's make the LED API ava
    var Microphone = require('zetta-microphone-edison-driver');
    var Bean = require('zetta-bean-driver');
    var soundAlarm = require('./apps/sound_alarm');
-   var motionAlarm = require('./apps/motion_alarm');
+   var accelerationAlarm = require('./apps/acceleration_alarm');
 
    zetta()
      .name('FirstName-LastName')
@@ -716,7 +716,7 @@ At this point, the LED API is only available locally. Let's make the LED API ava
      .use(Microphone, 0)
      .use(Bean, 'Bean35')
      .use(soundAlarm)
-     .use(motionAlarm)
+     .use(accelerationAlarm)
      .link('http://hello-zetta.herokuapp.com/')
      .listen(1337, function(){
         console.log('Zetta is running at http://127.0.0.1:1337');
