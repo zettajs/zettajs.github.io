@@ -543,7 +543,7 @@ At this point, the LED API is only available locally. Let's make the LED API ava
 # Step #6 Detect Motion
 
 
-## Assemble the LightBlue Bean Harware
+## Assemble the LightBlue Bean Hardware
 
 1. Ensure sure the LightBlue Bean has its battery plugged in.
 
@@ -618,69 +618,108 @@ At this point, the LED API is only available locally. Let's make the LED API ava
 
 # Step #7: Secure the Area
 
-## Create Security App File and Folder
+## Write Motion Alarm Code
 
-1. From the PC's command line, create the app file and directory.
+1. Create an `apps` directory and a `motion_alarm` file.
 
    ```bash
-   touch apps/app.js
+   touch apps/motion_alarm.js
    ```
-   {:.language-bash-noln}
-
-## Write  Security App Logic
-
-1. Write the app logic in `apps/app.js`.
-
-```javascript
-module.exports = function(server) {
-  var buzzerQuery = server.where({ type: 'buzzer' });
-  var microphoneQuery = server.where({ type: 'microphone' });
-
-  server.observe([buzzerQuery, microphoneQuery], function(buzzer, microphone){
-    microphone.streams.volume.on('data', function(msg){
-      if (msg.data > 600) {
-        buzzer.call('turn-on-pulse', function(){});
-
-        setTimeout(function() {
-          buzzer.call('turn-off', function(){});
-        }, 3000);
-      }
-    });
-  });
-}
-```
-
-## Use Security App in the Zetta Server
-
-1. Edit the `server.js` file. Add Zetta code to `require` and `use` the `app` from the `apps` folder.
-
-   Add **line 5**.
+1. Write the app logic for detecting motion in `apps/motion_alarm.js`.
 
    ```javascript
-   var app = require('./apps/app');
+   module.exports = function(server) {
+     var ledQuery = server.where({ type: 'led' });
+     var buzzerQuery = server.where({ type: 'buzzer' });
+     var motionQuery = server.where({ type: 'ble-bean' });
+
+     server.observe([ledQuery, buzzerQuery, motionQuery], function(led, buzzer, motion){
+       motion.streams.accelerationZ.on('data', function(msg){
+         if (msg.data < -0.5) {
+           buzzer.call('turn-on-pulse', function(){});
+           led.call('turn-on-pulse', function(){});
+           setTimeout(function() {
+             buzzer.call('turn-off', function(){});
+             led.call('turn-off', function(){});
+           }, 3000);
+         }
+       });
+     });
+   }
    ```
 
-   Add **line 10**.
+## Write Sound Alarm Code
+
+1. Create a `sound_alarm` file.
+
+   ```bash
+   touch apps/sound_alarm.js
+   ```
+1. Write the app logic for detecting sound in `apps/sound_alarm.js`.
 
    ```javascript
-   .use(app)
+   module.exports = function(server) {
+     var ledQuery = server.where({ type: 'led' });
+     var buzzerQuery = server.where({ type: 'buzzer' });
+     var microphoneQuery = server.where({ type: 'microphone' });
+
+     server.observe([ledQuery, buzzerQuery, microphoneQuery], function(led, buzzer, microphone){
+       microphone.streams.volume.on('data', function(msg){
+         if (msg.data > 600) {
+           buzzer.call('turn-on-pulse', function(){});
+           led.call('turn-on-pulse', function(){});
+           setTimeout(function() {
+             buzzer.call('turn-off', function(){});
+             led.call('turn-off', function(){});
+           }, 3000);
+         }
+       });
+     });
+   }
    ```
+
+## Use Sound and Motion Alarm Apps in the Zetta Server
+
+1. Edit the `server.js` file. Add Zetta code to `require` and `use` the app.
+
+   Add **lines 6 and 7**.
+
+   ```javascript
+   var soundAlarm = require('./apps/sound_alarm');
+   var motionAlarm = require('./apps/motion_alarm');
+   ```
+   {:.language-js-noln}
+
+   Add **line 15 and 16**.
+
+   ```javascript
+   .use(soundAlarm)
+   .use(motionAlarm)
+   ```
+   {:.language-js-noln}
 
 1. Ensure `server.js` looks like the code below.
 
-   ```javascript
+   ```js
    var zetta = require('zetta');
+   var LED = require('zetta-led-edison-driver');
    var Buzzer = require('zetta-buzzer-edison-driver');
    var Microphone = require('zetta-microphone-edison-driver');
-
-   var app = require('./apps/app');
+   var Bean = require('zetta-bean-driver');
+   var soundAlarm = require('./apps/sound_alarm');
+   var motionAlarm = require('./apps/motion_alarm');
 
    zetta()
-   .use(Buzzer, 3)
-   .use(Microphone, 0)
-   .use(app)
-   .listen(1337, function(){
-     console.log('Zetta is running at http://127.0.0.1:1337');
+     .name('FirstName-LastName')
+     .use(LED, 13)
+     .use(Buzzer, 3)
+     .use(Microphone, 0)
+     .use(Bean, 'Bean35')
+     .use(soundAlarm)
+     .use(motionAlarm)
+     .link('http://hello-zetta.herokuapp.com/')
+     .listen(1337, function(){
+        console.log('Zetta is running at http://127.0.0.1:1337');
    });
    ```
 
@@ -694,182 +733,10 @@ module.exports = function(server) {
 
 1. Make a noise near or gently tap on the microphone.
 
-1. Ensure that the alarm beeps when you make a loud noise.
+1. Ensure that the alarm beeps and the LED flashes open making the noise.
 
-1. Open the Zetta Browser to observe state changes:
+1. Turn the Bean upside down for a moment and then flip it right side up.
 
-# Step #7: Blink the LED
+1. Ensure that the alarm beeps and the LED flashes as you turn the Bean upside down.
 
-## Assemble Light Hardware
-
-![Microphone Hookup Diagram](/images/projects/security_system_edison/hookup_diagram_step_4.png){:.fritzing}
-
-1. Add the LED to the breadboard.
-  * *Annode* (long leg) on Breadboard **A26**
-  * *Cathode* (short leg) on Breadboard **A28**
-  * Place AUD on Breadboard **F20**
-2. Connect the wires in the following way:
-
-    From                 | Wire                 | To  
-    :----                |:-----:               |----:
-    Breadboard **I26**   |Orange                |Edison **D13**
-    Breadboard **C26**   |47&#8486; Resistor    |Breadboard **G26**
-    Breadboard **E28**   |Black                 |Breadboard's negative column
-    {:.wiring}
-
-the hardware setup should look like this when you're done:
-
-![The Connected Microphone](/images/projects/security_system_edison/hardware/led_birdseye.jpg){:.fritzing}
-![The Connected Microphone](/images/projects/security_system_edison/hardware/led_low.jpg){:.fritzing}
-
-# Write Light Code
-
-## Create Device File and Folder
-
-We'll want to setup the directory where our driver will be located. Create a `/devices` directory, and within it create another folder called `led`. This folder will contain one file - `index.js`.
-
-Use the PC's command line and run the following terminal commands to create the files and folder that you need:
-
-```bash
-mkdir devices/led
-```
-
-```bash
-touch devices/led/index.js
-```
-
-You should end up with a file structure that looks like so:
-
-<pre><code class="bash-noln">
-└── zetta-security-system
-    ├── apps
-    │   └── app.js
-    ├── devices
-    │   └── led
-    │       └── index.js
-    ├── package.json
-    └── server.js
-</code></pre>
-
-## Write the LED Driver Code
-
-1. Install `zetta-device` module, run:
-
-```bash
-npm install zetta-device --save
-```
-
-1. Install `mraa-js` module used to talk to the Edison's pins, run:
-
-```bash
-npm install mraa-js --save
-```
-
-1. Ensure `index.js` looks like the code below.
-
-```javascript
-var Device = require('zetta-device');
-var util = require('util');
-var mraa = require('mraa-js');
-
-var LED = module.exports = function(pin) {
-  Device.call(this);
-  this.pin = pin;
-  this._led = new mraa.Gpio(this.pin);
-};
-util.inherits(LED, Device);
-
-LED.prototype.init = function(config) {
-  config
-    .type('led')
-    .state('off')
-    .name('led ' + this.pin)
-    .when('off', { allow: ['turn-on'] })
-    .when('on', { allow: ['turn-off'] })
-    .map('turn-on', this.turnOn)
-    .map('turn-off', this.turnOff);
-
-  this._led.dir(mraa.DIR_OUT);
-};
-
-LED.prototype.turnOn = function(cb) {
-  this._led.write(1);
-  this.state = 'on';
-  cb();
-};
-
-LED.prototype.turnOff = function(cb) {
-  this._led.write(0);
-  this.state = 'off';
-  cb();
-};
-
-```
-
-## Run The Zetta Server
-
-1. Ensure `server.js` looks like the code below.
-
-```javascript
-var zetta = require('zetta');
-var Buzzer = require('zetta-buzzer-edison-driver');
-var Microphone = require('zetta-microphone-edison-driver');
-var Bean = require('zetta-bean-driver');
-var LED = require('./devices/led');
-
-var app = require('./apps/app');
-
-zetta()
-  .use(Buzzer, 3)
-  .use(Microphone, 0)
-  .use(Bean, 'Bean1')
-  .use(LED, 13)
-  .use(app)
-  .listen(1337, function(){
-    console.log('Zetta is running at http://127.0.0.1:1337');
-  });
-
-```
-
-
-## Adding to Our App
-
-1. Ensure `app.js` looks like the code below.
-
-```javascript
-module.exports = function(server) {
-  var buzzerQuery = server.where({ type: 'buzzer' });
-  var microphoneQuery = server.where({ type: 'microphone' });
-  var ledQuery = server.where({ type: 'led' });
-
-  server.observe([buzzerQuery, microphoneQuery, ledQuery], function(buzzer, microphone, led){
-    microphone.streams.volume.on('data', function(msg){
-      if (msg.data > 600) {
-        buzzer.call('turn-on-pulse', function(){});
-        led.call('turn-on', function(){});
-
-        setTimeout(function() {
-          buzzer.call('turn-off', function(){});
-        }, 3000);
-      }
-    });
-  });
-}
-
-```
-
-## Test Interaction
-
-1. Deploy the new code using the `edison-cli`
-
-   ```bash
-   edison-cli -H {ip address} deploy
-   ```
-
-1. Make a noise near or gently tap on the microphone.
-
-1. Ensure that the alarm sounds for approximately 3 seconds, and the LED turns on.
-
-1. Open the Zetta Browser to observe state changes:
-
-   [http://browser.zettajs.io/#/overview?url=http:%2F%2hello-zetta.herokuapp.com](http://browser.zettajs.io/#/overview?url=http:%2F%2Fhello-zetta.herokuapp.com)
+1. Observer state changes in the Zetta browser.
