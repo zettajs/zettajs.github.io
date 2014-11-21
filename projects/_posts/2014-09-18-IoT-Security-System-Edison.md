@@ -552,10 +552,17 @@ At this point, the LED API is only available locally. Let's make the LED API ava
 ## Write the Acceleration Detector Software
 
 1. From the PC's command line, install the Zetta device driver for the Bean.
+   * for WINDOWS:
 
-   ```bash
-   npm install zetta-bean-driver --save
-   ```
+     ```bash
+     npm install -f zetta-bean-driver --save
+     ```
+
+   * for LINUX & MAC:
+
+     ```bash
+     npm install zetta-bean-driver --save
+     ```
 
 1. In the `server.js` file, write Zetta code to `require` and `use` the `Bean` driver.
 
