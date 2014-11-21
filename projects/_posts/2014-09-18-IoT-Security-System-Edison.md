@@ -15,27 +15,23 @@ tags:
 # Directions
 
 1. [Setup the Edison and PC](#step-1-setup-the-edison-and-pc)
-1. [Blink The LED](#step-2-blink-the-led).
-1. [Buzz the Buzzer](#step-2-buzz-the-piezo-buzzer)
-1. [Soundcheck the Microphone](#step-3-soundcheck-the-microphone)
-1. [Secure the Area](#step-4-secure-the-area)
-1. [Link to the Internet](#step-5-link-to-the-internet)
-1. [Add a Remote Device](#step-6-add-a-remote-device)
+1. [Blink The LED](#step-2-blink-the-led)
+1. [Link to the Internet](#step-3-link-to-the-internet)
+1. [Buzz the Buzzer](#step-4-buzz-the-buzzer)
+1. [Soundcheck the Microphone](#step-5-soundcheck-the-microphone)
+1. [Detect Motion](#step-6-detect-motion)
+1. [Secure the Area](#step-7-secure-the-area)
 {:.steps}
 
 # Goal
 
 The goal for this project is to create a simple home security system by assembling a microphone, a piezo speaker and an LED into a Zetta app running on an Intel Edison. We will also use Bluetooth low energy (BLE) to communicate with a LightBlue Bean's on-board temperature and accelerometer sensors plus an additional LED. We will connect the app to the Internet by linking the Edison with a second Zetta server running in the cloud.
 
-![The Connected Microphone](/images/projects/security_system_edison/hardware/led_birdseye.jpg)
-
 ![Final Project](/images/projects/security_system_edison/hookup_diagram_step_4.png)
 
 > **downloadcloud**{:.icon} Download the [Fritzing](http://fritzing.org) diagram for the finished project: [home_security_system.fzz](/images/projects/security_system_edison/fritzing/home_security_system.fzz).
 
 # Parts
-
-![All Materials](/images/projects/security_system_edison/hardware/empty_low.jpg){:.zoom .full}
 
 <script src="https://www.sparkfun.com/wish_lists/98550.js"></script>
 
@@ -241,7 +237,7 @@ Follow the guide on [How to Connect an Edison to the Internet via a PC](https://
 
 ## Write the LED Code
 
-1. Ensure the working directory is `zetta-home-security`. Install the Zetta device driver for Edison LEDs.
+1. Ensure the working directory is `zetta-home-security`. Install the Zetta device driver for Edison LED.
 
    ```bash
    npm install zetta-led-edison-driver --save
@@ -287,21 +283,78 @@ Follow the guide on [How to Connect an Edison to the Internet via a PC](https://
    ```
    {:.language-bash-noln}
 
-## Blink the LEDs from the Edison
+## Blink the LED on the Edison
 
 1. Open the Zetta Browser. Point it to the **Edison server**.
 
    [http://browser.zettajs.io](http://browser.zettajs.io)
 
-1. Ensure the **LED** devices are listed.
+1. Ensure the **LED** device is listed.
 
-   ![Zetta Browser with LEDs](/images/projects/security_system/screens/browser-leds.png){:.zoom}
+1. Click the `turn-on` button for the LED.
 
-1. Click the `turn-on` button for the various LEDs.
+1. Ensure the LED on the Edison turned on and that the device state changed in the Zetta Browser visualization.
+
+# Step #3: Link to the Internet
+
+## Create a Link between Two Zetta Servers
+
+At this point, the LED API is only available locally. Let's make the LED API available on the Internet.
+
+1. Open the `server.js` file. Write code to `link` your Zetta server on the Edison to a Zetta server running in the cloud.
+
+   Add **line 7**:
+
+   ```javascript
+   .link('http://hello-zetta.herokuapp.com/')
+   ```
+   
+1. Ensure `server.js` looks like the code below.
+   
+   ```javascript
+   var zetta = require('zetta');
+   var LED = require('zetta-led-edison-driver');
+
+   zetta()
+     .name('FirstName-LastName')
+     .use(LED, 13)
+     .link('http://hello-zetta.herokuapp.com/')
+     .listen(1337, function(){
+       console.log('Zetta is running at http://{ip address}:1337');
+   });
+   ```
+
+1. Stop and restart the Zetta server.
+
+   ```bash
+   edison-cli -H {ip address} deploy
+   ```
+
+1. Ensure the peer connection to the cloud is established and the console log includes notifications that  the peer was established.
+
+   ```bash
+   {timestamp} [peer-client] WebSocket to peer established (ws://hello-zetta.herokuapp.com/peers/FirstName-LastName)
+   {timestamp} [peer-client] Peer connection established (ws://hello-zetta.herokuapp.com/peers/FirstName-LastName)
+   ```
+   {:.language-bash-noln}
+
+   > **info**{:.icon} By `link`ing your Zetta server on the Edison to a Zetta server running in the cloud, you can access the devices via a web API from anywhere in the world.
+
+## Blink the LEDs from the Cloud
+
+1. Open the Zetta Browser. Point it to the **cloud server**.
+   [http://browser.zettajs.io/#/overview?url=http:%2F%2Fhello-zetta.herokuapp.com](http://browser.zettajs.io/#/overview?url=http:%2F%2Fhello-zetta.herokuapp.com)
+
+1. Ensure the server and **LED** device are listed.
+
+1. Click the `turn-on` button for the LED.
 
 1. Ensure the LEDs on the Edison turned on and that the device state changed in the Zetta Browser visualization.
 
-# Step #3: Buzz the Piezo Buzzer
+   > **world**{:.icon} Now anyone in the world can control the LEDs on the Edison. Try it. Copy the cloud URL and send it to friends so they can control your LEDs from afar: [http://browser.zettajs.io/#/overview?url=http:%2F%2Fhello-zetta.herokuapp.com](http://browser.zettajs.io/#/overview?url=http:%2F%2Fhello-zetta.herokuapp.com).
+
+
+# Step #4: Buzz the Buzzer
 
 ## Assemble the Buzzer Hardware
 
@@ -311,8 +364,8 @@ Follow the guide on [How to Connect an Edison to the Internet via a PC](https://
 
     From              | To
     :----             |----:
-    Buzzer **-** pin  |Breadboard **A3**
     Buzzer **+** pin  |Breadboard **A6**
+    Buzzer **-** pin  |Breadboard **A3**
     {:.wiring}
 
     > **help**{:.icon} New to solderless breadboards? Read the [How to Use a Breadboard](/guides/2014/10/07/Breadboard.html) guide.
@@ -326,11 +379,6 @@ Follow the guide on [How to Connect an Edison to the Internet via a PC](https://
     Breadboard **-**      |**Black**       |Edison **GND**
     {:.wiring}
 
-After assembling the buzzer hardware, the project should look similar to the images below.
-
-![The Connected Piezo Buzzer](/images/projects/security_system_edison/hardware/piezo_birdseye.jpg){:.zoom}
-![The Connected Piezo Buzzer](/images/projects/security_system_edison/hardware/piezo_low.jpg){:.zoom}
-
 ## Write the Buzzer Software
 
 1. From the PC's command line, install the Zetta device driver for the buzzer.
@@ -339,79 +387,52 @@ After assembling the buzzer hardware, the project should look similar to the ima
    npm install zetta-buzzer-edison-driver --save
    ```
 
-2. Create a new file called `server.js` in the project directory.
+3. In the `server.js` file, add code to `require` and `use` the `Buzzer` driver on Edison pin `3`.
 
-3. In the `server.js` file, write Zetta code to `require` and `use` the `Buzzer` driver on Edison pin `3` and `listen` on server port `1337`.
+   Add **line 3**:
+   
+   ```js
+   var Buzzer = require('zetta-buzzer-edison-driver');
+   ```
 
-   ```javascript
+   Add **line 7**:
+   
+   ```js
+   .use(Buzzer, 3)
+   ```
+
+1. Ensure `server.js` looks like the code below.
+
+   ```js
    var zetta = require('zetta');
+   var LED = require('zetta-led-edison-driver');
    var Buzzer = require('zetta-buzzer-edison-driver');
 
    zetta()
+     .name('FirstName-LastName')
+     .use(LED, 13)
      .use(Buzzer, 3)
+     .link('http://hello-zetta.herokuapp.com/')
      .listen(1337, function(){
-       console.log('Zetta is running at http://127.0.0.1:1337');
-     });
-   ```
+        console.log('Zetta is running at http://127.0.0.1:1337');
+   });
+   ````
 
-   > **info**{:.icon} You can test that the code is written properly by running `node server.js` on the PC.
-
-
-4. Initialize the `package.json` file for the project. NPM will use the newly created `server.js` file as the `main` file.
-
-   ```bash
-   npm init
-   ```
-
-   > **info**{:.icon} Accept all defaults, by pressing `enter` at each command line prompt.
-
-## Deploy Buzzer Software to the Edison
-
-2. Deploy and run the Zetta server and buzzer code.
+1. Deploy and run the Zetta server and buzzer code.
 
    ```bash
    edison-cli -H {ip address} deploy
    ```
 
-1. Ensure the build output looks like the output below.
-
-   ```bash
-   XDK - IoT App Daemon v0.0.13 - commands: run, list, debug, status
-
-   XDK Message Received: clean
-
-   |================================================================
-   |    Intel (R) IoT - NPM Rebuild - (may take several minutes)
-   |================================================================
-
-   ...
-
-   |================================================================
-   |    NPM REBUILD COMPLETE![ 0 ]   [ 0 ]
-   |================================================================
-
-   XDK Message Received: run
-   => Stopping App <=
-   Application restarted
-   ```
-   {:.language-bash-noln}
-  
-   > **clock**{:.icon} Running `deploy` the first time will take a few minutes to build the npm modules that require native code.
-
-   > **info**{:.icon} The code that was deployed to the Edison resides at `/node_app_slot`.
-
 1. Ensure that a message about the buzzer device is displayed in the console and looks like the output below.
 
    ```bash
-   {TIMESTAMP} [scout] Device (buzzer) {GUID} was provisioned from registry
-   Zetta is running at http://127.0.0.1:1337
+   {TIMESTAMP} [scout] Device (buzzer) {id} was discovered
    ```
 
 ## Buzz the Buzzer
 
-1. Open the Zetta Browser: [http://browser.zettajs.io](http://browser.zettajs.io)
-
-  Enter the address to the Edison `http://{ip address}:1337` in the box.
+1. Open the Zetta Browser [http://browser.zettajs.io](http://browser.zettajs.io). Point it to the Edison `http://{ip address}:1337`.
 
 1. Ensure the **Buzzer** device is listed.
 ![Zetta Browser with Piezo Attached](/images/projects/security_system_edison/screens/browser-piezo.png){:.zoom}
@@ -422,7 +443,7 @@ After assembling the buzzer hardware, the project should look similar to the ima
 
    > **help**{:.icon} Didn't hear a beep? Double check the wiring and make sure there were no errors reported.
 
-# Step #3: Soundcheck the Microphone
+# Step #5: Soundcheck the Microphone
 
 ## Assemble Microphone Hardware
 
@@ -452,12 +473,8 @@ After assembling the buzzer hardware, the project should look similar to the ima
 
    > **help**{:.icon} Don't know how to read resistor values? Read the [How to Read Resistor Values](/guides/2014/10/13/2014.html) guide.
 
-After assembling the microphone hardware, the project should look similar to the images below.
 
-![The Connected Microphone](/images/projects/security_system_edison/hardware/microphone_birdseye.jpg){:.fritzing}
-![The Connected Microphone](/images/projects/security_system_edison/hardware/microphone_low.jpg){:.fritzing}
-
-# Write Microphone Software
+## Write Microphone Software
 
 1. From the PC's command line, install the Zetta device driver for the microphone.
 
@@ -467,12 +484,12 @@ After assembling the microphone hardware, the project should look similar to the
 
 1. In the `server.js` file, write Zetta code to `require` and `use` the `Microphone` driver on Edison's analog pin `0`.
 
-   Add **line 3**:
+   Add **line 4**:
 
    ```javascript
    var Microphone = require('zetta-microphone-edison-driver');
    ```
-   Add **line 7**:
+   Add **line 10**:
 
    ```javascript
    .use(Microphone, 0)
@@ -480,17 +497,21 @@ After assembling the microphone hardware, the project should look similar to the
 
 1. Ensure `server.js` looks like the code below.
 
-   ```javascript
+   ```js
    var zetta = require('zetta');
+   var LED = require('zetta-led-edison-driver');
    var Buzzer = require('zetta-buzzer-edison-driver');
    var Microphone = require('zetta-microphone-edison-driver');
 
    zetta()
+     .name('FirstName-LastName')
+     .use(LED, 13)
      .use(Buzzer, 3)
      .use(Microphone, 0)
+     .link('http://hello-zetta.herokuapp.com/')
      .listen(1337, function(){
-       console.log('Zetta is running at http://127.0.0.1:1337');
-     });
+        console.log('Zetta is running at http://127.0.0.1:1337');
+   });
    ```
 
 1. Deploy the new code using the `edison-cli`
@@ -502,9 +523,7 @@ After assembling the microphone hardware, the project should look similar to the
 1. When Zetta discovers the microphone, Zetta will log a message about the device to the output.
 
    ```bash
-   Zetta is running at http://127.0.0.1:1337
-   {TIMESTAMP} [scout] Device (buzzer) {GUID} was provisioned from registry.
-   {TIMESTAMP} [scout] Device (microphone) {GUID} was discovered
+   {TIMESTAMP} [scout] Device (microphone) {id} was discovered
    ```
    {:.language-bash-noln}
 
@@ -521,7 +540,7 @@ After assembling the microphone hardware, the project should look similar to the
 
 1. Ensure the values and waveform for the `:volume` characteristic in the Zetta Browser are streaming over time and change as you make noise.
 
-# Step #4: Secure the Area
+# Step #7: Secure the Area
 
 ## Create Security App File and Folder
 
@@ -603,44 +622,7 @@ module.exports = function(server) {
 
 1. Open the Zetta Browser to observe state changes:
 
-# Step #5: Link to the Internet
-
-## Create link between two Zetta nodes
-
-1. Ensure `server.js` looks like the code below.
-
-```javascript
-var zetta = require('zetta');
-var Buzzer = require('zetta-buzzer-edison-driver');
-var Microphone = require('zetta-microphone-edison-driver');
-
-var app = require('./apps/app');
-
-zetta()
-  .use(Buzzer, 3)
-  .use(Microphone, 0)
-  .use(app)
-  .link('http://hello-zetta.herokuapp.com/')
-  .listen(1337, function(){
-    console.log('Zetta is running at http://127.0.0.1:1337');
-  });
-```
-
-2. Deploy the new code using the `edison-cli`
-
-   ```bash
-   edison-cli -H {ip address} deploy
-   ```
-
-## Investigate a new Zetta server
-
-1. Open the Zetta Browser from a new location.
-
-  [http://browser.zettajs.io/#/overview?url=http:%2F%2Fhello-zetta.herokuapp.com](http://browser.zettajs.io/#/overview?url=http:%2F%2Fhello-zetta.herokuapp.com)
-
-2. Observe the state changes occurring, and interact with the system from the open internet.
-
-# Step #6 Add A Remote Device
+# Step #6 Detect Motion
 
 1. Make sure the Bean has its battery plugged in.
 

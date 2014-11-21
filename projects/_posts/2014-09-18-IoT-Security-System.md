@@ -18,7 +18,7 @@ tags:
 
 1. [Setup Zetta on the BeagleBone](#step-1-setup-zetta-on-the-beaglebone)
 1. [Blink the LEDs](#step-2-blink-the-leds)
-1. [Link to the Cloud](#step-3-link-to-the-cloud)
+1. [Link to the Internet](#step-3-link-to-the-internet)
 1. [Buzz the Buzzer](#step-4-buzz-the-buzzer)
 1. [Soundcheck the Microphone](#step-5-soundcheck-the-microphone)
 1. [Run the Security App](#step-6-run-the-security-app)
@@ -52,16 +52,16 @@ The goal for this project is to create a simple home security system by assembli
 
 1. Open the browser-based Cloud9 IDE at [http://beaglebone.local:3000](http://beaglebone.local:3000).
 
-1. Click your mouse in the BeagleBone's IDE console.
+1. Click the mouse in the BeagleBone's IDE console.
 ![Cloud9 Splash Screen](/images/projects/security_system/screens/bash_callout.png){:.zoom}
 
-1. From the Cloud9 IDE console, clone [the Zetta starter project](https://github.com/zettajs/zetta-starter-project) to a new `home-security` directory on your BeagleBone.
+1. From the Cloud9 IDE console, clone [the Zetta starter project](https://github.com/zettajs/zetta-starter-project) to a new `home-security` directory on the BeagleBone.
 
    ```bash
    git clone https://github.com/zettajs/zetta-starter-project home-security
    ```
    
-   > **help**{:.icon} Are you seeing `error: Couldn't resolve host 'github.com'`? Be sure to run `dhclient` on the BeagleBone, restart your browser and don't be shy about rebooting the BeagleBone and your PC. Read [How to Connect a BeagleBone to the Internet via a PC](/guides/2014/10/03/BeagleBone.html) for more details. 
+   > **help**{:.icon} Are you seeing `error: Couldn't resolve host 'github.com'`? Be sure to run `dhclient` on the BeagleBone, restart the browser and don't be shy about rebooting the BeagleBone and the PC. Read [How to Connect a BeagleBone to the Internet via a PC](/guides/2014/10/03/BeagleBone.html) for more details. 
 
 ## Install Zetta
 
@@ -85,9 +85,9 @@ The goal for this project is to create a simple home security system by assembli
 
    ![Saving a file](/images/projects/security_system/screens/serverjs-callout.png)
 
-1. In the `server.js` file, write code to `require` Zetta, give your server a `name` and `listen` on server port `1337`.
+1. In the `server.js` file, write code to `require` Zetta, give the server a `name` and `listen` on server port `1337`.
 
-   > **info**{:.icon} Choose a name for your server. Consider using your first and last name.
+   > **info**{:.icon} Choose a name for the server. Consider using your first and last name.
 
    ```javascript
    var zetta = require('zetta');
@@ -150,7 +150,7 @@ The goal for this project is to create a simple home security system by assembli
 
 ## Write the LED Code
 
-1. In the Cloud9 IDE console, ensure your working directory is `home-security`. Install the Zetta device driver for BeagleBone LEDs.
+1. In the Cloud9 IDE console, ensure the working directory is `home-security`. Install the Zetta device driver for BeagleBone LEDs.
 
    ```bash
    npm install zetta-led-bonescript-driver --save
@@ -206,19 +206,19 @@ The goal for this project is to create a simple home security system by assembli
 1. Open the Zetta Browser. Point it to the **BeagleBone server**.
    [http://browser.zettajs.io/#/overview?url=http:%2F%2Fbeaglebone.local:1337](http://browser.zettajs.io/#/overview?url=http:%2F%2Fbeaglebone.local:1337)
 
-1. Ensure your **LED** devices are listed.
+1. Ensure the **LED** devices are listed.
 
    ![Zetta Browser with LEDs](/images/projects/security_system/screens/browser-leds.png){:.zoom}
 
 1. Click the `turn-on` button for the various LEDs.
 
-1. Ensure the LEDs on your BeagleBone turned on and that the device state changed in the Zetta Browser visualization.
+1. Ensure the LEDs on the BeagleBone turned on and that the device state changed in the Zetta Browser visualization.
 
-# Step #3: Link to the Cloud
+# Step #3: Link to the Internet
 
-At this point, your LED API is only available locally. Let's make the LED API available from the cloud.
+At this point, the LED API is only available locally. Let's make the LED API available from the cloud.
 
-1. In the Cloud9 IDE console, open the `server.js` file. Write code to `link` your Zetta server on the BeagleBone to a Zetta server running in the cloud.
+1. In the Cloud9 IDE console, open the `server.js` file. Write code to `link` the Zetta server on the BeagleBone to a Zetta server running in the cloud.
 
    Add **line 7**:
 
@@ -257,20 +257,20 @@ At this point, your LED API is only available locally. Let's make the LED API av
    ```
    {:.language-bash-noln}
 
-> **info**{:.icon} By `link`ing your Zetta server on the BeagleBone to a Zetta server running in the cloud, you can access your devices via a web API from anywhere in the world.
+> **info**{:.icon} By `link`ing the Zetta server on the BeagleBone to a Zetta server running in the cloud, you can access the devices via a web API from anywhere in the world.
 
 ## Blink the LEDs from the Cloud
 
 1. Open the Zetta Browser. Point it to the **cloud server**.
    [http://browser.zettajs.io/#/overview?url=http:%2F%2Fhello-zetta.herokuapp.com](http://browser.zettajs.io/#/overview?url=http:%2F%2Fhello-zetta.herokuapp.com)
 
-1. Ensure your **LED** devices are listed.
+1. Ensure the **LED** devices are listed.
 
 1. Click the `turn-on` button for the various LEDs.
 
-1. Ensure the LEDs on your BeagleBone turned on and that the device state changed in the Zetta Browser visualization.
+1. Ensure the LEDs on the BeagleBone turned on and that the device state changed in the Zetta Browser visualization.
 
-> **world**{:.icon} Now anyone in the world can control the LEDs on your BeagleBone. Try it. Copy the cloud URL and send it to friends so they can control your LEDs from afar: [http://browser.zettajs.io/#/overview?url=http:%2F%2Fhello-zetta.herokuapp.com](http://browser.zettajs.io/#/overview?url=http:%2F%2Fhello-zetta.herokuapp.com).
+> **world**{:.icon} Now anyone in the world can control the LEDs on the BeagleBone. Try it. Copy the cloud URL and send it to friends so they can control the LEDs from afar: [http://browser.zettajs.io/#/overview?url=http:%2F%2Fhello-zetta.herokuapp.com](http://browser.zettajs.io/#/overview?url=http:%2F%2Fhello-zetta.herokuapp.com).
 
 # Step #4: Buzz the Buzzer
 
@@ -299,7 +299,7 @@ At this point, your LED API is only available locally. Let's make the LED API av
 
     > **help**{:.icon} Are the BeagleBone pin numbers confusing? Read the [BeagleBone](/guides/2014/10/03/BeagleBone.html#pinout) guide.
 
-After assembling the buzzer hardware, your project should look similar to the images below.
+After assembling the buzzer hardware, the project should look similar to the images below.
 
 ![The Connected Piezo Buzzer](/images/projects/security_system/hardware/piezo_birdseye.jpg){:.zoom}
 ![The Connected Piezo Buzzer](/images/projects/security_system/hardware/piezo_low.jpg){:.zoom}
@@ -367,14 +367,14 @@ After assembling the buzzer hardware, your project should look similar to the im
 
    [http://browser.zettajs.io/#/overview?url=http://browser.zettajs.io/#/overview?url=http:%2F%2Fhello-zetta.herokuapp.com](http://browser.zettajs.io/#/overview?url=http://browser.zettajs.io/#/overview?url=http:%2F%2Fhello-zetta.herokuapp.com)
 
-1. Ensure your **Buzzer** device is listed.
+1. Ensure the **Buzzer** device is listed.
 ![Zetta Browser with Piezo Attached](/images/projects/security_system/screens/browser-piezo.png){:.zoom}
 
 1. Click the `beep` button.
 
-1. Ensure your buzzer buzzed and the device state changed in the Zetta Browser visualization.
+1. Ensure the buzzer buzzed and the device state changed in the Zetta Browser visualization.
 
-   > **help**{:.icon} Didn't hear a beep? Double check your wiring and make sure there were no errors reported in the Cloud9 IDE console.
+   > **help**{:.icon} Didn't hear a beep? Double check the wiring and make sure there were no errors reported in the Cloud9 IDE console.
 
 # Step #5: Soundcheck the Microphone
 
@@ -382,11 +382,11 @@ After assembling the buzzer hardware, your project should look similar to the im
 
 ![Microphone Hookup Diagram](/images/projects/security_system/hookup_diagram_step_2.png){:.fritzing}
   
-1. If your microphone does not have headers attached, solder them in place so the microphone can be attached to the breadboard.
+1. If the microphone does not have headers attached, solder them in place so the microphone can be attached to the breadboard.
 
    > **help**{:.icon} New to soldering? Read the [How to Solder](/guides/2014/10/13/solder.html) guide.
 
-2. Attach your microphone to the breadboard.
+2. Attach the microphone to the breadboard.
 
     From                  | To  
     :----                 |----: 
@@ -406,7 +406,7 @@ After assembling the buzzer hardware, your project should look similar to the im
 
    > **help**{:.icon} Don't know how to read resistor values? Read the [How to Read Resistor Values](/guides/2014/10/13/2014.html) guide.
    
-After assembling the microphone hardware, your project should look similar to the images below.
+After assembling the microphone hardware, the project should look similar to the images below.
 
 ![The Connected Microphone](/images/projects/security_system/hardware/microphone_birdseye.jpg){:.fritzing}
 ![The Connected Microphone](/images/projects/security_system/hardware/microphone_low.jpg){:.fritzing}
@@ -466,7 +466,7 @@ After assembling the microphone hardware, your project should look similar to th
    ```
    {:.language-bash-noln}
 
-   ![Running Your Server](/images/projects/security_system/screens/c9_two_devices.png){:.zoom}
+   ![Running the Server](/images/projects/security_system/screens/c9_two_devices.png){:.zoom}
 
 ## Soundcheck the Microphone
 
