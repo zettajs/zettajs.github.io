@@ -1,20 +1,18 @@
 ---
 layout: guide
-title: How to Create a Device Driver
-description: This guide will show you how to create a device driver.
+title: How to Deploy a Zetta Server to Heroku
+description: This guide will show you how to deploy a Zetta server to Heroku.
 author: Brian Mulloy
 difficulty: beginner
 ---
 
-# How to Deploy Zetta to Heroku
+# How to Deploy a Zetta Server to Heroku
 
-Deploying Zetta to Heroku is a one-click process. 
-
-1. Click the `Deploy to Heroku` button here: [https://github.com/zettajs/zetta-cloud-sample](https://github.com/zettajs/zetta-cloud-sample)
+1. Click the `Deploy to Heroku` button on the bottom of the [Zetta Cloud Starter](https://github.com/zettajs/zetta-cloud-sample) GitHub repository.
 
 1. Heroku will prompt you to setup a new Heroku account or log in with your existing account.
 
-1. Pick an app name, like 'my-heroku-username-zetta'.
+1. Pick an app name, like 'myherokuname-zetta'.
 
 You will now have a Zetta server instance running in the cloud.
 
@@ -24,23 +22,25 @@ Linking Zetta servers together requires one line of code.
 
 1. In the server.js file that runs on your geo-distributed hub add the `link()` function to the zetta config:
 
-  .link('http://my-heroku-username-zetta.herokuapp.com/')
+   ```js
+   .link('http://myherokuname-zetta.herokuapp.com/')
+   ```
 
-You're server.js file will look like the code below.
+1. Below is an example server.js file that inludes linking to a Zetta server running on Heroku.
 
-```js
-var zetta = require('zetta');
-var LED = require('zetta-led-mock-driver');
-var Photocell = require('zetta-photocell-mock-driver');
+   ```js
+   var zetta = require('zetta');
+   var LED = require('zetta-led-mock-driver');
+   var Photocell = require('zetta-photocell-mock-driver');
 
-var duskToDawnLight = require('./apps/dusk_to_dawn_light');
+   var duskToDawnLight = require('./apps/dusk_to_dawn_light');
 
-zetta()
-  .use(LED)
-  .use(Photocell)
-  .use(duskToDawnLight)
-  .link('http://my-heroku-username-zetta.herokuapp.com/')
-  .listen(1337, function(){
+   zetta()
+   .use(LED)
+   .use(Photocell)
+   .use(duskToDawnLight)
+   .link('http://myherokuname-zetta.herokuapp.com/')
+   .listen(1337, function(){
      console.log('Zetta is running at http://127.0.0.1:1337');
-});
-```
+   });
+   ```
