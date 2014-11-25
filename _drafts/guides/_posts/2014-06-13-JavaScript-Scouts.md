@@ -5,16 +5,16 @@ layout: guide
 #### Class: Zetta.Scout
 
 This is a class you inherit from when writing custom device drivers. Scouts are used to search for devices with external node modules, or protocols.
-It's used by `require('zetta').Scout`. You must inherit from the `Scout` class when building custom Zetta modules.
+It's used by `require('zetta-scout');` or `require('zetta').Scout;`. You must inherit from the `Scout` class when building custom Zetta modules.
 
 ```js
 var util = require('util');
-var Scout = require('zetta').Scout;
+var Scout = require('zetta-scout');
 
-function DeviceScout(){
+function MyScout(){
   Scout.call(this);
 }
-util.inherits(DeviceScout, Scout);
+util.inherits(MyScout, Scout);
 ```
 
 
@@ -27,7 +27,7 @@ vendor modules needed to look for devices. The argument `func` is provided, and 
 
 ```js
 
-DeviceScout.prototype.init = function(next) {
+MyScout.prototype.init = function(next) {
   var connection = Serial.connect(function(){
   });
 
@@ -47,8 +47,8 @@ This method is called by you when you've found your device. The `constructor` ar
 list of objects to be used by the constructor.
 
 ```js
-DeviceScout.prototype.init = function(next) {
-  this.discover(DeviceDriver, foo, bar, 'baz');
+MyScout.prototype.init = function(next) {
+  this.discover(MyDevice, foo, bar, 'baz');
 };
 
 ```
@@ -64,13 +64,13 @@ Zetta will persist device data to an internal registry. Using an object retrieve
 knows about. The first argument `deviceObject` is just data on the object from Zetta. The `constructor` argument is what will be created by Zetta.
 
 ```js
-DeviceScout.prototype.init = function(next) {
+MyScout.prototype.init = function(next) {
   var deviceObject = {
     name:'testObject',
     id: '123',
     foo: 'bar'
   };
-  this.provision(deviceObject, DeviceDriver);
+  this.provision(deviceObject, MyDevice);
 };
 ```
 
@@ -80,7 +80,7 @@ This gives access to the zetta runtime. Here you can issue queries and lookup de
 
 
 ```js
-DeviceScout.prototype.init = function(next) {
+MyScout.prototype.init = function(next) {
   var self = this;
 
   // query registry for any device that has type led and an id that we know of.
@@ -88,10 +88,10 @@ DeviceScout.prototype.init = function(next) {
   this.server.find(query, function(err, results) {
     if (results.length > 0) {
       // found in registry, tell zetta it came online
-      self.provision(results[0], DeviceDriver, foo, bar, 'baz');
+      self.provision(results[0], MyDevice, foo, bar, 'baz');
     } else {
       // does not exist in registry, discover a new one.
-      self.discover(DeviceDriver, foo, bar, 'baz');
+      self.discover(MyDevice, foo, bar, 'baz');
     }
   });
 };

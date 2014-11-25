@@ -2,19 +2,19 @@
 layout: guide
 ---
 
-#### Class: Zetta.Driver
+#### Class: Zetta.Device
 
 This is a zetta device modeled in software. With zetta you can create state machines for all of your devices that conditionally allow functionality to be exposed based on the `state` property.
-You should inherit from this class and implement the init function `require('zetta').Driver`.
+You should inherit from this class and implement the init function `require('zetta-device');` or `require('zetta').Device;`.
 
 ```
 var util = require('util');
-var Driver = require('zetta').Driver;
+var Device = require('zetta-device');
 
-function DeviceDriver(){
-  Driver.call(this);
+function MyDevice(){
+  Device.call(this);
 }
-util.inherits(DeviceDriver, Driver);
+util.inherits(MyDevice, Device);
 ```
 
 ##### Property: Device#state
@@ -28,7 +28,7 @@ This is the current state of your device modeled in software.
 This method should be implemented by you. The argument `config` is a configuration object that will allow you to setup your state machine, name your object, and give it a type.
 
 ```
-DeviceDriver.prototype.init = function(config) {
+MyDevice.prototype.init = function(config) {
   config
     .type('device')
     .state('on')
@@ -46,7 +46,7 @@ The `when` method on device config allows you to set what transitions are availa
 state for the object, and the second takes an options object with a property called `allow` where you can define the available transitions for the state.
 
 ```
-DeviceDriver.prototype.init = function(config) {
+MyDevice.prototype.init = function(config) {
   config
     .when('on', {allow: ['off']})
 };
@@ -64,17 +64,17 @@ This method allows you to map transitions to functions. Whenever a transition is
 `options` array is where inputs to the transition are defined.
 
 ```
-DeviceDriver.prototype.init = function(config) {
+MyDevice.prototype.init = function(config) {
   config
     .map('on', this.turnOn);
     .map('strobe', this.strobe, [{name:'amount', type:'number'}])
 };
 
-DeviceDriver.prototype.turnOn = function(cb) {
+MyDevice.prototype.turnOn = function(cb) {
 
 };
 
-DeviceDriver.prototype.strobe = function(amount, cb ){
+MyDevice.prototype.strobe = function(amount, cb ){
 
 };
 ```
@@ -89,12 +89,12 @@ DeviceDriver.prototype.strobe = function(amount, cb ){
 that is executed to provide a user with a stream. The third argument `options` will allow a user to define the type of stream to be created `object` or `binary`
 
 ```
-DeviceDriver.prototype.init = function(config) {
+MyDevice.prototype.init = function(config) {
   config
     .stream('value', this.streamValue);
 };
 
-DeviceDriver.prototype.streamValue = function(stream) {
+MyDevice.prototype.streamValue = function(stream) {
   setInterval(function(){
     stream.write(Math.random());
   }, 3000);
@@ -109,11 +109,11 @@ DeviceDriver.prototype.streamValue = function(stream) {
 Stream a property from your device instance out of zetta. Zetta will monitor the property for changes, and if they occur will publish an event down the stream.
 
 ```
-function DeviceDriver() {
+function MyDevice() {
   this.blah = 0;
 }
 
-DeviceDriver.prototype.init = function(config) {
+MyDevice.prototype.init = function(config) {
   config
     .monitor('blah');
 }

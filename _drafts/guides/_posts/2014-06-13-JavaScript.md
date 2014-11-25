@@ -39,18 +39,18 @@ zetta()
 
 ```
 
-##### Method: load(app)
+##### Method: use(app)
 
 * `app` Function
 
-Load a zetta app from another module.
+Use a zetta app from another module.
 
 ```js
 var zetta = require('zetta');
 var myApp = require('./myapp.js');
 
 zetta()
-  .load(myApp);
+  .use(myApp);
 ```
 
 ##### Method: link(host)
