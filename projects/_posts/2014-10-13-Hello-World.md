@@ -20,7 +20,7 @@ cover: /images/projects/hello_world/hello-world.png
 
 # Goal
 
-The goal for the Hello World project is to create a mock dusk-to-dawn lighting system by assembling a mock LED and a mock photocell into a Zetta app running on a PC - no additional hardware required. We will connect the app to the Internet by linking the PC with a second Zetta server running in the cloud. 
+The goal for the Hello World project is to create a mock dusk-to-dawn lighting system by assembling a mock LED and a mock photocell into a Zetta app running on a PC - no additional hardware required. We will connect the app to the Internet by linking the PC with a second Zetta server running in the cloud.
 
 > **info**{:.icon} After you've followed the steps below, please read [How Zetta Works](/reference/2014/11/20/How-Zetta-Works.html) to gain a deeper understanding of Zetta.
 
@@ -260,7 +260,7 @@ At this point, the LED API is only available locally. Let's make the LED API ava
    npm install zetta-photocell-mock-driver --save
    ```
 
-1. In the `server.js` file, write code to `require` and `use` the `Photocell` driver. 
+1. In the `server.js` file, write code to `require` and `use` the `Photocell` driver.
 
    Add **line 3**:
 
@@ -274,7 +274,7 @@ At this point, the LED API is only available locally. Let's make the LED API ava
    ```
 
 1. Ensure `server.js` looks like the code below.
-   
+
    ```javascript
    var zetta = require('zetta');
    var LED = require('zetta-led-mock-driver');
@@ -284,6 +284,7 @@ At this point, the LED API is only available locally. Let's make the LED API ava
      .name('FirstName-LastName')
      .use(LED)
      .use(Photocell)
+     .link('http://hello-zetta.herokuapp.com/')
      .listen(1337, function(){
      console.log('Zetta is running at http://127.0.0.1:1337');
    });
