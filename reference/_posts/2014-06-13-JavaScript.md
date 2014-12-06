@@ -1,5 +1,8 @@
 ---
-layout: guide
+layout: reference
+title: Zetta Reference Docs
+author: Adam Magaluk
+description: Reference docs for zetta
 ---
 
 #### Class: Zetta
