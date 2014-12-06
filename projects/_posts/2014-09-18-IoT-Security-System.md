@@ -46,6 +46,8 @@ The goal for this project is to create a simple home security system by assembli
 
 ## Connect the BeagleBone
 
+1. For RobotsConf, you do NOT have to setup internet sharing. Use `robot1.local` if you have board `1`. Make sure your on the `Apigee IoT Lab` network using the password `apigeelabs`.
+
 1. Follow the guide on [How to Connect a BeagleBone to the Internet via a PC](/guides/2014/10/03/BeagleBone.html).
 
 ## Clone the Starter Code to the BeagleBone
