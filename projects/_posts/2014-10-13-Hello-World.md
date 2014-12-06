@@ -205,6 +205,9 @@ At this point, the LED API is only available locally. Let's make the LED API ava
    ```javascript
    .link('http://hello-zetta.herokuapp.com/')
    ```
+   
+   > **info**{:.icon} This project uses the shared `hello-zetta` cloud instance. To create your own Zetta instance in the cloud follow the [How to Deploy a Zetta Server to Heroku](/guides/2014/11/20/How-to-Deploy-Zetta-to-Heroku.html) guide.
+   
 1. Ensure `server.js` looks like the code below.
 
    ```js
