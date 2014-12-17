@@ -1,7 +1,7 @@
 ---
 layout: reference
 title: Zetta Overview
-description: This guide will take you through the components of a Zetta Driver
+description: This guide will take you through the components of a Zetta
 ---
 
 
