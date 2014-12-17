@@ -22,7 +22,7 @@ Zetta is an API first platform for the Internet of Things. This is a general ove
 
 ## Core Concepts
 
-![Core Concepts Diagram](/images/reference/zetta-core-concepts.png)
+![Core Concepts Diagram](/images/zetta-core-concepts.png)
 
 ### Server
 
@@ -63,7 +63,7 @@ A typical Zetta deployment will look something like below.
 3. Zetta will then expose an API to any consumers at the cloud endpoint.
 
 
-![Zetta Deployment](/images/reference/zetta-deployment.png)
+![Zetta Deployment](/images/zetta-deployment.png)
 
 ## Where do my APIs live?
 
