@@ -15,24 +15,26 @@ The logger itself is accessible anywhere you would write code in Zetta. Below ar
 var server = zetta();
 server.log();
 ```
+
 **Device**
 ```javascript
 MyDevice.prototype.init = function(config) {
   this.log();
 };
 ```
+
 **Scout**
 ```javascript
 MyScout.prototype.init = function(next) {
   this.server.log();  
 };
 ```
+
 **App**
 ```javascript
 module.exports = function(server) {
   server.log();  
 };
-
 ```
 
 ##### Method: Logger#log(message, data)
