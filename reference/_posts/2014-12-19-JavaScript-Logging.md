@@ -10,42 +10,28 @@ The logger class gives Zetta developer access to printing nicely formatted messa
 
 The logger itself is accessible anywhere you would write code in Zetta. Below are examples on how to access Zetta logging from different types of files.
 
-**Server**
-```javascript
-var server = zetta();
-server.log();
-```
-
 **Device**
+
 ```javascript
 MyDevice.prototype.init = function(config) {
-  this.log();
-};
-```
-
-**Scout**
-```javascript
-MyScout.prototype.init = function(next) {
-  this.server.log();  
+  this.info('some info message', { hello: 'world'});
 };
 ```
 
 **App**
+
 ```javascript
 module.exports = function(server) {
-  server.log();  
+  server.info('some info message', { hello: 'world'});
 };
 ```
 
-##### Method: Logger#log(message, data)
-
-* `message` String
-* `data` Object
-
-`log` will print a standard blue log message to the console output. `message` is the particular message to be printed, and data is any relevant accompanying data.
+**Scout**
 
 ```javascript
-server.log('Hello world', { 'hello': 'world' });
+MyScout.prototype.init = function(next) {
+  this.server.info('some info message', { hello: 'world'});
+};
 ```
 
 ##### Method: Logger#info
@@ -80,6 +66,18 @@ server.warn('Hello world', { 'hello': 'world' });
 server.error('Hello world', { 'hello': 'world' });
 ```
 
+##### Method: Logger#log(message, data)
+
+* `message` String
+* `data` Object
+
+`log` will print a standard blue log message to the console output. `message` is the particular message to be printed, and data is any relevant accompanying data. Is a copy of .info()
+
+```javascript
+server.log('Hello world', { 'hello': 'world' });
+```
+
+
 ##### Custom Logging
 
 Zetta allows to setup log message interception for using custom loggers.
@@ -90,7 +88,7 @@ On the Zetta server use the `.logger()` function to set this up. An example is b
 zetta()
   .logger(function(log) {
     //log is an event emitter
-    
+
     log.on('message', function(level, event, msg, data) {
       //Fires for any log message  
     });  
