@@ -24,6 +24,34 @@ zetta()
 
 ```
 
+##### Method: silent()
+
+Suppress logging messages.
+
+```js
+var zetta = require('zetta');
+
+zetta()
+  .silent()
+```
+
+##### Method: logger(logFunction)
+
+* `logFunction` Function
+
+Implement a custom logger for Zetta.
+
+```js
+var zetta = require('zetta');
+
+zetta()
+  .logger(function(log) {
+    log.on('message', function(level, event, msg, data) {
+      //Intercept logging messages.  
+    });
+  })
+```
+
 ##### Method: use(constructor, [args], [options])
 
 * `constructor` Function
