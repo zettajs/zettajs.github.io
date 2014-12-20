@@ -138,10 +138,26 @@ After renaming the starter device you will likely want to push changes to your o
    git push origin master
    ```
 
-# Step #6: Build the Driver
+# Step #6: Get Inspired
 
-Starting with the `{device}.js` driver file and the `index.js` scout file, write the code that models your device. There are many Zetta drivers that you can use as a starting point for your device. If you search GitHub for [zetta-\*-driver](https://github.com/search?utf8=%E2%9C%93&q=zetta-*-driver&type=Repositories) you will find all the publicly shared Zetta drivers. You can narrow your search by device type [zetta-led-\*-driver](https://github.com/search?utf8=%E2%9C%93&q=zetta-led-*-driver&type=Repositories) or platform [zetta-\*-edison-driver](https://github.com/search?utf8=%E2%9C%93&q=zetta-*-edison-driver&type=Repositories&ref=searchresults).
+There are many Zetta drivers that can serve as starting point for creating a device driver.
 
-# Step #7: Publish with NPM
+* Query [NPM](https://www.npmjs.com/search?q=zetta-*-driver) for drivers that have been created for other devices by the community:
+  [https://www.npmjs.com/search?q=zetta-\*-driver](https://www.npmjs.com/search?q=zetta-*-driver)
+  
+* Query [GitHub](https://github.com/zettajs?query=driver) for drivers that have been created by the core Zetta team:
+  [https://github.com/zettajs?query=driver](https://github.com/zettajs?query=driver)
+
+* Narrow the search by device type: [zetta-led-\*-driver](https://github.com/search?utf8=%E2%9C%93&q=zetta-led-*-driver&type=Repositories)
+
+* Narrow the search by platform type: [zetta-\*-edison-driver](https://github.com/search?utf8=%E2%9C%93&q=zetta-*-edison-driver&type=Repositories&ref=searchresults).
+
+The [Zetta Discuss](https://groups.google.com/forum/#!forum/zetta-discuss) Google Group is the ideal spot for getting the broader community’s help when creating device drivers: [https://groups.google.com/forum/#!forum/zetta-discuss](https://groups.google.com/forum/#!forum/zetta-discuss)
+
+# Step #7: Build the Driver
+
+Starting with the `{device}.js` driver file and the `index.js` scout file, write the code that models your device. Use the Zetta Browser to validate your work as you go.
+
+# Step #8: Publish with NPM
 
 Follow these steps to publish your device driver to NPM: [https://gist.github.com/coolaj86/1318304](https://gist.github.com/coolaj86/1318304)
