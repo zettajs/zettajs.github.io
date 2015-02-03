@@ -5,7 +5,7 @@ author: Matt Dobson
 difficulty: experienced
 duration: 1-3 hours
 description: >
-  Create an Internet-connected, home security system with a microphone, piezo speaker, an LED and a BeagleBone Black.
+Create an Internet-connected, home security system with a microphone, piezo speaker, an LED and a BeagleBone Black.
 repo: https://github.com/zettajs/zetta-home-security/
 ---
 
@@ -55,8 +55,8 @@ The goal for this project is to create a simple home security system by assembli
    ```bash
    git clone https://github.com/zettajs/zetta-starter-project home-security
    ```
-   
-   > **help**{:.icon} Are you seeing `error: Couldn't resolve host 'github.com'`? Be sure to run `dhclient` on the BeagleBone, restart your browser and don't be shy about rebooting the BeagleBone and your PC. Read [How to Connect a BeagleBone to the Internet via a PC](/guides/2014/10/03/BeagleBone.html) for more details. 
+
+   > **help**{:.icon} Are you seeing `error: Couldn't resolve host 'github.com'`? Be sure to run `dhclient` on the BeagleBone, restart your browser and don't be shy about rebooting the BeagleBone and your PC. Read [How to Connect a BeagleBone to the Internet via a PC](/guides/2014/10/03/BeagleBone.html) for more details.
 
 ## Install Zetta
 
@@ -119,22 +119,22 @@ The goal for this project is to create a simple home security system by assembli
    ```bash
    curl http://beaglebone.local:1337 | python -m json.tool
    ```
-   
+
    ```json
-   { "actions": [{ 
+   { "actions": [{
        "fields": [
-         { "name": "server", "type": "text"}, 
-         { "name": "ql", "type": "text"}], 
-       "href": "http://beaglebone.local:1337/", 
-       "method": "POST", 
-       "name": "query-devices", 
-       "type": "application/x-www-form-urlencoded"}], 
+         { "name": "server", "type": "text"},
+         { "name": "ql", "type": "text"}],
+       "href": "http://beaglebone.local:1337/",
+       "method": "POST",
+       "name": "query-devices",
+       "type": "application/x-www-form-urlencoded"}],
      "class": ["root"],
      "links": [
-       {"href": "http://beaglebone.local:1337/", "rel": ["self"]}, 
-       {"href": "http://beaglebone.local:1337/servers/FirstName%20LastName", 
+       {"href": "http://beaglebone.local:1337/", "rel": ["self"]},
+       {"href": "http://beaglebone.local:1337/servers/FirstName%20LastName",
          "rel": ["http://rels.zettajs.io/server"], "title": "FirstName LastName"},
-       {"href": "http://beaglebone.local:1337/peer-management", 
+       {"href": "http://beaglebone.local:1337/peer-management",
          "rel": ["http://rels.zettajs.io/peer-management"]}]}
    ```
    {:.language-json-noln}
@@ -165,7 +165,7 @@ The goal for this project is to create a simple home security system by assembli
    ```
 
 1. Ensure `server.js` looks like the code below.
-   
+
    ```javascript
    var zetta = require('zetta');
    var LED = require('zetta-led-bonescript-driver');
@@ -220,9 +220,9 @@ At this point, your LED API is only available locally. Let's make the LED API av
    ```javascript
    .link('http://hello-zetta.herokuapp.com/')
    ```
-   
+
 1. Ensure `server.js` looks like the code below.
-   
+
    ```javascript
    var zetta = require('zetta');
    var LED = require('zetta-led-bonescript-driver');
@@ -276,7 +276,7 @@ At this point, your LED API is only available locally. Let's make the LED API av
 1. Attach the piezo buzzer to the breadboard.
 
     From              | To  
-    :----             |----: 
+    :----             |----:
     Buzzer **-** pin  |Breadboard **A3**
     Buzzer **+** pin  |Breadboard **A6**
     {:.wiring}
@@ -286,7 +286,7 @@ At this point, your LED API is only available locally. Let's make the LED API av
 1. Create a circuit between the BeagleBone and the buzzer.
 
     From                  | Wire           | To  
-    :----                 |:-----:         |----: 
+    :----                 |:-----:         |----:
     Breadboard **E3**     |**White**       |BeagleBone **P9_14**
     Breadboard **E6**     |**Black**       |Breadboard **-**
     Breadboard **-**      |**Black**       |BeagleBone **P9_01**
@@ -302,11 +302,11 @@ After assembling the buzzer hardware, your project should look similar to the im
 ## Write the Buzzer Code
 
 1. From the Cloud9 IDE console, install the Zetta device driver for the buzzer.
-   
+
    ```bash
    npm install zetta-buzzer-bonescript-driver --save
    ```
-   
+
    > **caution**{:.icon} Ensure the BeagleBone Cloud9 IDE console is in the correct working directory when you run `npm install`. The Cloud9 IDE console prompt should be: `root@beaglebone:/var/lib/cloud9/home-security/#`
 
 1. In the `server.js` file, write code to `require` and `use` the `Buzzer` on pin 'P9_14'.
@@ -324,7 +324,7 @@ After assembling the buzzer hardware, your project should look similar to the im
    ```
 
 1. Ensure `server.js` looks like the code below.
-   
+
    ```javascript
    var zetta = require('zetta');
    var LED = require('zetta-led-bonescript-driver');
@@ -376,7 +376,7 @@ After assembling the buzzer hardware, your project should look similar to the im
 ## Assemble Microphone Hardware
 
 ![Microphone Hookup Diagram](/images/projects/security_system/hookup_diagram_step_2.png){:.fritzing}
-  
+
 1. If your microphone does not have headers attached, solder them in place so the microphone can be attached to the breadboard.
 
    > **help**{:.icon} New to soldering? Read the [How to Solder](/guides/2014/10/13/solder.html) guide.
@@ -384,7 +384,7 @@ After assembling the buzzer hardware, your project should look similar to the im
 2. Attach your microphone to the breadboard.
 
     From                  | To  
-    :----                 |----: 
+    :----                 |----:
     Microphone **VCC**    |Breadboard **F18**
     Microphone **GND**    |Breadboard **F19**
     Microphone **AUD**    |Breadboard **F20**
@@ -393,14 +393,14 @@ After assembling the buzzer hardware, your project should look similar to the im
 3. Create a circuit between the BeagleBone and the microphone.
 
     From                 | Wire                     | To  
-    :----                |:-----:                   |----: 
+    :----                |:-----:                   |----:
     Breadboard **H18**   |**Red**                   |BeableBone **P9_32**
     Breadboard **H19**   |**2.2k&#8486;** Resistor  |Breadboard **-**
     Breadboard **H20**   |**Green**                 |BeableBone **P9_36**
     {:.wiring}
 
    > **help**{:.icon} Don't know how to read resistor values? Read the [How to Read Resistor Values](/guides/2014/10/13/2014.html) guide.
-   
+
 After assembling the microphone hardware, your project should look similar to the images below.
 
 ![The Connected Microphone](/images/projects/security_system/hardware/microphone_birdseye.jpg){:.fritzing}
@@ -414,7 +414,7 @@ After assembling the microphone hardware, your project should look similar to th
    npm install zetta-microphone-bonescript-driver --save
    ```
 
-1. In the `server.js` file, write code to `require` and `use` the `Microphone` driver on BeagleBone pin `P9_36`. 
+1. In the `server.js` file, write code to `require` and `use` the `Microphone` driver on BeagleBone pin `P9_36`.
 
    Add **line 4**:
 
@@ -428,7 +428,7 @@ After assembling the microphone hardware, your project should look similar to th
    ```
 
 1. Ensure `server.js` looks like the code below.
-   
+
    ```javascript
    var zetta = require('zetta');
    var LED = require('zetta-led-bonescript-driver');
@@ -497,11 +497,11 @@ After assembling the microphone hardware, your project should look similar to th
 
    ```javascript
    module.exports = function(server) {
-    
+
      var ledQuery = server.where({type: 'led'});
      var buzzerQuery = server.where({type: 'buzzer'});
      var microphoneQuery = server.where({type: 'microphone'});
-  
+
      server.observe([ledQuery,buzzerQuery, microphoneQuery], function(led, buzzer, microphone){
        microphone.streams.volume.on('data', function(msg){
          if (buzzer.state === 'off' && msg.data > 30) {
@@ -514,7 +514,7 @@ After assembling the microphone hardware, your project should look similar to th
          }
        });
      });
-   }   
+   }
    ```
 
 ## Use Security App

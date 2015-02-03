@@ -2,11 +2,11 @@
 layout: project
 title: Car Speed Tracker System
 author: Anil Sagar
-difficulty: intermediate
+difficulty: experienced
 duration: 1-2 hours
 description: >
 Create an Internet-connected, car speed tracker system with a phillips hue bulb, mock car.
-repo:
+repo: https://github.com/zettajs/zetta-home-security/
 ---
 
 # Directions
