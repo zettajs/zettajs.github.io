@@ -41,3 +41,156 @@ This project requires
 ```bash
 mkdir zetta-speed-tracker
 ```
+
+1. Change to the project directory.
+
+```bash
+cd zetta-speed-tracker
+```
+
+1. Initialize the project by following the `npm init` utility walk-through.
+
+```bash
+npm init
+```
+
+> **action**{:.icon} Press `<ENTER>` multiple times to accept the `npm init` defaults.
+
+## Install Zetta
+
+1. Install Zetta and save it as a dependency to the `package.json` file that was created by `npm init`.
+
+```markdown
+npm install zetta --save
+```
+
+## Write the Zetta Server Code
+
+1. Create the `server.js` file.
+
+```
+touch server.js
+```
+
+1. In a text editor, write code in `server.js` to `require` Zetta, give the server a `name` and `listen` on server port `1337`.
+
+> **info**{:.icon} Consider replacing `FirstName` and `LastName` with your first and last name.
+
+```js
+var zetta = require('zetta');
+
+zetta()
+.name('FirstName LastName')
+.listen(1337, function(){
+  console.log('Zetta is running at http://127.0.0.1:1337');
+});
+```
+
+1. Save the file and run the Zetta server from within the `zetta-speed-tracker` project folder.
+
+```bash
+node server.js
+```
+Notice the console output indicating the server is running.
+
+```bash
+{timestamp} [server] Server (FirstName LastName) FirstName LastName listening on http://127.0.0.1:1337
+Zetta is running at http://127.0.0.1:1337
+```
+## Call the API
+
+1. Open the Zetta API in a web browser: [http://127.0.0.1:1337](http://127.0.0.1:1337).
+
+2. Confirm the API looks like the response below.
+
+```json
+{ "class":["root"],
+  "links":[
+    {"rel":["self"],
+      "href":"http://127.0.0.1:1337/"},
+      { "title":"FirstName LastName","rel":["http://rels.zettajs.io/server"],
+        "href":"http://127.0.0.1:1337/servers/FirstName%20LastName"},
+        {"rel":["http://rels.zettajs.io/peer-management"],
+          "href":"http://127.0.0.1:1337/peer-management"}],
+          "actions":[
+            {"name":"query-devices","method":"GET",
+              "href":"http://127.0.0.1:1337/","type":"application/x-www-form-urlencoded",
+              "fields":[{"name":"server","type":"text"},{"name":"ql","type":"text"}]}]}
+              ```
+              {:.language-json-noln}
+
+              > **info**{:.icon} As we `use` devices in `server.js` they will appear in the web API. For the following steps we'll access the API via the [Zetta Browser](/guides/2014/10/18/Zetta-Browser.html).
+
+
+# Step #2: Car Sensor System
+
+## Write the Car Sensor System Code
+
+1. Install the mock car sensor driver from `npm`.
+
+```bash
+npm install zetta-car-mock-driver --save
+```
+
+> **info**{:.icon} Zetta driver names follow the pattern `zetta-[device]-[platform]-driver`. The Car Speed Tracker project uses mock devices so `mock` is considered to be the platform.
+
+1. In the `server.js` file, write code to `require` and `use` the mock `CAR`.
+
+Add **line 2**:
+
+```javascript
+var CAR = require('zetta-car-mock-driver');
+```
+
+Add **line 6**:
+
+```javascript
+.use(CAR)
+```
+
+1. Ensure `server.js` looks like the code below.
+
+```js
+var zetta = require('zetta');
+var CAR = require('zetta-car-mock-driver');
+
+zetta()
+.name('FirstName LastName')
+.use(CAR)
+.listen(1337, function(){
+  console.log('Zetta is running at http://127.0.0.1:1337');
+});
+```
+
+1. Stop and restart the Zetta server by pressing `CTRL-C` then run `node server.js`.
+
+```bash
+node server.js
+```
+
+1. When Zetta discovers the mock CAR, it will log a message about the device.
+
+```bash
+{timestamp} [scout] Device (car) {id} was discovered
+```
+{:.language-bash-noln}
+
+## Operate the CAR from the PC
+
+1. Open the Zetta Browser and point it at the **PC server**:
+
+[http://browser.zettajs.io/#/overview?url=http://127.0.0.1:1337](http://browser.zettajs.io/#/overview?url=http://127.0.0.1:1337)
+
+1. Ensure the **CAR** is listed.
+
+![Zetta Browser with LED](/images/projects/car_speed_tracker/browser-car-idle.png){:.zoom}
+
+1. Click the `StartCar` button and ensure the car state changed from `idle` to `started`.
+
+1. Click the `accelerateCar` button and ensure the car state changed from `idle` to `accelerating`. Notice speed increasing gradually.
+
+1. Click the `releaseAccelerator` button and ensure the car state changed from `accelerating` to `cruising`. Notice speed of the car becomes constant.
+
+1. Click the `brakeCar` button and ensure the car state changed from `cruising` to `braking`. Notice speed of the car decreasing gradually.
+
+1. Click the `releaseBrake` button and ensure the car state changed from `braking` to `cruising`. Notice speed of the car becomes constant.
