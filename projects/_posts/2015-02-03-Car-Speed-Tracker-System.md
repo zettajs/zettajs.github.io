@@ -116,10 +116,10 @@ Zetta is running at http://127.0.0.1:1337
             {"name":"query-devices","method":"GET",
               "href":"http://127.0.0.1:1337/","type":"application/x-www-form-urlencoded",
               "fields":[{"name":"server","type":"text"},{"name":"ql","type":"text"}]}]}
-              ```
-              {:.language-json-noln}
+```
+{:.language-json-noln}
 
-              > **info**{:.icon} As we `use` devices in `server.js` they will appear in the web API. For the following steps we'll access the API via the [Zetta Browser](/guides/2014/10/18/Zetta-Browser.html).
+> **info**{:.icon} As we `use` devices in `server.js` they will appear in the web API. For the following steps we'll access the API via the [Zetta Browser](/guides/2014/10/18/Zetta-Browser.html).
 
 
 # Step #2: Car Sensor System
@@ -183,7 +183,7 @@ node server.js
 
 1. Ensure the **CAR** is listed.
 
-![Zetta Browser with LED](/images/projects/car_speed_tracker/browser-car-idle.png){:.zoom}
+![Zetta Browser with CAR](/images/projects/car_speed_tracker/browser-car-idle.png){:.zoom}
 
 1. Click the `StartCar` button and ensure the car state changed from `idle` to `started`.
 
@@ -194,3 +194,71 @@ node server.js
 1. Click the `brakeCar` button and ensure the car state changed from `cruising` to `braking`. Notice speed of the car decreasing gradually.
 
 1. Click the `releaseBrake` button and ensure the car state changed from `braking` to `cruising`. Notice speed of the car becomes constant.
+
+# Step #3: Link to the Cloud
+
+At this point, the CAR API is only available locally. Let's make the CAR API available from the cloud.
+
+## Write the Link Code
+
+1. In the `server.js` file, write code to `link` the Zetta server on the PC to a Zetta server running in the cloud.
+
+Add **line 7**:
+
+```javascript
+.link('http://hello-zetta.herokuapp.com/')
+```
+1. Ensure `server.js` looks like the code below.
+
+```js
+var zetta = require('zetta');
+var CAR = require('zetta-car-mock-driver');
+
+zetta()
+.name('FirstName LastName')
+.use(CAR)
+.link('http://hello-zetta.herokuapp.com/')
+.listen(1337, function(){
+  console.log('Zetta is running at http://127.0.0.1:1337');
+});
+```
+
+1. Stop and restart the Zetta server by pressing `CTRL-C` then run `node server.js`.
+
+```bash
+node server.js
+```
+
+1. Ensure the console log includes notifications that the peer was established.
+
+```bash
+{timestamp} [peer-client] WebSocket to peer established (ws://hello-zetta.herokuapp.com/peers/FirstName LastName)
+{timestamp} [peer-client] Peer connection established (ws://hello-zetta.herokuapp.com/peers/FirstName LastName)
+```
+{:.language-bash-noln}
+
+> **info**{:.icon} By `link`ing the Zetta server on the PC to a Zetta server running in the cloud, you can access devices via a web API from anywhere in the world.
+
+## Control the CAR from the Cloud
+
+1. Open the Zetta Browser and point it at the Zetta **cloud server**:
+
+[http://browser.zettajs.io/#/overview?url=http:%2F%2Fhello-zetta.herokuapp.com](http://browser.zettajs.io/#/overview?url=http:%2F%2Fhello-zetta.herokuapp.com)
+
+> **info**{:.icon} Notice that you are now accessing the CAR on your laptop from a **cloud server** on Heroku.
+
+1. Ensure the **CAR** is listed.
+
+1. Click the `startCar` button for the CAR and ensure the CAR state changed in the Zetta Browser visualization.
+
+> **world**{:.icon} Now anyone in the world can control the mock CAR on the PC. Try it. Copy the cloud URL and send it to friends so they can control the CAR from afar: [http://browser.zettajs.io/#/overview?url=http:%2F%2Fhello-zetta.herokuapp.com](http://browser.zettajs.io/#/overview?url=http:%2F%2Fhello-zetta.herokuapp.com).
+
+# Step #4: Setup Phillips Hue Bulb & Hub
+
+1. Power Up the Hub
+
+1. Connect LAN Cable to Hub
+
+1. Power Up the Phillips Hue Bulb
+
+1. Make sure zetta server & phillips hue bulb hub are in same network
