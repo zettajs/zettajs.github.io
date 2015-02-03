@@ -5,7 +5,7 @@ author: Anil Sagar
 difficulty: experienced
 duration: 1-2 hours
 description: >
-Create an Internet-connected, car speed tracker system with a phillips hue bulb, mock car.
+  Create an Internet-connected, car speed tracker system with a phillips hue bulb, mock car.
 repo: https://github.com/zettajs/zetta-home-security/
 ---
 
