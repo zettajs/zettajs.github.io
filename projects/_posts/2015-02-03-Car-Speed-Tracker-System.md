@@ -35,23 +35,23 @@ This project requires
 
 ## Initialize the Project
 
-1. From the PC command line, create the project directory.
+  1. From the PC command line, create the project directory.
 
-```bash
-mkdir zetta-speed-tracker
-```
+  ```bash
+  mkdir zetta-speed-tracker
+  ```
 
-2. Change to the project directory.
+  1. Change to the project directory.
 
-```bash
-cd zetta-speed-tracker
-```
+  ```bash
+  cd zetta-speed-tracker
+  ```
 
-3. Initialize the project by following the `npm init` utility walk-through.
+  1. Initialize the project by following the `npm init` utility walk-through.
 
-```bash
-npm init
-```
+  ```bash
+  npm init
+  ```
 
 > **action**{:.icon} Press `<ENTER>` multiple times to accept the `npm init` defaults.
 
