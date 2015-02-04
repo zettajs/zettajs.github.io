@@ -257,8 +257,80 @@ node server.js
 
 1. Power Up the Hub
 
+![Phillips Hue Hub](/images/projects/car_speed_tracker/phllips_hub.jpg){:.zoom}
+
 1. Connect LAN Cable to Hub
 
 1. Power Up the Phillips Hue Bulb
 
+![Phillips Hue Bulb](/images/projects/car_speed_tracker/phllips_bulb.jpg){:.zoom}
+
 1. Make sure zetta server & phillips hue bulb hub are in same network
+
+## Write Phillips Hue Software
+
+1. Install the Zetta device driver for the phillips hue.
+
+```bash
+npm install zetta-hue-driver --save
+```
+
+1. In the `server.js` file, write code to `require` and `use` the `Hue` driver.
+
+Add **line 3**:
+
+```javascript
+var Hue = require('zetta-hue-driver');
+```
+Add **line 8**:
+
+```javascript
+.use(Hue)
+```
+
+1. Ensure `server.js` looks like the code below.
+
+```javascript
+var zetta = require('zetta');
+var CAR = require('zetta-car-mock-driver');
+var Hue = require('zetta-hue-driver');
+
+zetta()
+.name('Anil Sagar')
+.use(CAR)
+.use(Hue)
+.listen(1337, function(){
+  console.log('Zetta is running at http://127.0.0.1:1337');
+});
+
+```
+1. Stop and restart the Zetta server by pressing `CTRL-C` then run `node server.js`.
+
+```bash
+node server.js
+```
+
+1. When Zetta discovers the hue hub & bulbs, it will log a message about the device.
+
+```bash
+{timestamp} [scout] Device (huehub) {id} was discovered
+```
+{:.language-bash-noln}
+
+1. Open the Zetta Browser and point it at the **PC server**:
+
+[http://browser.zettajs.io/#/overview?url=http://127.0.0.1:1337](http://browser.zettajs.io/#/overview?url=http://127.0.0.1:1337)
+
+1. Ensure the **Hue Hub** is listed.
+
+![Zetta Browser with CAR & Hue](/images/projects/car_speed_tracker/browser-car-hue-idle.png){:.zoom}
+
+1. Click on Register button to register hub and press centure button in hue hub to register hue hub with zettajs application.
+
+1. Refresh browser & click on register to see discovered bulbs.
+
+![Zetta Browser with CAR, Hue, Bulbs](/images/projects/car_speed_tracker/browser-car-hue-bulbs.png){:.zoom}
+
+1. Since we got only one bulb connected to hub, by trial find out which one by blinking the bulb using Zetta Browser and note down bulb name to build app.
+
+![Zetta Browser Blink Bulb ](/images/projects/car_speed_tracker/browser-blink-bulb.png){:.zoom}
