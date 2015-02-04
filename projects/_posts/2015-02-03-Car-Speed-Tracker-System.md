@@ -445,13 +445,13 @@ At this point, the CAR API is only available locally. Let's make the CAR API ava
 
   1. Ensure Hub Bulbs are turned Off.
 
-  1. Start the Car & Accelearte the car
+  1. Start the Car & Accelearte the car.
 
   1. Ensure the Hue Bulb turns `on` in red in color once the speed crosses 100 mark.
 
   ![Screenshot of Zetta browser with car speed alert](/images/projects/car_speed_tracker/phillips_car_alert.jpg){:.zoom}
 
-  1. Release the Car accelerator & brake the car. Notice speed getting decreases.
+  1. Release the Car accelerator & brake the car. Notice speed getting decreased.
 
   1. Ensure the Hue Bulb turns `off` once the speed dips below 100 mark.
 
