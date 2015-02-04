@@ -350,7 +350,7 @@ node server.js
 
 1. Click on the **car** link to see a detailed view.
 
-![Car speed Detail Page](/images/projects/hello_world/browser_car_show.png){:.zoom}
+![Car speed Detail Page](/images/projects/car_speed_tracker/browser_car_show.png){:.zoom}
 
 1. Ensure the values and waveform for the `:speed` characteristic in the Zetta Browser change over time and stream like a exponential graph. Click on Start Car & Accelerate car button to see graph.
 
@@ -449,7 +449,7 @@ node server.js
 
 1. Ensure the Hue Bulb turns `on` in red in color once the speed crosses 100 mark.
 
-![Screenshot of Zetta browser with car speed alert](/images/projects/hello_world/phillips_car_alert.jpg){:.zoom}
+![Screenshot of Zetta browser with car speed alert](/images/projects/car_speed_tracker/phillips_car_alert.jpg){:.zoom}
 
 1. Release the Car accelerator & brake the car. Notice speed getting decreases.
 
