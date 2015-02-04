@@ -299,6 +299,7 @@ zetta()
 .name('Anil Sagar')
 .use(CAR)
 .use(Hue)
+.link('http://hello-zetta.herokuapp.com/')
 .listen(1337, function(){
   console.log('Zetta is running at http://127.0.0.1:1337');
 });
@@ -325,7 +326,7 @@ node server.js
 
 ![Zetta Browser with CAR & Hue](/images/projects/car_speed_tracker/browser-car-hue-idle.png){:.zoom}
 
-1. Click on Register button to register hub and press centure button in hue hub device to register hue hub with zettajs application.
+1. Click on Register button to register hub and press centre circular button in hue hub device to register hue hub & bulbs with zettajs application.
 
 1. Refresh browser & click on register to see discovered bulbs.
 
@@ -334,3 +335,127 @@ node server.js
 1. Since we got only one bulb connected to hub, by trial find out which one by blinking the bulb using Zetta Browser and note down bulb name to build app.
 
 ![Zetta Browser Blink Bulb ](/images/projects/car_speed_tracker/browser-blink-bulb.png){:.zoom}
+
+## Sense Car Speed with Mock Car Driver
+
+> **info**{:.icon} Streaming data in Zetta is done via WebSockets.
+
+### Zetta Browser
+
+1. Open the Zetta browser and point it at the Zetta cloud server:
+
+[http://browser.zettajs.io/#/overview?url=http:%2F%2Fhello-zetta.herokuapp.com](http://browser.zettajs.io/#/overview?url=http:%2F%2Fhello-zetta.herokuapp.com)
+
+1. In the Zetta Browser, ensure the **car** device is listed.
+
+1. Click on the **car** link to see a detailed view.
+
+![Car speed Detail Page](/images/projects/hello_world/browser_car_show.png){:.zoom}
+
+1. Ensure the values and waveform for the `:speed` characteristic in the Zetta Browser change over time and stream like a exponential graph. Click on Start Car & Accelerate car button to see graph.
+
+
+# Step #5: Run the Car Speed Alert App
+
+## Write the Car Speed Alert App Code
+
+1. Create an `apps` directory in the `zetta-speed-tracker` directory.
+
+```bash
+mkdir apps
+```
+
+1. Create the `car_speed_alert.js` file.
+
+```bash
+touch apps/car_speed_alert.js
+```
+
+1. Write code in `apps/car_speed_alert.js` to find the `hue bulb` and the `car`, monitor the `car speed` and toggle the `hue bulb` as the `speed` changes.
+
+1. Make sure you change the name of the bulb in below code. Use the bulb name which is powered up.
+
+```javascript
+module.exports = function(server) {
+  var carQuery = server.where({ type: 'car' });
+  var bulbQuery = server.where({type: 'huebulb', name: 'Hue Bulb Hue Downlight 1'});
+  server.observe([carQuery, bulbQuery], function(car, bulb){
+    car.streams.speed.on('data', function(m) {
+      if(m.data > 100) {
+        if (bulb.available('turn-on')) {
+          bulb.call('color', '#ff0000');
+          bulb.call('turn-on');
+        }
+      } else {
+        if (bulb.available('turn-off')) {
+          bulb.call('turn-off');
+        }
+      }
+    });
+  });}
+```
+
+## Use the Car Speed Alert App
+
+1. Edit the `server.js` file. Add code to `require` and `use` the `car_speed_alert` app from the `apps` folder.
+
+Add **line 5**.
+
+```javascript
+var carSpeedAlert = require('./apps/car_speed_alert');
+```
+
+Add **line 11**.
+
+```javascript
+.use(carSpeedAlert)
+```
+
+1. Ensure `server.js` looks like the code below.
+
+```javascript
+var zetta = require('zetta');
+var CAR = require('zetta-car-mock-driver');
+var Hue = require('zetta-hue-driver');
+var carSpeedAlert = require('./apps/car_speed_alert');
+
+zetta()
+.name('Anil Sagar')
+.use(CAR)
+.use(Hue)
+.use(carSpeedAlert)
+.link('http://hello-zetta.herokuapp.com/')
+.listen(1337, function(){
+  console.log('Zetta is running at http://127.0.0.1:1337');
+});
+
+  ```
+
+## Run the Car Speed Alert App
+
+1. Stop and restart the Zetta server by pressing `CTRL-C` then run `node server.js`.
+
+```bash
+node server.js
+```
+
+1. Open the Zetta Browser and point it at the Zetta **cloud server**:
+
+[http://browser.zettajs.io/#/overview?url=http:%2F%2Fhello-zetta.herokuapp.com](http://browser.zettajs.io/#/overview?url=http:%2F%2Fhello-zetta.herokuapp.com)
+
+1. Ensure Hub Bulbs are turned Off.
+
+1. Start the Car & Accelearte the car
+
+1. Ensure the Hue Bulb turns `on` in red in color once the speed crosses 100 mark.
+
+![Screenshot of Zetta browser with car speed alert](/images/projects/hello_world/phillips_car_alert.jpg){:.zoom}
+
+1. Release the Car accelerator & brake the car. Notice speed getting decreases.
+
+1. Ensure the Hue Bulb turns `off` once the speed dips below 100 mark.
+
+
+# Congratulations!
+
+Congratulations. You built a dusk to dawn lighting system that is connected to the Internet and programmable from anywhere in the world.
