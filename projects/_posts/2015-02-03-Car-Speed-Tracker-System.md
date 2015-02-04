@@ -257,13 +257,13 @@ node server.js
 
 1. Power Up the Hub
 
-![Phillips Hue Hub](/images/projects/car_speed_tracker/phllips_hub.jpg){:.zoom}
+![Phillips Hue Hub](/images/projects/car_speed_tracker/phillips_hub.jpg){:.zoom}
 
 1. Connect LAN Cable to Hub
 
 1. Power Up the Phillips Hue Bulb
 
-![Phillips Hue Bulb](/images/projects/car_speed_tracker/phllips_bulb.jpg){:.zoom}
+![Phillips Hue Bulb](/images/projects/car_speed_tracker/phillips_bulb.jpg){:.zoom}
 
 1. Make sure zetta server & phillips hue bulb hub are in same network
 
@@ -325,7 +325,7 @@ node server.js
 
 ![Zetta Browser with CAR & Hue](/images/projects/car_speed_tracker/browser-car-hue-idle.png){:.zoom}
 
-1. Click on Register button to register hub and press centure button in hue hub to register hue hub with zettajs application.
+1. Click on Register button to register hub and press centure button in hue hub device to register hue hub with zettajs application.
 
 1. Refresh browser & click on register to see discovered bulbs.
 
