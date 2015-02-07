@@ -19,7 +19,7 @@
     "npm": ">= 1.2.0"
   },
   "devDependencies": {
-    "gulp": "~3.8.6",
+    "gulp": "*",
     "gulp-less": "~1.3.2",
     "gulp-minify-css": "~0.3.7",
     "gulp-uglify": "~0.3.1",

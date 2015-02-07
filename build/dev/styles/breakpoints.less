@@ -6,17 +6,22 @@
 
 /* Strings to be used in @media tags */
 
+@_sm: 35.5em;
+@_md: 48.1em;
+@_lg: 64em;
+@_xl: 80em;
+
 /* Mobile first stuff */
-@sm: ~"screen and (min-width: 35.5em)";
-@md: ~"screen and (min-width: 48.1em)";
-@lg: ~"screen and (min-width: 64em)";
-@xl: ~"screen and (min-width: 80em)";
+@sm: ~"screen and (min-width: @{_sm})";
+@md: ~"screen and (min-width: @{_md})";
+@lg: ~"screen and (min-width: @{_lg})";
+@xl: ~"screen and (min-width: @{_xl})";
 
 /* Inverted mobile first queries. read as "after small" or "after medium" */
-@asm: ~"screen and (max-width: 35.5em)";
-@amd: ~"screen and (max-width: 48.1em)";
-@alg: ~"screen and (max-width: 64em)";
-@axl: ~"screen and (max-width: 80em)";
+@asm: ~"screen and (max-width: @{_sm})";
+@amd: ~"screen and (max-width: @{_md})";
+@alg: ~"screen and (max-width: @{_lg})";
+@axl: ~"screen and (max-width: @{_xl})";
 
 /* simple ways to hide stuff */
 .hide-sm { @media @sm {display: none !important;} }

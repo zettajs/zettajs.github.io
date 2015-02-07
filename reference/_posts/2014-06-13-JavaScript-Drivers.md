@@ -1,5 +1,8 @@
 ---
-layout: guide
+layout: reference
+title: Zetta-device Reference Docs
+author: Adam Magaluk
+description: Reference docs for zetta-device
 ---
 
 #### Class: Zetta.Driver

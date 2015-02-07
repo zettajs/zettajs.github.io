@@ -1,5 +1,8 @@
 ---
-layout: guide
+layout: reference
+title: Zetta-scout Reference Docs
+author: Adam Magaluk
+description: Reference docs for zetta-scout
 ---
 
 #### Class: Zetta.Scout

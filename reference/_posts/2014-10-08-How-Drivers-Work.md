@@ -1,11 +1,11 @@
 ---
-layout: guide
-title: Anatomy of a Zetta Driver 
+layout: reference
+title: Anatomy of a Zetta Driver
 description: >
   This guide will take you through the components of a Zetta Driver
 ---
 
-> This article could use your help. 
+> This article could use your help.
 
 ## Writing The Driver
 
@@ -40,7 +40,7 @@ var bone = require('bonescript');
 
 ## The Constructor Function
 
-Now we'll setup the constructor for our LED. Here you set parameters and initialize different things about the device. 
+Now we'll setup the constructor for our LED. Here you set parameters and initialize different things about the device.
 
 Continue by adding this code to your `/devices/led/index.js` file:
 
@@ -54,7 +54,7 @@ util.inherits(Led, Device);
 ```
 
 * Line 3 tells the driver to use the pin you specify in `.use()` function in `server.js`, or uses the default of **P9_41**
-* On line 6, we inherit from the `Device` class with `util.inherits()` to get functionality for API generation. 
+* On line 6, we inherit from the `Device` class with `util.inherits()` to get functionality for API generation.
 
 
 ## An Init Function to Define our State Machine

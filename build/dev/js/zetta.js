@@ -35,15 +35,16 @@ $(function(){
   //Modal
   $('#modal .close b').click(function(){$('#modal').hide();});
   $('gallery img').addClass('zoom');
-  
-  $('img').on('click', '.zoom', function(){ console.log('working'); });
-  
+    
   $('img.fritzing, img.zoom').click(function(){
-    $('#modal .main').css({
-      'background-image': 'url(' + $(this).attr('src') + ')'
-    });
-    $('#modal .title').html($(this).attr('alt'));  
-    $('#modal').show();
+    
+    if(!$('li.placard').has($(this)).length > 0){
+      $('#modal .main').css({
+        'background-image': 'url(' + $(this).attr('src') + ')'
+      });
+      $('#modal .title').html($(this).attr('alt'));  
+      $('#modal').show();
+    }
   });
   
   

@@ -6,6 +6,7 @@ difficulty: beginner
 duration: 1 hour
 description: Create an Internet-connected, dusk-to-dawn lighting system with a mock LED and a mock photocell.
 repo: http://github.com/zettajs/zetta-hello-world
+cover: /images/projects/hello_world/hello-world.png
 ---
 
 # Directions
@@ -14,12 +15,14 @@ repo: http://github.com/zettajs/zetta-hello-world
 1. [Blink the LED](#step-2-blink-the-led)
 1. [Link to the Cloud](#step-3-link-to-the-cloud)
 1. [Sense Light with Photocell](#step-4-sense-light-with-photocell)
-1. [Run the Dusk to Dawn Light App](#step-5-run-the-dusk-to-dawn-light-app)
+1. [Run Dusk to Dawn App](#step-5-run-dusk-to-dawn-app)
 {:.steps}
 
 # Goal
 
-The goal for this project is to create a dusk-to-dawn lighting system by assembling a mock LED and a mock photocell into a Zetta app running on a PC. We will connect the app to the Internet by linking the PC with a second Zetta server running in the cloud.
+The goal for the Hello World project is to create a mock dusk-to-dawn lighting system by assembling a mock LED and a mock photocell into a Zetta app running on a PC - no additional hardware required. We will connect the app to the Internet by linking the PC with a second Zetta server running in the cloud.
+
+> **info**{:.icon} After you've followed the steps below, please read [How Zetta Works](/reference/2014/11/20/How-Zetta-Works.html) to gain a deeper understanding of Zetta.
 
 ![Screenshot of Zetta browser with dusk to dawn lighting system](/images/projects/hello_world/browser_complete_project.png){:.zoom}
 
@@ -75,7 +78,7 @@ This project requires a PC with an Internet connection and [Node.js](http://node
    var zetta = require('zetta');
 
    zetta()
-     .name('FirstName LastName')
+     .name('FirstName-LastName')
      .listen(1337, function(){
         console.log('Zetta is running at http://127.0.0.1:1337');
    });
@@ -89,22 +92,28 @@ This project requires a PC with an Internet connection and [Node.js](http://node
    Notice the console output indicating the server is running.
 
    ```bash
-   {timestamp} [server] Server (FirstName LastName) FirstName LastName listening on http://127.0.0.1:1337
+   {timestamp} [server] Server (FirstName-LastName) FirstName-LastName listening on http://127.0.0.1:1337
    Zetta is running at http://127.0.0.1:1337
    ```
 
 ## Call the API
 
-1. Open the Zetta API in a web browser: [http://127.0.0.1:1337](http://127.0.0.1:1337).
+1. Make a HTTP `GET` request to the API on the running node server at [http://127.0.0.1:1337](http://127.0.0.1:1337).
 
-2. Confirm the API looks like the response below.
+   ```bash
+   curl http://127.0.0.1:1337
+   ```
+
+   >**info**{:.icon} To make an HTTP request use `curl` in the command line, a web browser or a REST client (like [Advanced REST Client](https://chrome.google.com/webstore/detail/advanced-rest-client/hgmloofddffdnphfgcellkdfbfbjeloo?hl=en-US)) to see the API results.
+
+2. Confirm the API request returns a response like the data below.
 
    ```json
      { "class":["root"],
        "links":[
          {"rel":["self"],
            "href":"http://127.0.0.1:1337/"},
-         { "title":"FirstName LastName","rel":["http://rels.zettajs.io/server"],
+         { "title":"FirstName-LastName","rel":["http://rels.zettajs.io/server"],
            "href":"http://127.0.0.1:1337/servers/FirstName%20LastName"},
          {"rel":["http://rels.zettajs.io/peer-management"],
            "href":"http://127.0.0.1:1337/peer-management"}],
@@ -115,7 +124,7 @@ This project requires a PC with an Internet connection and [Node.js](http://node
    ```
    {:.language-json-noln}
 
-   > **info**{:.icon} As we `use` devices in `server.js` they will appear in the web API. For the following steps we'll access the API via the [Zetta Browser](/guides/2014/10/18/Zetta-Browser.html).
+   > **info**{:.icon} As we `use` devices in `server.js` they will appear in the web API.
 
 # Step #2: Blink the LED
 
@@ -150,7 +159,7 @@ This project requires a PC with an Internet connection and [Node.js](http://node
    var LED = require('zetta-led-mock-driver');
 
    zetta()
-     .name('FirstName LastName')
+     .name('FirstName-LastName')
      .use(LED)
      .listen(1337, function(){
         console.log('Zetta is running at http://127.0.0.1:1337');
@@ -173,7 +182,6 @@ This project requires a PC with an Internet connection and [Node.js](http://node
 ## Blink the LED from the PC
 
 1. Open the Zetta Browser and point it at the **PC server**:
-
    [http://browser.zettajs.io/#/overview?url=http://127.0.0.1:1337](http://browser.zettajs.io/#/overview?url=http://127.0.0.1:1337)
 
 1. Ensure the **LED** is listed.
@@ -197,6 +205,9 @@ At this point, the LED API is only available locally. Let's make the LED API ava
    ```javascript
    .link('http://hello-zetta.herokuapp.com/')
    ```
+   
+   > **info**{:.icon} This project uses the shared `hello-zetta` cloud instance. To create your own Zetta instance in the cloud follow the [How to Deploy a Zetta Server to Heroku](/guides/2014/11/20/How-to-Deploy-Zetta-to-Heroku.html) guide.
+   
 1. Ensure `server.js` looks like the code below.
 
    ```js
@@ -204,7 +215,7 @@ At this point, the LED API is only available locally. Let's make the LED API ava
    var LED = require('zetta-led-mock-driver');
 
    zetta()
-     .name('FirstName LastName')
+     .name('FirstName-LastName')
      .use(LED)
      .link('http://hello-zetta.herokuapp.com/')
      .listen(1337, function(){
@@ -221,8 +232,8 @@ At this point, the LED API is only available locally. Let's make the LED API ava
 1. Ensure the console log includes notifications that the peer was established.
 
    ```bash
-   {timestamp} [peer-client] WebSocket to peer established (ws://hello-zetta.herokuapp.com/peers/FirstName LastName)
-   {timestamp} [peer-client] Peer connection established (ws://hello-zetta.herokuapp.com/peers/FirstName LastName)
+   {timestamp} [peer-client] WebSocket to peer established (ws://hello-zetta.herokuapp.com/peers/FirstName-LastName)
+   {timestamp} [peer-client] Peer connection established (ws://hello-zetta.herokuapp.com/peers/FirstName-LastName)
    ```
    {:.language-bash-noln}
 
@@ -252,7 +263,7 @@ At this point, the LED API is only available locally. Let's make the LED API ava
    npm install zetta-photocell-mock-driver --save
    ```
 
-1. In the `server.js` file, write code to `require` and `use` the `Photocell` driver. 
+1. In the `server.js` file, write code to `require` and `use` the `Photocell` driver.
 
    Add **line 3**:
 
@@ -266,16 +277,17 @@ At this point, the LED API is only available locally. Let's make the LED API ava
    ```
 
 1. Ensure `server.js` looks like the code below.
-   
+
    ```javascript
    var zetta = require('zetta');
    var LED = require('zetta-led-mock-driver');
    var Photocell = require('zetta-photocell-mock-driver');
 
    zetta()
-     .name('FirstName LastName')
+     .name('FirstName-LastName')
      .use(LED)
      .use(Photocell)
+     .link('http://hello-zetta.herokuapp.com/')
      .listen(1337, function(){
      console.log('Zetta is running at http://127.0.0.1:1337');
    });
@@ -311,27 +323,9 @@ At this point, the LED API is only available locally. Let's make the LED API ava
 
 1. Ensure the values and waveform for the `:intensity` characteristic in the Zetta Browser change over time and stream like a sine wave.
 
-### Command Line
+# Step #5: Run Dusk to Dawn App
 
-Zetta uses WebSockets to stream device data. Use a command line tool to subscribe to the WebSockets from the cloud.
-
-1. Install `wscat`
-
-   ```bash
-   npm install -g ws
-   ```
-
-1. Use the Zetta Browser to determine the URL of the `photocell intensity` WebSocket by clicking on the `photocell` link and searching for `ws:`. The first WebSocket URL you find should be for monitoring the intensity.
-
-1. Connect to the WebSockets stream with the URL. The URL will use your `FirstName`, `LastName` and a device `id`.
-
-   ```bash
-   wscat --connect ws://hello-zetta.herokuapp.com/servers/{FirstName%20LastName}/events?topic=photocell%2F{id}%2Fintensity
-   ```
-
-# Step #5: Run the Dusk to Dawn Light App
-
-## Write the Dusk to Dawn Light App Code
+## Write the Dusk to Dawn App Code
 
 1. Create an `apps` directory in the `zetta-hello-world` directory.
 
@@ -392,7 +386,7 @@ Zetta uses WebSockets to stream device data. Use a command line tool to subscrib
    var duskToDawnLight = require('./apps/dusk_to_dawn_light');
 
    zetta()
-     .name('FirstName LastName')
+     .name('FirstName-LastName')
      .use(LED)
      .use(Photocell)
      .use(duskToDawnLight)
@@ -402,7 +396,7 @@ Zetta uses WebSockets to stream device data. Use a command line tool to subscrib
    });
    ```
 
-## Run the Dusk to Dawn Light App
+## Run Dusk to Dawn App
 
 1. Stop and restart the Zetta server by pressing `CTRL-C` then run `node server.js`.
 
