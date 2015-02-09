@@ -7,6 +7,7 @@ duration: 1-2 hours
 description: >
   Create an Internet-connected, car speed tracker system with a phillips hue bulb, mock car.
 repo: https://github.com/anil614sagar/zetta-speed-tracker
+cover: /images/projects/car_speed_tracker/phillips_hue.jpg
 ---
 
 # Directions
@@ -215,7 +216,7 @@ At this point, the CAR API is only available locally. Let's make the CAR API ava
    var zetta = require('zetta');
    var CAR = require('zetta-car-mock-driver');
 
-   zetta() 
+   zetta()
    .name('FirstName LastName')
    .use(CAR)
    .link('http://hello-zetta.herokuapp.com/')
@@ -413,7 +414,7 @@ At this point, the CAR API is only available locally. Let's make the CAR API ava
    ```
 
 1. Ensure `server.js` looks like the code below.
- 
+
    ```javascript
    var zetta = require('zetta');
    var CAR = require('zetta-car-mock-driver');
