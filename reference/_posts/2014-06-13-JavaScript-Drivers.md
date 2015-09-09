@@ -5,14 +5,14 @@ author: Adam Magaluk
 description: Reference docs for zetta-device
 ---
 
-#### Class: Zetta.Driver
+#### Class: Zetta.Device
 
 This is a zetta device modeled in software. With zetta you can create state machines for all of your devices that conditionally allow functionality to be exposed based on the `state` property.
-You should inherit from this class and implement the init function `require('zetta').Driver`.
+You should inherit from this class and implement the init function `require('zetta').Device`.
 
 ```js
 var util = require('util');
-var Driver = require('zetta').Driver;
+var Driver = require('zetta').Device;
 
 function DeviceDriver(){
   Driver.call(this);
