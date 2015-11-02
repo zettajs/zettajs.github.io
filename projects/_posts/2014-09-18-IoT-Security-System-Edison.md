@@ -179,15 +179,15 @@ Follow the guide on [How to Connect an Edison to the Internet via a PC](https://
   
    * On Windows, copy and paste the URL below into a web browser:
 
-      ```bash
-      curl http://{ip address}:1337
-      ```
+   ```bash
+      http://{ip address}:1337
+   ```
 
    * On UNIX and Mac, run curl:
 
-      ```bash
+   ```bash
       curl http://{ip address}:1337
-      ```
+   ```
 
 1. Ensure the API response is similar to the response below.
 
