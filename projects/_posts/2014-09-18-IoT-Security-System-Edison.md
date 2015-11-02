@@ -132,6 +132,8 @@ Follow the guide on [How to Connect an Edison to the Internet via a PC](https://
 
 1. Locate the Edison on the network.
 
+   > **info**{:.icon} If you are attending a Zetta workshop, ask the instructors for your IP address.
+
    ```bash
    edison-cli list
    ```
