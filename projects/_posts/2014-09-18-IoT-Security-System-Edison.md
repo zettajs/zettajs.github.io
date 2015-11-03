@@ -640,7 +640,7 @@ At this point, the LED API is only available locally. Let's make the LED API ava
 1. Create an `apps` directory and an `acceleration_alarm` file.
 
    ```bash
-   touch apps/acceleration_alarm.js
+   apps/acceleration_alarm.js
    ```
 1. Write the app logic for detecting acceleration in `apps/acceleration_alarm.js`.
 
@@ -670,7 +670,7 @@ At this point, the LED API is only available locally. Let's make the LED API ava
 1. Create a `sound_alarm` file.
 
    ```bash
-   touch apps/sound_alarm.js
+   apps/sound_alarm.js
    ```
 1. Write the app logic for detecting sound in `apps/sound_alarm.js`.
 
