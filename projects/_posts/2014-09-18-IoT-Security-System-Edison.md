@@ -478,7 +478,7 @@ At this point, the LED API is only available locally. Let's make the LED API ava
     :----                |:-----:                   |----:
     Breadboard **H18**   |**Red**                   |Edison **3.3V**
     Breadboard **H19**   |**2.2k&#8486;** Resistor  |Breadboard **-**
-    Breadboard **H20**   |**Green**                 |Edison **A0**
+    Breadboard **H20**   |**Yellow**                 |Edison **A0**
     {:.wiring}
 
    > **help**{:.icon} Don't know how to read resistor values? Read the [How to Read Resistor Values](/guides/2014/10/13/2014.html) guide.
