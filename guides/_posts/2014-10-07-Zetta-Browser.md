@@ -12,8 +12,8 @@ description: >
 # The different Views
 
   * Devices List
-    * All Peer Zetta Nodes
-    * Scoping to One Node
+    * All peer Zetta nodes
+    * Scoping to one node
     * Actions
     * Pinning
     * Muting
