@@ -10,7 +10,7 @@ destination:  ./_site
 exclude:      
   - ./build
   - ./_site
-layouts:      _layouts
+layouts_dir:      _layouts
 
 safe:        true
 future:      true
@@ -18,7 +18,7 @@ show_drafts: false
 limit_posts: 0
 highlighter: pygments  #need to figure this out
 
-relative_permalinks:  true
+relative_permalinks:  false
 permalink:            date
 
 kramdown:
@@ -27,4 +27,3 @@ kramdown:
   footnote_nr: 1
   entity_output: as_char
   toc_levels: 1..6
-  

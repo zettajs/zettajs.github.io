@@ -13,7 +13,6 @@ description: >
 1. [How to Share a Project](#how-to-share-a-project)
 1. [Style Guide](#style-guide)
 1. [Markdown Guide](#markdown-guide)
-1. [Projects versus Guides](#projects-versus-guides)
 1. [Getting Help](#getting-help)
 {:.steps}
 
@@ -165,15 +164,6 @@ cover: /path/to/cover/image.jpg
 
 ```
 
-# Projects versus Guides
-
-Projects differ from [Guides](/guides) in both length and complexity. Projects are generally for longer and more complex topics while guides are a great place to put tangential information that is generally shorter and often relates to a topic covered in multiple projects.
-
-{::comment}
-
-For example, the [Home Security](/projects/2014/09/18/IoT-Security-System.html) project uses a BeagleBone Black for running Zetta. That project links to the [Getting Started with BeagleBone Black](/guides/url.html) guide, rather than reiterating that setup process in the project.
-
-{:/comment}
 
 # Getting Help
 

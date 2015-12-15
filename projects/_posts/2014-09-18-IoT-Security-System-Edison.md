@@ -241,7 +241,7 @@ Follow the guide on [How to Connect an Edison to the Internet via a PC](https://
    ```
    {:.language-json-noln}
 
-   > **info**{:.icon} As we `use` devices in `server.js` they will appear in the web API. For the following steps we'll access the API via the [Zetta Browser](/guides/2014/10/18/Zetta-Browser.html).
+   > **info**{:.icon} As we `use` devices in `server.js` they will appear in the web API. For the following steps we'll access the API via the [Zetta Browser](https://github.com/zettajs/zetta/wiki/Browser-Client).
 
 # Step #2: Blink the LED
 
@@ -378,7 +378,6 @@ At this point, the LED API is only available locally. Let's make the LED API ava
     Buzzer **-** pin  |Breadboard **A3**
     {:.wiring}
 
-    > **help**{:.icon} New to solderless breadboards? Read the [How to Use a Breadboard](/guides/2014/10/07/Breadboard.html) guide.
 
 1. Create a circuit between the Edison and the buzzer.
 
@@ -481,7 +480,6 @@ At this point, the LED API is only available locally. Let's make the LED API ava
     Breadboard **H20**   |**Yellow**                 |Edison **A0**
     {:.wiring}
 
-   > **help**{:.icon} Don't know how to read resistor values? Read the [How to Read Resistor Values](/guides/2014/10/13/2014.html) guide.
 
 
 ## Write Microphone Software

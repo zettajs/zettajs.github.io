@@ -22,8 +22,6 @@ cover: /images/projects/hello_world/hello-world.png
 
 The goal for the Hello World project is to create a mock dusk-to-dawn lighting system by assembling a mock LED and a mock photocell into a Zetta app running on a PC - no additional hardware required. We will connect the app to the Internet by linking the PC with a second Zetta server running in the cloud.
 
-> **info**{:.icon} After you've followed the steps below, please read [How Zetta Works](/reference/2014/11/20/How-Zetta-Works.html) to gain a deeper understanding of Zetta.
-
 ![Screenshot of Zetta browser with dusk to dawn lighting system](/images/projects/hello_world/browser_complete_project.png){:.zoom}
 
 # Parts
@@ -206,7 +204,7 @@ At this point, the LED API is only available locally. Let's make the LED API ava
    .link('http://hello-zetta.herokuapp.com/')
    ```
    
-   > **info**{:.icon} This project uses the shared `hello-zetta` cloud instance. To create your own Zetta instance in the cloud follow the [How to Deploy a Zetta Server to Heroku](/guides/2014/11/20/How-to-Deploy-Zetta-to-Heroku.html) guide.
+   > **info**{:.icon} This project uses the shared `hello-zetta` cloud instance. To create your own Zetta instance in the cloud follow the [How to Deploy a Zetta Server to Heroku](http://www.zettajs.org/guides/2014/11/20/How-to-Deploy-Zetta-to-Heroku.html) guide.
    
 1. Ensure `server.js` looks like the code below.
 

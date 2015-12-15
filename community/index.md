@@ -10,13 +10,21 @@ description: >
 
 If you want to brainstorm big ideas, report a little bug, build a revolutionary new device or write code for the core platform, we welcome you to the Zetta community.
 
-# Development
+# Learn
+
+The [Doc Wiki](https://github.com/zettajs/zetta/wiki) includes getting started tutorials, how-to topics, feature discussions, and reference docs.  
+
+[Projects](/projects) walk you step-by-step through the flow of making Internet of Things projects that combine physical and digital technology. 
+
+To [share IoT projects](/projects/2014/10/01/Share-A-Project.html) that you have created read the [How to Share a Project ](/projects/2014/10/01/Share-A-Project.html) guide.
+
+# Contribute
 
 [GitHub](http://github.com/zettajs) is the place for all Zetta software development. Check out [http://github.com/zettajs](http://github.com/zettajs) for  platform code, device catalogs and core development discussions.
 
 [NPM](https://www.npmjs.org/search?q=zetta) is the default package manager for the Zetta runtime, toolkits and device drivers.
 
-# Discussion
+# Discuss
 
 [zetta-discuss](https://groups.google.com/forum/#!forum/zetta-discuss) is a Google Group mailing list for announcements and discussions about Zetta.
 
@@ -26,15 +34,7 @@ If you want to brainstorm big ideas, report a little bug, build a revolutionary 
 
 [iot-craft](https://groups.google.com/forum/#!forum/iot-craft) on Google Groups and [@IoTCraft](http://twitter.com/IoTCraft) on Twitter is a vendor-neutral, cross-industry community focused on Internet of Things ideas, design patterns and implementations.
 
-# Learning
-
-[Projects](/projects) walk you step-by-step through the flow of making Internet of Things projects that combine physical and digital technology.
-
-[Guides](/guides) show you how to do focused tasks with software and hardware.
-
-To [share IoT projects](/projects/2014/10/01/Share-A-Project.html) that you have created read the [How to Share a Project ](/projects/2014/10/01/Share-A-Project.html) guide.
-
-# Events
+# Attend
 
 [Zetta Workshops](/community/2014/09/17/IoT-hands-on-workshop.html) teach you how to create IoT projects in a hands-on maker environment.
 

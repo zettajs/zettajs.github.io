@@ -41,7 +41,7 @@ The goal for this project is to create a simple home security system by assembli
 
 ## Connect the BeagleBone
 
-1. Follow the guide on [How to Connect a BeagleBone to the Internet via a PC](/guides/2014/10/03/BeagleBone.html).
+1. Connect your BeagleBone to the internet. For help, check out [this topic](http://www.zettajs.org/guides/2014/10/03/BeagleBone.html). 
 
 ## Clone the Starter Code to the BeagleBone
 
@@ -56,7 +56,7 @@ The goal for this project is to create a simple home security system by assembli
    git clone https://github.com/zettajs/zetta-starter-project home-security
    ```
 
-   > **help**{:.icon} Are you seeing `error: Couldn't resolve host 'github.com'`? Be sure to run `dhclient` on the BeagleBone, restart your browser and don't be shy about rebooting the BeagleBone and your PC. Read [How to Connect a BeagleBone to the Internet via a PC](/guides/2014/10/03/BeagleBone.html) for more details.
+   > **help**{:.icon} Are you seeing `error: Couldn't resolve host 'github.com'`? Be sure to run `dhclient` on the BeagleBone, restart your browser and don't be shy about rebooting the BeagleBone and your PC. Read [How to Connect a BeagleBone to the Internet via a PC](http://www.zettajs.org/guides/2014/10/03/BeagleBone.html) for more details.
 
 ## Install Zetta
 
@@ -139,7 +139,7 @@ The goal for this project is to create a simple home security system by assembli
    ```
    {:.language-json-noln}
 
-   > **info**{:.icon} As we `use` devices in `server.js` they will appear in the web API. For the following steps we'll access the API via the [Zetta Browser](/guides/2014/10/18/Zetta-Browser.html). However,  the `curl` command is a helpful way to use the API from the command line.
+   > **info**{:.icon} As we `use` devices in `server.js` they will appear in the web API. For the following steps we'll access the API via the [Zetta Browser](https://github.com/zettajs/zetta/wiki/Browser-Client). However,  the `curl` command is a helpful way to use the API from the command line.
 
 # Step #2: Blink the LEDs
 
@@ -292,7 +292,7 @@ At this point, your LED API is only available locally. Let's make the LED API av
     Breadboard **-**      |**Black**       |BeagleBone **P9_01**
     {:.wiring}
 
-    > **help**{:.icon} Are the BeagleBone pin numbers confusing? Read the [BeagleBone](/guides/2014/10/03/BeagleBone.html#pinout) guide.
+    > **help**{:.icon} Are the BeagleBone pin numbers confusing? See [the Pinout section in the BeagleBone topic](http://www.zettajs.org/guides/2014/10/03/BeagleBone.html#pinout).
 
 After assembling the buzzer hardware, your project should look similar to the images below.
 

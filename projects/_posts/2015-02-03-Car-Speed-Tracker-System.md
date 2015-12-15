@@ -121,7 +121,7 @@ This project requires
    ```
    {:.language-json-noln}
 
-   > **info**{:.icon} As we `use` devices in `server.js` they will appear in the web API. For the following steps we'll access the API via the [Zetta Browser](/guides/2014/10/18/Zetta-Browser.html).
+   > **info**{:.icon} As we `use` devices in `server.js` they will appear in the web API. For the following steps we'll access the API via the [Zetta Browser](https://github.com/zettajs/zetta/wiki/Browser-Client).
 
 
 # Step #2: Car Sensor System
