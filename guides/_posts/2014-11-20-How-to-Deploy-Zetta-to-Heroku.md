@@ -6,6 +6,8 @@ author: Brian Mulloy
 difficulty: beginner
 ---
 
+>Note: This topic has been relocated to the [Zetta doc wiki](https://github.com/zettajs/zetta/wiki/Deploy-to-Heroku), the new home for all Zetta documentation. Please bookmark the [doc wiki](https://github.com/zettajs/zetta/wiki) for future reference. 
+
 # How to Deploy a Zetta Server to Heroku
 
 1. Click the `Deploy to Heroku` button on the bottom of the [Zetta Cloud Starter](https://github.com/zettajs/zetta-cloud-sample) GitHub repository.

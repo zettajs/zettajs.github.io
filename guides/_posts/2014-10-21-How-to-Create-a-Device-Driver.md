@@ -4,6 +4,8 @@ title: How to Create a Device Driver
 description: This guide will show you how to create a device driver.
 ---
 
+>Note: This topic has been relocated to the [Zetta doc wiki](https://github.com/zettajs/zetta/wiki/Create-Device-Driver), the new home for all Zetta documentation. Please bookmark the [doc wiki](https://github.com/zettajs/zetta/wiki) for future reference. 
+
 So, you want to create a Zetta device driver? This guide will get you started.
 
 # Step #1: Know Your Device and Platform
