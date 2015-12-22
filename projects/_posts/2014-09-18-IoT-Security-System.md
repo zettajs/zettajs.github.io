@@ -1,12 +1,14 @@
 ---
 layout: project
-title: Home Security
+title: Home Security with BeagleBone
 author: Matt Dobson
 difficulty: experienced
 duration: 1-3 hours
 description: >
   Create an Internet-connected, home security system with a microphone, piezo speaker, an LED and a BeagleBone Black.
 repo: https://github.com/zettajs/zetta-home-security/
+tags: 
+- BeagleBone
 ---
 
 # Directions
