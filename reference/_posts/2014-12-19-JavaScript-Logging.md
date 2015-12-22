@@ -4,6 +4,8 @@ title: Logging Reference Docs
 description: Reference docs for logging within Zetta
 ---
 
+>Note: This topic has been relocated to the [Zetta doc wiki](https://github.com/zettajs/zetta/wiki/Logging), the new home for all Zetta documentation. Please bookmark the [doc wiki](https://github.com/zettajs/zetta/wiki) for future reference. 
+
 #### Class: Zetta.Logger
 
 The logger class gives Zetta developer access to printing nicely formatted messages to STDOUT or STDERR. You can also replace Zetta logging with a custom logger such as bunyan or winston.

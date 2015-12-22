@@ -5,6 +5,9 @@ author: Adam Magaluk
 description: Reference docs for zetta-scout
 ---
 
+
+>Note: This topic has been relocated to the [Zetta doc wiki](https://github.com/zettajs/zetta/wiki/Scout), the new home for all Zetta documentation. Please bookmark the [doc wiki](https://github.com/zettajs/zetta/wiki) for future reference. 
+
 #### Class: Zetta.Scout
 
 This is a class you inherit from when writing custom device drivers. Scouts are used to search for devices with external node modules, or protocols.

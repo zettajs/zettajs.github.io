@@ -5,6 +5,8 @@ author: Adam Magaluk
 description: Reference docs for zetta
 ---
 
+>Note: This topic has been relocated to the [Zetta doc wiki](https://github.com/zettajs/zetta/wiki/Zetta), the new home for all Zetta documentation. Please bookmark the [doc wiki](https://github.com/zettajs/zetta/wiki) for future reference. 
+
 #### Class: Zetta
 
 This is the base module for Zetta. It is accessed by using `require('zetta')` in node. This class exposes functionality

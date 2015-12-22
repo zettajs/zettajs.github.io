@@ -5,6 +5,8 @@ author: Adam Magaluk
 description: Reference docs for zetta-device
 ---
 
+>Note: This topic has been relocated to the [Zetta doc wiki](https://github.com/zettajs/zetta/wiki/Device), the new home for all Zetta documentation. Please bookmark the [doc wiki](https://github.com/zettajs/zetta/wiki) for future reference. 
+
 #### Class: Zetta.Device
 
 This is a zetta device modeled in software. With zetta you can create state machines for all of your devices that conditionally allow functionality to be exposed based on the `state` property.

@@ -5,6 +5,8 @@ author: Adam Magaluk
 description: Reference docs for zetta apps
 ---
 
+>Note: This topic has been relocated to the [Zetta doc wiki](https://github.com/zettajs/zetta/wiki/Apps), the new home for all Zetta documentation. Please bookmark the [doc wiki](https://github.com/zettajs/zetta/wiki) for future reference. 
+
 ### Zetta JavaScript Apps
 
 Zetta apps are exported module functions, and differ from Drivers and Scouts.
