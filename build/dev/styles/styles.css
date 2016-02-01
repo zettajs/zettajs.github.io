@@ -509,7 +509,6 @@ a:hover {
     max-height: 18rem;
     height: auto;
     margin: 1rem 0 2rem 0;
-    -webkit-transition: max-height 0.5s ease, margin 0.5s ease;
     transition: max-height 0.5s ease, margin 0.5s ease;
     overflow: hidden;
     padding-bottom: 1rem;
@@ -731,7 +730,6 @@ ul.placards li .content h2 {
 }
 #hero #cta {
   background-color: #4a5981;
-  background: -webkit-linear-gradient(#536491, #4a5981, #414e71);
   background: linear-gradient(#536491, #4a5981, #414e71);
   border-bottom: 2px solid #fff;
 }
@@ -876,7 +874,6 @@ ul.placards li .content h2 {
 /* video */
 .video {
   background-color: transparent;
-  background-image: -webkit-linear-gradient(#4a5981 1px, #4a5981 1px);
   background-image: linear-gradient(#4a5981 1px, #4a5981 1px);
   background-size: 100% 5rem;
   background-repeat: no-repeat;
@@ -920,7 +917,7 @@ ul.placards li .content h2 {
   background-color: #23241f;
   z-index: 2000;
   margin-bottom: 1rem;
-  font-size: .9rem;
+  font-size: 1rem;
   line-height: 1rem;
 }
 .code pre {
@@ -1024,7 +1021,7 @@ ul.placards li .content h2 {
   max-width: 100%;
 }
 .pairing:not(:first-child) {
-  margin-top: 7rem;
+  margin-top: 2rem;
 }
 #browser .spiel h2,
 #browser .spiel p {
@@ -1046,7 +1043,6 @@ header h1 {
 }
 header .meta {
   background-color: #ddd;
-  background-image: -webkit-linear-gradient(#eeeeee 10%, #dddddd 10%, #dddddd 90%, #cccccc 90%);
   background-image: linear-gradient(#eeeeee 10%, #dddddd 10%, #dddddd 90%, #cccccc 90%);
   padding: 1rem 0;
 }
@@ -1184,7 +1180,6 @@ article li blockquote p {
 }
 article blockquote {
   background-color: #eee;
-  background-image: -webkit-linear-gradient(left, #888888 1%, #eeeeee 1%, #eeeeee 75%, #ffffff 100%);
   background-image: linear-gradient(to right, #888888 1%, #eeeeee 1%, #eeeeee 75%, #ffffff 100%);
   padding: 1rem 0;
 }
@@ -1427,7 +1422,6 @@ article ul.tags li .tag {
 }
 .page.docs #hero .page_meta {
   background-color: #4a5981;
-  background: -webkit-linear-gradient(#536491, #4a5981, #414e71);
   background: linear-gradient(#536491, #4a5981, #414e71);
 }
 .page.docs article h1 {
@@ -1438,7 +1432,6 @@ article ul.tags li .tag {
 }
 .page.docs.project #hero .page_meta {
   background-color: #4a5981;
-  background: -webkit-linear-gradient(#536491, #4a5981, #414e71);
   background: linear-gradient(#536491, #4a5981, #414e71);
 }
 .page.docs.project article h1 {
@@ -1449,7 +1442,6 @@ article ul.tags li .tag {
 }
 .page.docs.guide #hero .page_meta {
   background-color: #91d390;
-  background: -webkit-linear-gradient(#a3daa2, #91d390, #7fcc7e);
   background: linear-gradient(#a3daa2, #91d390, #7fcc7e);
 }
 .page.docs.guide article h1 {
@@ -1460,7 +1452,6 @@ article ul.tags li .tag {
 }
 .page.docs.blog #hero .page_meta {
   background-color: #6cc99c;
-  background: -webkit-linear-gradient(#7fd0a9, #6cc99c, #59c28f);
   background: linear-gradient(#7fd0a9, #6cc99c, #59c28f);
 }
 .page.docs.blog article h1 {
@@ -1472,7 +1463,6 @@ article ul.tags li .tag {
 .page.docs.community #hero .page_meta,
 .page.docs.workshop #hero .page_meta {
   background-color: #d3b670;
-  background: -webkit-linear-gradient(#d9c084, #d3b670, #cdac5c);
   background: linear-gradient(#d9c084, #d3b670, #cdac5c);
 }
 .page.docs.community article h1,
